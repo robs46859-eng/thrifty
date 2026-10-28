@@ -1,16 +1,22 @@
 # Thrifty
 
+[![Validate Thrifty](https://github.com/robs46859-eng/thrifty/actions/workflows/ci.yml/badge.svg)](https://github.com/robs46859-eng/thrifty/actions/workflows/ci.yml)
+
 **Find the good.** A mobile-first, local-first Progressive Web App for intentional secondhand shopping and resale.
 
 This repository contains a working app, not a live marketplace service. The initial fleece, lamp and pet gear are illustrated fictional samples. Uploaded photos never receive fabricated identification or prices.
 
 ![Thrifty desktop scan and scoring workspace](docs/preview.png)
 
-## Run
+[Quick start](#quick-start) · [First find](#try-your-first-find) · [Features](#what-works) · [AI setup](#optional-image-analysis) · [Marketplace status](#marketplace-limitations) · [Validation](#validation) · [Project structure](#project-structure)
+
+## Quick start
 
 Requires Node **22.12+** and npm.
 
 ```sh
+git clone https://github.com/robs46859-eng/thrifty.git
+cd thrifty
 npm ci
 npm run dev
 ```
@@ -25,6 +31,17 @@ npm start
 ```
 
 Open `http://127.0.0.1:4317`. Installation and camera capture require HTTPS or localhost. On iOS, use Safari → Share → Add to Home Screen; on supporting desktop/Android browsers, use the install option. The in-app **Get the app** button uses the install prompt when available and otherwise gives instructions.
+
+## Try your first find
+
+1. Open **Scan a find** and try the fictional fleece, lamp or pet-gear sample, or upload your own photo. No AI credentials are needed for manual identification.
+2. Choose **Merchant** or **Household** to see the relevant assessment. Review the item name, brand, size, condition, asking price and repair costs.
+3. Check the review confirmation and save the item to the selected inventory.
+4. In **Your household**, edit the starter profiles and shopping goals for yourself, children or pets. In **Merchant studio**, configure your shop and record inventory or actual sales.
+5. Open **Pricing & listings** for a saved merchant item to add comparable evidence, prepare a local listing draft and export it for manual posting.
+6. Use **Workspace** to export a JSON backup before clearing browser data or moving to another device. On phones, the workspace control is the database icon in the top bar.
+
+Changing the browser origin or port creates a separate workspace. Export from the original address and import at the new address to transfer your records.
 
 ## What works
 
@@ -89,3 +106,20 @@ Browser tests require Google Chrome (`npx playwright install chrome` if absent).
 There is **no login, shared household membership, encrypted cloud database, cross-device sync or automatic backup**. Data belongs to the browser origin and may be lost when browser storage is cleared; export regularly. Photos are not durable. Hash navigation works on a static host, but optional AI needs this Node server or a compatible backend. The production service worker caches only the same-origin app shell/assets, never API responses or photos. Updates wait for the user to save their current find and reload.
 
 The supplied API is for a single-user local deployment. Before exposing credential-enabled endpoints publicly, implement authentication, per-user authorization/quotas, durable rate limiting and approved secret storage. For a deliberate deployment behind HTTPS, set `HOST`, `PORT`, and exact `APP_ORIGIN` as needed; update the Vite proxy if changing the API port in development. No hosted production site is deployed by this repository build.
+
+## Project structure
+
+| Path                       | Purpose                                                               |
+| -------------------------- | --------------------------------------------------------------------- |
+| `src/components/`          | Scanner, household, merchant, pricing, listing and connection screens |
+| `src/lib/model.ts`         | Shared schemas and data types                                         |
+| `src/lib/scoring.ts`       | Household matching, resale scoring and comparable filtering           |
+| `src/lib/marketplaces.ts`  | Channel price planning and disconnected marketplace adapter contracts |
+| `src/lib/storage.ts`       | Device persistence, backup validation and exports                     |
+| `server/`                  | Optional image-analysis API and production app server                 |
+| `public/`                  | PWA manifest and app icons                                            |
+| `scripts/build-sw.mjs`     | Production offline-shell generation                                   |
+| `tests/`                   | Logic, storage, API and browser workflow tests                        |
+| `.github/workflows/ci.yml` | Automated validation on pushes and pull requests                      |
+
+Read the [architecture and integration guide](docs/ARCHITECTURE.md) for scoring formulas and live-adapter requirements, and the [validation record](docs/VALIDATION.md) for the tested scope and remaining verification limits.
