@@ -20,10 +20,13 @@ For the deployment at `worklifelm.com`:
 
 ```dotenv
 NODE_ENV=production
+NPM_CONFIG_INCLUDE=dev
 HOST=0.0.0.0
 APP_ORIGIN=https://worklifelm.com
 VISION_PROVIDER=manual
 ```
+
+The include setting is required because the host loads production environment variables before dependency installation; TypeScript, Vite and esbuild must still be installed for the build. It does not enable development mode in the running app.
 
 Let the hosting platform supply its port when applicable. `APP_ORIGIN` is the exact browser origin used by the same-origin API guard. The `www` alias redirects to the configured apex origin. Configure HTTPS at the host before relying on camera/PWA features.
 
