@@ -145,3 +145,24 @@ it('marketplace endpoints never claim to publish or reprice', async () => {
   }
   expect((await request(app).get('/api/nonexistent')).status).toBe(404);
 });
+
+it('identifies the deployed service and redirects the www alias to the configured origin', async () => {
+  const app = createApp({}, fetch, 'https://worklifelm.com');
+  const health = await request(app).get('/api/health');
+  expect(health.status).toBe(200);
+  expect(health.body.service).toBe('thrifty');
+  expect(health.headers['cache-control']).toBe('no-store');
+  const alias = await request(app).get('/?from=www').set('Host', 'www.worklifelm.com');
+  expect(alias.status).toBe(308);
+  expect(alias.headers.location).toBe('https://worklifelm.com/?from=www');
+  const status = await request(app).get('/api/status').set('Origin', 'https://worklifelm.com');
+  expect(status.status).toBe(200);
+  expect(
+    (
+      await request(app)
+        .post('/api/identify')
+        .set('Origin', 'https://other.example')
+        .send({ image: png })
+    ).status,
+  ).toBe(403);
+});

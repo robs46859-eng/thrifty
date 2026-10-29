@@ -21,7 +21,7 @@ npm ci
 npm run dev
 ```
 
-Open the Vite URL printed in the terminal (normally `http://127.0.0.1:5173`). The API runs at `http://127.0.0.1:4317`; Vite proxies `/api` to it. Both bind to loopback by default.
+Open the Vite URL printed in the terminal (normally `http://127.0.0.1:5173`). The development API runs at `http://127.0.0.1:4317`; Vite proxies `/api` to it. Both bind to loopback by default.
 
 For the production build and offline shell:
 
@@ -94,8 +94,9 @@ No connector stores tokens, runs OAuth, publishes, synchronizes orders, fetches 
 
 ```sh
 npm test               # Domain, storage, API and provider contracts
-npm run build          # Type checking, production bundle, versioned offline shell
+npm run build          # Type checking, client/server bundles, versioned offline shell
 npm run test:e2e       # Desktop Chrome + emulated Pixel 7, production server
+npm run test:runtime   # Hostinger-compatible compiled server startup
 npm run format:check
 ```
 
@@ -105,7 +106,7 @@ Browser tests require Google Chrome (`npx playwright install chrome` if absent).
 
 There is **no login, shared household membership, encrypted cloud database, cross-device sync or automatic backup**. Data belongs to the browser origin and may be lost when browser storage is cleared; export regularly. Photos are not durable. Hash navigation works on a static host, but optional AI needs this Node server or a compatible backend. The production service worker caches only the same-origin app shell/assets, never API responses or photos. Updates wait for the user to save their current find and reload.
 
-The supplied API is for a single-user local deployment. Before exposing credential-enabled endpoints publicly, implement authentication, per-user authorization/quotas, durable rate limiting and approved secret storage. For a deliberate deployment behind HTTPS, set `HOST`, `PORT`, and exact `APP_ORIGIN` as needed; update the Vite proxy if changing the API port in development. No hosted production site is deployed by this repository build.
+The supplied API is for a single-user local deployment. Before exposing credential-enabled endpoints publicly, implement authentication, per-user authorization/quotas, durable rate limiting and approved secret storage. For a deliberate deployment behind HTTPS, set `HOST`, `PORT`, and exact `APP_ORIGIN` as needed; update the Vite proxy if changing the API port in development. Running the build does not deploy the app. See [Hostinger deployment](docs/HOSTINGER.md) for hosting settings and live verification.
 
 ## Project structure
 

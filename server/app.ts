@@ -18,6 +18,16 @@ export function createApp(
     });
     next();
   });
+  app.use((req, res, next) => {
+    if (origin) {
+      const canonical = new URL(origin);
+      if (!canonical.hostname.startsWith('www.') && req.hostname === `www.${canonical.hostname}`) {
+        res.redirect(308, `${canonical.origin}${req.originalUrl}`);
+        return;
+      }
+    }
+    next();
+  });
   app.use('/api', (req, res, next) => {
     res.set('Cache-Control', 'no-store');
     const requestOrigin = req.get('origin');
@@ -46,6 +56,15 @@ export function createApp(
     next();
   });
   app.use(express.json({ limit: '6mb' }));
+  app.get('/api/health', (_req, res) =>
+    res.json({
+      status: 'ok',
+      service: 'thrifty',
+      version: process.env.THRIFTY_VERSION ?? 'development',
+      sourceId: process.env.THRIFTY_SOURCE_ID ?? 'development',
+      storage: 'device-only',
+    }),
+  );
   app.get('/api/status', (_req, res) =>
     res.json({
       identification: configuredProvider(config),
