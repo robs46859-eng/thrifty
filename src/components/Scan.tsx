@@ -14,6 +14,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { useWorkspace } from '../lib/context';
+import { useAuth, AuthRequestError } from '../lib/auth';
 import { blankCandidate, examples, sampleComps } from '../lib/seed';
 import {
   candidateSchema,
@@ -33,6 +34,7 @@ import { Field, ItemArt, Modal, Tag, Checked } from './ui';
 import { ComparableForm } from './comps';
 export function Scan() {
   const { state, setState, mode, setMode, navigate, toast } = useWorkspace();
+  const auth = useAuth();
   const [sample, setSample] = useState<string | null>('fleece');
   const [item, setItem] = useState<Candidate>({
     ...examples.fleece,
@@ -121,21 +123,24 @@ export function Scan() {
         });
         return;
       }
-      const response = await fetch('/api/identify', {
-        method: 'POST',
-        signal: AbortSignal.timeout(20000),
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ image: data, useCloud: true }),
-      });
-      if (!response.ok) throw new Error('Analysis unavailable');
-      const result: Identification = await response.json();
+      const result = (await auth.request('/api/identify', {
+        image: data,
+        useCloud: true,
+      })) as Identification;
+      await auth.refresh();
       if (id !== requestId.current) return;
       setIdentification(result);
       setEvidence(result.provider);
       if (result.suggestion) setItem((i) => ({ ...i, title: result.suggestion }));
-    } catch {
-      if (id === requestId.current)
-        setError('Cloud analysis is unavailable. You can identify this photo manually below.');
+    } catch (error) {
+      if (id === requestId.current) {
+        setError(
+          error instanceof AuthRequestError
+            ? error.message
+            : 'Cloud analysis is unavailable. You can identify this photo manually below.',
+        );
+        if (error instanceof AuthRequestError && error.status === 429) await auth.refresh();
+      }
     } finally {
       if (id === requestId.current) setBusy(false);
     }
@@ -265,6 +270,10 @@ export function Scan() {
               <input
                 type="checkbox"
                 checked={useCloud}
+                disabled={
+                  !auth.info.user ||
+                  (!auth.info.usage?.unlimited && auth.info.usage?.remaining === 0)
+                }
                 onChange={(e) => setUseCloud(e.target.checked)}
               />{' '}
               Send new photos to {provider === 'google' ? 'Google Cloud Vision' : 'Azure Vision'}{' '}
@@ -279,6 +288,29 @@ export function Scan() {
               </span>
             </div>
           )}
+          <div className="scan-account-status">
+            {auth.info.user ? (
+              <>
+                <ShieldCheck size={14} />
+                <span>
+                  {auth.info.usage?.unlimited
+                    ? 'Admin · unlimited cloud scans'
+                    : `${auth.info.usage?.remaining ?? 0} of ${auth.info.limits.daily} cloud scans left today · ${auth.info.limits.minute}/min`}
+                </span>
+                <button className="text-link" onClick={auth.openSignIn}>
+                  Account
+                </button>
+              </>
+            ) : (
+              <>
+                <ShieldCheck size={14} />
+                <span>Cloud scanning requires a verified account.</span>
+                <button className="text-link" onClick={auth.openSignIn}>
+                  Sign in
+                </button>
+              </>
+            )}
+          </div>
           <div className="sample-row">
             <span>Try a sample</span>
             {Object.keys(examples).map((key) => (

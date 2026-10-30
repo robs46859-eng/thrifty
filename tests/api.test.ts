@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import request from 'supertest';
 import { createApp } from '../server/app';
+import { apiFixture } from './auth-fixture';
 import { configuredProvider, identify } from '../server/vision';
 const png =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jE1kAAAAASUVORK5CYII=';
@@ -13,9 +14,7 @@ describe('identification API', () => {
   });
   it('never calls a cloud provider without explicit photo consent', async () => {
     const cloud = vi.fn();
-    const response = await request(
-      createApp({ provider: 'google', googleKey: 'secret-test-key' }, cloud),
-    )
+    const response = await apiFixture({ provider: 'google', googleKey: 'secret-test-key' }, cloud)
       .post('/api/identify')
       .send({ image: png });
     expect(response.body.provider).toBe('manual');
@@ -23,9 +22,7 @@ describe('identification API', () => {
     expect(cloud).not.toHaveBeenCalled();
   });
   it('gives honest manual fallback when credentials are absent', async () => {
-    const response = await request(createApp())
-      .post('/api/identify')
-      .send({ image: png, useCloud: true });
+    const response = await apiFixture().post('/api/identify').send({ image: png, useCloud: true });
     expect(response.body.provider).toBe('manual');
     expect(response.body.confidence).toBeNull();
     expect(response.body.suggestion).toBe('');
@@ -33,31 +30,28 @@ describe('identification API', () => {
   it('rejects malformed images and disguised file contents', async () => {
     expect(
       (
-        await request(createApp())
+        await apiFixture()
           .post('/api/identify')
           .send({ image: 'data:image/png;base64,SGVsbG8gd29ybGQgaW52YWxpZA==' })
       ).status,
     ).toBe(400);
     expect(
-      (
-        await request(createApp())
-          .post('/api/identify')
-          .send({ image: 'https://example.com/image.jpg' })
-      ).status,
+      (await apiFixture().post('/api/identify').send({ image: 'https://example.com/image.jpg' }))
+        .status,
     ).toBe(400);
   });
   it('blocks cross-origin requests and bounds request frequency', async () => {
     expect(
       (
-        await request(createApp())
+        await apiFixture()
           .post('/api/identify')
           .set('Origin', 'https://attacker.example')
           .send({ image: png })
       ).status,
     ).toBe(403);
-    const app = createApp();
-    for (let i = 0; i < 12; i++) await request(app).post('/api/identify').send({ image: png });
-    expect((await request(app).post('/api/identify').send({ image: png })).status).toBe(429);
+    expect(
+      (await request(apiFixture().app).post('/api/identify').send({ image: png })).status,
+    ).toBe(401);
   });
   it('parses Google labels and OCR without treating brand or size as verified', async () => {
     const cloud = vi.fn().mockResolvedValue(
@@ -73,9 +67,7 @@ describe('identification API', () => {
         { status: 200 },
       ),
     );
-    const response = await request(
-      createApp({ provider: 'google', googleKey: 'secret-test-key' }, cloud),
-    )
+    const response = await apiFixture({ provider: 'google', googleKey: 'secret-test-key' }, cloud)
       .post('/api/identify')
       .send({ image: png, useCloud: true });
     expect(response.body.provider).toBe('google');
@@ -133,13 +125,12 @@ describe('identification API', () => {
   });
 });
 it('marketplace endpoints never claim to publish or reprice', async () => {
-  const app = createApp();
+  const api = apiFixture();
+  const app = api.app;
   const status = await request(app).get('/api/marketplaces');
   expect(status.body.every((m: { status: string }) => m.status === 'disconnected')).toBe(true);
   for (const action of ['publish', 'reprice']) {
-    const response = await request(app)
-      .post(`/api/marketplaces/ebay/${action}`)
-      .send({ price: 20 });
+    const response = await api.post(`/api/marketplaces/ebay/${action}`).send({ price: 20 });
     expect(response.status).toBe(409);
     expect(response.body.ok).toBe(false);
   }

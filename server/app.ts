@@ -1,4 +1,6 @@
 import express from 'express';
+import { AuthService, runtimeAuth } from './auth';
+import { AuthError } from './auth-store';
 import path from 'node:path';
 import { z } from 'zod';
 import { configuredProvider, fallback, identify, validImage, type VisionConfig } from './vision';
@@ -7,6 +9,7 @@ export function createApp(
   config: VisionConfig = {},
   fetcher: typeof fetch = fetch,
   origin = process.env.APP_ORIGIN,
+  authentication?: AuthService,
 ) {
   const app = express();
   app.disable('x-powered-by');
@@ -41,19 +44,17 @@ export function createApp(
     }
     next();
   });
-  const rate = new Map<string, { count: number; until: number }>();
+  const auth = authentication ?? runtimeAuth(origin);
+  app.use('/api/auth', express.json({ limit: '32kb' }));
+  auth.install(app);
   app.use('/api/identify', (req, res, next) => {
-    const now = Date.now();
-    for (const [key, entry] of rate) if (entry.until <= now) rate.delete(key);
-    const key = req.ip || 'local';
-    const bucket = rate.get(key) ?? { count: 0, until: now + 60000 };
-    if (bucket.count >= 12 || rate.size > 10000) {
-      res.status(429).json({ error: 'Too many scans. Please wait a minute.' });
-      return;
+    try {
+      const session = auth.requireUser(req);
+      auth.csrf(req, session.csrf);
+      next();
+    } catch (error) {
+      next(error);
     }
-    bucket.count++;
-    rate.set(key, bucket);
-    next();
   });
   app.use(express.json({ limit: '6mb' }));
   app.get('/api/health', (_req, res) =>
@@ -63,6 +64,7 @@ export function createApp(
       version: process.env.THRIFTY_VERSION ?? 'development',
       sourceId: process.env.THRIFTY_SOURCE_ID ?? 'development',
       storage: 'device-only',
+      authenticationConfigured: auth.ready,
     }),
   );
   app.get('/api/status', (_req, res) =>
@@ -70,6 +72,7 @@ export function createApp(
       identification: configuredProvider(config),
       marketplaces: 'disconnected',
       storage: 'device-only',
+      authenticationConfigured: auth.ready,
     }),
   );
   const imageSchema = z.object({
@@ -79,35 +82,54 @@ export function createApp(
       .regex(/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/]+={0,2}$/),
     useCloud: z.boolean().default(false),
   });
-  app.post('/api/identify', async (req, res) => {
-    const parsed = imageSchema.safeParse(req.body);
-    if (!parsed.success) {
-      res.status(400).json({ error: 'Choose a JPEG, PNG or WebP image, up to 4 MB.' });
-      return;
-    }
-    const [header, data] = parsed.data.image.split(',');
-    const image = Buffer.from(data, 'base64');
-    if (
-      image.length > 4 * 1024 * 1024 ||
-      image.length < 12 ||
-      !validImage(image, header.slice(5, header.indexOf(';')))
-    ) {
-      res.status(400).json({ error: 'Invalid or oversized image.' });
-      return;
-    }
-    res.json(
-      parsed.data.useCloud
-        ? await identify(image, config, fetcher)
-        : fallback(
-            'Photo loaded privately. Enter the item details below; no cloud analysis was requested.',
+  app.post('/api/identify', async (req, res, next) => {
+    try {
+      const parsed = imageSchema.safeParse(req.body);
+      if (!parsed.success) {
+        res.status(400).json({ error: 'Choose a JPEG, PNG or WebP image, up to 4 MB.' });
+        return;
+      }
+      const [header, data] = parsed.data.image.split(',');
+      const image = Buffer.from(data, 'base64');
+      if (
+        image.length > 4 * 1024 * 1024 ||
+        image.length < 12 ||
+        !validImage(image, header.slice(5, header.indexOf(';')))
+      ) {
+        res.status(400).json({ error: 'Invalid or oversized image.' });
+        return;
+      }
+      if (!parsed.data.useCloud || configuredProvider(config) === 'manual') {
+        res.json(
+          fallback(
+            parsed.data.useCloud
+              ? undefined
+              : 'Photo loaded privately. Enter the item details below; no cloud analysis was requested.',
             configuredProvider(config) !== 'manual',
           ),
-    );
+        );
+        return;
+      }
+      const session = auth.requireUser(req);
+      const usage = auth.store!.reserveScan(session.user, auth.limits, auth.now());
+      // Reserve before the provider call. A timeout may still have incurred a
+      // provider charge, so failed/cloud-fallback attempts retain their reservation.
+      res.json({ ...(await identify(image, config, fetcher)), usage });
+    } catch (error) {
+      next(error);
+    }
   });
   app.get('/api/marketplaces', (_req, res) =>
     res.json(marketplaces.map((m) => ({ ...m, status: 'disconnected', capabilities: ['draft'] }))),
   );
-  app.post('/api/marketplaces/:id/:action', async (req, res) => {
+  app.post('/api/marketplaces/:id/:action', async (req, res, next) => {
+    try {
+      const session = auth.requireUser(req);
+      auth.csrf(req, session.csrf);
+    } catch (error) {
+      next(error);
+      return;
+    }
     if (!marketplaces.some((m) => m.id === req.params.id)) {
       res.status(404).json({ error: 'Unknown marketplace.' });
       return;
@@ -131,11 +153,23 @@ export function createApp(
   app.get('/{*path}', (_req, res) => res.sendFile(path.join(dist, 'index.html')));
   app.use(
     (
-      error: { status?: number },
+      error: { status?: number; code?: string; message?: string; retryAfter?: number },
       _req: express.Request,
       res: express.Response,
       _next: express.NextFunction,
     ) => {
+      if (error instanceof AuthError) {
+        if (error.retryAfter) res.set('Retry-After', String(error.retryAfter));
+        res.status(error.status).json({ error: error.message, code: error.code });
+        return;
+      }
+      if (error.code?.startsWith('ERR_SQLITE') || error.code?.startsWith('SQLITE')) {
+        res.status(503).json({
+          error: 'Sign-in and scanning are temporarily unavailable. Please try again later.',
+          code: 'AUTH_STORE_UNAVAILABLE',
+        });
+        return;
+      }
       res.status(error.status === 413 ? 413 : 400).json({
         error:
           error.status === 413

@@ -5,7 +5,7 @@ Thrifty uses an Express server plus a Vite frontend. Deploy it as **Express / No
 ## Build and startup
 
 - Repository: `robs46859-eng/thrifty`, branch `main`.
-- Node.js: 22 or 24 (minimum 22.12).
+- Node.js: 22 or 24 (minimum 22.13).
 - Package manager: npm.
 - Build script: `build` (`npm run build`).
 - Server entry file: `server.cjs`, relative to the repository root.
@@ -30,9 +30,9 @@ The include setting is required because the host loads production environment va
 
 Let the hosting platform supply its port when applicable. `APP_ORIGIN` is the exact browser origin used by the same-origin API guard. The `www` alias redirects to the configured apex origin. Configure HTTPS at the host before relying on camera/PWA features.
 
-The initial public deployment is manual-only. No AI key was supplied with this deployment. The app retains its existing local/device storage model; it does not add customer accounts, server-side inventory storage or marketplace connections.
+The initial public deployment is manual-only. No AI key was supplied with this deployment. The app retains its local/device inventory storage model and disconnected marketplace interfaces. The sign-in update adds private account/session/quota storage, not cloud inventory storage.
 
-Before activating paid cloud identification publicly, implement authenticated user access and per-user quotas. The current API has a per-process limiter, not account authorization or durable usage billing. Keep all provider keys in server environment variables, never in frontend variables or committed files. Replacing Hostinger's environment variable set deletes omitted keys, so read the configured key names and preserve the full intended set when making changes.
+Before activating paid cloud identification publicly, configure and verify Google/email sign-in using [the authentication setup guide](AUTHENTICATION.md). The API enforces verified sessions, durable free-user scan quotas and the verified admin exemption. Quota reservations are not payment processing; extra paid usage is not implemented. Keep all provider keys in server environment variables, never in frontend variables or committed files. Replacing Hostinger's environment variable set deletes omitted keys, so read the configured key names and preserve the full intended set when making changes.
 
 ## Verify a release
 

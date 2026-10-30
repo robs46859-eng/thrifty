@@ -1,12 +1,15 @@
 import { stateSchema, type AppState } from './model';
 import { initialState } from './seed';
 export const STORAGE_KEY = 'thrifty.workspace.v1';
-export function loadState(storage: Pick<Storage, 'getItem'> = localStorage): {
+export function loadState(
+  storage: Pick<Storage, 'getItem'> = localStorage,
+  key = STORAGE_KEY,
+): {
   state: AppState;
   warning: string;
 } {
   try {
-    const raw = storage.getItem(STORAGE_KEY);
+    const raw = storage.getItem(key);
     if (!raw) return { state: initialState(), warning: '' };
     const result = stateSchema.safeParse(JSON.parse(raw));
     if (!result.success)
@@ -23,9 +26,13 @@ export function loadState(storage: Pick<Storage, 'getItem'> = localStorage): {
     };
   }
 }
-export function saveState(state: AppState, storage: Pick<Storage, 'setItem'> = localStorage) {
+export function saveState(
+  state: AppState,
+  storage: Pick<Storage, 'setItem'> = localStorage,
+  key = STORAGE_KEY,
+) {
   try {
-    storage.setItem(STORAGE_KEY, JSON.stringify(stateSchema.parse(state)));
+    storage.setItem(key, JSON.stringify(stateSchema.parse(state)));
     return '';
   } catch {
     return 'Could not save to this device. Storage may be full or unavailable. Export your workspace now.';

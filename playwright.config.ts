@@ -5,7 +5,7 @@ export default defineConfig({
   workers: 1,
   retries: 0,
   reporter: 'list',
-  use: { baseURL: 'http://127.0.0.1:4317', trace: 'retain-on-failure' },
+  use: { baseURL: 'http://127.0.0.1:4321', trace: 'retain-on-failure' },
   projects: [
     { name: 'desktop-chromium', use: { ...devices['Desktop Chrome'], channel: 'chrome' } },
     {
@@ -14,9 +14,9 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm start',
-    url: 'http://127.0.0.1:4317/api/status',
-    reuseExistingServer: !process.env.CI,
+    command: 'npx tsx tests/browser-server.ts',
+    url: 'http://127.0.0.1:4321/api/status',
+    reuseExistingServer: false,
     timeout: 30000,
   },
 });

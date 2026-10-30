@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useAuth, AccountButton } from './lib/auth';
 import {
   ScanLine,
   House,
@@ -44,8 +45,8 @@ function currentPage(): Page {
   const hash = window.location.hash.slice(1);
   return navigation.some((n) => n.id === hash) ? (hash as Page) : 'scan';
 }
-export default function App() {
-  const [loaded] = useState(() => loadState());
+function WorkspaceApp({ workspaceKey }: { workspaceKey: string }) {
+  const [loaded] = useState(() => loadState(localStorage, workspaceKey));
   const [state, setState] = useState(loaded.state);
   const [blockedStorage, setBlockedStorage] = useState(!!loaded.warning);
   const [warning, setWarning] = useState(loaded.warning);
@@ -97,8 +98,8 @@ export default function App() {
     };
   }, []);
   useEffect(() => {
-    if (!blockedStorage) setWarning(saveState(state));
-  }, [state, blockedStorage]);
+    if (!blockedStorage) setWarning(saveState(state, localStorage, workspaceKey));
+  }, [state, blockedStorage, workspaceKey]);
   useEffect(() => {
     if (!import.meta.env.PROD || !('serviceWorker' in navigator)) return;
     let reload = false;
@@ -235,6 +236,7 @@ export default function App() {
               <strong>{navigation.find((n) => n.id === page)?.label}</strong>
             </div>
             <div className="topbar-actions">
+              <AccountButton />
               {!online && (
                 <span className="offline">
                   <WifiOff size={15} /> Offline
@@ -393,7 +395,7 @@ export default function App() {
                   try {
                     download(
                       `thrifty-unreadable-backup-${today()}.txt`,
-                      localStorage.getItem(STORAGE_KEY) ?? '',
+                      localStorage.getItem(workspaceKey) ?? '',
                     );
                   } catch {
                     toast('Storage is unavailable');
@@ -471,4 +473,10 @@ export default function App() {
       )}
     </WorkspaceContext.Provider>
   );
+}
+
+export default function App() {
+  const { info } = useAuth();
+  const workspaceKey = info.user ? `${STORAGE_KEY}.account.${info.user.id}` : STORAGE_KEY;
+  return <WorkspaceApp key={workspaceKey} workspaceKey={workspaceKey} />;
 }

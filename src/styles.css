@@ -2581,3 +2581,130 @@ dialog > p {
     width: 100%;
   }
 }
+.account-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid #dbe3d2;
+  background: #fff;
+  color: #44643b;
+  border-radius: 6px;
+  min-height: 36px;
+  padding: 7px 10px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.account-identity {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin: 8px 0 20px;
+  color: #3f6638;
+}
+.account-identity > div {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 9px;
+  min-width: 0;
+}
+.account-identity strong {
+  overflow-wrap: anywhere;
+  font-weight: 550;
+}
+.account-usage {
+  padding: 20px;
+  background: #f0f4e9;
+  border: 1px solid #e1e8d7;
+  border-radius: 9px;
+  margin: 15px 0;
+}
+.account-usage strong {
+  font-size: 17px;
+  font-weight: 550;
+  display: block;
+  margin-bottom: 8px;
+}
+.account-usage p {
+  font-size: 12px;
+  color: #748369;
+}
+.google-sign-in {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0 15px;
+  min-height: 44px;
+}
+.email-sign-in {
+  display: grid;
+  gap: 14px;
+}
+.email-sign-in .full {
+  margin-top: 0;
+}
+.auth-divider {
+  border-top: 1px solid #e4e9dc;
+  text-align: center;
+  margin: 16px 0 8px;
+  line-height: 0;
+  color: #839275;
+  font-size: 11px;
+}
+.auth-divider span {
+  padding: 0 12px;
+  background: #fff;
+}
+.auth-message {
+  background: #eef5e9;
+  color: #47623c;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  margin-top: 15px;
+}
+.resend-code {
+  justify-self: center;
+}
+.scan-account-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 13px 0;
+  color: #7a8d69;
+  font-size: 10px;
+}
+.scan-account-status > span {
+  flex: 1;
+}
+.scan-account-status > svg {
+  flex-shrink: 0;
+}
+.scan-account-status .text-link {
+  font-size: 10px;
+}
+.topbar-actions {
+  gap: 12px;
+}
+@media (max-width: 650px) {
+  .account-button {
+    width: 33px;
+    min-width: 33px;
+    padding: 6px;
+  }
+  .account-button > span {
+    display: none;
+  }
+  .topbar-actions {
+    gap: 3px;
+  }
+  .mode-switch button {
+    padding: 7px 6px;
+  }
+  .scan-account-status {
+    font-size: 10px;
+  }
+  .account-identity strong {
+    font-size: 13px;
+  }
+}

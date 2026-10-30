@@ -20,7 +20,7 @@ React PWA → manual review → device workspace (version 1, validated)
 
 `server/app.ts` is independently testable. It caps body/image sizes, verifies image signatures, rejects cross-site API requests, provides a bounded in-memory rate limiter, and serves the built app. `server/vision.ts` owns outbound provider requests, a 15-second timeout, endpoint restrictions and response normalization. Secrets never enter Vite client variables or response bodies. The server does not accept user-specified outbound URLs.
 
-The server binds to loopback by default and is not a multi-tenant service. Authentication is required before shared/public cloud API use. Rate limits are per process and do not survive a restart. Image magic bytes check format, not complete image decoding or malware inspection.
+The server binds to loopback by default. Cloud API use requires a verified Google/email session and CSRF proof. Private SQLite identities, sessions and atomic scan counters survive restarts; free users receive 10 provider attempts per UTC day and 3 per rolling minute, while the verified admin is exempt. See [authentication details](AUTHENTICATION.md). Browser-local inventories are separate from this server store. Image magic bytes check format, not complete image decoding or malware inspection.
 
 ## Price model
 
@@ -56,5 +56,7 @@ References: [eBay Inventory API](https://developer.ebay.com/api-docs/sell/invent
 ## Offline and schema evolution
 
 The production build generates a versioned precache with bundled CSS/JavaScript/fonts, icons, manifest and HTML. Navigations use network first with cached shell fallback; precached assets use cache first. Requests to `/api` and unknown files are untouched. Old caches with the Thrifty prefix are removed on activation. Service-worker updates wait for explicit reload. Cloud calls remain online-only, while manual assessment, local inventories, drafts and exports work offline after the shell is cached.
+
+Signed-in account workspaces use distinct browser storage keys; the guest workspace is preserved separately. Session cookies and credentials are not stored in localStorage. Cloud inventory sync remains future work.
 
 Workspace JSON has an explicit `version: 1`. Unsupported/corrupt saved data is not overwritten automatically. Imports validate shapes, bounds, unique IDs and linked records before replacing state, with explicit user confirmation. A future migration must validate the old version, transform it, preserve a backup and validate the new version before writing. Local storage is small and synchronous; a larger deployment should migrate metadata/media to IndexedDB and optional authenticated sync with conflict handling. Multiple simultaneously edited tabs currently use last-write-wins and have no conflict UI.
