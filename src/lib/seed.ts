@@ -76,6 +76,7 @@ export function sampleComps(key: keyof typeof examples, date = today()): Compara
 }
 export const initialState = (): AppState => ({
   version: 1,
+  discovery: { saved: [], stops: [], sellers: [] },
   profiles: [
     {
       id: 'you',

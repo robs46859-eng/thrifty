@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { discoverySchema } from './discovery';
 export const categories = ['Clothing', 'Home', 'Electronics', 'Collectibles', 'Pet gear'] as const;
 export const conditionNames = ['Excellent', 'Good', 'Fair', 'Poor'] as const;
 export const moneySchema = z.number().finite().min(0).max(1000000);
@@ -99,6 +100,7 @@ export const draftSchema = z.object({
 export type Draft = z.infer<typeof draftSchema>;
 export const stateSchema = z.object({
   version: z.literal(1),
+  discovery: discoverySchema,
   profiles: z.array(profileSchema).max(100),
   goals: z.array(goalSchema).max(1000),
   inventory: z.array(itemSchema).max(5000),

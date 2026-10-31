@@ -2,7 +2,7 @@
   "id": "/",
   "name": "Thrifty — Find the good",
   "short_name": "Thrifty",
-  "description": "Scan secondhand finds, shop intentionally and build your resale business.",
+  "description": "Find thrift stores, farmers markets and local sellers. Save places, plan a trip and scan your finds.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

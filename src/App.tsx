@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { useAuth, AccountButton } from './lib/auth';
 import {
   ScanLine,
@@ -16,6 +16,8 @@ import {
   Check,
   ArrowUpRight,
   Menu,
+  Map as MapIcon,
+  Heart,
   X,
   Database,
   RotateCcw,
@@ -25,12 +27,24 @@ import { loadState, parseImport, saveState, download, STORAGE_KEY } from './lib/
 import { initialState } from './lib/seed';
 import { today } from './lib/model';
 import { Scan } from './components/Scan';
+const Explore = lazy(() =>
+  import('./components/Explore').then((module) => ({ default: module.Explore })),
+);
 import { Household } from './components/Household';
 import { Merchant } from './components/Merchant';
 import { Pricing } from './components/Pricing';
 import { Connections } from './components/Connections';
-import { Modal, Tag } from './components/ui';
+import { Modal } from './components/ui';
+const mapNavigation = [
+  { id: 'map', label: 'Explore map', short: 'Explore', icon: MapIcon },
+  { id: 'saved', label: 'Saved places', short: 'Saved', icon: Heart },
+  { id: 'scan', label: 'Scan a find', short: 'Scan', icon: ScanLine },
+  { id: 'sell', label: 'Sell locally', short: 'Sell', icon: Store },
+] as const;
 const navigation = [
+  { id: 'map', label: 'Explore map', short: 'Explore', icon: MapIcon },
+  { id: 'saved', label: 'Saved places', short: 'Saved', icon: Heart },
+  { id: 'sell', label: 'Sell locally', short: 'Sell', icon: Store },
   { id: 'scan', label: 'Scan a find', short: 'Scan', icon: ScanLine },
   { id: 'household', label: 'Your household', short: 'Household', icon: House },
   { id: 'merchant', label: 'Merchant studio', short: 'Shop', icon: Store },
@@ -43,7 +57,7 @@ type InstallPrompt = Event & {
 };
 function currentPage(): Page {
   const hash = window.location.hash.slice(1);
-  return navigation.some((n) => n.id === hash) ? (hash as Page) : 'scan';
+  return navigation.some((n) => n.id === hash) ? (hash as Page) : 'map';
 }
 function WorkspaceApp({ workspaceKey }: { workspaceKey: string }) {
   const [loaded] = useState(() => loadState(localStorage, workspaceKey));
@@ -55,7 +69,7 @@ function WorkspaceApp({ workspaceKey }: { workspaceKey: string }) {
     currentPage() === 'household' ? 'household' : 'merchant',
   );
   const [online, setOnline] = useState(navigator.onLine);
-  const [modal, setModal] = useState<'workspace' | 'help' | 'install' | null>(null);
+  const [modal, setModal] = useState<'workspace' | 'help' | 'install' | 'tools' | null>(null);
   const [notification, setNotification] = useState('');
   const [install, setInstall] = useState<InstallPrompt | null>(null);
   const [update, setUpdate] = useState<ServiceWorker | null>(null);
@@ -155,7 +169,11 @@ function WorkspaceApp({ workspaceKey }: { workspaceKey: string }) {
       );
     }
   }
+  const isMap = ['map', 'saved', 'sell'].includes(page);
   const views = {
+    map: null,
+    saved: null,
+    sell: null,
     scan: <Scan />,
     household: <Household />,
     merchant: <Merchant />,
@@ -167,168 +185,186 @@ function WorkspaceApp({ workspaceKey }: { workspaceKey: string }) {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <div className="app-shell">
-        <aside className="sidebar">
+      <div className={`thrifty-shell ${isMap ? 'map-shell' : 'workspace-shell'}`}>
+        <header className="discovery-header">
           <a
-            className="brand"
-            href="#scan"
+            className="map-brand"
+            href="#map"
             onClick={(e) => {
               e.preventDefault();
-              navigate('scan');
+              navigate('map');
             }}
           >
-            <span className="brand-mark">
-              <Leaf size={27} strokeWidth={1.7} />
+            <span className="map-brand-icon">
+              <Leaf size={23} strokeWidth={1.7} />
             </span>
-            thrifty<span className="brand-dot">.</span>
+            thrifty<span>.</span>
           </a>
-          <div className="brand-caption">FIND THE GOOD.</div>
-          <div className="nav-label">YOUR EVERYDAY COMPANION</div>
-          <nav aria-label="Main navigation">
-            {navigation.map((n) => (
+          <span className="brand-motto">GOOD THINGS ARE CLOSER.</span>
+          <nav className="discovery-nav" aria-label="Main navigation">
+            {mapNavigation.map((n) => (
               <button
                 key={n.id}
                 aria-current={page === n.id ? 'page' : undefined}
-                className={page === n.id ? 'nav-item active' : 'nav-item'}
+                className={page === n.id ? 'active' : ''}
                 onClick={() => navigate(n.id)}
               >
-                <n.icon size={20} />
-                <span>{n.label}</span>
-                {page === n.id && <span className="nav-dot" />}
+                <n.icon size={18} />
+                <span>{n.short}</span>
               </button>
             ))}
           </nav>
-          <div className="sidebar-bottom">
-            <div className="sidebar-tip">
-              <span className="seed-icon">✳</span>
-              <h3>
-                Secondhand.
-                <br />
-                First choice.
-              </h3>
-              <p>
-                A little less new.
-                <br />A lot more possibility.
-              </p>
-            </div>
-            <button className="nav-item" onClick={() => setModal('workspace')}>
-              <Database size={19} /> Workspace
+          <div className="map-header-actions">
+            {!online && (
+              <span className="offline">
+                <WifiOff size={14} /> Offline
+              </span>
+            )}
+            <button
+              className="tools-button"
+              aria-label="Your shopping tools"
+              onClick={() => setModal('tools')}
+            >
+              <Menu size={19} />
+              <span>Your tools</span>
             </button>
-            <button className="nav-item" onClick={() => setModal('help')}>
-              <CircleHelp size={19} /> A little guidance
-            </button>
-            <div className="sidebar-user">
-              <span className="user-avatar">Y</span>
-              <div>
-                Your workspace<small>Local to this device</small>
-              </div>
-              <ShieldCheck size={17} />
-            </div>
+            <AccountButton />
           </div>
-        </aside>
-        <div className="main-shell">
-          <header className="topbar">
-            <a className="mobile-brand" href="#scan">
-              thrifty.
-            </a>
-            <div className="breadcrumb">
-              Your workspace <span>/</span>{' '}
-              <strong>{navigation.find((n) => n.id === page)?.label}</strong>
-            </div>
-            <div className="topbar-actions">
-              <AccountButton />
-              {!online && (
-                <span className="offline">
-                  <WifiOff size={15} /> Offline
-                </span>
-              )}
-              <div className="mode-switch" aria-label="Shopping mode">
+        </header>
+        {!isMap && (
+          <nav className="workspace-subnav" aria-label="Main navigation">
+            <button onClick={() => navigate('map')}>
+              <MapIcon size={17} /> Back to map
+            </button>
+            {navigation
+              .filter((n) => ['household', 'merchant', 'pricing', 'connections'].includes(n.id))
+              .map((n) => (
                 <button
-                  className={mode === 'merchant' ? 'active' : ''}
-                  aria-pressed={mode === 'merchant'}
-                  onClick={() => setMode('merchant')}
+                  key={n.id}
+                  aria-current={page === n.id ? 'page' : undefined}
+                  className={page === n.id ? 'active' : ''}
+                  onClick={() => navigate(n.id)}
                 >
-                  <Store size={15} />
-                  <span>Merchant</span>
+                  <n.icon size={17} />
+                  {n.label}
                 </button>
-                <button
-                  className={mode === 'household' ? 'active' : ''}
-                  aria-pressed={mode === 'household'}
-                  onClick={() => setMode('household')}
-                >
-                  <House size={15} />
-                  <span>Household</span>
-                </button>
-              </div>
+              ))}
+            <div className="mode-switch" aria-label="Shopping mode">
               <button
-                className="install-btn"
-                onClick={async () => {
-                  if (install) {
-                    await install.prompt();
-                    await install.userChoice;
-                    setInstall(null);
-                  } else setModal('install');
+                className={mode === 'merchant' ? 'active' : ''}
+                aria-pressed={mode === 'merchant'}
+                onClick={() => setMode('merchant')}
+              >
+                <Store size={15} />
+                Merchant
+              </button>
+              <button
+                className={mode === 'household' ? 'active' : ''}
+                aria-pressed={mode === 'household'}
+                onClick={() => setMode('household')}
+              >
+                <House size={15} />
+                Household
+              </button>
+            </div>
+          </nav>
+        )}
+        <main id="main" className={isMap ? 'map-main' : 'workspace-main'} tabIndex={-1}>
+          {warning && (
+            <div className="notice warning" role="alert">
+              {warning}{' '}
+              <button className="text-link" onClick={() => setModal('workspace')}>
+                Open workspace
+              </button>
+            </div>
+          )}
+          {update && (
+            <div className="notice update-notice">
+              An app update is ready. Save your current find, then{' '}
+              <button
+                className="text-link"
+                onClick={() => {
+                  window.dispatchEvent(new Event('thrifty-update'));
+                  update.postMessage({ type: 'SKIP_WAITING' });
                 }}
               >
-                <ArrowDownToLine size={17} />
-                <span>Get the app</span>
+                reload the app
               </button>
-              <button
-                className="mobile-workspace icon-btn"
-                aria-label="Workspace and backup"
-                onClick={() => setModal('workspace')}
-              >
-                <Database size={19} />
-              </button>
+              .
             </div>
-          </header>
-          <main id="main" tabIndex={-1}>
-            {warning && (
-              <div className="notice warning" role="alert">
-                {warning}{' '}
-                <button className="text-link" onClick={() => setModal('workspace')}>
-                  Open workspace
-                </button>
-              </div>
-            )}
-            {update && (
-              <div className="notice">
-                An app update is ready. Save your current find, then{' '}
-                <button
-                  className="text-link"
-                  onClick={() => {
-                    window.dispatchEvent(new Event('thrifty-update'));
-                    update.postMessage({ type: 'SKIP_WAITING' });
-                  }}
-                >
-                  reload the app
-                </button>
-                .
-              </div>
-            )}
-            {views[page]}
+          )}
+          {isMap ? (
+            <Suspense
+              fallback={
+                <div className="map-loading">
+                  <Leaf size={28} />
+                  <p>Finding the good nearby…</p>
+                </div>
+              }
+            >
+              <Explore view={page as 'map' | 'saved' | 'sell'} />
+            </Suspense>
+          ) : (
+            views[page]
+          )}
+          {!isMap && (
             <footer className="page-footer">
               <span>
                 <Leaf size={14} /> A good find deserves a second story.
               </span>
-              <span>USD · Local-first · Thrifty v0.1</span>
+              <button className="text-link" onClick={() => setModal('workspace')}>
+                <Database size={14} /> Workspace & backup
+              </button>
             </footer>
-          </main>
-        </div>
+          )}
+        </main>
       </div>
-      <nav className="mobile-nav" aria-label="Mobile navigation">
-        {navigation.map((n) => (
-          <button
-            key={n.id}
-            className={page === n.id ? 'active' : ''}
-            aria-current={page === n.id ? 'page' : undefined}
-            onClick={() => navigate(n.id)}
-          >
-            <n.icon size={21} />
-            <span>{n.short}</span>
-          </button>
-        ))}
-      </nav>
+      {modal === 'tools' && (
+        <Modal title="Your shopping tools" close={() => setModal(null)}>
+          <p className="muted">A little help for every good find.</p>
+          <div className="tools-grid">
+            {navigation
+              .filter((n) => !['map', 'saved', 'sell'].includes(n.id))
+              .map((n) => (
+                <button
+                  key={n.id}
+                  onClick={() => {
+                    setModal(null);
+                    navigate(n.id);
+                  }}
+                >
+                  <n.icon size={23} />
+                  <span>{n.label}</span>
+                  <ArrowUpRight size={16} />
+                </button>
+              ))}
+            <button onClick={() => setModal('workspace')}>
+              <Database size={23} />
+              <span>Workspace & backup</span>
+              <ArrowUpRight size={16} />
+            </button>
+            <button onClick={() => setModal('help')}>
+              <CircleHelp size={23} />
+              <span>A little guidance</span>
+              <ArrowUpRight size={16} />
+            </button>
+            <button
+              onClick={async () => {
+                if (install) {
+                  await install.prompt();
+                  await install.userChoice;
+                  setInstall(null);
+                  setModal(null);
+                } else setModal('install');
+              }}
+            >
+              <ArrowDownToLine size={23} />
+              <span>Get the app</span>
+              <ArrowUpRight size={16} />
+            </button>
+          </div>
+        </Modal>
+      )}
       {notification && (
         <div className="toast" role="status">
           <Check size={17} />
@@ -347,9 +383,9 @@ function WorkspaceApp({ workspaceKey }: { workspaceKey: string }) {
           <div className="notice">
             <ShieldCheck size={18} />
             <div>
-              Inventories, goals, profiles and drafts are stored in this browser. There is no
-              account, cloud backup, or cross-device sync. Photos are kept only for the scan
-              session.
+              Inventories, goals, profiles, saved places, trips and drafts are stored in this
+              browser, separately for each signed-in account. There is no cloud inventory backup or
+              cross-device sync. Photos are kept only for the scan session.
             </div>
           </div>
           <div className="workspace-stats">
@@ -410,7 +446,7 @@ function WorkspaceApp({ workspaceKey }: { workspaceKey: string }) {
               onClick={() => {
                 if (
                   confirm(
-                    'Clear all inventory, sales, drafts and custom goals from this device? Starter example profiles and goals will be restored. Export a backup first.',
+                    'Clear all inventory, sales, drafts, saved places, trips and custom goals from this workspace? Starter example profiles and goals will be restored. Export a backup first.',
                   )
                 ) {
                   setState(initialState());

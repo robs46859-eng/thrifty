@@ -38,7 +38,7 @@ async function signOut(page: Page) {
 test('email sign-in protects scanning, displays limits, survives reload and logs out', async ({
   page,
 }, info) => {
-  await page.goto('/');
+  await page.goto('/#scan');
   const cloudChoice = page.getByRole('checkbox', { name: /Send new photos/ });
   await expect(cloudChoice).toBeDisabled();
   await login(page, unique('scan', info.project.name));
@@ -60,7 +60,7 @@ test('email sign-in protects scanning, displays limits, survives reload and logs
 test('verified admin sees unlimited usage and workspaces stay separate on account changes', async ({
   page,
 }) => {
-  await page.goto('/');
+  await page.goto('/#scan');
   await login(page, 'rob@virtuapet.com');
   await expect(page.getByText('Admin · unlimited cloud scans')).toBeVisible();
   await page.getByLabel('Item name', { exact: true }).fill('Private administrator find');
@@ -86,7 +86,7 @@ test('Google button exchanges a nonce-bound identity and cannot set admin from t
       body: `window.google={accounts:{id:{initialize:function(c){this.c=c},renderButton:function(el){const b=document.createElement('button');b.textContent='Sign in with Google test';b.onclick=()=>this.c.callback({credential:JSON.stringify({sub:'browser-google-user',email:'google-test@gmail.com',email_verified:true,nonce:this.c.nonce})});el.appendChild(b)},disableAutoSelect:function(){}}}};`,
     }),
   );
-  await page.goto('/');
+  await page.goto('/#scan');
   await page.getByRole('button', { name: 'Sign in', exact: true }).first().click();
   await page.getByRole('button', { name: 'Sign in with Google test' }).click();
   await expect(page.getByRole('button', { name: 'Manage account' })).toBeVisible();
@@ -110,7 +110,7 @@ test('missing sign-in configuration stays visibly locked', async ({ page }) => {
       },
     }),
   );
-  await page.goto('/');
+  await page.goto('/#scan');
   await page.getByRole('button', { name: 'Sign in', exact: true }).first().click();
   await expect(
     page.getByText('The site owner hasn’t enabled sign-in yet.', { exact: false }),

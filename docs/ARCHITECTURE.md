@@ -18,9 +18,13 @@ React PWA → manual review → device workspace (version 1, validated)
 
 `src/lib/model.ts` defines shared data schemas and identifiers. `scoring.ts` contains pure evidence filtering, net-profit and score functions. `marketplaces.ts` defines channel suggestions and the adapter contract. Components hold scan-session state; the workspace holds durable metadata. `storage.ts` validates saved/imported records and reports storage failures.
 
-`server/app.ts` is independently testable. It caps body/image sizes, verifies image signatures, rejects cross-site API requests, provides a bounded in-memory rate limiter, and serves the built app. `server/vision.ts` owns outbound provider requests, a 15-second timeout, endpoint restrictions and response normalization. Secrets never enter Vite client variables or response bodies. The server does not accept user-specified outbound URLs.
+`server/app.ts` is independently testable. It caps body/image sizes, verifies image signatures, rejects cross-site API requests, enforces persistent account scan quotas, and serves the built app. `server/vision.ts` owns outbound provider requests, a 15-second timeout, endpoint restrictions and response normalization. Secrets never enter Vite client variables or response bodies. The server does not accept user-specified outbound URLs.
 
 The server binds to loopback by default. Cloud API use requires a verified Google/email session and CSRF proof. Private SQLite identities, sessions and atomic scan counters survive restarts; free users receive 10 provider attempts per UTC day and 3 per rolling minute, while the verified admin is exempt. See [authentication details](AUTHENTICATION.md). Browser-local inventories are separate from this server store. Image magic bytes check format, not complete image decoding or malware inspection.
+
+## Map discovery
+
+The home route mounts the map experience, with saved and seller subviews. Leaflet and the exploration component are split into a separate client chunk. `src/lib/discovery.ts` defines place schemas, safe links, filters, approximate distances and trip URLs. `server/discovery.ts` performs bounded public OSM lookups, normalization, caching and request coalescing. Map discovery never calls the Vision provider or consumes a scan allowance. `discovery` arrays extend old workspace backups with empty defaults. See [the map guide](MAP.md) for data, privacy, service limits and private seller status.
 
 ## Price model
 

@@ -1,4 +1,5 @@
 import express from 'express';
+import { installDiscovery } from './discovery';
 import { AuthService, runtimeAuth } from './auth';
 import { AuthError } from './auth-store';
 import path from 'node:path';
@@ -16,8 +17,8 @@ export function createApp(
   app.use((_req, res, next) => {
     res.set({
       'X-Content-Type-Options': 'nosniff',
-      'Referrer-Policy': 'same-origin',
-      'Permissions-Policy': 'camera=(self), microphone=(), geolocation=()',
+      'Referrer-Policy': 'strict-origin-when-cross-origin',
+      'Permissions-Policy': 'camera=(self), microphone=(), geolocation=(self)',
     });
     next();
   });
@@ -119,6 +120,7 @@ export function createApp(
       next(error);
     }
   });
+  installDiscovery(app);
   app.get('/api/marketplaces', (_req, res) =>
     res.json(marketplaces.map((m) => ({ ...m, status: 'disconnected', capabilities: ['draft'] }))),
   );

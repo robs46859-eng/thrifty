@@ -7,7 +7,7 @@ const nav = (page: import('@playwright/test').Page, name: string | RegExp) =>
 test('scan, review, save, draft, sale and persistence work end to end', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
-  await page.goto('/');
+  await page.goto('/#scan');
   await expect(page.getByRole('heading', { name: 'Good finds. Better decisions.' })).toBeVisible();
   await expect(page.getByText('Demo example', { exact: true })).toBeVisible();
   const add = page.getByRole('button', { name: 'Add to merchant inventory', exact: true });
@@ -39,7 +39,7 @@ test('scan, review, save, draft, sale and persistence work end to end', async ({
 test('uploaded photos require manual identification and custom comparable evidence', async ({
   page,
 }) => {
-  await page.goto('/');
+  await page.goto('/#scan');
   await page.locator('input[type=file]').first().setInputFiles('public/icon-192.png');
   await expect(page.getByText('Your photo', { exact: true })).toBeVisible();
   await expect(page.getByText('Unidentified find', { exact: true })).toBeVisible();
@@ -80,7 +80,7 @@ test('household goal editing, child profiles and duplicate-aware inventory persi
   await expect(page.getByRole('heading', { name: 'Vintage fleece pullover' })).toBeVisible();
 });
 test('offline app shell reloads and allows local work', async ({ page, context }) => {
-  await page.goto('/');
+  await page.goto('/#scan');
   await page.evaluate(async () => {
     await navigator.serviceWorker.ready;
     if (!navigator.serviceWorker.controller)

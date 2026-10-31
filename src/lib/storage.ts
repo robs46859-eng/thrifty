@@ -42,9 +42,17 @@ export function parseImport(raw: string): AppState {
   const state = stateSchema.parse(JSON.parse(raw));
   const idsUnique = (rows: { id: string }[]) => new Set(rows.map((r) => r.id)).size === rows.length;
   if (
-    ![state.profiles, state.goals, state.inventory, state.comps, state.sales, state.drafts].every(
-      idsUnique,
-    )
+    ![
+      state.profiles,
+      state.goals,
+      state.inventory,
+      state.comps,
+      state.sales,
+      state.drafts,
+      state.discovery.saved,
+      state.discovery.stops,
+      state.discovery.sellers,
+    ].every(idsUnique)
   )
     throw new Error('Duplicate IDs');
   if (

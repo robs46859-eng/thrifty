@@ -2,13 +2,13 @@
 
 [![Validate Thrifty](https://github.com/robs46859-eng/thrifty/actions/workflows/ci.yml/badge.svg)](https://github.com/robs46859-eng/thrifty/actions/workflows/ci.yml)
 
-**Find the good.** A mobile-first, local-first Progressive Web App for intentional secondhand shopping and resale.
+**Good things are closer.** A mobile-first map for thrift shoppers, farmers market customers and local sellers, with scanning and resale tools close at hand.
 
-This repository contains a working app, not a live marketplace service. The initial fleece, lamp and pet gear are illustrated fictional samples. Uploaded photos never receive fabricated identification or prices.
+Explore nearby places, keep favorites, plan a little trip and preview a seller pin. Public places come from OpenStreetMap on request; the initial Denver map uses explicitly fictional sample places. Seller pins are private device drafts, not public listings. The fleece, lamp and pet gear scanner examples are also fictional. Uploaded photos never receive fabricated identification or prices.
 
-![Thrifty desktop scan and scoring workspace](docs/preview.png)
+![Thrifty map interface with place filters, nearby finds and trip planning](docs/map-desktop.png)
 
-[Quick start](#quick-start) · [First find](#try-your-first-find) · [Features](#what-works) · [Sign-in setup](docs/AUTHENTICATION.md) · [AI setup](#optional-image-analysis) · [Marketplace status](#marketplace-limitations) · [Validation](#validation) · [Project structure](#project-structure)
+[Map guide](docs/MAP.md) · [Quick start](#quick-start) · [First find](#try-your-first-find) · [Features](#what-works) · [Sign-in setup](docs/AUTHENTICATION.md) · [AI setup](#optional-image-analysis) · [Marketplace status](#marketplace-limitations) · [Validation](#validation) · [Project structure](#project-structure)
 
 ## Quick start
 
@@ -32,6 +32,17 @@ npm start
 
 Open `http://127.0.0.1:4317`. Installation and camera capture require HTTPS or localhost. On iOS, use Safari → Share → Add to Home Screen; on supporting desktop/Android browsers, use the install option. The in-app **Get the app** button uses the install prompt when available and otherwise gives instructions.
 
+## Explore your neighborhood
+
+1. Open **Explore** to pan and zoom the map. The first Denver view is labelled **Sample map**.
+2. Tap **Load real places**, **Search this area**, or the location button to discover public places. No map API key is required for this initial public-directory implementation.
+3. Filter by thrift stores, farmers/public markets, vintage, farm shops or local sellers; use the search box to narrow the current results.
+4. Open a pin or place card, save it with the heart, and add it to **My little trip**. Public-place trips open directions in Google Maps. Sample places cannot launch real directions.
+5. Open **Sell** to create a private shop/stall draft at your chosen map location. Other customers cannot see it yet.
+6. Open **Your tools** for household goals, merchant inventory, pricing, connections, backup and installation.
+
+Read the [map guide](docs/MAP.md) for data sources, seller boundaries, location privacy and trip behavior.
+
 ## Try your first find
 
 1. Open **Scan a find** and try the fictional fleece, lamp or pet-gear sample, or upload your own photo. No AI credentials are needed for manual identification.
@@ -39,11 +50,14 @@ Open `http://127.0.0.1:4317`. Installation and camera capture require HTTPS or l
 3. Check the review confirmation and save the item to the selected inventory.
 4. In **Your household**, edit the starter profiles and shopping goals for yourself, children or pets. In **Merchant studio**, configure your shop and record inventory or actual sales.
 5. Open **Pricing & listings** for a saved merchant item to add comparable evidence, prepare a local listing draft and export it for manual posting.
-6. Use **Workspace** to export a JSON backup before clearing browser data or moving to another device. On phones, the workspace control is the database icon in the top bar.
+6. Use **Workspace** to export a JSON backup before clearing browser data or moving to another device. Open **Your tools → Workspace & backup** on desktop or mobile.
 
 Changing the browser origin or port creates a separate workspace. Export from the original address and import at the new address to transfer your records.
 
 ## What works
+
+- **Interactive map:** pannable Leaflet map, color-coded selectable pins, category and text filters, public place search, explicit location permission, collapsible mobile place sheet, saved places, ordered trip stops and Google Maps directions for public destinations. See [map limitations](docs/MAP.md).
+- **Seller map workspace:** create and delete private shop/stall pins with location, category, description and dates/hours; preserved in local backups. No public publishing is implied.
 
 - **Scanning:** rear-camera capture input, separate photo-library upload, session photo preview, manual identification and editable details. JPEG/PNG/WebP up to 4 MB. Configure a provider for opt-in image labels and OCR. HEIC must be converted to a supported image format.
 - **Dual assessment:** merchant score for profit, margin, condition, shop focus and real recorded sales from the same category/source; household score for shopping goals, size, budget including repairs, color, theme, urgency and owned duplicates. No matching goal or comparable means no invented score or valuation.

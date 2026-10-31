@@ -1,6 +1,7 @@
 import { createContext, useContext, type Dispatch, type SetStateAction } from 'react';
 import type { AppState } from './model';
-export type Page = 'scan' | 'household' | 'merchant' | 'pricing' | 'connections';
+export type Page =
+  'map' | 'saved' | 'sell' | 'scan' | 'household' | 'merchant' | 'pricing' | 'connections';
 export type Workspace = {
   state: AppState;
   setState: Dispatch<SetStateAction<AppState>>;
