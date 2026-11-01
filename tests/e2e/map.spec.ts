@@ -158,5 +158,7 @@ test('home loads real Denver categories, source details and directions without u
   await expect(page.locator('.place-card')).toHaveCount(8);
   const response = await page.request.get('/api/places?lat=39.75&lng=-104.99');
   expect(response.status()).toBe(200);
-  expect((await response.json()).places.length).toBe(15);
+  const directory = await response.json();
+  expect(directory.cityIds).toContain('denver-co');
+  expect(directory.places.length).toBeGreaterThanOrEqual(15);
 });

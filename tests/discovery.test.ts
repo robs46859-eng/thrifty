@@ -12,6 +12,7 @@ import {
   marketSeason,
   placeFreshness,
   denverDate,
+  discoveryResponseSchema,
 } from '../src/lib/discovery';
 import { initialState } from '../src/lib/seed';
 import {
@@ -155,7 +156,7 @@ describe('real Denver directory', () => {
   it('serves three populated categories without a third-party call or fictional entries', async () => {
     const upstream = vi.fn().mockRejectedValue(new Error('public service down'));
     const app = express();
-    installDiscovery(app, new DiscoveryService(upstream));
+    installDiscovery(app, new DiscoveryService(upstream, Date.now, denverPlaces));
     const response = await request(app).get('/api/places?lat=39.75&lng=-104.99');
     expect(response.status).toBe(200);
     expect(upstream).not.toHaveBeenCalled();
@@ -168,7 +169,7 @@ describe('real Denver directory', () => {
     expect(response.body.source).toBe('Denver source directory');
   });
   it('requires evidence, unique IDs and consistent seasons in the maintained data', () => {
-    expect(categoryCounts()).toMatchObject({ thrift: 8, market: 4, vintage: 3 });
+    expect(categoryCounts(denverPlaces)).toMatchObject({ thrift: 8, market: 4, vintage: 3 });
     expect(
       catalogueSchema.safeParse({ ...denverCatalogue, places: [...denverPlaces, denverPlaces[0]] })
         .success,
@@ -205,4 +206,19 @@ describe('real Denver directory', () => {
     expect(route.searchParams.get('waypoints')).toBe(`${osm.lat},${osm.lng}`);
     expect(directionsUrl(samplePlaces)).toBe('');
   });
+});
+
+it('caps overlapping city discoveries at 200 nearest records without an upstream request', async () => {
+  const upstream = vi.fn();
+  const places = Array.from({ length: 250 }, (_, i) => ({
+    ...denverPlaces[0],
+    id: `official:fixture-${i}`,
+    lat: 39.75 + (249 - i) * 0.00001,
+    lng: -104.99,
+  }));
+  const service = new DiscoveryService(upstream, Date.now, places);
+  const result = discoveryResponseSchema.parse(await service.nearby({ lat: 39.75, lng: -104.99 }));
+  expect(result.places.length).toBe(200);
+  expect(result.places[0].id).toBe('official:fixture-249');
+  expect(upstream).not.toHaveBeenCalled();
 });

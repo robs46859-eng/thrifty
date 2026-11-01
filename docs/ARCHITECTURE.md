@@ -57,6 +57,12 @@ To implement one real marketplace:
 
 References: [eBay Inventory API](https://developer.ebay.com/api-docs/sell/inventory/overview.html), [eBay OAuth](https://developer.ebay.com/develop/guides/sell/authorization), [Etsy authentication](https://developer.etsy.com/documentation/essentials/authentication/), [Shopify Admin API](https://shopify.dev/docs/api/admin-graphql), [WooCommerce REST API](https://woocommerce.github.io/woocommerce-rest-api-docs/).
 
+## US city expansion
+
+Each published catalogue has a US city/state/timezone/coverage profile. `src/generated/catalogues.ts` registers the legacy Denver snapshot and approved `data/cities/*.json` datasets for both Vite and the compiled Node server. Build validates the registry; CLI publication regenerates it. Discovery returns city IDs and source-region metadata. Market dates use destination timezones; existing Denver backups still parse.
+
+The local research workflow uses a shared private cache, conditional HTTP revalidation, six-request command and twelve-request UTC-day ledgers, one-hour failure cooldowns and a pinned public-DNS HTTPS transport. Scripts never call Vision, Places, payment or model APIs. Research drafts and explicit evidence are separate from published catalogue files. Publication validates all three categories, source evidence, state, IDs, location radius, timezone and review age before writing locally. See [CITY_WORKFLOW.md](CITY_WORKFLOW.md). Coarse US bounds and reviewer declarations are not independent geopolitical or business verification.
+
 ## Offline and schema evolution
 
 The production build generates a versioned precache with bundled CSS/JavaScript/fonts, icons, manifest and HTML. Navigations use network first with cached shell fallback; precached assets use cache first. Requests to `/api` and unknown files are untouched. Old caches with the Thrifty prefix are removed on activation. Service-worker updates wait for explicit reload. Cloud calls remain online-only, while manual assessment, local inventories, drafts and exports work offline after the shell is cached.

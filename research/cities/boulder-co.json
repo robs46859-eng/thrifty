@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "city": {
+    "id": "boulder-co",
+    "city": "Boulder",
+    "state": "CO",
+    "country": "US",
+    "timezone": "America/Denver",
+    "center": {
+      "lat": 40.015,
+      "lng": -105.2705
+    },
+    "radiusKm": 20
+  },
+  "sources": [],
+  "candidates": []
+}

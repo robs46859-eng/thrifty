@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "city": {
+    "id": "portland-or",
+    "city": "Portland",
+    "state": "OR",
+    "country": "US",
+    "timezone": "America/Los_Angeles",
+    "center": {
+      "lat": 45.523,
+      "lng": -122.676
+    },
+    "radiusKm": 20
+  },
+  "sources": [],
+  "candidates": []
+}

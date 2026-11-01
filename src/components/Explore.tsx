@@ -46,7 +46,7 @@ import {
   type PlaceKind,
   type Point,
 } from '../lib/discovery';
-import { denverPlaces, denverCatalogue } from '../lib/catalogue';
+import { denverPlaces, denverCatalogue, catalogues } from '../lib/catalogue';
 import { Field, Modal } from './ui';
 const categoryIcons = {
   thrift: Shirt,
@@ -75,7 +75,8 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
   const [places, setPlaces] = useState<Place[]>(demo ? samplePlaces : denverPlaces),
     [source, setSource] = useState<'sample' | 'osm' | 'official'>(demo ? 'sample' : 'official'),
     [fetchedAt, setFetchedAt] = useState(''),
-    [reviewedAt, setReviewedAt] = useState(demo ? '' : denverCatalogue.reviewedAt);
+    [reviewedAt, setReviewedAt] = useState(demo ? '' : denverCatalogue.reviewedAt),
+    [region, setRegion] = useState('Denver metro');
   const [query, setQuery] = useState(''),
     [kind, setKind] = useState('all'),
     [selected, setSelected] = useState<Place | null>(null),
@@ -129,13 +130,14 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
       );
       if (!response.ok)
         throw new Error(
-          'The public directory is busy or unavailable here. Return to Denver for the reviewed launch directory, or try again shortly.',
+          'The public directory is busy or unavailable here. Choose a directory-ready city or try again shortly.',
         );
       const result = discoveryResponseSchema.parse(await response.json());
       setPlaces(result.places);
-      setSource(result.source === 'Denver source directory' ? 'official' : 'osm');
+      setSource(result.source !== 'OpenStreetMap' ? 'official' : 'osm');
       setFetchedAt(result.fetchedAt);
       setReviewedAt(result.reviewedAt ?? '');
+      setRegion(result.region ?? 'Current search area');
       setSearchedCenter(point);
       if (result.places.length) setCommand({ point, sequence: Date.now(), fit: result.places });
       setQuery('');
@@ -154,6 +156,7 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
     setBusy(false);
     setPlaces(samplePlaces);
     setSource('sample');
+    setRegion('Denver metro');
     setReviewedAt('');
     setError('');
     setQuery('');
@@ -435,7 +438,7 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
                 <MapPin size={14} />
                 <button onClick={() => setLocationOpen(true)}>
                   {source === 'sample' || source === 'official'
-                    ? 'Denver metro, Colorado'
+                    ? `${region}${region === 'Denver metro' ? ', Colorado' : ''}`
                     : 'Current search area'}
                   <ChevronDown size={13} />
                 </button>
@@ -630,7 +633,7 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
           {source === 'sample'
             ? 'Sample map · illustrative places'
             : source === 'official'
-              ? 'Denver directory · real places'
+              ? `${region} · real places`
               : 'OpenStreetMap · public places'}
           <CircleHelp size={13} />
         </button>
@@ -769,10 +772,10 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
       {about && (
         <Modal title="A map with a little honesty" close={() => setAbout(false)}>
           <p>
-            Denver launch listings come from the shops’ and market organizers’ official websites.
+            Reviewed city listings come from the shops’ and market organizers’ official websites.
             Each listing shows a review date and source link. This is a reviewed directory, not a
-            live inventory feed. Outside our Denver coverage, a best-effort OpenStreetMap lookup may
-            be available. Confirm dates and hours before you go.
+            live inventory feed. Outside published city coverage, a best-effort OpenStreetMap lookup
+            may be available. Confirm dates and hours before you go.
           </p>
           {reviewedAt && (
             <p className="micro">
@@ -834,12 +837,22 @@ function LocationDialog({
   locate: () => void;
 }) {
   const cities = [
-    { name: 'Denver, CO', ...DENVER },
+    ...catalogues.map((c) => ({
+      name: `${c.cityProfile.city}, ${c.cityProfile.state} · directory ready`,
+      ...c.cityProfile.center,
+    })),
+
     { name: 'Boulder, CO', lat: 40.015, lng: -105.2705 },
     { name: 'Austin, TX', lat: 30.2672, lng: -97.7431 },
     { name: 'Portland, OR', lat: 45.523, lng: -122.676 },
     { name: 'Seattle, WA', lat: 47.6062, lng: -122.3321 },
-  ];
+  ].filter(
+    (row, index, rows) =>
+      rows.findIndex(
+        (other) =>
+          other.name.split(' ·')[0].toLowerCase() === row.name.split(' ·')[0].toLowerCase(),
+      ) === index,
+  );
   return (
     <Modal title="Where are we exploring?" close={close}>
       <button className="btn primary full" onClick={locate}>

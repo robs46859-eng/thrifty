@@ -1,8 +1,7 @@
 import { z } from 'zod';
-export const pointSchema = z.object({
-  lat: z.number().finite().min(-85).max(85),
-  lng: z.number().finite().min(-180).max(180),
-});
+import { pointSchema } from './discovery-point';
+import { usTimezoneSchema } from './regions';
+export { pointSchema };
 export type Point = z.infer<typeof pointSchema>;
 export const placeKinds = ['thrift', 'market', 'vintage', 'farm', 'seller'] as const;
 export type PlaceKind = (typeof placeKinds)[number];
@@ -24,12 +23,13 @@ export const placeSchema = pointSchema.extend({
   source: z.enum(['osm', 'official', 'sample', 'draft']),
   sourceLabel: z.string().max(120).optional(),
   checkedAt: z.iso.date().optional(),
+  timezone: usTimezoneSchema.optional(),
   coordinateNote: z.string().max(250).optional(),
   coordinateSourceUrl: z.string().max(500).optional(),
   additionalSourceUrls: z.array(z.string().max(500)).max(5).optional(),
   phone: z.string().max(40).optional(),
   season: z
-    .object({ startsOn: z.iso.date(), endsOn: z.iso.date(), timezone: z.literal('America/Denver') })
+    .object({ startsOn: z.iso.date(), endsOn: z.iso.date(), timezone: usTimezoneSchema })
     .refine((value) => value.startsOn <= value.endsOn, 'Season dates are out of order')
     .optional(),
   sourceUrl: z.string().max(500),
@@ -47,7 +47,9 @@ export const DENVER: Point = { lat: 39.753, lng: -104.99 };
 export const discoveryResponseSchema = z.object({
   places: z.array(placeSchema).max(200),
   fetchedAt: z.string(),
-  source: z.enum(['OpenStreetMap', 'Denver source directory']),
+  source: z.enum(['OpenStreetMap', 'Denver source directory', 'Reviewed US directory']),
+  region: z.string().max(200).optional(),
+  cityIds: z.array(z.string()).max(100).optional(),
   reviewedAt: z.iso.date().optional(),
   coverage: z.string().max(300).optional(),
 });
@@ -195,9 +197,9 @@ export const samplePlaces: Place[] = [
 export function isPublicPlace(place: Place) {
   return place.source === 'osm' || place.source === 'official';
 }
-export function denverDate(now = new Date()) {
+export function localDate(now = new Date(), timezone = 'America/Denver') {
   const parts = new Intl.DateTimeFormat('en-US', {
-    timeZone: 'America/Denver',
+    timeZone: timezone,
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
@@ -207,15 +209,21 @@ export function denverDate(now = new Date()) {
 }
 export function placeFreshness(place: Place, now = new Date()) {
   if (!place.checkedAt) return 'Source date not listed';
-  const age = (Date.parse(denverDate(now)) - Date.parse(place.checkedAt)) / 86400000;
+  const age =
+    (Date.parse(localDate(now, place.timezone ?? place.season?.timezone)) -
+      Date.parse(place.checkedAt)) /
+    86400000;
   return age > 30
     ? `Review overdue · checked ${place.checkedAt}`
     : `Source checked ${place.checkedAt}`;
 }
 export function marketSeason(place: Place, now = new Date()) {
   if (!place.season) return '';
-  const day = denverDate(now);
+  const day = localDate(now, place.season.timezone);
   if (day > place.season.endsOn) return `${place.season.endsOn.slice(0, 4)} season ended`;
   if (day < place.season.startsOn) return `Season starts ${place.season.startsOn}`;
   return `Within listed ${place.season.startsOn.slice(0, 4)} season · confirm dates`;
 }
+
+// Backward-compatible helper for the original Denver directory.
+export const denverDate = (now = new Date()) => localDate(now, 'America/Denver');

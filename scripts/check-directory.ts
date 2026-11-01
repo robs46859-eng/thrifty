@@ -1,55 +1,63 @@
-import { denverCatalogue, categoryCounts } from '../src/lib/catalogue';
+import { catalogues, categoryCounts } from '../src/lib/catalogue';
 import { placeFreshness } from '../src/lib/discovery';
-const counts = categoryCounts();
-if (['thrift', 'market', 'vintage'].some((kind) => counts[kind] < 3))
-  throw new Error('Each launch category needs at least three sourced listings.');
-console.log(
-  JSON.stringify(
-    {
-      region: denverCatalogue.region,
-      reviewedAt: denverCatalogue.reviewedAt,
-      total: denverCatalogue.places.length,
-      categories: counts,
-      reviewOverdue: denverCatalogue.places.filter((p) =>
-        placeFreshness(p).startsWith('Review overdue'),
-      ).length,
-    },
-    null,
-    2,
-  ),
-);
-if (process.argv.includes('--online')) {
+import { ResearchCache, ResearchBudgetError } from './lib/city-workflow';
+import path from 'node:path';
+async function main() {
+  for (const city of catalogues) {
+    const counts = categoryCounts(city.places);
+    if (['thrift', 'market', 'vintage'].some((kind) => counts[kind] < 3))
+      throw new Error(
+        `${city.cityProfile.id}: each launch category needs at least three sourced listings.`,
+      );
+    console.log(
+      JSON.stringify({
+        city: city.cityProfile.id,
+        region: city.region,
+        reviewedAt: city.reviewedAt,
+        total: city.places.length,
+        categories: counts,
+        reviewOverdue: city.places.filter((p) => placeFreshness(p).startsWith('Review overdue'))
+          .length,
+      }),
+    );
+  }
+  if (!process.argv.includes('--online')) return;
+  const cache = new ResearchCache(path.resolve('.thrifty-data/city-research-cache'));
   const urls = [
     ...new Set(
-      denverCatalogue.places.flatMap((p) => [p.sourceUrl, ...(p.additionalSourceUrls ?? [])]),
+      catalogues.flatMap((c) =>
+        c.places.flatMap((p) => [p.sourceUrl, ...(p.additionalSourceUrls ?? [])]),
+      ),
     ),
   ];
-  let failures = 0;
   for (const url of urls) {
     try {
-      const response = await fetch(url, {
-        headers: { 'User-Agent': 'Thrifty directory maintenance (https://worklifelm.com)' },
-        signal: AbortSignal.timeout(12000),
-      });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      await response.arrayBuffer();
+      const result = await cache.get(url, 7);
       console.log(
         JSON.stringify({
           url,
-          status: 'reachable',
-          note: 'Reachability does not renew the review date or validate individual facts.',
+          status: result.cacheHit ? 'cached' : 'reachable',
+          networkRequests: cache.requests,
+          note: 'Does not renew the listing review date.',
         }),
       );
     } catch (e) {
-      failures++;
       console.log(
         JSON.stringify({
           url,
-          status: 'needs-review',
+          status: e instanceof ResearchBudgetError ? 'budget-deferred' : 'needs-review',
           error: e instanceof Error ? e.message : 'unavailable',
         }),
       );
+      if (e instanceof ResearchBudgetError) {
+        process.exitCode = 2;
+        break;
+      }
+      process.exitCode = 1;
     }
   }
-  if (failures) process.exitCode = 1;
 }
+main().catch((e) => {
+  console.error(e.message);
+  process.exitCode = 1;
+});

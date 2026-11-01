@@ -298,5 +298,17 @@
       },
       "coordinateSourceUrl": "https://www.macys.com/stores/co/denver/cherry-creek-shopping-center_344.html"
     }
-  ]
+  ],
+  "cityProfile": {
+    "id": "denver-co",
+    "city": "Denver",
+    "state": "CO",
+    "country": "US",
+    "timezone": "America/Denver",
+    "center": {
+      "lat": 39.753,
+      "lng": -104.99
+    },
+    "radiusKm": 20
+  }
 }

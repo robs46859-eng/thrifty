@@ -8,7 +8,7 @@ Explore nearby places, keep favorites, plan a little trip and preview a seller p
 
 ![Thrifty map interface with place filters, nearby finds and trip planning](docs/map-desktop.png)
 
-[Real data & sources](docs/DATA.md) · [Map guide](docs/MAP.md) · [Quick start](#quick-start) · [First find](#try-your-first-find) · [Features](#what-works) · [Sign-in setup](docs/AUTHENTICATION.md) · [AI setup](#optional-image-analysis) · [Marketplace status](#marketplace-limitations) · [Validation](#validation) · [Project structure](#project-structure)
+[Repeat for another US city](docs/CITY_WORKFLOW.md) · [Real data & sources](docs/DATA.md) · [Map guide](docs/MAP.md) · [Quick start](#quick-start) · [First find](#try-your-first-find) · [Features](#what-works) · [Sign-in setup](docs/AUTHENTICATION.md) · [AI setup](#optional-image-analysis) · [Marketplace status](#marketplace-limitations) · [Validation](#validation) · [Project structure](#project-structure)
 
 ## Quick start
 
@@ -31,6 +31,10 @@ npm start
 ```
 
 Open `http://127.0.0.1:4317`. Installation and camera capture require HTTPS or localhost. On iOS, use Safari → Share → Add to Home Screen; on supporting desktop/Android browsers, use the install option. The in-app **Get the app** button uses the install prompt when available and otherwise gives instructions.
+
+## Expand to another US city
+
+Use the [city expansion workflow](docs/CITY_WORKFLOW.md) to repeat the Denver process in Colorado or other US states. It includes empty Boulder/Portland plans, evidence-based publication, cached source/geocode requests, hard HTTP budgets and a [reusable research prompt](docs/CITY_RESEARCH_PROMPT.md). Scripts make no paid AI requests and do not consume scan credits. New cities enter discovery automatically after their data is reviewed and published through the CLI. No recurring crawl is enabled.
 
 ## Explore your neighborhood
 

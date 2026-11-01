@@ -1,8 +1,8 @@
 import type { Express } from 'express';
 import { z } from 'zod';
 import {
-  denverCatalogue,
-  denverPlaces,
+  allPlaces,
+  regionsForPlaces,
   DIRECTORY_RADIUS_MILES,
   categoryCounts,
 } from '../src/lib/catalogue';
@@ -77,20 +77,30 @@ export class DiscoveryService {
   constructor(
     private fetcher: typeof fetch = fetch,
     private now = Date.now,
-    private catalogue: Place[] = denverPlaces,
+    private catalogue: Place[] = allPlaces,
   ) {}
   async nearby(point: Point) {
-    const local = this.catalogue.filter((p) => distanceMiles(point, p) <= DIRECTORY_RADIUS_MILES);
-    if (local.length)
+    const local = this.catalogue
+      .filter((p) => distanceMiles(point, p) <= DIRECTORY_RADIUS_MILES)
+      .sort((a, b) => distanceMiles(point, a) - distanceMiles(point, b))
+      .slice(0, 200);
+    if (local.length) {
+      const regions = regionsForPlaces(local);
+      const region = regions.map((c) => c.region).join(' / ') || 'Reviewed US directory';
       return {
         places: local,
         fetchedAt: new Date(this.now()).toISOString(),
-        source: 'Denver source directory',
-        reviewedAt: denverCatalogue.reviewedAt,
+        source:
+          regions.length === 1 && regions[0].cityProfile.id === 'denver-co'
+            ? 'Denver source directory'
+            : 'Reviewed US directory',
+        region,
+        cityIds: regions.map((c) => c.cityProfile.id),
+        reviewedAt: [...local].map((p) => p.checkedAt!).sort()[0],
         categoryCounts: categoryCounts(local),
-        coverage:
-          'Source-reviewed Denver metro directory within 20 km. Check dates and official sources before visiting.',
+        coverage: `${region}: source-reviewed places within 20 km. Check dates and official sources before visiting.`,
       };
+    }
     // Quantized center, bounded 8 km search, one upstream request at a time, 15 min cache.
     const lat = Math.round(point.lat * 100) / 100,
       lng = Math.round(point.lng * 100) / 100;
@@ -153,7 +163,7 @@ export function installDiscovery(app: Express, service = new DiscoveryService())
     } catch {
       res.set('Retry-After', '10').status(503).json({
         error:
-          'No reviewed Denver listings cover this map center and the wider public directory is unavailable. Return to Denver or try again shortly.',
+          'No reviewed US directory listings cover this map center and the wider public directory is unavailable. Choose a published city or try again shortly.',
       });
     }
   });

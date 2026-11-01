@@ -18,7 +18,7 @@ Official records use `source: official`; they are not relabeled as OpenStreetMap
 
 ## Season and freshness rules
 
-Markets retain their published season start/end dates in `America/Denver`. On November 1, 2026, City Park and Highlands have ended their 2026 seasons, South Pearl is within its listed season through November 8, and Cherry Creek's official visit page advertises its next season starting May 1, 2027. The app shows expired/current-season/future labels and the actual published hours. Being within a listed season is not an open-now claim. Weather cancellations and vendor attendance must be checked with the organizer.
+Denver markets retain their published season start/end dates in `America/Denver`; other published cities use their own configured US timezone. On November 1, 2026, City Park and Highlands have ended their 2026 seasons, South Pearl is within its listed season through November 8, and Cherry Creek's official visit page advertises its next season starting May 1, 2027. The app shows expired/current-season/future labels and the actual published hours. Being within a listed season is not an open-now claim. Weather cancellations and vendor attendance must be checked with the organizer.
 
 Records display their review date and are marked **Review overdue** after 30 days. Fetching the app or requesting the API never renews a review date. HTTP reachability alone also never renews it. A server cache or successful build does not certify current opening hours.
 
@@ -32,12 +32,14 @@ After the PWA's initial successful online load, the bundled directory and local 
 
 ## Maintaining and expanding the data
 
+For new cities, use [the US city workflow](CITY_WORKFLOW.md). Its shared cache and request budgets also apply to the online source checker. The original Denver records remain in this file; newly approved city datasets live under `data/cities/`.
+
 ```sh
 npm run data:check
 npm run data:check -- --online
 ```
 
-The first command validates record shapes, IDs, dates, source requirements and at least three records in each launch category. It reports category totals and overdue reviews. The optional online mode checks source-page reachability; failures exit nonzero for review. It does not scrape new assertions, change dates or write data automatically. One source (South Pearl) returned 403 to the command-line checker during this release; its official page and schedule were readable through web research. Other listed source pages returned successful responses.
+The first command validates record shapes, IDs, dates, source requirements and at least three records in each launch category. It reports category totals and overdue reviews. The optional online mode reuses seven-day cached source results and uses at most six requests per command / twelve per UTC day across the shared research cache. New source failures exit nonzero for review; budget exhaustion exits with a deferred status. It reports cached versus fresh checks explicitly. It does not scrape new assertions, change dates or write data automatically. One source (South Pearl) returned 403 to the command-line checker during this release; its official page and schedule were readable through web research. Other listed source pages returned successful responses.
 
 To update or add a listing:
 

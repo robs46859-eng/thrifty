@@ -4,7 +4,7 @@ Validated locally on November 1, 2026, including the real Denver directory and p
 
 | Check                                         | Result                                                               |
 | --------------------------------------------- | -------------------------------------------------------------------- |
-| Domain, storage, authentication and API tests | 55 passed                                                            |
+| Domain, storage, authentication and API tests | 64 passed                                                            |
 | Production build / TypeScript                 | Passed; versioned offline shell generated                            |
 | Desktop Chrome browser workflows              | 14 passed                                                            |
 | Pixel 7 emulation in Chrome                   | 14 passed                                                            |
@@ -26,3 +26,5 @@ Map tests cover normalization and unsafe-link rejection, category/text filtering
 The previous map release’s wider Overpass lookup timed out or rejected requests. The real Denver directory removes that dependency for launch coverage; wider-area discovery remains best effort. Map tiles loaded during visual QA.
 
 The real-data release checks 15 official-source records (8 thrift, 4 markets, 3 vintage), evidence/ID validation, source-review age, Denver-time season boundaries, current/expired/future market status, public-source trip compatibility, API success without upstream access and backup compatibility. Both browser configurations exercise the actual launch catalogue, category counts, source/date details and address-based directions. Maintenance reachability checks succeeded for nine unique URLs; South Pearl rejected the command-line checker with 403 while its official page was readable via web research. Reachability does not automatically certify facts or update dates.
+
+The US city workflow adds eight offline tests for cache reuse and conditional requests, persistent per-run/day budgets, failure cooldowns, payload limits, unsafe destinations/foreign plans, approval/evidence/date/state gates, isolated publication/registry generation, geocoder mismatches and non-Denver market dates. Boulder and Portland starter plans have zero approved records and are not published. A live cache exercise requested arc’s public locator once; a repeat run used zero network requests with the same hash and no paid AI calls.
