@@ -16,7 +16,8 @@
     "check": "npm test && npm run build && npm run test:runtime",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test:runtime": "node --test tests/runtime.test.cjs"
+    "test:runtime": "node --test tests/runtime.test.cjs",
+    "data:check": "node --import tsx scripts/check-directory.ts"
   },
   "dependencies": {
     "@fontsource/dm-sans": "^5.3.0",

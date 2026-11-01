@@ -15,7 +15,7 @@ test('map is home, category and text filtering update pins, saved places and tri
 }, info) => {
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
-  await page.goto('/');
+  await page.goto('/?demo=1');
   await expect(page.getByRole('region', { name: /Interactive map/ })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Good finds. Closer to you.' })).toBeVisible();
   await page.getByRole('button', { name: 'Thrift stores', exact: true }).click();
@@ -123,4 +123,40 @@ test('map fits mobile and desktop, handles denied location, and keeps tools acce
     .toBeGreaterThan(0)
     .catch(() => {});
   await page.screenshot({ path: `test-results/map-${info.project.name}.png` });
+});
+
+test('home loads real Denver categories, source details and directions without upstream services', async ({
+  page,
+}, info) => {
+  await page.clock.install({ time: new Date('2026-11-01T18:00:00Z') });
+  await page.goto('/');
+  await expect(page.getByRole('button', { name: 'View Boss Vintage', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'View Found & Loved', exact: true })).toHaveCount(
+    0,
+  );
+  await page.getByRole('button', { name: 'Farmers markets', exact: true }).click();
+  if (info.project.name.includes('mobile'))
+    await page.getByRole('button', { name: 'Expand place list', exact: true }).click();
+  await page.locator('.place-card-main').filter({ hasText: 'City Park Farmers Market' }).click();
+  await expect(page.getByText('2026 season ended', { exact: true })).toBeVisible();
+  await expect(
+    page.getByRole('link', { name: 'Source: City Park Farmers Market', exact: true }),
+  ).toHaveAttribute('href', 'https://www.cityparkfarmersmarket.com/');
+  await expect(page.getByText('Source checked 2026-11-01', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Save place', exact: true }).click();
+  await page.getByRole('button', { name: 'Add to my trip' }).click();
+  await page.getByRole('button', { name: /My little trip/ }).click();
+  await expect(page.getByRole('link', { name: /Open trip in Google Maps/ })).toHaveAttribute(
+    'href',
+    /City\+Park\+Farmers\+Market/,
+  );
+  await page.getByRole('button', { name: 'Close dialog' }).click();
+  await page.getByRole('button', { name: 'Back to places' }).click();
+  await page.getByRole('button', { name: 'Vintage', exact: true }).click();
+  await expect(page.locator('.place-card')).toHaveCount(3);
+  await page.getByRole('button', { name: 'Thrift stores', exact: true }).click();
+  await expect(page.locator('.place-card')).toHaveCount(8);
+  const response = await page.request.get('/api/places?lat=39.75&lng=-104.99');
+  expect(response.status()).toBe(200);
+  expect((await response.json()).places.length).toBe(15);
 });

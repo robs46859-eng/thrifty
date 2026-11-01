@@ -26,6 +26,7 @@ import {
   MoveUp,
   Trash2,
   CircleHelp,
+  Phone,
 } from 'lucide-react';
 import DiscoveryMap, { type MapCommand } from './DiscoveryMap';
 import { useWorkspace, type Page } from '../lib/context';
@@ -38,10 +39,14 @@ import {
   directionsUrl,
   discoveryResponseSchema,
   safeWebsite,
+  isPublicPlace,
+  marketSeason,
+  placeFreshness,
   type Place,
   type PlaceKind,
   type Point,
 } from '../lib/discovery';
+import { denverPlaces, denverCatalogue } from '../lib/catalogue';
 import { Field, Modal } from './ui';
 const categoryIcons = {
   thrift: Shirt,
@@ -61,12 +66,16 @@ const categories = [
 export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'> }) {
   const { state, setState, navigate, toast } = useWorkspace();
   const data = state.discovery;
+  const [demo] = useState(() => new URLSearchParams(window.location.search).get('demo') === '1');
   const [center, setCenter] = useState<Point>(DENVER),
     [searchedCenter, setSearchedCenter] = useState<Point>(DENVER),
-    [command, setCommand] = useState<MapCommand | null>(null);
-  const [places, setPlaces] = useState<Place[]>(samplePlaces),
-    [source, setSource] = useState<'sample' | 'osm'>('sample'),
-    [fetchedAt, setFetchedAt] = useState('');
+    [command, setCommand] = useState<MapCommand | null>(() =>
+      demo ? null : { point: DENVER, sequence: 0, fit: denverPlaces },
+    );
+  const [places, setPlaces] = useState<Place[]>(demo ? samplePlaces : denverPlaces),
+    [source, setSource] = useState<'sample' | 'osm' | 'official'>(demo ? 'sample' : 'official'),
+    [fetchedAt, setFetchedAt] = useState(''),
+    [reviewedAt, setReviewedAt] = useState(demo ? '' : denverCatalogue.reviewedAt);
   const [query, setQuery] = useState(''),
     [kind, setKind] = useState('all'),
     [selected, setSelected] = useState<Place | null>(null),
@@ -120,19 +129,19 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
       );
       if (!response.ok)
         throw new Error(
-          'The public directory is busy or unavailable. Try again shortly. Sample places are still available.',
+          'The public directory is busy or unavailable here. Return to Denver for the reviewed launch directory, or try again shortly.',
         );
       const result = discoveryResponseSchema.parse(await response.json());
       setPlaces(result.places);
-      setSource('osm');
+      setSource(result.source === 'Denver source directory' ? 'official' : 'osm');
       setFetchedAt(result.fetchedAt);
+      setReviewedAt(result.reviewedAt ?? '');
       setSearchedCenter(point);
+      if (result.places.length) setCommand({ point, sequence: Date.now(), fit: result.places });
       setQuery('');
       setKind('all');
       if (!result.places.length)
-        setError(
-          'No mapped places were found within about 5 miles. Move the map and search another area.',
-        );
+        setError('No listed places were found in this area. Move the map and search another area.');
     } catch (e) {
       if (!abort.signal.aborted)
         setError(e instanceof Error ? e.message : 'Places could not load. Try again.');
@@ -145,6 +154,7 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
     setBusy(false);
     setPlaces(samplePlaces);
     setSource('sample');
+    setReviewedAt('');
     setError('');
     setQuery('');
     setKind('all');
@@ -198,7 +208,14 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
       toast('Your trip can have up to 8 stops.');
       return;
     }
-    if (data.stops.length && data.stops.some((p) => p.source !== place.source)) {
+    if (
+      data.stops.length &&
+      data.stops.some(
+        (p) =>
+          isPublicPlace(p) !== isPublicPlace(place) ||
+          (!isPublicPlace(p) && p.source !== place.source),
+      )
+    ) {
       toast('Start a separate trip for sample places, public places, or private drafts.');
       return;
     }
@@ -206,7 +223,7 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
     toast('Added to your trip');
   }
   const routeUrl = directionsUrl(data.stops, user ?? undefined);
-  const isDemoTrip = data.stops.some((p) => p.source !== 'osm');
+  const isDemoTrip = data.stops.some((p) => !isPublicPlace(p));
   return (
     <section className={`explore ${expanded ? 'panel-expanded' : ''}`} aria-label="Discover nearby">
       <div className="map-stage">
@@ -224,20 +241,30 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
       </div>
       <div className="map-topline">
         <div className="map-category-filters" aria-label="Place categories">
-          {categories.map((c) => (
-            <button
-              key={c.id}
-              onClick={() => {
-                setKind(c.id);
-                setSelected(null);
-              }}
-              aria-pressed={kind === c.id}
-              className={kind === c.id ? 'active' : ''}
-            >
-              <c.icon size={17} />
-              {c.label}
-            </button>
-          ))}
+          {categories
+            .filter(
+              (c) =>
+                ['all', 'thrift', 'market', 'vintage'].includes(c.id) ||
+                all.some((p) => p.kind === c.id),
+            )
+            .map((c) => (
+              <button
+                key={c.id}
+                onClick={() => {
+                  setKind(c.id);
+                  setSelected(null);
+                }}
+                aria-label={c.label}
+                aria-pressed={kind === c.id}
+                className={kind === c.id ? 'active' : ''}
+              >
+                <c.icon size={17} />
+                {c.label}
+                <b className="category-count" aria-hidden="true">
+                  {c.id === 'all' ? all.length : all.filter((p) => p.kind === c.id).length}
+                </b>
+              </button>
+            ))}
         </div>
         <button className="area-search" onClick={() => void searchArea()} disabled={busy}>
           <Search size={15} />
@@ -264,7 +291,9 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
                   ? 'Sample place'
                   : selected.source === 'draft'
                     ? 'Private draft'
-                    : 'Community mapped'}
+                    : selected.source === 'official'
+                      ? 'Official source'
+                      : 'Community mapped'}
               </span>
               <button
                 className={`save-heart ${saved ? 'saved' : ''}`}
@@ -286,8 +315,8 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
                 <Clock3 size={17} />
                 <div>
                   <strong>
-                    {selected.source === 'osm'
-                      ? 'Check before you go'
+                    {isPublicPlace(selected)
+                      ? marketSeason(selected) || 'Check before you go'
                       : selected.source === 'sample'
                         ? 'Illustrative place'
                         : 'Not publicly listed'}
@@ -306,7 +335,7 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
                   ? 'View in your trip'
                   : 'Add to my trip'}
               </button>
-              {selected.source === 'osm' && (
+              {isPublicPlace(selected) && (
                 <a
                   className="btn secondary full"
                   href={directionsUrl([selected], user ?? undefined)}
@@ -314,6 +343,14 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
                   rel="noreferrer"
                 >
                   <Navigation size={16} /> Get directions <ExternalLink size={14} />
+                </a>
+              )}
+              {selected.phone && (
+                <a
+                  className="btn secondary full"
+                  href={`tel:${selected.phone.replace(/[^+0-9]/g, '')}`}
+                >
+                  <Phone size={16} /> Call {selected.phone}
                 </a>
               )}
               {safeWebsite(selected.website) && (
@@ -326,17 +363,38 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
                   Visit official website <ArrowUpRight size={15} />
                 </a>
               )}
-              {selected.source === 'osm' && (
+              {isPublicPlace(selected) && (
                 <a
                   className="detail-source micro"
                   href={safeWebsite(selected.sourceUrl)}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  View OpenStreetMap source <ArrowUpRight size={13} />
+                  {selected.source === 'official'
+                    ? `Source: ${selected.sourceLabel}`
+                    : 'View OpenStreetMap source'}{' '}
+                  <ArrowUpRight size={13} />
                 </a>
               )}
-              {selected.source !== 'osm' && (
+              {selected.source === 'official' && (
+                <div className="source-provenance">
+                  <p>{placeFreshness(selected)}</p>
+                  <p>{selected.coordinateNote}</p>
+                  <p>
+                    Published hours can change. Confirm with the official source before visiting.
+                  </p>
+                  {selected.coordinateSourceUrl && (
+                    <a
+                      href={safeWebsite(selected.coordinateSourceUrl)}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Pin coordinate source <ExternalLink size={12} />
+                    </a>
+                  )}
+                </div>
+              )}
+              {!isPublicPlace(selected) && (
                 <p className="micro">
                   {selected.source === 'sample'
                     ? 'This fictional place demonstrates the experience. Load public places for real destinations and directions.'
@@ -376,7 +434,9 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
               <div className="location-label">
                 <MapPin size={14} />
                 <button onClick={() => setLocationOpen(true)}>
-                  {source === 'sample' ? 'Denver, Colorado' : 'Current search area'}
+                  {source === 'sample' || source === 'official'
+                    ? 'Denver metro, Colorado'
+                    : 'Current search area'}
                   <ChevronDown size={13} />
                 </button>
               </div>
@@ -442,6 +502,18 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
                     </button>
                   )}
                 </form>
+                {source === 'official' && view === 'map' && (
+                  <div className="directory-callout">
+                    <Check size={16} />
+                    <div>
+                      <strong>
+                        {places.length} real places · {new Set(places.map((p) => p.kind)).size}{' '}
+                        categories
+                      </strong>
+                      <span>Official sources checked {reviewedAt}. Hours may change.</span>
+                    </div>
+                  </div>
+                )}
                 {source === 'sample' && view === 'map' && (
                   <div className="sample-callout">
                     <span className="sample-dot" />
@@ -500,7 +572,10 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
                             ? 'Sample'
                             : place.source === 'draft'
                               ? 'Private draft'
-                              : 'Hours unverified'}
+                              : marketSeason(place) ||
+                                (place.source === 'official'
+                                  ? placeFreshness(place)
+                                  : 'Hours unverified')}
                         </span>
                       </small>
                     </div>
@@ -554,7 +629,9 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
           <span className={source === 'sample' ? 'source-dot is-sample' : 'source-dot'} />
           {source === 'sample'
             ? 'Sample map · illustrative places'
-            : 'OpenStreetMap · public places'}
+            : source === 'official'
+              ? 'Denver directory · real places'
+              : 'OpenStreetMap · public places'}
           <CircleHelp size={13} />
         </button>
         <button
@@ -600,7 +677,7 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
                           ? 'Sample'
                           : place.source === 'draft'
                             ? 'Private draft'
-                            : 'Public place'}
+                            : marketSeason(place) || 'Public place'}
                       </small>
                     </div>
                     <button
@@ -692,10 +769,16 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
       {about && (
         <Modal title="A map with a little honesty" close={() => setAbout(false)}>
           <p>
-            Public places come from OpenStreetMap. The directory may be incomplete or out of date.
-            Public markets are not necessarily farmers markets; confirm dates, vendors, and hours
-            before you go.
+            Denver launch listings come from the shops’ and market organizers’ official websites.
+            Each listing shows a review date and source link. This is a reviewed directory, not a
+            live inventory feed. Outside our Denver coverage, a best-effort OpenStreetMap lookup may
+            be available. Confirm dates and hours before you go.
           </p>
+          {reviewedAt && (
+            <p className="micro">
+              Official-source review: {reviewedAt}. Entries are flagged for review after 30 days.
+            </p>
+          )}
           {fetchedAt && (
             <p className="micro">Directory fetched {new Date(fetchedAt).toLocaleString()}.</p>
           )}

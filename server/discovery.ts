@@ -1,6 +1,18 @@
 import type { Express } from 'express';
 import { z } from 'zod';
-import { pointSchema, safeWebsite, type Place, type Point } from '../src/lib/discovery';
+import {
+  denverCatalogue,
+  denverPlaces,
+  DIRECTORY_RADIUS_MILES,
+  categoryCounts,
+} from '../src/lib/catalogue';
+import {
+  pointSchema,
+  safeWebsite,
+  distanceMiles,
+  type Place,
+  type Point,
+} from '../src/lib/discovery';
 const osmElement = z.object({
   type: z.enum(['node', 'way', 'relation']),
   id: z.number(),
@@ -65,8 +77,20 @@ export class DiscoveryService {
   constructor(
     private fetcher: typeof fetch = fetch,
     private now = Date.now,
+    private catalogue: Place[] = denverPlaces,
   ) {}
   async nearby(point: Point) {
+    const local = this.catalogue.filter((p) => distanceMiles(point, p) <= DIRECTORY_RADIUS_MILES);
+    if (local.length)
+      return {
+        places: local,
+        fetchedAt: new Date(this.now()).toISOString(),
+        source: 'Denver source directory',
+        reviewedAt: denverCatalogue.reviewedAt,
+        categoryCounts: categoryCounts(local),
+        coverage:
+          'Source-reviewed Denver metro directory within 20 km. Check dates and official sources before visiting.',
+      };
     // Quantized center, bounded 8 km search, one upstream request at a time, 15 min cache.
     const lat = Math.round(point.lat * 100) / 100,
       lng = Math.round(point.lng * 100) / 100;
@@ -79,7 +103,7 @@ export class DiscoveryService {
     this.nextFetch = this.now() + 5000;
     const promise = (async () => {
       const scope = `(around:8000,${lat},${lng})`;
-      const query = `[out:json][timeout:18];(nwr["shop"~"^(second_hand|charity|antiques|vintage|farm)$"]${scope};nwr["second_hand"~"^(yes|only)$"]${scope};nwr["amenity"="marketplace"]${scope};);out center tags 200;`;
+      const query = `[out:json][timeout:8];(nwr["shop"~"^(second_hand|charity|antiques|vintage|farm)$"]${scope};nwr["second_hand"~"^(yes|only)$"]${scope};nwr["amenity"="marketplace"]${scope};);out center tags 200;`;
       const response = await this.fetcher('https://overpass.private.coffee/api/interpreter', {
         method: 'POST',
         redirect: 'error',
@@ -88,7 +112,7 @@ export class DiscoveryService {
           'User-Agent': 'Thrifty/0.2 (https://worklifelm.com; nearby place discovery)',
         },
         body: new URLSearchParams({ data: query }),
-        signal: AbortSignal.timeout(22000),
+        signal: AbortSignal.timeout(10000),
       });
       if (!response.ok) throw new Error('The public place directory is temporarily unavailable.');
       const value = {
@@ -129,7 +153,7 @@ export function installDiscovery(app: Express, service = new DiscoveryService())
     } catch {
       res.set('Retry-After', '10').status(503).json({
         error:
-          'The public directory is unavailable or busy. Try again shortly, or explore the clearly marked sample map.',
+          'No reviewed Denver listings cover this map center and the wider public directory is unavailable. Return to Denver or try again shortly.',
       });
     }
   });

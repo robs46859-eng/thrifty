@@ -4,11 +4,11 @@
 
 **Good things are closer.** A mobile-first map for thrift shoppers, farmers market customers and local sellers, with scanning and resale tools close at hand.
 
-Explore nearby places, keep favorites, plan a little trip and preview a seller pin. Public places come from OpenStreetMap on request; the initial Denver map uses explicitly fictional sample places. Seller pins are private device drafts, not public listings. The fleece, lamp and pet gear scanner examples are also fictional. Uploaded photos never receive fabricated identification or prices.
+Explore nearby places, keep favorites, plan a little trip and preview a seller pin. The default Denver map contains 15 real listings across thrift stores, farmers markets and vintage/antique shops, with official sources and review dates. Wider OpenStreetMap discovery is best effort. Seller pins are private device drafts, not public listings. The fleece, lamp and pet gear scanner examples are also fictional. Uploaded photos never receive fabricated identification or prices.
 
 ![Thrifty map interface with place filters, nearby finds and trip planning](docs/map-desktop.png)
 
-[Map guide](docs/MAP.md) · [Quick start](#quick-start) · [First find](#try-your-first-find) · [Features](#what-works) · [Sign-in setup](docs/AUTHENTICATION.md) · [AI setup](#optional-image-analysis) · [Marketplace status](#marketplace-limitations) · [Validation](#validation) · [Project structure](#project-structure)
+[Real data & sources](docs/DATA.md) · [Map guide](docs/MAP.md) · [Quick start](#quick-start) · [First find](#try-your-first-find) · [Features](#what-works) · [Sign-in setup](docs/AUTHENTICATION.md) · [AI setup](#optional-image-analysis) · [Marketplace status](#marketplace-limitations) · [Validation](#validation) · [Project structure](#project-structure)
 
 ## Quick start
 
@@ -34,14 +34,14 @@ Open `http://127.0.0.1:4317`. Installation and camera capture require HTTPS or l
 
 ## Explore your neighborhood
 
-1. Open **Explore** to pan and zoom the map. The first Denver view is labelled **Sample map**.
-2. Tap **Load real places**, **Search this area**, or the location button to discover public places. No map API key is required for this initial public-directory implementation.
+1. Open **Explore** to pan and zoom the map. The first Denver view contains **15 real places in three categories**.
+2. Tap **Search this area** or the location button to search near a map center. The Denver launch directory works without an API key or external lookup. Other cities use best-effort public discovery.
 3. Filter by thrift stores, farmers/public markets, vintage, farm shops or local sellers; use the search box to narrow the current results.
-4. Open a pin or place card, save it with the heart, and add it to **My little trip**. Public-place trips open directions in Google Maps. Sample places cannot launch real directions.
+4. Open a pin or place card, save it with the heart, and add it to **My little trip**. Public-place trips open directions in Google Maps. Sample mode is explicit and cannot launch real directions.
 5. Open **Sell** to create a private shop/stall draft at your chosen map location. Other customers cannot see it yet.
 6. Open **Your tools** for household goals, merchant inventory, pricing, connections, backup and installation.
 
-Read the [map guide](docs/MAP.md) for data sources, seller boundaries, location privacy and trip behavior.
+Read the [data guide](docs/DATA.md) for all three populated categories, source links, seasonal labels and the maintenance process, and the [map guide](docs/MAP.md) for seller boundaries, location privacy and trip behavior.
 
 ## Try your first find
 
@@ -56,6 +56,7 @@ Changing the browser origin or port creates a separate workspace. Export from th
 
 ## What works
 
+- **Real Denver directory:** 8 thrift stores, 4 farmers markets and 3 vintage/antique shops, with published addresses, source links, checked dates, approximate geocoded pins and season-ended/future-season labels. Review dates become overdue after 30 days; fetching the app never renews them.
 - **Interactive map:** pannable Leaflet map, color-coded selectable pins, category and text filters, public place search, explicit location permission, collapsible mobile place sheet, saved places, ordered trip stops and Google Maps directions for public destinations. See [map limitations](docs/MAP.md).
 - **Seller map workspace:** create and delete private shop/stall pins with location, category, description and dates/hours; preserved in local backups. No public publishing is implied.
 
@@ -108,6 +109,7 @@ No connector stores tokens, runs OAuth, publishes, synchronizes orders, fetches 
 ## Validation
 
 ```sh
+npm run data:check      # Validate the real Denver directory
 npm test               # Domain, storage, API and provider contracts
 npm run build          # Type checking, client/server bundles, versioned offline shell
 npm run test:e2e       # Desktop Chrome + emulated Pixel 7, production server

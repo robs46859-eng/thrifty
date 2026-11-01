@@ -24,7 +24,7 @@ The server binds to loopback by default. Cloud API use requires a verified Googl
 
 ## Map discovery
 
-The home route mounts the map experience, with saved and seller subviews. Leaflet and the exploration component are split into a separate client chunk. `src/lib/discovery.ts` defines place schemas, safe links, filters, approximate distances and trip URLs. `server/discovery.ts` performs bounded public OSM lookups, normalization, caching and request coalescing. Map discovery never calls the Vision provider or consumes a scan allowance. `discovery` arrays extend old workspace backups with empty defaults. See [the map guide](MAP.md) for data, privacy, service limits and private seller status.
+The home route mounts the map experience, with saved and seller subviews. Leaflet and the exploration component are split into a separate client chunk. `src/lib/discovery.ts` defines place schemas, safe links, filters, approximate distances and trip URLs. `src/lib/catalogue.ts` validates the maintained official-source Denver snapshot. `server/discovery.ts` serves those records first, with coverage and review metadata; outside coverage it performs bounded OSM lookups, normalization, caching and request coalescing. The client and production server bundle the same catalogue, and data files enter the build fingerprint. Map discovery never calls the Vision provider or consumes a scan allowance. `discovery` arrays extend old workspace backups with empty defaults. See [the data guide](DATA.md) and [map guide](MAP.md) for data, privacy, service limits and private seller status.
 
 ## Price model
 

@@ -18,6 +18,7 @@ async function sources(directory) {
 }
 const hash = createHash('sha256');
 for (const file of [
+  ...(await sources('data')),
   ...(await sources('src')),
   ...(await sources('server')),
   ...(await sources('public')),

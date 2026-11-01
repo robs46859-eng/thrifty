@@ -3,7 +3,7 @@ import * as L from 'leaflet';
 import { Plus, Minus, LocateFixed, Layers } from 'lucide-react';
 import { DENVER, type Place, type Point } from '../lib/discovery';
 import 'leaflet/dist/leaflet.css';
-export type MapCommand = { point: Point; zoom?: number; sequence: number };
+export type MapCommand = { point: Point; zoom?: number; sequence: number; fit?: Point[] };
 const icons: Record<Place['kind'], string> = {
   thrift: '<path d="m16 3 5 4-3 5-2-1v10H8V11l-2 1-3-5 5-4a4 4 0 0 0 8 0Z"/>',
   vintage: '<path d="m12 3 9 9-9 9-9-9 9-9Z"/><path d="M8 12h8m-4-4v8"/>',
@@ -107,6 +107,16 @@ export default function DiscoveryMap({
     if (command && map.current) {
       const m = map.current;
       const zoom = command.zoom ?? Math.max(14, m.getZoom());
+      if (command.fit?.length) {
+        const mobile = window.matchMedia('(max-width: 700px)').matches;
+        m.fitBounds(L.latLngBounds(command.fit.map((p) => [p.lat, p.lng])), {
+          paddingTopLeft: [25, 90],
+          paddingBottomRight: [50, mobile ? 240 : 90],
+          maxZoom: 13,
+          animate: false,
+        });
+        return;
+      }
       let target = L.latLng(command.point.lat, command.point.lng);
       if (window.matchMedia('(max-width: 700px)').matches) {
         // Keep the destination above the mobile sheet rather than behind it.

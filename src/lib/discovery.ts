@@ -21,7 +21,17 @@ export const placeSchema = pointSchema.extend({
   description: z.string().max(1200),
   hours: z.string().max(200),
   website: z.string().max(500),
-  source: z.enum(['osm', 'sample', 'draft']),
+  source: z.enum(['osm', 'official', 'sample', 'draft']),
+  sourceLabel: z.string().max(120).optional(),
+  checkedAt: z.iso.date().optional(),
+  coordinateNote: z.string().max(250).optional(),
+  coordinateSourceUrl: z.string().max(500).optional(),
+  additionalSourceUrls: z.array(z.string().max(500)).max(5).optional(),
+  phone: z.string().max(40).optional(),
+  season: z
+    .object({ startsOn: z.iso.date(), endsOn: z.iso.date(), timezone: z.literal('America/Denver') })
+    .refine((value) => value.startsOn <= value.endsOn, 'Season dates are out of order')
+    .optional(),
   sourceUrl: z.string().max(500),
   tags: z.array(z.string().max(60)).max(12),
 });
@@ -37,7 +47,9 @@ export const DENVER: Point = { lat: 39.753, lng: -104.99 };
 export const discoveryResponseSchema = z.object({
   places: z.array(placeSchema).max(200),
   fetchedAt: z.string(),
-  source: z.literal('OpenStreetMap'),
+  source: z.enum(['OpenStreetMap', 'Denver source directory']),
+  reviewedAt: z.iso.date().optional(),
+  coverage: z.string().max(300).optional(),
 });
 export function safeWebsite(value: string) {
   try {
@@ -69,16 +81,18 @@ export function matchesPlace(place: Place, query: string, kind: string) {
 }
 export function directionsUrl(stops: Place[], origin?: Point) {
   // Samples and unpublished drafts must never become real-world destinations.
-  const actual = stops.filter((p) => p.source === 'osm').slice(0, 8);
+  const actual = stops.filter(isPublicPlace).slice(0, 8);
   if (!actual.length) return '';
   const coord = (p: Point) => `${p.lat},${p.lng}`;
+  const destination = (p: Place) =>
+    p.source === 'official' ? `${p.name}, ${p.address}` : coord(p);
   const params = new URLSearchParams({
     api: '1',
-    destination: coord(actual[actual.length - 1]),
+    destination: destination(actual[actual.length - 1]),
     travelmode: 'driving',
   });
   if (origin) params.set('origin', coord(origin));
-  if (actual.length > 1) params.set('waypoints', actual.slice(0, -1).map(coord).join('|'));
+  if (actual.length > 1) params.set('waypoints', actual.slice(0, -1).map(destination).join('|'));
   return `https://www.google.com/maps/dir/?${params}`;
 }
 const sample = (
@@ -177,3 +191,31 @@ export const samplePlaces: Place[] = [
     'An illustrative antique and collectibles destination.',
   ),
 ];
+
+export function isPublicPlace(place: Place) {
+  return place.source === 'osm' || place.source === 'official';
+}
+export function denverDate(now = new Date()) {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Denver',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(now);
+  const value = (name: string) => parts.find((p) => p.type === name)!.value;
+  return `${value('year')}-${value('month')}-${value('day')}`;
+}
+export function placeFreshness(place: Place, now = new Date()) {
+  if (!place.checkedAt) return 'Source date not listed';
+  const age = (Date.parse(denverDate(now)) - Date.parse(place.checkedAt)) / 86400000;
+  return age > 30
+    ? `Review overdue · checked ${place.checkedAt}`
+    : `Source checked ${place.checkedAt}`;
+}
+export function marketSeason(place: Place, now = new Date()) {
+  if (!place.season) return '';
+  const day = denverDate(now);
+  if (day > place.season.endsOn) return `${place.season.endsOn.slice(0, 4)} season ended`;
+  if (day < place.season.startsOn) return `Season starts ${place.season.startsOn}`;
+  return `Within listed ${place.season.startsOn.slice(0, 4)} season · confirm dates`;
+}

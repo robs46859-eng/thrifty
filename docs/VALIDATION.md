@@ -1,13 +1,13 @@
 # Validation record
 
-Validated locally on October 31, 2026, including the map-first redesign and preserved sign-in/scanning limits.
+Validated locally on November 1, 2026, including the real Denver directory and preserved sign-in/scanning limits.
 
 | Check                                         | Result                                                               |
 | --------------------------------------------- | -------------------------------------------------------------------- |
-| Domain, storage, authentication and API tests | 51 passed                                                            |
+| Domain, storage, authentication and API tests | 55 passed                                                            |
 | Production build / TypeScript                 | Passed; versioned offline shell generated                            |
-| Desktop Chrome browser workflows              | 13 passed                                                            |
-| Pixel 7 emulation in Chrome                   | 13 passed                                                            |
+| Desktop Chrome browser workflows              | 14 passed                                                            |
+| Pixel 7 emulation in Chrome                   | 14 passed                                                            |
 | Offline reload and local save                 | Passed in both browser configurations                                |
 | Responsive overflow checks                    | Passed on map, saved, sell and existing tools in both configurations |
 | Formatting and whitespace                     | Passed                                                               |
@@ -23,4 +23,6 @@ The sign-in update additionally passes a compiled CommonJS server startup regres
 
 Map tests cover normalization and unsafe-link rejection, category/text filtering, straight-line distance, old-backup migration, sample navigation suppression, ordered real directions, bounded cache/coalescing, invalid coordinates and honest directory failures. Browser workflows cover selectable pins, saved places and trip persistence, public-result replacement, private seller drafts, denied geolocation, mobile sheet navigation, tool access and layout overflow. Directory responses in automated tests are fixtures; they do not certify a venue or market schedule. Real public endpoint availability is checked separately and is not a CI dependency.
 
-During local live probing, the public Overpass services timed out or rejected requests; the UI correctly retained explicit sample/error status. Public lookup needs a successful hosted probe before it can be described as verified live. Map tiles loaded successfully during visual QA.
+The previous map release’s wider Overpass lookup timed out or rejected requests. The real Denver directory removes that dependency for launch coverage; wider-area discovery remains best effort. Map tiles loaded during visual QA.
+
+The real-data release checks 15 official-source records (8 thrift, 4 markets, 3 vintage), evidence/ID validation, source-review age, Denver-time season boundaries, current/expired/future market status, public-source trip compatibility, API success without upstream access and backup compatibility. Both browser configurations exercise the actual launch catalogue, category counts, source/date details and address-based directions. Maintenance reachability checks succeeded for nine unique URLs; South Pearl rejected the command-line checker with 403 while its official page was readable via web research. Reachability does not automatically certify facts or update dates.

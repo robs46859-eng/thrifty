@@ -9,8 +9,17 @@ import {
   matchesPlace,
   samplePlaces,
   safeWebsite,
+  marketSeason,
+  placeFreshness,
+  denverDate,
 } from '../src/lib/discovery';
 import { initialState } from '../src/lib/seed';
+import {
+  denverPlaces,
+  categoryCounts,
+  catalogueSchema,
+  denverCatalogue,
+} from '../src/lib/catalogue';
 import { parseImport } from '../src/lib/storage';
 const data = {
   elements: [
@@ -93,7 +102,7 @@ describe('map discovery and trip safety', () => {
   it('coalesces and caches bounded directory calls with safe static upstream destinations', async () => {
     let now = 100000;
     const fetcher = vi.fn().mockResolvedValue(new Response(JSON.stringify(data)));
-    const service = new DiscoveryService(fetcher, () => now);
+    const service = new DiscoveryService(fetcher, () => now, []);
     const [a, b] = await Promise.all([service.nearby(DENVER), service.nearby(DENVER)]);
     expect(a).toEqual(b);
     expect(fetcher).toHaveBeenCalledTimes(1);
@@ -111,7 +120,7 @@ describe('map discovery and trip safety', () => {
   it('validates public API centers and gives honest failures without synthetic place substitution', async () => {
     const fetcher = vi.fn().mockRejectedValue(new Error('secret connection detail'));
     const app = express();
-    installDiscovery(app, new DiscoveryService(fetcher));
+    installDiscovery(app, new DiscoveryService(fetcher, Date.now, []));
     for (const query of [
       '',
       '?lat=&lng=',
@@ -130,10 +139,70 @@ describe('map discovery and trip safety', () => {
     const successful = express();
     installDiscovery(
       successful,
-      new DiscoveryService(vi.fn().mockResolvedValue(new Response(JSON.stringify(data)))),
+      new DiscoveryService(
+        vi.fn().mockResolvedValue(new Response(JSON.stringify(data))),
+        Date.now,
+        [],
+      ),
     );
     expect(
       (await request(successful).get('/api/places?lat=39.75&lng=-104.99')).body.places,
     ).toHaveLength(4);
+  });
+});
+
+describe('real Denver directory', () => {
+  it('serves three populated categories without a third-party call or fictional entries', async () => {
+    const upstream = vi.fn().mockRejectedValue(new Error('public service down'));
+    const app = express();
+    installDiscovery(app, new DiscoveryService(upstream));
+    const response = await request(app).get('/api/places?lat=39.75&lng=-104.99');
+    expect(response.status).toBe(200);
+    expect(upstream).not.toHaveBeenCalled();
+    expect(response.body.categoryCounts).toMatchObject({ thrift: 8, market: 4, vintage: 3 });
+    expect(response.body.places).toHaveLength(15);
+    expect(response.body.places.every((p: { source: string }) => p.source === 'official')).toBe(
+      true,
+    );
+    expect(response.body.reviewedAt).toBe('2026-11-01');
+    expect(response.body.source).toBe('Denver source directory');
+  });
+  it('requires evidence, unique IDs and consistent seasons in the maintained data', () => {
+    expect(categoryCounts()).toMatchObject({ thrift: 8, market: 4, vintage: 3 });
+    expect(
+      catalogueSchema.safeParse({ ...denverCatalogue, places: [...denverPlaces, denverPlaces[0]] })
+        .success,
+    ).toBe(false);
+    expect(
+      catalogueSchema.safeParse({
+        ...denverCatalogue,
+        places: denverPlaces.map((p) => ({ ...p, sourceUrl: 'javascript:bad' })),
+      }).success,
+    ).toBe(false);
+    const backup = initialState();
+    backup.discovery.saved = [denverPlaces[0]];
+    expect(parseImport(JSON.stringify(backup)).discovery.saved[0].checkedAt).toBe('2026-11-01');
+  });
+  it('distinguishes expired, current and future market seasons using Denver calendar dates', () => {
+    const now = new Date('2026-11-01T18:00:00Z');
+    const get = (id: string) => denverPlaces.find((p) => p.id === `official:${id}`)!;
+    expect(marketSeason(get('city-park-market'), now)).toBe('2026 season ended');
+    expect(marketSeason(get('south-pearl-market'), now)).toContain('Within listed 2026 season');
+    expect(marketSeason(get('cherry-creek-market'), now)).toBe('Season starts 2027-05-01');
+    expect(marketSeason(get('city-park-market'), new Date('2026-11-01T05:30:00Z'))).toContain(
+      'Within listed',
+    );
+    expect(denverDate(new Date('2026-11-01T05:30:00Z'))).toBe('2026-10-31');
+    expect(placeFreshness(get('city-park-market'), new Date('2026-12-03T18:00:00Z'))).toContain(
+      'Review overdue',
+    );
+  });
+  it('routes official addresses and mixed public sources without routing sample destinations', () => {
+    const official = denverPlaces[0],
+      osm = normalizePlaces(data)[0];
+    const route = new URL(directionsUrl([osm, official]));
+    expect(route.searchParams.get('destination')).toContain(official.address);
+    expect(route.searchParams.get('waypoints')).toBe(`${osm.lat},${osm.lng}`);
+    expect(directionsUrl(samplePlaces)).toBe('');
   });
 });
