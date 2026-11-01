@@ -301,7 +301,7 @@ function AccountDialog({ close }: { close: () => void }) {
     }
   }
   return (
-    <Modal title={info.user ? 'Your account' : 'Sign in to scan smarter'} close={close}>
+    <Modal title={info.user ? 'Your account' : 'Sign in to Thrifty'} close={close}>
       {info.user ? (
         <>
           <div className="account-identity">
@@ -347,9 +347,9 @@ function AccountDialog({ close }: { close: () => void }) {
       ) : (
         <>
           <p className="muted">
-            Use Google or a code sent to your email. Free accounts include {info.limits.daily} cloud
-            scans per day and {info.limits.minute} per minute. Manual shopping tools remain
-            available without sign-in.
+            Use Google or a code sent to your email to share community updates and use cloud
+            scanning. Free accounts include {info.limits.daily} cloud scans per day and{' '}
+            {info.limits.minute} per minute. Manual shopping tools remain available without sign-in.
           </p>
           {!info.configured ? (
             <div className="notice">
