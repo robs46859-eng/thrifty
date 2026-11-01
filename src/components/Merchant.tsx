@@ -1,3 +1,4 @@
+import { PurchaseLocationTag } from './PurchaseLocationTag';
 import { useState } from 'react';
 import { ArrowRight, Plus, Settings2, Search, Tag as TagIcon, Trash2 } from 'lucide-react';
 import { useWorkspace } from '../lib/context';
@@ -23,7 +24,9 @@ export function Merchant() {
   const visible = inventory.filter(
     (i) =>
       (showSold || i.status !== 'Sold') &&
-      `${i.title} ${i.brand} ${i.store}`.toLowerCase().includes(search.toLowerCase()),
+      `${i.title} ${i.brand} ${i.store} ${i.purchaseLocation?.address ?? ''}`
+        .toLowerCase()
+        .includes(search.toLowerCase()),
   );
   const net = state.sales
     .filter((s) => !s.demo)
@@ -108,7 +111,7 @@ export function Merchant() {
                 <Tag>{i.status}</Tag>
               </div>
               <div className="inventory-body">
-                <span className="eyebrow">{i.store || 'Source not recorded'}</span>
+                <PurchaseLocationTag item={i} editableItemId={i.id} />
                 <h3>{i.title}</h3>
                 <p>
                   {i.brand || 'Unbranded'} · {i.size || 'No size'} · {i.condition}

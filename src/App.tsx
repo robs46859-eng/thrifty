@@ -1,3 +1,4 @@
+import type { PurchaseLocation } from './lib/model';
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { useAuth, AccountButton } from './lib/auth';
 import {
@@ -60,6 +61,7 @@ function currentPage(): Page {
   return navigation.some((n) => n.id === hash) ? (hash as Page) : 'map';
 }
 function WorkspaceApp({ workspaceKey }: { workspaceKey: string }) {
+  const [scanLocation, setScanLocation] = useState<PurchaseLocation>();
   const [loaded] = useState(() => loadState(localStorage, workspaceKey));
   const [state, setState] = useState(loaded.state);
   const [blockedStorage, setBlockedStorage] = useState(!!loaded.warning);
@@ -181,7 +183,9 @@ function WorkspaceApp({ workspaceKey }: { workspaceKey: string }) {
     connections: <Connections />,
   };
   return (
-    <WorkspaceContext.Provider value={{ state, setState, mode, setMode, navigate, toast }}>
+    <WorkspaceContext.Provider
+      value={{ state, setState, mode, setMode, navigate, toast, scanLocation, setScanLocation }}
+    >
       <a className="skip-link" href="#main">
         Skip to content
       </a>

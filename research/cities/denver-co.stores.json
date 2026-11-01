@@ -1,0 +1,571 @@
+{
+  "version": 1,
+  "city": {
+    "id": "denver-co",
+    "city": "Denver",
+    "state": "CO",
+    "country": "US",
+    "timezone": "America/Denver",
+    "center": {
+      "lat": 39.753,
+      "lng": -104.99
+    },
+    "radiusKm": 20
+  },
+  "sources": [
+    {
+      "id": "arc-locator",
+      "url": "https://arcthrift.com/ajax/get-store-list",
+      "label": "arc locator",
+      "categories": ["thrift"],
+      "reviewedHash": "84a2e944b07256682bf5a25502bec7ae552ecce810853c80d988d17c011dc0f4"
+    },
+    {
+      "id": "arc-stores",
+      "url": "https://arcthrift.com/stores",
+      "label": "arc Thrift Stores",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "goodwill",
+      "url": "https://goodwillcolorado.org/shop/locations/",
+      "label": "Goodwill of Colorado",
+      "categories": ["thrift"],
+      "reviewedHash": "e8395b03bb111422a48394ed58032a3f47d8df3fd529f70a3c8948ae436eb9ae"
+    },
+    {
+      "id": "boss-vintage",
+      "url": "https://www.bossvintage.com/contact",
+      "label": "Boss Vintage",
+      "categories": ["vintage"],
+      "reviewedHash": "664b0047bab9eae0b37fe4ad56e60e014eb715fe851f68ee3499202ec6f99a5a"
+    },
+    {
+      "id": "goldmine-vintage",
+      "url": "https://www.goldminevintage.com/home-blend",
+      "label": "Goldmine Vintage",
+      "categories": ["vintage"],
+      "reviewedHash": "71704520f915b22aa130a6da10d785d1df212ad5f8f180591de0f17a23acc1ac"
+    },
+    {
+      "id": "antiques-etc",
+      "url": "https://www.denverantiques.com/contact",
+      "label": "Antiques Etc.",
+      "categories": ["vintage"],
+      "reviewedHash": "23f13abd537b0e41e3ae261cfb17c609f8bca1294666eb8e902c68b3adfbafdc"
+    }
+  ],
+  "candidates": [
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:arc-alameda-arc-thrift-stores-outlet",
+        "name": "arc Thrift — Alameda Outlet",
+        "kind": "thrift",
+        "address": "255 South Hooker Street, Denver, CO 80219",
+        "description": "Secondhand clothing and household goods.",
+        "lat": 39.7119306,
+        "lng": -105.0291675,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/stores",
+        "sourceLabel": "arc Thrift Stores",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Pin published in arc’s store directory.",
+        "tags": ["Secondhand", "Household goods"],
+        "phone": "303-936-4371"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex official-source store refresh",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["name", "address", "category"],
+            "note": "Store facts checked against the registered operator page; existing address-based pin provenance retained. arc JSON refreshed and unchanged."
+          },
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["coordinates"],
+            "note": "Retained the existing public address-based or operator pin, with unchanged street address. Existing coordinate provenance is preserved; no new geocode was needed for this store refresh."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:arc-arvada-plaza",
+        "name": "arc Thrift — Arvada Plaza",
+        "kind": "thrift",
+        "address": "9661 West 58th Avenue, Arvada, CO 80002",
+        "description": "Secondhand clothing and household goods.",
+        "lat": 39.8021666,
+        "lng": -105.1057999,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/stores",
+        "sourceLabel": "arc Thrift Stores",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Pin published in arc’s store directory.",
+        "tags": ["Secondhand", "Household goods"],
+        "phone": "303-420-0358"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex official-source store refresh",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["name", "address", "category"],
+            "note": "Store facts checked against the registered operator page; existing address-based pin provenance retained. arc JSON refreshed and unchanged."
+          },
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["coordinates"],
+            "note": "Retained the existing public address-based or operator pin, with unchanged street address. Existing coordinate provenance is preserved; no new geocode was needed for this store refresh."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:arc-bear-valley",
+        "name": "arc Thrift — Bear Valley",
+        "kind": "thrift",
+        "address": "3125 S. Sheridan Blvd., Denver, CO 80227",
+        "description": "Secondhand clothing and household goods.",
+        "lat": 39.6550222,
+        "lng": -105.0541782,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/stores",
+        "sourceLabel": "arc Thrift Stores",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Pin published in arc’s store directory.",
+        "tags": ["Secondhand", "Household goods"],
+        "phone": "720-925-4483"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex official-source store refresh",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["name", "address", "category"],
+            "note": "Store facts checked against the registered operator page; existing address-based pin provenance retained. arc JSON refreshed and unchanged."
+          },
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["coordinates"],
+            "note": "Retained the existing public address-based or operator pin, with unchanged street address. Existing coordinate provenance is preserved; no new geocode was needed for this store refresh."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:arc-broadway",
+        "name": "arc Thrift — Broadway",
+        "kind": "thrift",
+        "address": "1515 South Broadway, Denver, CO 80210",
+        "description": "Secondhand clothing and household goods.",
+        "lat": 39.6889168,
+        "lng": -104.9878176,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/stores",
+        "sourceLabel": "arc Thrift Stores",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Pin published in arc’s store directory.",
+        "tags": ["Secondhand", "Household goods"],
+        "phone": "303-777-3703"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex official-source store refresh",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["name", "address", "category"],
+            "note": "Store facts checked against the registered operator page; existing address-based pin provenance retained. arc JSON refreshed and unchanged."
+          },
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["coordinates"],
+            "note": "Retained the existing public address-based or operator pin, with unchanged street address. Existing coordinate provenance is preserved; no new geocode was needed for this store refresh."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:arc-colfax",
+        "name": "arc Thrift — Colfax",
+        "kind": "thrift",
+        "address": "10000 E Colfax Ave, Aurora, CO 80010",
+        "description": "Secondhand clothing and household goods.",
+        "lat": 39.7399978,
+        "lng": -104.870839,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/stores",
+        "sourceLabel": "arc Thrift Stores",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Pin published in arc’s store directory.",
+        "tags": ["Secondhand", "Household goods"],
+        "phone": "303-343-9843"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex official-source store refresh",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["name", "address", "category"],
+            "note": "Store facts checked against the registered operator page; existing address-based pin provenance retained. arc JSON refreshed and unchanged."
+          },
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["coordinates"],
+            "note": "Retained the existing public address-based or operator pin, with unchanged street address. Existing coordinate provenance is preserved; no new geocode was needed for this store refresh."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:arc-jcrs",
+        "name": "arc Thrift — JCRS",
+        "kind": "thrift",
+        "address": "6791 W Colfax Ave, Lakewood, CO 80214",
+        "description": "Secondhand clothing and household goods.",
+        "lat": 39.7412339,
+        "lng": -105.0715075,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/stores",
+        "sourceLabel": "arc Thrift Stores",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Pin published in arc’s store directory.",
+        "tags": ["Secondhand", "Household goods"],
+        "phone": "303-232-6066"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex official-source store refresh",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["name", "address", "category"],
+            "note": "Store facts checked against the registered operator page; existing address-based pin provenance retained. arc JSON refreshed and unchanged."
+          },
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["coordinates"],
+            "note": "Retained the existing public address-based or operator pin, with unchanged street address. Existing coordinate provenance is preserved; no new geocode was needed for this store refresh."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:goodwill-archer",
+        "name": "Goodwill — Archer",
+        "kind": "thrift",
+        "address": "21 S. Broadway, Denver, CO 80209",
+        "description": "Secondhand shopping at a Goodwill retail location.",
+        "lat": 39.71573,
+        "lng": -104.9875845,
+        "hours": "Daily 9am–10pm",
+        "website": "https://goodwillcolorado.org/shop/locations/",
+        "source": "official",
+        "sourceUrl": "https://goodwillcolorado.org/shop/locations/",
+        "sourceLabel": "Goodwill of Colorado",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+        "tags": ["Clothing", "Home goods"],
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=21+S+Broadway%2C+Denver%2C+CO+80209&benchmark=Public_AR_Current&format=json",
+        "phone": "303-722-1440"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex official-source store refresh",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://goodwillcolorado.org/shop/locations/",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Store facts checked against the registered operator page; existing address-based pin provenance retained. arc JSON refreshed and unchanged."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=21+S+Broadway%2C+Denver%2C+CO+80209&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Retained the existing public address-based or operator pin, with unchanged street address. Existing coordinate provenance is preserved; no new geocode was needed for this store refresh."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:goodwill-central-park",
+        "name": "Goodwill — Central Park",
+        "kind": "thrift",
+        "address": "7797 E. 36th Ave., Denver, CO 80238",
+        "description": "Secondhand shopping at a Goodwill retail location.",
+        "lat": 39.767403,
+        "lng": -104.8969637,
+        "hours": "Mon–Sat 9am–9pm; Sun 9am–8pm",
+        "website": "https://goodwillcolorado.org/shop/locations/",
+        "source": "official",
+        "sourceUrl": "https://goodwillcolorado.org/shop/locations/",
+        "sourceLabel": "Goodwill of Colorado",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+        "tags": ["Clothing", "Home goods"],
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=7797+E+36th+Ave%2C+Denver%2C+CO+80238&benchmark=Public_AR_Current&format=json",
+        "phone": "720-287-5179"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex official-source store refresh",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://goodwillcolorado.org/shop/locations/",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Store facts checked against the registered operator page; existing address-based pin provenance retained. arc JSON refreshed and unchanged."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=7797+E+36th+Ave%2C+Denver%2C+CO+80238&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Retained the existing public address-based or operator pin, with unchanged street address. Existing coordinate provenance is preserved; no new geocode was needed for this store refresh."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:boss-vintage",
+        "name": "Boss Vintage",
+        "kind": "vintage",
+        "address": "10 S. Broadway, Denver, CO 80209",
+        "description": "Vintage and secondhand finds; check the shop for current stock.",
+        "lat": 39.716374,
+        "lng": -104.9874287,
+        "hours": "Mon–Sat 11am–6pm; Sun noon–6pm",
+        "website": "https://www.bossvintage.com/contact",
+        "source": "official",
+        "sourceUrl": "https://www.bossvintage.com/contact",
+        "sourceLabel": "Boss Vintage",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+        "tags": ["Vintage clothing", "Accessories"],
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=10+S+Broadway%2C+Denver%2C+CO+80209&benchmark=Public_AR_Current&format=json"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex official-source store refresh",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://www.bossvintage.com/contact",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Store facts checked against the registered operator page; existing address-based pin provenance retained. arc JSON refreshed and unchanged."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=10+S+Broadway%2C+Denver%2C+CO+80209&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Retained the existing public address-based or operator pin, with unchanged street address. Existing coordinate provenance is preserved; no new geocode was needed for this store refresh."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:goldmine-vintage",
+        "name": "Goldmine Vintage",
+        "kind": "vintage",
+        "address": "227 N Broadway #102, Denver, CO 80203",
+        "description": "Vintage and secondhand finds; check the shop for current stock.",
+        "lat": 39.7198141,
+        "lng": -104.9875585,
+        "hours": "Daily 11am–7pm",
+        "website": "https://www.goldminevintage.com/home-blend",
+        "source": "official",
+        "sourceUrl": "https://www.goldminevintage.com/home-blend",
+        "sourceLabel": "Goldmine Vintage",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+        "tags": ["Vintage clothing", "Records"],
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=227+N+Broadway%2C+Denver%2C+CO+80203&benchmark=Public_AR_Current&format=json",
+        "phone": "303-447-0065"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex official-source store refresh",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://www.goldminevintage.com/home-blend",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Store facts checked against the registered operator page; existing address-based pin provenance retained. arc JSON refreshed and unchanged."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=227+N+Broadway%2C+Denver%2C+CO+80203&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Retained the existing public address-based or operator pin, with unchanged street address. Existing coordinate provenance is preserved; no new geocode was needed for this store refresh."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:antiques-etc",
+        "name": "Antiques Etc.",
+        "kind": "vintage",
+        "address": "5736 E. Colfax Ave., Denver, CO 80220",
+        "description": "Vintage and secondhand finds; check the shop for current stock.",
+        "lat": 39.7400818,
+        "lng": -104.9209896,
+        "hours": "Mon–Sat 10am–6pm; Sun 11am–5pm",
+        "website": "https://www.denverantiques.com/contact",
+        "source": "official",
+        "sourceUrl": "https://www.denverantiques.com/contact",
+        "sourceLabel": "Antiques Etc.",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+        "tags": ["Antiques", "Collectibles"],
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=5736+E+Colfax+Ave%2C+Denver%2C+CO+80220&benchmark=Public_AR_Current&format=json",
+        "phone": "303-329-8208"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex official-source store refresh",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://www.denverantiques.com/contact",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Store facts checked against the registered operator page; existing address-based pin provenance retained. arc JSON refreshed and unchanged."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=5736+E+Colfax+Ave%2C+Denver%2C+CO+80220&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Retained the existing public address-based or operator pin, with unchanged street address. Existing coordinate provenance is preserved; no new geocode was needed for this store refresh."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:denver-co:arc-central-park",
+        "name": "arc Thrift — Central Park",
+        "kind": "thrift",
+        "address": "7485 E Iliff Ave, Denver, CO, USA",
+        "description": "Retail thrift store. Shopping hours have not been confirmed.",
+        "lat": 39.6756734,
+        "lng": -104.90226899999999,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "sourceLabel": "arc Thrift Stores locator",
+        "checkedAt": "2026-11-01",
+        "coordinateSourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "coordinateNote": "Approximate store location published by the operator.",
+        "tags": ["Secondhand", "Denver"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex official-source store refresh",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["name", "address", "category"],
+            "note": "Store facts checked against the registered operator page; existing address-based pin provenance retained. arc JSON refreshed and unchanged."
+          },
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["coordinates"],
+            "note": "Retained the existing public address-based or operator pin, with unchanged street address. Existing coordinate provenance is preserved; no new geocode was needed for this store refresh."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:denver-co:arc-pecos",
+        "name": "arc Thrift — Pecos",
+        "kind": "thrift",
+        "address": "1405 Cortez St, Denver, CO, USA",
+        "description": "Retail thrift store. Shopping hours have not been confirmed.",
+        "lat": 39.8317602,
+        "lng": -105.00395500000002,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "sourceLabel": "arc Thrift Stores locator",
+        "checkedAt": "2026-11-01",
+        "coordinateSourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "coordinateNote": "Approximate store location published by the operator.",
+        "tags": ["Secondhand", "Denver"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex official-source store refresh",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["name", "address", "category"],
+            "note": "Store facts checked against the registered operator page; existing address-based pin provenance retained. arc JSON refreshed and unchanged."
+          },
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["coordinates"],
+            "note": "Retained the existing public address-based or operator pin, with unchanged street address. Existing coordinate provenance is preserved; no new geocode was needed for this store refresh."
+          }
+        ]
+      }
+    }
+  ]
+}

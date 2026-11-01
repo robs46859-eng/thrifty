@@ -1,0 +1,433 @@
+{
+  "version": 1,
+  "city": {
+    "id": "littleton-co",
+    "city": "Littleton",
+    "state": "CO",
+    "country": "US",
+    "timezone": "America/Denver",
+    "center": {
+      "lat": 39.6133,
+      "lng": -105.0166
+    },
+    "radiusKm": 20
+  },
+  "sources": [
+    {
+      "id": "arc-locator",
+      "url": "https://arcthrift.com/ajax/get-store-list",
+      "label": "arc locator",
+      "categories": ["thrift"],
+      "reviewedHash": "84a2e944b07256682bf5a25502bec7ae552ecce810853c80d988d17c011dc0f4"
+    },
+    {
+      "id": "boss-vintage",
+      "url": "https://www.bossvintage.com/contact",
+      "label": "Boss Vintage",
+      "categories": ["vintage"],
+      "reviewedHash": "664b0047bab9eae0b37fe4ad56e60e014eb715fe851f68ee3499202ec6f99a5a"
+    },
+    {
+      "id": "goldmine-vintage",
+      "url": "https://www.goldminevintage.com/home-blend",
+      "label": "Goldmine Vintage",
+      "categories": ["vintage"],
+      "reviewedHash": "71704520f915b22aa130a6da10d785d1df212ad5f8f180591de0f17a23acc1ac"
+    },
+    {
+      "id": "aspen-grove",
+      "url": "https://aspengrovefarmersmarket.com/",
+      "label": "Aspen Grove Farmers Market",
+      "categories": ["market"]
+    },
+    {
+      "id": "downtown-market",
+      "url": "https://thelocalcolorado.com/downtown-littleton-farmers-market/",
+      "label": "The LOCAL Colorado",
+      "categories": ["market"],
+      "reviewedHash": "eebd3f66ac9a6457593d07f03fde5c9c4e2c18029bfcbdf019eea8a4b0a1e828"
+    },
+    {
+      "id": "southwest-plaza",
+      "url": "https://www.southwestplaza.com/en/events/303/",
+      "label": "Southwest Plaza",
+      "categories": ["market"]
+    },
+    {
+      "id": "hodgepodge",
+      "url": "https://hodgepodge.market/",
+      "label": "Hodgepodge Market",
+      "categories": ["vintage"],
+      "reviewedHash": "37421882223cd744da69c2d19980f4eb61cadf2ec5d6d9f8bfbc9363770e7186"
+    }
+  ],
+  "candidates": [
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:littleton-co:arc-littleton",
+        "name": "arc Thrift — Littleton",
+        "kind": "thrift",
+        "address": "1400 West Littleton Boulevard, Littleton, CO, USA",
+        "description": "Retail thrift store. Shopping hours have not been confirmed.",
+        "lat": 39.6121532,
+        "lng": -105.00488039999999,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "sourceLabel": "arc Thrift Stores locator",
+        "checkedAt": "2026-11-01",
+        "coordinateSourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "coordinateNote": "Approximate store location published by the operator.",
+        "tags": ["Secondhand", "Littleton"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["coordinates"],
+            "note": "Reused the exact published venue pin and provenance. No new ID or inferred coordinates were created for this shared physical venue."
+          },
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["name", "address", "category"],
+            "note": "Operator locator JSON refreshed November 1 and identifies this as storeDonation (retail plus donations), with the published address and coordinates. No donation-only station counted; shopping hours remain unknown."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:littleton-co:arc-bowles",
+        "name": "arc Thrift — Bowles",
+        "kind": "thrift",
+        "address": "8996 West Bowles Avenue, Littleton, CO, USA",
+        "description": "Retail thrift store. Shopping hours have not been confirmed.",
+        "lat": 39.6081044,
+        "lng": -105.09766589999998,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "sourceLabel": "arc Thrift Stores locator",
+        "checkedAt": "2026-11-01",
+        "coordinateSourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "coordinateNote": "Approximate store location published by the operator.",
+        "tags": ["Secondhand", "Littleton"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["coordinates"],
+            "note": "Reused the exact published venue pin and provenance. No new ID or inferred coordinates were created for this shared physical venue."
+          },
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["name", "address", "category"],
+            "note": "Operator locator JSON refreshed November 1 and identifies this as storeDonation (retail plus donations), with the published address and coordinates. No donation-only station counted; shopping hours remain unknown."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:littleton-co:arc-southpark-littleton",
+        "name": "arc Thrift — Southpark/Littleton",
+        "kind": "thrift",
+        "address": "7951 S. Broadway, Littleton, CO",
+        "description": "Retail thrift store. Shopping hours have not been confirmed.",
+        "lat": 39.5714924362873,
+        "lng": -104.9899089866205,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "sourceLabel": "arc Thrift Stores locator",
+        "checkedAt": "2026-11-01",
+        "coordinateSourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "coordinateNote": "Approximate store location published by the operator.",
+        "tags": ["Secondhand", "Littleton"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["coordinates"],
+            "note": "Reused the exact published venue pin and provenance. No new ID or inferred coordinates were created for this shared physical venue."
+          },
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["name", "address", "category"],
+            "note": "Operator locator JSON refreshed November 1 and identifies this as storeDonation (retail plus donations), with the published address and coordinates. No donation-only station counted; shopping hours remain unknown."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:boss-vintage",
+        "name": "Boss Vintage",
+        "kind": "vintage",
+        "address": "10 S. Broadway, Denver, CO 80209",
+        "description": "Vintage and secondhand finds; check the shop for current stock.",
+        "lat": 39.716374,
+        "lng": -104.9874287,
+        "hours": "Mon–Sat 11am–6pm; Sun noon–6pm",
+        "website": "https://www.bossvintage.com/contact",
+        "source": "official",
+        "sourceUrl": "https://www.bossvintage.com/contact",
+        "sourceLabel": "Boss Vintage",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+        "tags": ["Vintage clothing", "Accessories"],
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=10+S+Broadway%2C+Denver%2C+CO+80209&benchmark=Public_AR_Current&format=json"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=10+S+Broadway%2C+Denver%2C+CO+80209&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Reused the exact published venue pin and provenance. No new ID or inferred coordinates were created for this shared physical venue."
+          },
+          {
+            "url": "https://www.bossvintage.com/contact",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Exact already-published venue reused in the nearby city coverage, with address locality retained. Operator source rechecked in the Denver store refresh; existing South Pearl market evidence remains dated November 1, 2026. No duplicate venue or second review date was invented."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:goldmine-vintage",
+        "name": "Goldmine Vintage",
+        "kind": "vintage",
+        "address": "227 N Broadway #102, Denver, CO 80203",
+        "description": "Vintage and secondhand finds; check the shop for current stock.",
+        "lat": 39.7198141,
+        "lng": -104.9875585,
+        "hours": "Daily 11am–7pm",
+        "website": "https://www.goldminevintage.com/home-blend",
+        "source": "official",
+        "sourceUrl": "https://www.goldminevintage.com/home-blend",
+        "sourceLabel": "Goldmine Vintage",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+        "tags": ["Vintage clothing", "Records"],
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=227+N+Broadway%2C+Denver%2C+CO+80203&benchmark=Public_AR_Current&format=json",
+        "phone": "303-447-0065"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=227+N+Broadway%2C+Denver%2C+CO+80203&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Reused the exact published venue pin and provenance. No new ID or inferred coordinates were created for this shared physical venue."
+          },
+          {
+            "url": "https://www.goldminevintage.com/home-blend",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Exact already-published venue reused in the nearby city coverage, with address locality retained. Operator source rechecked in the Denver store refresh; existing South Pearl market evidence remains dated November 1, 2026. No duplicate venue or second review date was invented."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:littleton-co:aspen-grove",
+        "name": "Aspen Grove Farmers Market",
+        "kind": "market",
+        "address": "7301 S Santa Fe Dr, Littleton, CO 80120",
+        "description": "Seasonal farmers market at Aspen Grove. Confirm dates with the organizer.",
+        "hours": "Fri 10am–2pm during the listed 2026 season",
+        "website": "https://aspengrovefarmersmarket.com/",
+        "source": "official",
+        "sourceUrl": "https://aspengrovefarmersmarket.com/",
+        "sourceLabel": "Aspen Grove Farmers Market",
+        "checkedAt": "2026-11-01",
+        "tags": ["market", "Littleton area"],
+        "season": {
+          "startsOn": "2026-06-05",
+          "endsOn": "2026-09-25",
+          "timezone": "America/Denver"
+        },
+        "lat": 39.587842355232,
+        "lng": -105.022809068133,
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=7301+S+SANTA+FE+DR%2C+LITTLETON%2C+CO+80120&benchmark=Public_AR_Current&format=json",
+        "coordinateNote": "Approximate address-based pin checked against the operator’s public address. Confirm the entrance or market parking area before traveling."
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=7301+S+SANTA+FE+DR%2C+LITTLETON%2C+CO+80120&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "One Census match: 7301 S SANTA FE DR, LITTLETON, CO, 80120. State, locality, street, house number and direction checked. Shopping-center pins locate the center, not an individual stall or suite."
+          },
+          {
+            "url": "https://aspengrovefarmersmarket.com/",
+            "fields": ["name", "address", "category", "hours", "season"],
+            "note": "Organizer home page reviewed through web reader gives Aspen Grove, 7301 S Santa Fe Drive, Littleton; Fridays June 5–September 25, 2026, 10am–2pm. Direct CLI page was blocked; cached error was not treated as evidence."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:littleton-co:downtown-market",
+        "name": "Downtown Littleton Farmers Market",
+        "kind": "market",
+        "address": "Nevada St between Main St and Powers Ave, Littleton, CO 80120",
+        "description": "Street market on Nevada between Main and Powers. Organizer lists August 15 as an exception; district listing differs, so confirm exceptions with the organizer.",
+        "hours": "Sat 8am–1pm during the listed 2026 season; no market Aug 15",
+        "website": "https://thelocalcolorado.com/downtown-littleton-farmers-market/",
+        "source": "official",
+        "sourceUrl": "https://thelocalcolorado.com/downtown-littleton-farmers-market/",
+        "sourceLabel": "The LOCAL Colorado",
+        "checkedAt": "2026-11-01",
+        "tags": ["market", "Littleton area"],
+        "season": {
+          "startsOn": "2026-05-23",
+          "endsOn": "2026-09-26",
+          "timezone": "America/Denver"
+        },
+        "lat": 39.6144345,
+        "lng": -105.0172941,
+        "coordinateSourceUrl": "https://www.google.com/maps/place/Downtown+Littleton+Farmers+Market/@39.6144345,-105.0172941,17z/data=!3m1!4b1!4m6!3m5!1s0x876c81bcc73193c5:0x72d9a9623eeaaef8!8m2!3d39.6144345!4d-105.0172941",
+        "coordinateNote": "Approximate named market pin on the organizer’s Nevada Street segment. The market occupies a street, not a year-round storefront."
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://www.google.com/maps/place/Downtown+Littleton+Farmers+Market/@39.6144345,-105.0172941,17z/data=!3m1!4b1!4m6!3m5!1s0x876c81bcc73193c5:0x72d9a9623eeaaef8!8m2!3d39.6144345!4d-105.0172941",
+            "fields": ["coordinates"],
+            "note": "Named public map entry for Downtown Littleton Farmers Market at 5654 S Nevada Street; matches the organizer’s Nevada segment between Main and Powers. Used place coordinates, not an unrelated district office or parking destination."
+          },
+          {
+            "url": "https://thelocalcolorado.com/downtown-littleton-farmers-market/",
+            "fields": ["name", "address", "category", "hours", "season"],
+            "note": "Cached LOCAL Colorado organizer page gives Nevada between Main and Powers, Saturdays May 23–September 26, 2026, 8am–1pm, except August 15. This primary organizer takes precedence over conflicting district exception dates."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:littleton-co:southwest-plaza",
+        "name": "Southwest Plaza Farmers Market",
+        "kind": "market",
+        "address": "8501 W Bowles Ave, Littleton, CO 80123",
+        "description": "Seasonal market in the southeast parking lot near Panera Bread.",
+        "hours": "Sat 8am–2pm or sellout during the listed season",
+        "website": "https://www.southwestplaza.com/en/events/303/",
+        "source": "official",
+        "sourceUrl": "https://www.southwestplaza.com/en/events/303/",
+        "sourceLabel": "Southwest Plaza",
+        "checkedAt": "2026-11-01",
+        "tags": ["market", "Littleton area"],
+        "season": {
+          "startsOn": "2026-05-02",
+          "endsOn": "2026-10-31",
+          "timezone": "America/Denver"
+        },
+        "lat": 39.609833787368,
+        "lng": -105.098720007863,
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=8501+W+BOWLES+AVE%2C+LITTLETON%2C+CO+80123&benchmark=Public_AR_Current&format=json",
+        "coordinateNote": "Approximate address-based pin checked against the operator’s public address. Confirm the entrance or market parking area before traveling."
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=8501+W+BOWLES+AVE%2C+LITTLETON%2C+CO+80123&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "One Census match: 8501 W BOWLES AVE, LITTLETON, CO, 80123. State, locality, street, house number and direction checked. Shopping-center pins locate the center, not an individual stall or suite."
+          },
+          {
+            "url": "https://www.southwestplaza.com/en/events/303/",
+            "fields": ["name", "address", "category", "hours", "season"],
+            "note": "Mall event page reviewed through web reader gives the southeast parking lot near Panera, 8501 W Bowles Avenue; Saturdays May 2–October 31, 2026, 8am–2pm or sellout. CLI body alone did not contain the event."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:littleton-co:hodgepodge",
+        "name": "Hodgepodge Market",
+        "kind": "vintage",
+        "address": "7301 S Santa Fe Dr Suite 110, Littleton, CO 80120",
+        "description": "Antiques and other goods in the northeast corner of Aspen Grove.",
+        "hours": "Mon–Sat 10am–6pm; Sun 11am–5pm",
+        "website": "https://hodgepodge.market/",
+        "source": "official",
+        "sourceUrl": "https://hodgepodge.market/",
+        "sourceLabel": "Hodgepodge Market",
+        "checkedAt": "2026-11-01",
+        "tags": ["vintage", "Littleton area"],
+        "lat": 39.587842355232,
+        "lng": -105.022809068133,
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=7301+S+SANTA+FE+DR+SUITE+110%2C+LITTLETON%2C+CO+80120&benchmark=Public_AR_Current&format=json",
+        "coordinateNote": "Approximate address-based pin checked against the operator’s public address. Confirm the entrance or market parking area before traveling."
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=7301+S+SANTA+FE+DR+SUITE+110%2C+LITTLETON%2C+CO+80120&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "One Census match: 7301 S SANTA FE DR, LITTLETON, CO, 80120. State, locality, street, house number and direction checked. Shopping-center pins locate the center, not an individual stall or suite."
+          },
+          {
+            "url": "https://hodgepodge.market/",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Cached operator home page identifies antiques among its goods at Aspen Grove’s northeast corner, 7301 S Santa Fe Drive Suite 110; Monday–Saturday 10am–6pm, Sunday 11am–5pm."
+          }
+        ]
+      }
+    }
+  ]
+}

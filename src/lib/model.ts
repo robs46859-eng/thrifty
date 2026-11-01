@@ -3,6 +3,18 @@ import { discoverySchema } from './discovery';
 export const categories = ['Clothing', 'Home', 'Electronics', 'Collectibles', 'Pet gear'] as const;
 export const conditionNames = ['Excellent', 'Good', 'Fair', 'Poor'] as const;
 export const moneySchema = z.number().finite().min(0).max(1000000);
+export const purchaseLocationSchema = z.object({
+  name: z.string().trim().min(1).max(160),
+  address: z.string().trim().max(300),
+  placeId: z.string().max(150).optional(),
+  point: z
+    .object({
+      lat: z.number().finite().min(-85).max(85),
+      lng: z.number().finite().min(-180).max(180),
+    })
+    .optional(),
+});
+export type PurchaseLocation = z.infer<typeof purchaseLocationSchema>;
 export const candidateSchema = z.object({
   title: z.string().trim().min(1).max(120),
   brand: z.string().trim().max(60),
@@ -14,6 +26,7 @@ export const candidateSchema = z.object({
   cost: moneySchema,
   repair: moneySchema,
   store: z.string().trim().max(100),
+  purchaseLocation: purchaseLocationSchema.optional(),
   notes: z.string().max(1000),
   reviewed: z.boolean(),
 });

@@ -17,6 +17,8 @@ import {
 import { initialState } from '../src/lib/seed';
 import {
   denverPlaces,
+  allPlaces,
+  sameSharedPlace,
   catalogues,
   categoryCounts,
   catalogueSchema,
@@ -175,6 +177,30 @@ describe('published Boulder directory', () => {
   });
 });
 
+describe('adjacent city directories', () => {
+  it('keeps shared venue IDs unique and selects the requested city without mixing catalogues', async () => {
+    const upstream = vi.fn().mockRejectedValue(new Error('must stay local'));
+    const app = express();
+    installDiscovery(app, new DiscoveryService(upstream));
+    for (const [id, lat, lng] of [
+      ['englewood-co', 39.6478, -104.9878],
+      ['littleton-co', 39.6133, -105.0166],
+    ] as const) {
+      const result = await request(app).get(`/api/places?lat=${lat}&lng=${lng}`);
+      expect(result.status).toBe(200);
+      expect(result.body.cityIds).toEqual([id]);
+      expect(result.body.places).toHaveLength(9);
+      expect(result.body.categoryCounts).toMatchObject({ thrift: 3, market: 3, vintage: 3 });
+    }
+    expect(upstream).not.toHaveBeenCalled();
+    expect(allPlaces.filter((p) => p.id === 'official:boss-vintage')).toHaveLength(1);
+    expect(new Set(allPlaces.map((p) => p.id)).size).toBe(allPlaces.length);
+    const boss = denverPlaces.find((p) => p.id === 'official:boss-vintage')!;
+    expect(sameSharedPlace(boss, { ...boss, timezone: 'America/Denver' })).toBe(true);
+    expect(sameSharedPlace(boss, { ...boss, address: 'Unreviewed replacement' })).toBe(false);
+  });
+});
+
 describe('real Denver directory', () => {
   it('serves three populated categories without a third-party call or fictional entries', async () => {
     const upstream = vi.fn().mockRejectedValue(new Error('public service down'));
@@ -183,8 +209,8 @@ describe('real Denver directory', () => {
     const response = await request(app).get('/api/places?lat=39.75&lng=-104.99');
     expect(response.status).toBe(200);
     expect(upstream).not.toHaveBeenCalled();
-    expect(response.body.categoryCounts).toMatchObject({ thrift: 8, market: 4, vintage: 3 });
-    expect(response.body.places).toHaveLength(15);
+    expect(response.body.categoryCounts).toMatchObject({ thrift: 10, market: 4, vintage: 3 });
+    expect(response.body.places).toHaveLength(17);
     expect(response.body.places.every((p: { source: string }) => p.source === 'official')).toBe(
       true,
     );
@@ -192,7 +218,7 @@ describe('real Denver directory', () => {
     expect(response.body.source).toBe('Denver source directory');
   });
   it('requires evidence, unique IDs and consistent seasons in the maintained data', () => {
-    expect(categoryCounts(denverPlaces)).toMatchObject({ thrift: 8, market: 4, vintage: 3 });
+    expect(categoryCounts(denverPlaces)).toMatchObject({ thrift: 10, market: 4, vintage: 3 });
     expect(
       catalogueSchema.safeParse({ ...denverCatalogue, places: [...denverPlaces, denverPlaces[0]] })
         .success,

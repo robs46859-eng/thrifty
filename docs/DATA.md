@@ -1,18 +1,18 @@
 # Reviewed city directories
 
-Denver remains the default city. Choose **Boulder, CO · directory ready** from the map’s city selector for the Boulder-area directory. Both datasets are bundled with the app and served locally by the API.
+Denver remains the default city. Choose **Boulder**, **Englewood**, or **Littleton** marked **directory ready** from the map’s city selector. The four city catalogues are bundled with the app and served locally by the API.
 
 ## Denver directory
 
-Thrifty's default map now contains **15 real Denver-area places in three populated categories**. Data is maintained in `data/denver-places.json` and reviewed against the public sources below on **November 1, 2026**. These are source-reviewed directory records, not live stock, prices, ratings, attendance or independently audited businesses.
+Thrifty's default map now contains **17 real Denver-area places in three populated categories**. Data is maintained in `data/denver-places.json` and reviewed against the public sources below on **November 1, 2026**. These are source-reviewed directory records, not live stock, prices, ratings, attendance or independently audited businesses.
 
 | Category           | Places | Primary sources                                                                                                                                                                                                                                           |
 | ------------------ | -----: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Thrift stores      |      8 | [arc Thrift locations](https://arcthrift.com/stores), [Goodwill of Colorado](https://goodwillcolorado.org/shop/locations/)                                                                                                                                |
+| Thrift stores      |     10 | [arc Thrift locations](https://arcthrift.com/stores), [Goodwill of Colorado](https://goodwillcolorado.org/shop/locations/)                                                                                                                                |
 | Farmers markets    |      4 | [South Pearl Street](https://www.southpearlstreet.com/farmers-market/), [City Park](https://www.cityparkfarmersmarket.com/), [Highlands](https://thehighlandsfarmersmarket.com/), [Cherry Creek Fresh Market](https://www.coloradofreshmarkets.com/visit) |
 | Vintage & antiques |      3 | [Boss Vintage](https://www.bossvintage.com/contact), [Goldmine Vintage](https://www.goldminevintage.com/home-blend), [Antiques Etc.](https://www.denverantiques.com/contact)                                                                              |
 
-The thrift category contains six arc retail/outlet locations (Alameda, Arvada Plaza, Bear Valley, Broadway, Colfax and JCRS) and two Goodwill retail locations (Archer and Central Park). Donation-only stations are excluded.
+The thrift category contains eight arc retail/outlet locations (Alameda, Arvada Plaza, Bear Valley, Broadway, Colfax, JCRS, Central Park and Pecos) and two Goodwill retail locations (Archer and Central Park). Donation-only stations are excluded.
 
 ## Boulder-area directory
 
@@ -30,6 +30,19 @@ Boulder’s Saturday market season runs April 4–November 21, 2026; its Wednesd
 
 `GET /api/places?lat=40.015&lng=-105.2705` returns these nine records with three in each launch category, without a paid place or AI request. The [Boulder research record](../research/cities/boulder-co.handoff.md) documents the review, excluded leads and usage.
 
+## Englewood and Littleton coverage
+
+Each newly published city catalogue contains **three thrift stores, three markets and three vintage/antique destinations**, source-reviewed November 1, 2026. Coverage uses the existing 20 km radius and includes nearby Denver venues, with their actual municipalities in the addresses.
+
+| City           | Thrift                                                            | Farmers markets                                                                                | Vintage / antiques                                                               |
+| -------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Englewood area | Goodwill Englewood Outlet; Soul Dog Rescue; arc Broadway (Denver) | Gluten Free Farmers Market (Englewood); University Hills (Denver); South Pearl Street (Denver) | Boss Vintage; Goldmine Vintage; Antiques Etc. (nearby Denver)                    |
+| Littleton area | arc Littleton; arc Bowles; arc Southpark/Littleton                | Aspen Grove; Downtown Littleton; Southwest Plaza                                               | Hodgepodge Market (Littleton); Boss Vintage and Goldmine Vintage (nearby Denver) |
+
+There are **37 unique physical venues** across the four catalogues. Shared venues retain their existing IDs and exact metadata. Discovery selects the nearest published city center and returns that catalogue’s nearby records, so adjacent city coverage does not inflate totals. Editing a shared venue inconsistently is rejected by publication and registry validation.
+
+The [Englewood research record](../research/cities/englewood-co.handoff.md), [Littleton research record](../research/cities/littleton-co.handoff.md), and [Denver store refresh](../research/cities/denver-co.stores.md) record official sources, coordinate evidence, excluded stale leads and usage. No live stock, vendor attendance or open-now status is inferred. Soul Dog shopping hours are unconfirmed; donation hours were excluded. Goodwill’s outlet excludes children under 16. Englewood’s gluten-free market is monthly, not weekly. Downtown Littleton’s primary organizer specifies Saturdays and an August 15 exception; a conflicting district exception was not copied. Market seasons have ended as listed, and 2027 dates were not invented.
+
 ## Coordinates and provenance
 
 Each record includes an official source URL and label, a `checkedAt` date, a coordinate note and, where applicable, the geocoding source URL. arc coordinates come from its [public store directory](https://arcthrift.com/ajax/get-store-list); the Highlands market pin comes from the organizer's map link. Other address-based pins use the [U.S. Census address geocoder](https://geocoding.geo.census.gov/geocoder/Geocoding_Services_API.html). Address-derived pins are approximate, not surveyed entrances. Cherry Creek’s venue-area pin uses coordinates from the [adjacent Macy’s official location page](https://www.macys.com/stores/co/denver/cherry-creek-shopping-center_344.html); the organizer provides the actual market entrance instructions. The geocoder’s mismatched street-direction result was rejected. Public directions use venue names and published addresses so an approximate pin is not represented as an exact entrance.
@@ -44,7 +57,7 @@ Records display their review date and are marked **Review overdue** after 30 day
 
 ## Availability
 
-The default view loads the real directory bundled with the app. `GET /api/places?lat=39.75&lng=-104.99` serves the same source-reviewed data within 20 km of the requested center, returning per-category counts, source name, review date, coverage description and fetch timestamp. No AI credentials or third-party place request is required for these Denver records. A current snapshot is preserved even when an official website temporarily rejects automated requests. Source freshness remains visible.
+The default view loads the real directory bundled with the app. `GET /api/places?lat=39.75&lng=-104.99` serves the nearest city’s source-reviewed data within 20 km of the requested center, returning per-category counts, source name, review date, coverage description and fetch timestamp. No AI credentials or third-party place request is required for these Denver records. A current snapshot is preserved even when an official website temporarily rejects automated requests. Source freshness remains visible.
 
 Outside coverage, the existing bounded best-effort OpenStreetMap/Overpass lookup remains available; a failure returns honest coverage/retry guidance. There is no automatic substitution of fictional places or distant Denver places as nearby results. Sample mode is available explicitly from the map information dialog or `/?demo=1`.
 

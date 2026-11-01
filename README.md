@@ -4,7 +4,7 @@
 
 **Good things are closer.** A mobile-first map for thrift shoppers, farmers market customers and local sellers, with scanning and resale tools close at hand.
 
-Explore nearby places, keep favorites, plan a little trip and preview a seller pin. The default Denver map contains 15 real listings across thrift stores, farmers markets and vintage/antique shops, with official sources and review dates. Choose **Boulder, CO · directory ready** from the city selector for nine reviewed Boulder/Louisville/Lafayette listings, three per category. Wider OpenStreetMap discovery is best effort. Seller pins are private device drafts, not public listings. The fleece, lamp and pet gear scanner examples are also fictional. Uploaded photos never receive fabricated identification or prices.
+Explore nearby places, keep favorites, plan a little trip and preview a seller pin. The default Denver map contains 17 real listings across thrift stores, farmers markets and vintage/antique shops, with official sources and review dates. Choose **Boulder**, **Englewood**, or **Littleton** marked **directory ready** in the city selector for nine reviewed listings each, three per category, including nearby venues identified by their actual addresses. Shared venues keep one map identity. Wider OpenStreetMap discovery is best effort. Seller pins are private device drafts, not public listings. The fleece, lamp and pet gear scanner examples are also fictional. Uploaded photos never receive fabricated identification or prices.
 
 ![Thrifty map interface with place filters, nearby finds and trip planning](docs/map-desktop.png)
 
@@ -74,6 +74,10 @@ Changing the browser origin or port creates a separate workspace. Export from th
 - **Protected cloud scans:** Google sign-in and emailed one-time codes; server-enforced free allowance of 10 cloud scans per UTC day and 3 per rolling minute; verified `rob@virtuapet.com` is exempt from scan quotas. Private SQLite session/usage storage survives restarts and deployments. Sign-in requires its own configuration; the Vision API key alone does not enable it. See [sign-in setup](docs/AUTHENTICATION.md).
 - **Durability:** schema-validated versioned device storage, JSON backup/export/import, explicit reset, quota/corruption warnings, offline app shell, local bundled fonts/icons. Bad saved data is preserved until you explicitly import or reset. Backups with duplicate IDs or orphaned records are rejected.
 - **Integration contracts:** nine marketplace entries, typed adapter contracts, disconnected capability discovery and fail-closed publish/reprice endpoints. None is connected in this build.
+
+## Purchase location tags
+
+On a place’s map details, tap **Found something good?** to carry that location into the scanner. You can also choose a listed purchase location or enter a store/market name and address in the scan form. Uploading a photo preserves your selected location. After saving, household and merchant inventory display **Purchased at** tags and optional directions. Use **Edit purchase location** to add, change or clear a saved item’s tag. Location terms are searchable in inventory and included in private backups. Older items without these fields remain supported. No GPS position is captured automatically; these are the purchase locations you record, stored in your account’s device workspace, not public item listings.
 
 ## Optional image analysis
 

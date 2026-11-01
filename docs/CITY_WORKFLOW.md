@@ -29,8 +29,8 @@ The HTTP limits are enforced by the CLI, with a persistent daily ledger and a lo
 For another city, supply a planning center and the destination timezone explicitly:
 
 ```sh
-npm run city -- plan --city "Boulder" --state CO --timezone America/Denver --lat 40.015 --lng -105.2705
-npm run city -- plan --city "Portland" --state OR --timezone America/Los_Angeles --lat 45.523 --lng -122.676
+npm run city -- plan --city "Boulder" --state CO --timezone America/Denver --lat=40.015 --lng=-105.2705
+npm run city -- plan --city "Portland" --state OR --timezone America/Los_Angeles --lat=45.523 --lng=-122.676
 ```
 
 Those two plans already exist, so repeat `plan` calls will refuse to overwrite them. Inspect one instead:
@@ -122,3 +122,7 @@ Finally probe `/api/places` at the new city center and check HTTP 200, source, c
 Reuse chain locator URLs and identical address geocodes across cities. On later passes, start with `status`, reuse cached excerpts, and recheck changed or overdue sources. Stop at the budget; keep a short handoff of incomplete records and missing evidence instead of restarting research. Let the next UTC day reset the daily allowance. Local budgets and caches are under ignored `.thrifty-data/city-research-cache/`; never delete the ledger to bypass the agreed cap. A stale lock requires checking that its recorded process is no longer running before removing only the lock.
 
 The source cache is not the review log: reviews live in the city plan and published records. Expired review dates remain visible until facts are checked again. No recurring automation, nationwide crawl or publishing schedule is enabled by this workflow. Ask for a specific city/batch or schedule separately.
+
+## Adjacent city coverage
+
+When a user requests multiple nearby cities, process each explicitly requested city in sequence and keep one shared daily ledger. Reuse official sources and already-reviewed venues. A shared venue keeps its existing ID and must exactly match the published record; it still needs evidence in the new city plan. Never create a second ID for the same venue to pad a category. Updating a venue referenced by several cities requires a coordinated review of every published copy; inconsistent shared records fail closed. A city can still update its own unshared records through the normal `--replace` review path. New venues retain the destination city prefix. Discovery uses the nearest published city center and that city’s reviewed catalogue, so overlapping coverage does not inflate category totals or duplicate pins. Nearby municipalities remain explicit in each public address.

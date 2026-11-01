@@ -2708,3 +2708,30 @@ dialog > p {
     font-size: 13px;
   }
 }
+
+.purchase-location {
+  overflow-wrap: anywhere;
+  margin: 0.5rem 0;
+}
+.purchase-location .micro {
+  display: flex;
+  gap: 0.3rem;
+  align-items: baseline;
+  margin-bottom: 0.2rem;
+}
+.purchase-location small {
+  display: block;
+  color: var(--muted);
+}
+.purchase-location a {
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+.purchase-location > .text-link {
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 32px;
+  margin: 0.35rem 0 0;
+  padding: 0.25rem 0;
+}

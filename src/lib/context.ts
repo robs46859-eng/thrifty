@@ -1,5 +1,5 @@
 import { createContext, useContext, type Dispatch, type SetStateAction } from 'react';
-import type { AppState } from './model';
+import type { AppState, PurchaseLocation } from './model';
 export type Page =
   'map' | 'saved' | 'sell' | 'scan' | 'household' | 'merchant' | 'pricing' | 'connections';
 export type Workspace = {
@@ -9,6 +9,8 @@ export type Workspace = {
   setMode: (mode: 'merchant' | 'household') => void;
   navigate: (page: Page) => void;
   toast: (message: string) => void;
+  scanLocation?: PurchaseLocation;
+  setScanLocation: (location: PurchaseLocation | undefined) => void;
 };
 export const WorkspaceContext = createContext<Workspace | null>(null);
 export function useWorkspace() {

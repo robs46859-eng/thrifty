@@ -155,7 +155,7 @@ test('home loads real Denver categories, source details and directions without u
   await page.getByRole('button', { name: 'Vintage', exact: true }).click();
   await expect(page.locator('.place-card')).toHaveCount(3);
   await page.getByRole('button', { name: 'Thrift stores', exact: true }).click();
-  await expect(page.locator('.place-card')).toHaveCount(8);
+  await expect(page.locator('.place-card')).toHaveCount(10);
   const response = await page.request.get('/api/places?lat=39.75&lng=-104.99');
   expect(response.status()).toBe(200);
   const directory = await response.json();
@@ -189,4 +189,25 @@ test('Boulder city selection loads three reviewed categories, dates and real dir
   );
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: `test-results/boulder-${info.project.name}.png` });
+});
+
+test('Englewood and Littleton city selectors use their reviewed local catalogues', async ({
+  page,
+}) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Denver metro, Colorado', exact: true }).click();
+  await page.getByRole('button', { name: 'Englewood, CO · directory ready', exact: true }).click();
+  await expect(page.locator('.place-card')).toHaveCount(9);
+  await expect(
+    page.getByRole('button', { name: 'View Soul Dog Rescue Thrift Store', exact: true }),
+  ).toBeVisible();
+  await page.getByRole('button', { name: 'Englewood, CO', exact: true }).click();
+  await page.getByRole('button', { name: 'Littleton, CO · directory ready', exact: true }).click();
+  await expect(page.locator('.place-card')).toHaveCount(9);
+  await expect(
+    page.getByRole('button', { name: 'View Hodgepodge Market', exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole('button', { name: 'View Soul Dog Rescue Thrift Store', exact: true }),
+  ).toHaveCount(0);
 });

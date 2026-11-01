@@ -111,3 +111,64 @@ test('connection status is honest and layouts fit the viewport', async ({ page }
     ).toBe(true);
   }
 });
+
+test('map purchase location survives a photo upload, save, edit and reload', async ({
+  page,
+}, info) => {
+  await page.goto('/');
+  if (info.project.name.includes('mobile'))
+    await page.getByRole('button', { name: 'Expand place list', exact: true }).click();
+  await page.locator('.place-card-main').filter({ hasText: 'Boss Vintage' }).click();
+  await page.getByRole('button', { name: /Found something good/ }).click();
+  await expect(page.getByLabel('Source store', { exact: true })).toHaveValue('Boss Vintage');
+  await expect(page.getByLabel('Purchase address (optional)', { exact: true })).toHaveValue(
+    /10 S\.? Broadway/,
+  );
+  await page.locator('input[type=file]').last().setInputFiles('public/icon-192.png');
+  await page.getByLabel('Item name', { exact: true }).fill('Location-tagged find');
+  await expect(page.getByLabel('Source store', { exact: true })).toHaveValue('Boss Vintage');
+  await page.getByLabel('I checked the item details').check();
+  await page.getByRole('button', { name: 'Add to merchant inventory', exact: true }).click();
+  await page.getByRole('button', { name: 'Open inventory', exact: true }).click();
+  const card = page.locator('.inventory-card').filter({ hasText: 'Location-tagged find' });
+  await expect(card).toContainText('Purchased at Boss Vintage');
+  await card.getByRole('button', { name: 'Edit purchase location', exact: true }).click();
+  await page.getByLabel('Purchase store or market', { exact: true }).fill('My local shop');
+  await page.getByLabel('Purchase address', { exact: true }).fill('100 Main St, Littleton, CO');
+  await page.getByRole('button', { name: 'Save purchase location', exact: true }).click();
+  await page.reload();
+  await expect(card).toContainText('Purchased at My local shop');
+  await page.screenshot({ path: `test-results/purchase-location-${info.project.name}.png` });
+  await expect(
+    card.getByRole('link', { name: 'Directions to purchase location', exact: true }),
+  ).toHaveAttribute('href', /100%20Main%20St/);
+});
+
+test('household purchase tags can be searched and cleared without retaining an old location', async ({
+  page,
+}) => {
+  await page.goto('/#household');
+  await nav(page, 'Scan').click();
+  await page
+    .getByLabel('Choose a purchase location', { exact: true })
+    .selectOption('official:littleton-co:arc-littleton');
+  await page.getByLabel('Item name', { exact: true }).fill('Household location find');
+  await page.getByLabel('I checked the item details').check();
+  await page.getByRole('button', { name: 'Add to household inventory', exact: true }).click();
+  await page.getByRole('button', { name: 'Open inventory', exact: true }).click();
+  await page.getByRole('button', { name: /Household inventory/ }).click();
+  await page.getByLabel('Search household inventory', { exact: true }).fill('Littleton');
+  const card = page.locator('.inventory-card').filter({ hasText: 'Household location find' });
+  await expect(card).toContainText('Purchased at arc Thrift — Littleton');
+  await card.getByRole('button', { name: 'Edit purchase location', exact: true }).click();
+  await page.getByLabel('Listed purchase location', { exact: true }).selectOption('');
+  await page.getByRole('button', { name: 'Save purchase location', exact: true }).click();
+  await page.getByLabel('Search household inventory', { exact: true }).fill('');
+  await expect(card).toContainText('Purchase location not recorded');
+  await expect(
+    card.getByRole('link', { name: 'Directions to purchase location', exact: true }),
+  ).toHaveCount(0);
+  await page.reload();
+  await page.getByRole('button', { name: /Household inventory/ }).click();
+  await expect(card).toContainText('Purchase location not recorded');
+});

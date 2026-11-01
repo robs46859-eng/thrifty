@@ -5,6 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import {
   ResearchCache,
+  draftSchema,
   ResearchBudgetError,
   newDraft,
   publication,
@@ -222,6 +223,22 @@ describe('city review and publication', () => {
     };
     zone.candidates[0].review.evidence[0].fields.push('season');
     expect(() => publication(zone, now)).toThrow('timezone');
+  });
+  it('permits a city to update its own unshared records after review', async () => {
+    const draft = draftSchema.parse(
+      JSON.parse(await readFile(path.resolve('research/cities/boulder-co.json'), 'utf8')),
+    );
+    draft.candidates[0].place.description = 'Updated description for this isolated validation test';
+    expect(publication(draft, now).places[0].description).toContain('isolated validation test');
+  });
+  it('allows exact published venues to be reused but rejects changed shared metadata', async () => {
+    const draft = draftSchema.parse(
+      JSON.parse(await readFile(path.resolve('research/cities/englewood-co.json'), 'utf8')),
+    );
+    expect(publication(draft, now).places).toHaveLength(9);
+    const shared = draft.candidates.find((c) => c.place.id === 'official:boss-vintage')!;
+    shared.place.address = 'Different address, Englewood, CO';
+    expect(() => publication(draft, now)).toThrow('exactly match');
   });
   it('publishes only approved fixtures in an isolated checkout and registers a new city without manual imports', async () =>
     temporary(async (root) => {

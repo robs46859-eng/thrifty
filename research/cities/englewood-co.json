@@ -1,0 +1,460 @@
+{
+  "version": 1,
+  "city": {
+    "id": "englewood-co",
+    "city": "Englewood",
+    "state": "CO",
+    "country": "US",
+    "timezone": "America/Denver",
+    "center": {
+      "lat": 39.6478,
+      "lng": -104.9878
+    },
+    "radiusKm": 20
+  },
+  "sources": [
+    {
+      "id": "arc-locator",
+      "url": "https://arcthrift.com/ajax/get-store-list",
+      "label": "arc locator",
+      "categories": ["thrift"],
+      "reviewedHash": "84a2e944b07256682bf5a25502bec7ae552ecce810853c80d988d17c011dc0f4"
+    },
+    {
+      "id": "arc-stores",
+      "url": "https://arcthrift.com/stores",
+      "label": "arc Thrift Stores",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "goodwill",
+      "url": "https://goodwillcolorado.org/shop/locations/",
+      "label": "Goodwill of Colorado",
+      "categories": ["thrift"],
+      "reviewedHash": "e8395b03bb111422a48394ed58032a3f47d8df3fd529f70a3c8948ae436eb9ae"
+    },
+    {
+      "id": "boss-vintage",
+      "url": "https://www.bossvintage.com/contact",
+      "label": "Boss Vintage",
+      "categories": ["vintage"],
+      "reviewedHash": "664b0047bab9eae0b37fe4ad56e60e014eb715fe851f68ee3499202ec6f99a5a"
+    },
+    {
+      "id": "goldmine-vintage",
+      "url": "https://www.goldminevintage.com/home-blend",
+      "label": "Goldmine Vintage",
+      "categories": ["vintage"],
+      "reviewedHash": "71704520f915b22aa130a6da10d785d1df212ad5f8f180591de0f17a23acc1ac"
+    },
+    {
+      "id": "antiques-etc",
+      "url": "https://www.denverantiques.com/contact",
+      "label": "Antiques Etc.",
+      "categories": ["vintage"],
+      "reviewedHash": "23f13abd537b0e41e3ae261cfb17c609f8bca1294666eb8e902c68b3adfbafdc"
+    },
+    {
+      "id": "soul-dog",
+      "url": "https://www.souldog.org/thrift-store",
+      "label": "Soul Dog Rescue",
+      "categories": ["thrift"],
+      "reviewedHash": "88b260b6810c5e2713e66e309d2a233daaf1881189bcc47c76f165335df98141"
+    },
+    {
+      "id": "gluten-free-market",
+      "url": "https://denverceliacs.org/event/gluten-free-farmers-market-8/",
+      "label": "NCA Denver Celiacs",
+      "categories": ["market"],
+      "reviewedHash": "5b8a93ac3ea4e4bf343b096ebb5f91504acef638742d9634b2b8f80b73cd71d4"
+    },
+    {
+      "id": "university-hills",
+      "url": "https://farmersmarketscolorado.com/",
+      "label": "Jump Ahead Colorado Farmers Markets",
+      "categories": ["market"],
+      "reviewedHash": "6ec3065edad812f09619fd7e822378c75806adc96a5e15a81850e1f0825f055f"
+    },
+    {
+      "id": "south-pearl",
+      "url": "https://www.southpearlstreet.com/farmers-market/",
+      "label": "South Pearl Street Farmers Market",
+      "categories": ["market"]
+    }
+  ],
+  "candidates": [
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:arc-broadway",
+        "name": "arc Thrift — Broadway",
+        "kind": "thrift",
+        "address": "1515 South Broadway, Denver, CO 80210",
+        "description": "Secondhand clothing and household goods.",
+        "lat": 39.6889168,
+        "lng": -104.9878176,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/stores",
+        "sourceLabel": "arc Thrift Stores",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Pin published in arc’s store directory.",
+        "tags": ["Secondhand", "Household goods"],
+        "phone": "303-777-3703"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["coordinates"],
+            "note": "Reused the exact published venue pin and provenance. No new ID or inferred coordinates were created for this shared physical venue."
+          },
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["name", "address", "category"],
+            "note": "Operator locator JSON refreshed November 1 and identifies this as storeDonation (retail plus donations), with the published address and coordinates. No donation-only station counted; shopping hours remain unknown."
+          },
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["name", "address", "category", "coordinates"],
+            "note": "Refreshed operator JSON matches this retail venue and its unchanged pin."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:boss-vintage",
+        "name": "Boss Vintage",
+        "kind": "vintage",
+        "address": "10 S. Broadway, Denver, CO 80209",
+        "description": "Vintage and secondhand finds; check the shop for current stock.",
+        "lat": 39.716374,
+        "lng": -104.9874287,
+        "hours": "Mon–Sat 11am–6pm; Sun noon–6pm",
+        "website": "https://www.bossvintage.com/contact",
+        "source": "official",
+        "sourceUrl": "https://www.bossvintage.com/contact",
+        "sourceLabel": "Boss Vintage",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+        "tags": ["Vintage clothing", "Accessories"],
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=10+S+Broadway%2C+Denver%2C+CO+80209&benchmark=Public_AR_Current&format=json"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=10+S+Broadway%2C+Denver%2C+CO+80209&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Reused the exact published venue pin and provenance. No new ID or inferred coordinates were created for this shared physical venue."
+          },
+          {
+            "url": "https://www.bossvintage.com/contact",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Exact already-published venue reused in the nearby city coverage, with address locality retained. Operator source rechecked in the Denver store refresh; existing South Pearl market evidence remains dated November 1, 2026. No duplicate venue or second review date was invented."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:goldmine-vintage",
+        "name": "Goldmine Vintage",
+        "kind": "vintage",
+        "address": "227 N Broadway #102, Denver, CO 80203",
+        "description": "Vintage and secondhand finds; check the shop for current stock.",
+        "lat": 39.7198141,
+        "lng": -104.9875585,
+        "hours": "Daily 11am–7pm",
+        "website": "https://www.goldminevintage.com/home-blend",
+        "source": "official",
+        "sourceUrl": "https://www.goldminevintage.com/home-blend",
+        "sourceLabel": "Goldmine Vintage",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+        "tags": ["Vintage clothing", "Records"],
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=227+N+Broadway%2C+Denver%2C+CO+80203&benchmark=Public_AR_Current&format=json",
+        "phone": "303-447-0065"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=227+N+Broadway%2C+Denver%2C+CO+80203&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Reused the exact published venue pin and provenance. No new ID or inferred coordinates were created for this shared physical venue."
+          },
+          {
+            "url": "https://www.goldminevintage.com/home-blend",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Exact already-published venue reused in the nearby city coverage, with address locality retained. Operator source rechecked in the Denver store refresh; existing South Pearl market evidence remains dated November 1, 2026. No duplicate venue or second review date was invented."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:antiques-etc",
+        "name": "Antiques Etc.",
+        "kind": "vintage",
+        "address": "5736 E. Colfax Ave., Denver, CO 80220",
+        "description": "Vintage and secondhand finds; check the shop for current stock.",
+        "lat": 39.7400818,
+        "lng": -104.9209896,
+        "hours": "Mon–Sat 10am–6pm; Sun 11am–5pm",
+        "website": "https://www.denverantiques.com/contact",
+        "source": "official",
+        "sourceUrl": "https://www.denverantiques.com/contact",
+        "sourceLabel": "Antiques Etc.",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+        "tags": ["Antiques", "Collectibles"],
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=5736+E+Colfax+Ave%2C+Denver%2C+CO+80220&benchmark=Public_AR_Current&format=json",
+        "phone": "303-329-8208"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=5736+E+Colfax+Ave%2C+Denver%2C+CO+80220&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Reused the exact published venue pin and provenance. No new ID or inferred coordinates were created for this shared physical venue."
+          },
+          {
+            "url": "https://www.denverantiques.com/contact",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Exact already-published venue reused in the nearby city coverage, with address locality retained. Operator source rechecked in the Denver store refresh; existing South Pearl market evidence remains dated November 1, 2026. No duplicate venue or second review date was invented."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:englewood-co:goodwill-outlet",
+        "name": "Goodwill — Englewood Outlet",
+        "kind": "thrift",
+        "address": "3155 S Platte River Dr, Englewood, CO 80110",
+        "description": "Goodwill outlet. Children under 16 are not permitted to shop at this outlet.",
+        "hours": "Daily 8am–8pm",
+        "website": "https://goodwillcolorado.org/shop/locations/",
+        "source": "official",
+        "sourceUrl": "https://goodwillcolorado.org/shop/locations/",
+        "sourceLabel": "Goodwill of Colorado",
+        "checkedAt": "2026-11-01",
+        "tags": ["thrift", "Englewood area"],
+        "lat": 39.658472840212,
+        "lng": -105.003342594868,
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3155+S+PLATTE+RIVER+DR%2C+ENGLEWOOD%2C+CO+80110&benchmark=Public_AR_Current&format=json",
+        "coordinateNote": "Approximate address-based pin checked against the operator’s public address. Confirm the entrance or market parking area before traveling."
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3155+S+PLATTE+RIVER+DR%2C+ENGLEWOOD%2C+CO+80110&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "One Census match: 3155 S PLATTE RIVER DR W, ENGLEWOOD, CO, 80110. State, locality, street, house number and direction checked. Shopping-center pins locate the center, not an individual stall or suite."
+          },
+          {
+            "url": "https://goodwillcolorado.org/shop/locations/",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Cached Goodwill operator locator identifies Englewood Outlet at 3155 S Platte River Drive; shopping daily 8am–8pm. It excludes children under 16 from outlet shopping."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:englewood-co:soul-dog",
+        "name": "Soul Dog Rescue Thrift Store",
+        "kind": "thrift",
+        "address": "4725 S Broadway, Englewood, CO 80113",
+        "description": "Thrift shop supporting animal rescue. Shopping hours vary with volunteer availability; confirm before traveling.",
+        "hours": "",
+        "website": "https://www.souldog.org/thrift-store",
+        "source": "official",
+        "sourceUrl": "https://www.souldog.org/thrift-store",
+        "sourceLabel": "Soul Dog Rescue",
+        "checkedAt": "2026-11-01",
+        "tags": ["thrift", "Englewood area"],
+        "lat": 39.630870704912,
+        "lng": -104.987996073436,
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=4725+S+BROADWAY%2C+ENGLEWOOD%2C+CO+80113&benchmark=Public_AR_Current&format=json",
+        "coordinateNote": "Approximate address-based pin checked against the operator’s public address. Confirm the entrance or market parking area before traveling."
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=4725+S+BROADWAY%2C+ENGLEWOOD%2C+CO+80113&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "One Census match: 4725 S BROADWAY, ENGLEWOOD, CO, 80113. State, locality, street, house number and direction checked. Shopping-center pins locate the center, not an individual stall or suite."
+          },
+          {
+            "url": "https://www.souldog.org/thrift-store",
+            "fields": ["name", "address", "category"],
+            "note": "Cached rescue operator page identifies retail thrift shopping at 4725 South Broadway, Englewood. Shopping hours vary by volunteers; donation hours were not used as shopping hours."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:englewood-co:gluten-free-market",
+        "name": "Gluten Free Farmers Market",
+        "kind": "market",
+        "address": "333 W Hampden Ave, Englewood, CO 80110",
+        "description": "Seasonal gluten-free farmers market in the north parking area next to Chase Tower.",
+        "hours": "Second Sat of each month, June–October 2026, 9am–1pm",
+        "website": "https://denverceliacs.org/event/gluten-free-farmers-market-8/",
+        "source": "official",
+        "sourceUrl": "https://denverceliacs.org/event/gluten-free-farmers-market-8/",
+        "sourceLabel": "NCA Denver Celiacs",
+        "checkedAt": "2026-11-01",
+        "tags": ["market", "Englewood area"],
+        "season": {
+          "startsOn": "2026-06-13",
+          "endsOn": "2026-10-10",
+          "timezone": "America/Denver"
+        },
+        "lat": 39.653348996279,
+        "lng": -104.991625229897,
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=333+W+HAMPDEN+AVE%2C+ENGLEWOOD%2C+CO+80110&benchmark=Public_AR_Current&format=json",
+        "coordinateNote": "Approximate address-based pin checked against the operator’s public address. Confirm the entrance or market parking area before traveling."
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=333+W+HAMPDEN+AVE%2C+ENGLEWOOD%2C+CO+80110&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "One Census match: 333 W HAMPDEN AVE, ENGLEWOOD, CO, 80110. State, locality, street, house number and direction checked. Shopping-center pins locate the center, not an individual stall or suite."
+          },
+          {
+            "url": "https://denverceliacs.org/event/gluten-free-farmers-market-8/",
+            "fields": ["name", "address", "category", "hours", "season"],
+            "note": "Cached NCA organizer page gives 333 W Hampden Avenue, north parking beside Chase Tower; June 13, July 11, August 8, September 12 and October 10, 2026, 9am–1pm. It is monthly, not weekly."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:englewood-co:university-hills",
+        "name": "University Hills Farmers Market",
+        "kind": "market",
+        "address": "2999 S Colorado Blvd, Denver, CO 80222",
+        "description": "Nearby Denver market at Wellshire Presbyterian Church, at Colorado Boulevard and Amherst Avenue. The organizer lists this as its new location.",
+        "hours": "Sat 9am–1pm during the listed 2026 season",
+        "website": "https://farmersmarketscolorado.com/",
+        "source": "official",
+        "sourceUrl": "https://farmersmarketscolorado.com/",
+        "sourceLabel": "Jump Ahead Colorado Farmers Markets",
+        "checkedAt": "2026-11-01",
+        "tags": ["market", "Englewood area"],
+        "season": {
+          "startsOn": "2026-05-09",
+          "endsOn": "2026-10-31",
+          "timezone": "America/Denver"
+        },
+        "lat": 39.662538278858,
+        "lng": -104.940760439798,
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=2999+S+COLORADO+BLVD%2C+DENVER%2C+CO+80222&benchmark=Public_AR_Current&format=json",
+        "coordinateNote": "Approximate address-based pin checked against the operator’s public address. Confirm the entrance or market parking area before traveling."
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=2999+S+COLORADO+BLVD%2C+DENVER%2C+CO+80222&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "One Census match: 2999 S COLORADO BLVD, DENVER, CO, 80222. State, locality, street, house number and direction checked. Shopping-center pins locate the center, not an individual stall or suite."
+          },
+          {
+            "url": "https://farmersmarketscolorado.com/",
+            "fields": ["name", "address", "category", "hours", "season"],
+            "note": "Cached Jump Ahead organizer page gives the new 2026 Wellshire Presbyterian Church location at 2999 S Colorado Boulevard, Denver; Saturdays May 9–October 31, 9am–1pm. Not the old market location."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:south-pearl-market",
+        "name": "South Pearl Street Farmers Market",
+        "kind": "market",
+        "address": "1400–1500 blocks of S. Pearl St., Denver, CO 80210",
+        "description": "Outdoor farmers market with Colorado growers, food producers and local makers.",
+        "lat": 39.6893392,
+        "lng": -104.9803476,
+        "hours": "Sundays 9 am–1 pm; May 3–Nov 8, 2026",
+        "website": "https://www.southpearlstreet.com/farmers-market/",
+        "source": "official",
+        "sourceUrl": "https://www.southpearlstreet.com/farmers-market/",
+        "sourceLabel": "South Pearl Street",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+        "tags": ["Produce", "Food", "Service animals only"],
+        "season": {
+          "startsOn": "2026-05-03",
+          "endsOn": "2026-11-08",
+          "timezone": "America/Denver"
+        },
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1500+S+Pearl+St%2C+Denver%2C+CO+80210&benchmark=Public_AR_Current&format=json"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1500+S+Pearl+St%2C+Denver%2C+CO+80210&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Reused the exact published venue pin and provenance. No new ID or inferred coordinates were created for this shared physical venue."
+          },
+          {
+            "url": "https://www.southpearlstreet.com/farmers-market/",
+            "fields": ["name", "address", "category", "hours", "season"],
+            "note": "Exact already-published venue reused in the nearby city coverage, with address locality retained. Operator source rechecked in the Denver store refresh; existing South Pearl market evidence remains dated November 1, 2026. No duplicate venue or second review date was invented."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -13,6 +13,8 @@ import {
   Plus,
   ShieldCheck,
 } from 'lucide-react';
+import { allPlaces } from '../lib/catalogue';
+import { PurchaseLocationTag } from './PurchaseLocationTag';
 import { useWorkspace } from '../lib/context';
 import { useAuth, AuthRequestError } from '../lib/auth';
 import { blankCandidate, examples, sampleComps } from '../lib/seed';
@@ -33,12 +35,14 @@ import { householdScore, merchantScore, goalLabel } from '../lib/scoring';
 import { Field, ItemArt, Modal, Tag, Checked } from './ui';
 import { ComparableForm } from './comps';
 export function Scan() {
-  const { state, setState, mode, setMode, navigate, toast } = useWorkspace();
+  const { state, setState, mode, setMode, navigate, toast, scanLocation, setScanLocation } =
+    useWorkspace();
   const auth = useAuth();
   const [sample, setSample] = useState<string | null>('fleece');
   const [item, setItem] = useState<Candidate>({
     ...examples.fleece,
-    store: state.merchant.sourceStore,
+    store: scanLocation?.name.slice(0, 100) ?? state.merchant.sourceStore,
+    purchaseLocation: scanLocation,
   });
   const [image, setImage] = useState('');
   const [busy, setBusy] = useState(false);
@@ -75,7 +79,7 @@ export function Scan() {
     setBusy(false);
     setSample(key);
     setImage('');
-    setItem({ ...examples[key], store: state.merchant.sourceStore });
+    setItem({ ...examples[key], store: item.store, purchaseLocation: item.purchaseLocation });
     setEvidence('demo');
     setIdentification(null);
     setError('');
@@ -98,7 +102,7 @@ export function Scan() {
     setConfirmedSave(false);
     setIdentification(null);
     setSample(null);
-    setItem({ ...blankCandidate(), store: state.merchant.sourceStore });
+    setItem({ ...blankCandidate(), store: item.store, purchaseLocation: item.purchaseLocation });
     setEvidence('manual');
     try {
       const data = await new Promise<string>((resolve, reject) => {
@@ -565,13 +569,84 @@ export function Scan() {
                 onChange={(e) => update('repair', Number(e.target.value))}
               />
             </Field>
+            <Field label="Choose a purchase location" wide>
+              <select
+                value={item.purchaseLocation?.placeId ?? ''}
+                onChange={(e) => {
+                  const place = allPlaces.find((p) => p.id === e.target.value);
+                  const location = place
+                    ? {
+                        name: place.name,
+                        address: place.address,
+                        placeId: place.id,
+                        point: { lat: place.lat, lng: place.lng },
+                      }
+                    : undefined;
+                  setItem((i) => ({
+                    ...i,
+                    store: place?.name.slice(0, 100) ?? '',
+                    purchaseLocation: location,
+                    reviewed: false,
+                  }));
+                  setScanLocation(location);
+                  setConfirmedSave(false);
+                }}
+              >
+                <option value="">No listed location / enter manually</option>
+                {[...allPlaces]
+                  .sort((a, b) => a.name.localeCompare(b.name))
+                  .map((p) => (
+                    <option key={p.id} value={p.id}>
+                      {p.name} — {p.address}
+                    </option>
+                  ))}
+              </select>
+            </Field>
             <Field label="Source store" wide>
               <input
                 value={item.store}
                 maxLength={100}
-                onChange={(e) => update('store', e.target.value)}
+                onChange={(e) => {
+                  const name = e.target.value;
+                  setItem((i) => ({
+                    ...i,
+                    store: name,
+                    reviewed: false,
+                    purchaseLocation: name.trim()
+                      ? { name: name.trim(), address: i.purchaseLocation?.address ?? '' }
+                      : undefined,
+                  }));
+                  setScanLocation(undefined);
+                  setConfirmedSave(false);
+                }}
               />
             </Field>
+            <Field label="Purchase address (optional)" wide>
+              <input
+                maxLength={300}
+                value={item.purchaseLocation?.address ?? ''}
+                placeholder="Street address, city and state"
+                onChange={(e) => {
+                  const address = e.target.value;
+                  setItem((i) => ({
+                    ...i,
+                    reviewed: false,
+                    purchaseLocation: i.store.trim()
+                      ? { name: i.store.trim(), address }
+                      : undefined,
+                  }));
+                  setScanLocation(undefined);
+                  setConfirmedSave(false);
+                }}
+              />
+            </Field>
+            <div className="field wide">
+              <PurchaseLocationTag item={item} />
+              <p className="micro">
+                Optional and saved with this item on your device. Choose or enter the purchase
+                location; your GPS is not recorded.
+              </p>
+            </div>
             <Field label="Notes / things to check" wide>
               <textarea
                 value={item.notes}

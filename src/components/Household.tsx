@@ -1,3 +1,4 @@
+import { PurchaseLocationTag } from './PurchaseLocationTag';
 import { useState } from 'react';
 import {
   Plus,
@@ -33,7 +34,9 @@ export function Household() {
     (i) =>
       i.mode === 'household' &&
       (filter === 'all' || i.ownerId === filter) &&
-      `${i.title} ${i.brand} ${i.notes}`.toLowerCase().includes(search.toLowerCase()),
+      `${i.title} ${i.brand} ${i.notes} ${i.store} ${i.purchaseLocation?.address ?? ''}`
+        .toLowerCase()
+        .includes(search.toLowerCase()),
   );
   return (
     <>
@@ -225,6 +228,7 @@ export function Household() {
                       <Tag>{i.theme || i.category}</Tag>
                       {i.evidence === 'demo' && <Tag tone="amber">Sample item</Tag>}
                     </div>
+                    <PurchaseLocationTag item={i} editableItemId={i.id} />
                     {i.notes && <p className="micro">{i.notes}</p>}
                     <div className="goal-footer">
                       <strong>{dollars(i.cost)} paid</strong>

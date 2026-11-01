@@ -2,6 +2,7 @@ import type { Express } from 'express';
 import { z } from 'zod';
 import {
   allPlaces,
+  catalogueForPoint,
   regionsForPlaces,
   DIRECTORY_RADIUS_MILES,
   categoryCounts,
@@ -80,12 +81,17 @@ export class DiscoveryService {
     private catalogue: Place[] = allPlaces,
   ) {}
   async nearby(point: Point) {
-    const local = this.catalogue
+    const preferred = catalogueForPoint(point);
+    const pool = this.catalogue === allPlaces && preferred ? preferred.places : this.catalogue;
+    const local = pool
       .filter((p) => distanceMiles(point, p) <= DIRECTORY_RADIUS_MILES)
       .sort((a, b) => distanceMiles(point, a) - distanceMiles(point, b))
       .slice(0, 200);
     if (local.length) {
-      const regions = regionsForPlaces(local);
+      const regions =
+        preferred && local.some((p) => preferred.places.some((known) => known.id === p.id))
+          ? [preferred]
+          : regionsForPlaces(local);
       const region = regions.map((c) => c.region).join(' / ') || 'Reviewed US directory';
       return {
         places: local,

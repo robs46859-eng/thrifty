@@ -44,9 +44,28 @@ export type Catalogue = z.infer<typeof catalogueSchema>;
 export const catalogues = catalogueSnapshots.map((c) => catalogueSchema.parse(c));
 if (new Set(catalogues.map((c) => c.cityProfile.id)).size !== catalogues.length)
   throw new Error('Duplicate published city IDs');
-export const allPlaces = [
-  ...new Map(catalogues.flatMap((c) => c.places).map((p) => [p.id, p])).values(),
-];
+export function sameSharedPlace(a: unknown, b: unknown) {
+  const { timezone: aZone, ...first } = placeSchema.parse(a);
+  const { timezone: bZone, ...second } = placeSchema.parse(b);
+  return JSON.stringify(first) === JSON.stringify(second) && (!aZone || !bZone || aZone === bZone);
+}
+const uniquePlaces = new Map<string, (typeof catalogues)[number]['places'][number]>();
+for (const city of catalogues)
+  for (const place of city.places) {
+    const previous = uniquePlaces.get(place.id);
+    if (previous && !sameSharedPlace(previous, place))
+      throw new Error(`Conflicting shared place: ${place.id}`);
+    if (!previous) uniquePlaces.set(place.id, place);
+  }
+export const allPlaces = [...uniquePlaces.values()];
+export function catalogueForPoint(point: Point) {
+  return catalogues
+    .filter((c) => distanceMiles(c.cityProfile.center, point) <= c.cityProfile.radiusKm / 1.609344)
+    .sort(
+      (a, b) =>
+        distanceMiles(a.cityProfile.center, point) - distanceMiles(b.cityProfile.center, point),
+    )[0];
+}
 export const denverCatalogue = catalogues.find((c) => c.cityProfile.id === 'denver-co')!;
 export const denverPlaces = denverCatalogue.places;
 export const DIRECTORY_RADIUS_MILES = 12.43;

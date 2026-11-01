@@ -64,7 +64,7 @@ const categories = [
   { id: 'seller', label: 'Local sellers', icon: Store },
 ];
 export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'> }) {
-  const { state, setState, navigate, toast } = useWorkspace();
+  const { state, setState, navigate, toast, setScanLocation } = useWorkspace();
   const data = state.discovery;
   const [demo] = useState(() => new URLSearchParams(window.location.search).get('demo') === '1');
   const [center, setCenter] = useState<Point>(DENVER),
@@ -421,7 +421,22 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
                   <Trash2 size={14} /> Delete private pin
                 </button>
               )}
-              <button className="scan-at-place" onClick={() => navigate('scan')}>
+              <button
+                className="scan-at-place"
+                onClick={() => {
+                  setScanLocation(
+                    selected.source === 'official' || selected.source === 'osm'
+                      ? {
+                          name: selected.name,
+                          address: selected.address,
+                          placeId: selected.id,
+                          point: { lat: selected.lat, lng: selected.lng },
+                        }
+                      : undefined,
+                  );
+                  navigate('scan');
+                }}
+              >
                 <ScanLine size={20} />
                 <span>
                   <strong>Found something good?</strong>

@@ -8,7 +8,13 @@ import { isIP } from 'node:net';
 import { request } from 'node:https';
 import { cityProfileSchema, usStates, type CityProfile } from '../../src/lib/regions';
 import { placeSchema, safeWebsite } from '../../src/lib/discovery';
-import { catalogueSchema, type Catalogue } from '../../src/lib/catalogue';
+import {
+  catalogueSchema,
+  catalogues,
+  allPlaces,
+  sameSharedPlace,
+  type Catalogue,
+} from '../../src/lib/catalogue';
 const hash = (value: string) => createHash('sha256').update(value).digest('hex');
 const requiredCategories = ['thrift', 'market', 'vintage'] as const;
 const fields = ['name', 'address', 'category', 'coordinates', 'hours', 'season'] as const;
@@ -327,7 +333,18 @@ export function publication(draft: CityDraft, now = new Date()): Catalogue {
       const p = placeSchema.parse(c.place);
       if (c.state !== d.city.state || c.country !== 'US')
         throw new Error(`${p.id}: country/state differs from the city plan`);
-      if (!p.id.startsWith(`official:${d.city.id}:`))
+      const shared = allPlaces.find((place) => place.id === p.id);
+      const referencedElsewhere = catalogues.some(
+        (city) =>
+          city.cityProfile.id !== d.city.id && city.places.some((place) => place.id === p.id),
+      );
+      if (
+        shared &&
+        !sameSharedPlace(shared, p) &&
+        (!p.id.startsWith(`official:${d.city.id}:`) || referencedElsewhere)
+      )
+        throw new Error(`${p.id}: shared places must exactly match the published record`);
+      if (!p.id.startsWith(`official:${d.city.id}:`) && !shared)
         throw new Error('New city records must use city-scoped stable IDs.');
       if (!c.review.reviewer.trim() || !c.review.reviewedAt || c.review.reviewedAt !== p.checkedAt)
         throw new Error(`${p.id}: explicit factual review and matching checkedAt are required`);
