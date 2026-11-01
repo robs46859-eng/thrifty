@@ -1,4 +1,8 @@
-# Real Denver directory
+# Reviewed city directories
+
+Denver remains the default city. Choose **Boulder, CO · directory ready** from the map’s city selector for the Boulder-area directory. Both datasets are bundled with the app and served locally by the API.
+
+## Denver directory
 
 Thrifty's default map now contains **15 real Denver-area places in three populated categories**. Data is maintained in `data/denver-places.json` and reviewed against the public sources below on **November 1, 2026**. These are source-reviewed directory records, not live stock, prices, ratings, attendance or independently audited businesses.
 
@@ -9,6 +13,22 @@ Thrifty's default map now contains **15 real Denver-area places in three populat
 | Vintage & antiques |      3 | [Boss Vintage](https://www.bossvintage.com/contact), [Goldmine Vintage](https://www.goldminevintage.com/home-blend), [Antiques Etc.](https://www.denverantiques.com/contact)                                                                              |
 
 The thrift category contains six arc retail/outlet locations (Alameda, Arvada Plaza, Bear Valley, Broadway, Colfax and JCRS) and two Goodwill retail locations (Archer and Central Park). Donation-only stations are excluded.
+
+## Boulder-area directory
+
+`data/cities/boulder-co.json` contains **nine source-reviewed places**, checked November 1, 2026, across Boulder and nearby Louisville/Lafayette within the 20 km city coverage radius:
+
+| Category           | Listings                                                                          | Official sources                                                                                                                                                            |
+| ------------------ | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Thrift             | arc Louisville; Pig + Pearl; Greenwood Wildlife Thrift Shop & Consignment Gallery | [arc locator](https://arcthrift.com/ajax/get-store-list), [Pig + Pearl](https://boulderthriftstore.com/), [Greenwood](https://www.greenwoodwildlife.org/gift-thrift-store/) |
+| Farmers markets    | Boulder; Lafayette; Louisville                                                    | [BCFM](https://bcfm.org/markets/boulder-farmers-market/), [Lafayette](https://www.lafayettefm.com/), [Real Farmers Market](https://www.realfarmersmarketco.com/)            |
+| Vintage / antiques | Classic Facets; Little Horse Vintage Louisville; Noble Treasures Antiques         | [Classic Facets](https://classicfacets.com/), [Little Horse](https://www.littlehorsevintage.com/), [Noble Treasures](https://nobletreasuresantiques.com/)                   |
+
+The [Louisville Downtown Business Association](https://www.downtownlouisvilleco.com/shop/) corroborates Little Horse’s address and publishes the Louisville market pin. Little Horse’s conflicting embedded Boulder map was rejected; its hours remain unknown. arc Louisville hours also remain unknown. Donation-only arc Lafayette and the unconfirmed old Garage Sale Vintage Boulder lead were excluded.
+
+Boulder’s Saturday market season runs April 4–November 21, 2026; its Wednesday season ended October 7. Lafayette’s May 3–October 25 season and Louisville’s May 9–October 10 season have ended. These are three distinct venues, not duplicated sessions. Organizer dates are shown in America/Denver; no 2027 season was inferred. Source review does not establish current vendor attendance or stock.
+
+`GET /api/places?lat=40.015&lng=-105.2705` returns these nine records with three in each launch category, without a paid place or AI request. The [Boulder research record](../research/cities/boulder-co.handoff.md) documents the review, excluded leads and usage.
 
 ## Coordinates and provenance
 
@@ -39,7 +59,7 @@ npm run data:check
 npm run data:check -- --online
 ```
 
-The first command validates record shapes, IDs, dates, source requirements and at least three records in each launch category. It reports category totals and overdue reviews. The optional online mode reuses seven-day cached source results and uses at most six requests per command / twelve per UTC day across the shared research cache. New source failures exit nonzero for review; budget exhaustion exits with a deferred status. It reports cached versus fresh checks explicitly. It does not scrape new assertions, change dates or write data automatically. One source (South Pearl) returned 403 to the command-line checker during this release; its official page and schedule were readable through web research. Other listed source pages returned successful responses.
+The first command validates record shapes, IDs, dates, source requirements and at least three records in each launch category. It reports category totals and overdue reviews. The optional online mode reuses seven-day cached source results and uses at most twenty requests per command / sixty per UTC day (configured in `research/limits.json`) across the shared research cache. New source failures exit nonzero for review; budget exhaustion exits with a deferred status. It reports cached versus fresh checks explicitly. It does not scrape new assertions, change dates or write data automatically. One source (South Pearl) returned 403 to the command-line checker during this release; its official page and schedule were readable through web research. Other listed source pages returned successful responses.
 
 To update or add a listing:
 

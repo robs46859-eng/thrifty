@@ -162,3 +162,31 @@ test('home loads real Denver categories, source details and directions without u
   expect(directory.cityIds).toContain('denver-co');
   expect(directory.places.length).toBeGreaterThanOrEqual(15);
 });
+
+test('Boulder city selection loads three reviewed categories, dates and real directions', async ({
+  page,
+}, info) => {
+  await page.clock.install({ time: new Date('2026-11-01T18:00:00Z') });
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Denver metro, Colorado', exact: true }).click();
+  await page.getByRole('button', { name: 'Boulder, CO · directory ready', exact: true }).click();
+  await expect(page.locator('.place-card')).toHaveCount(9);
+  if (info.project.name.includes('mobile'))
+    await page.getByRole('button', { name: 'Expand place list', exact: true }).click();
+  for (const label of ['Thrift stores', 'Vintage', 'Farmers markets']) {
+    await page.getByRole('button', { name: label, exact: true }).click();
+    await expect(page.locator('.place-card')).toHaveCount(3);
+  }
+  await page.locator('.place-card-main').filter({ hasText: 'Lafayette Farmers Market' }).click();
+  await expect(page.getByText('2026 season ended', { exact: true })).toBeVisible();
+  await expect(page.getByText('Source checked 2026-11-01', { exact: true })).toBeVisible();
+  await expect(
+    page.getByRole('link', { name: 'Source: Lafayette Farmers Market', exact: true }),
+  ).toHaveAttribute('href', 'https://www.lafayettefm.com/');
+  await expect(page.getByRole('link', { name: /Get directions/ })).toHaveAttribute(
+    'href',
+    /100\+N\+Public\+Rd/,
+  );
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: `test-results/boulder-${info.project.name}.png` });
+});

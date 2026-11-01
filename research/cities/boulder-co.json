@@ -24,13 +24,15 @@
       "id": "pig-pearl",
       "url": "https://boulderthriftstore.com/",
       "label": "Pig + Pearl",
-      "categories": ["thrift"]
+      "categories": ["thrift"],
+      "reviewedHash": "84820a936df281886fd6077a3df0eeba3f11a1dde0a1e9f606b62cb655da15ce"
     },
     {
       "id": "greenwood",
       "url": "https://www.greenwoodwildlife.org/gift-thrift-store/",
       "label": "Greenwood Wildlife Rehabilitation Center",
-      "categories": ["thrift"]
+      "categories": ["thrift"],
+      "reviewedHash": "ba7fa2d0289bdaa3659c805a56c38663e01cdd5b3e1b099860a3b75d5a92e569"
     },
     {
       "id": "boulder-market",
@@ -65,10 +67,30 @@
       "categories": ["vintage"]
     },
     {
-      "id": "garage-sale",
-      "url": "https://garagesalevintage.com/",
-      "label": "Garage Sale Vintage",
+      "id": "noble-treasures",
+      "url": "https://nobletreasuresantiques.com/",
+      "label": "Noble Treasures Antiques",
       "categories": ["vintage"]
+    },
+    {
+      "id": "lafayette-visit",
+      "url": "https://www.lafayettefm.com/sunday-market",
+      "label": "Lafayette Farmers Market visitor information",
+      "categories": ["market"],
+      "reviewedHash": "6c21923d01be1e40d59b8834e2811aeba7e90b734750f25f460cba2d96d74c24"
+    },
+    {
+      "id": "louisville-shops",
+      "url": "https://www.downtownlouisvilleco.com/shop/",
+      "label": "Louisville Downtown Business Association",
+      "categories": ["vintage", "market"],
+      "reviewedHash": "3a956ecfb55745e6695217e496e861418499844b60f73efde69654d325605435"
+    },
+    {
+      "id": "lafayette-map",
+      "url": "https://share.google/TizcAdJsI8XsRdxQm",
+      "label": "Map linked by Lafayette Farmers Market organizer",
+      "categories": ["market"]
     }
   ],
   "candidates": [
@@ -113,24 +135,34 @@
         "id": "official:boulder-co:pig-pearl",
         "name": "Pig + Pearl",
         "kind": "thrift",
-        "description": "Secondhand retail shop in Boulder. Location pin still needs review.",
+        "description": "Secondhand clothing and household goods in east Boulder.",
         "hours": "Fri–Mon noon–5pm",
         "website": "https://boulderthriftstore.com/",
         "source": "official",
         "sourceLabel": "Pig + Pearl",
         "sourceUrl": "https://boulderthriftstore.com/",
         "tags": ["secondhand", "Boulder"],
-        "address": "5320 Arapahoe Ave, Boulder, CO 80303"
+        "address": "5320 Arapahoe Ave, Boulder, CO 80303",
+        "lat": 40.014555124351,
+        "lng": -105.228596005985,
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=5320+ARAPAHOE+AVE%2C+BOULDER%2C+CO+80303&benchmark=Public_AR_Current&format=json",
+        "coordinateNote": "Approximate address-based pin checked against the public location. Confirm the entrance before traveling.",
+        "checkedAt": "2026-11-01"
       },
       "review": {
-        "status": "pending",
+        "status": "approved",
         "reviewer": "Codex source review",
         "reviewedAt": "2026-11-01",
         "evidence": [
           {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=5320+ARAPAHOE+AVE%2C+BOULDER%2C+CO+80303&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "One Census match: 5320 ARAPAHOE AVE, BOULDER, CO, 80303. Checked state, municipality, street name, house number and direction against the public address. Address-based pin; not a surveyed entrance."
+          },
+          {
             "url": "https://boulderthriftstore.com/",
             "fields": ["name", "address", "category", "hours"],
-            "note": "Official home-page text returned in the first web search states secondhand shopping at this address, Friday through Monday, noon–5pm. No coordinate evidence reviewed."
+            "note": "Cached operator home page lists in-person shopping at 5320 Arapahoe Avenue, Friday through Monday, noon–5pm."
           }
         ]
       }
@@ -142,24 +174,35 @@
         "id": "official:boulder-co:greenwood-thrift",
         "name": "Greenwood Wildlife Thrift Shop & Consignment Gallery",
         "kind": "thrift",
-        "description": "Thrift shop and consignment gallery supporting wildlife rehabilitation. Location pin still needs review.",
+        "description": "Thrift shop and consignment gallery supporting Greenwood Wildlife Rehabilitation Center.",
         "hours": "Tue–Sat 11am–5pm; Sun–Mon closed",
         "website": "https://www.greenwoodwildlife.org/gift-thrift-store/",
         "source": "official",
         "sourceLabel": "Greenwood Wildlife Rehabilitation Center",
         "sourceUrl": "https://www.greenwoodwildlife.org/gift-thrift-store/",
         "tags": ["secondhand", "Boulder"],
-        "address": "3600 Arapahoe Ave, Boulder, CO 80303"
+        "address": "3600 Arapahoe Ave, Boulder, CO 80303",
+        "lat": 40.01449637304,
+        "lng": -105.248051204286,
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3600+ARAPAHOE+AVE%2C+BOULDER%2C+CO+80303&benchmark=Public_AR_Current&format=json",
+        "coordinateNote": "Approximate address-based pin checked against the public location. Confirm the entrance before traveling.",
+        "phone": "303-245-0800",
+        "checkedAt": "2026-11-01"
       },
       "review": {
-        "status": "pending",
+        "status": "approved",
         "reviewer": "Codex source review",
         "reviewedAt": "2026-11-01",
         "evidence": [
           {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3600+ARAPAHOE+AVE%2C+BOULDER%2C+CO+80303&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "One Census match: 3600 ARAPAHOE AVE, BOULDER, CO, 80303. Checked state, municipality, street name, house number and direction against the public address. Address-based pin; not a surveyed entrance."
+          },
+          {
             "url": "https://www.greenwoodwildlife.org/gift-thrift-store/",
             "fields": ["name", "address", "category", "hours"],
-            "note": "Official operator page text returned in the first web search gives the shopping address and Tuesday–Saturday 11am–5pm schedule; donation hours are separate. No coordinate evidence reviewed."
+            "note": "Cached operator page lists shopping at 3600 Arapahoe Avenue, Tuesday–Saturday 11am–5pm. Donation and consignment schedules are separate."
           }
         ]
       }
@@ -171,7 +214,7 @@
         "id": "official:boulder-co:boulder-farmers-market",
         "name": "Boulder Farmers Market",
         "kind": "market",
-        "description": "Farmers market in downtown Boulder. Saturday season shown; the separate Wednesday season ended October 7, 2026. Service animals only. Pin still needs review.",
+        "description": "Farmers market on 13th Street between Canyon and Arapahoe. Saturday season shown; the 2026 Wednesday season ended October 7. Service animals only.",
         "hours": "Sat 8am–2pm during the listed 2026 season",
         "website": "https://bcfm.org/markets/boulder-farmers-market/",
         "source": "official",
@@ -183,17 +226,27 @@
           "startsOn": "2026-04-04",
           "endsOn": "2026-11-21",
           "timezone": "America/Denver"
-        }
+        },
+        "lat": 40.0155976,
+        "lng": -105.2774211,
+        "coordinateSourceUrl": "https://www.google.com/maps/place/Boulder+Farmers+Market/@40.0156017,-105.2796098,17z/data=!3m1!4b1!4m5!3m4!1s0x876bec261f601c13:0x7135627d5b190ae7!8m2!3d40.0155976!4d-105.2774211",
+        "coordinateNote": "Approximate location published by the market organizer; the market extends along 13th Street.",
+        "checkedAt": "2026-11-01"
       },
       "review": {
-        "status": "pending",
+        "status": "approved",
         "reviewer": "Codex source review",
         "reviewedAt": "2026-11-01",
         "evidence": [
           {
+            "url": "https://www.google.com/maps/place/Boulder+Farmers+Market/@40.0156017,-105.2796098,17z/data=!3m1!4b1!4m5!3m4!1s0x876bec261f601c13:0x7135627d5b190ae7!8m2!3d40.0155976!4d-105.2774211",
+            "fields": ["coordinates"],
+            "note": "Organizer-linked venue pin (!3d/!4d), not the map camera center; market footprint spans 13th Street."
+          },
+          {
             "url": "https://bcfm.org/markets/boulder-farmers-market/",
             "fields": ["name", "address", "category", "hours", "season"],
-            "note": "Official organizer text returned in the second web search gives the intersection and 2026 Saturday dates/hours. Direct cached fetch was blocked (HTTP 403); no coordinate evidence reviewed."
+            "note": "Organizer page reviewed through the web reader: Saturday market at 13th and Canyon, April 4–November 21, 2026, 8am–2pm; service animals only. Its directions link supplies the venue pin. Direct CLI access remains blocked."
           }
         ]
       }
@@ -205,29 +258,53 @@
         "id": "official:boulder-co:lafayette-farmers-market",
         "name": "Lafayette Farmers Market",
         "kind": "market",
-        "description": "Grower and producer market in nearby Lafayette. The 2026 season has ended. Pin still needs review.",
+        "description": "Grower and producer market on Public Road between Cleveland and Geneseo in nearby Lafayette. Check the listed season before traveling.",
         "hours": "Sun 9am–1pm during the listed 2026 season",
         "website": "https://www.lafayettefm.com/",
         "source": "official",
         "sourceLabel": "Lafayette Farmers Market",
         "sourceUrl": "https://www.lafayettefm.com/",
         "tags": ["farmers market", "Lafayette"],
-        "address": "Public Rd between Cleveland St and Geneseo St, Lafayette, CO",
+        "address": "100 N Public Rd, Lafayette, CO 80026",
         "season": {
           "startsOn": "2026-05-03",
           "endsOn": "2026-10-25",
           "timezone": "America/Denver"
-        }
+        },
+        "lat": 39.998280873874,
+        "lng": -105.090378017134,
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=100+N+PUBLIC+RD%2C+LAFAYETTE%2C+CO+80026&benchmark=Public_AR_Current&format=json",
+        "coordinateNote": "Approximate address-based pin checked against the public location. Confirm the entrance before traveling.",
+        "additionalSourceUrls": [
+          "https://www.lafayettefm.com/sunday-market",
+          "https://share.google/TizcAdJsI8XsRdxQm"
+        ],
+        "checkedAt": "2026-11-01"
       },
       "review": {
-        "status": "pending",
+        "status": "approved",
         "reviewer": "Codex source review",
         "reviewedAt": "2026-11-01",
         "evidence": [
           {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=100+N+PUBLIC+RD%2C+LAFAYETTE%2C+CO+80026&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "One Census match: 100 N PUBLIC RD, LAFAYETTE, CO, 80026. Checked state, municipality, street name, house number and direction against the public address. Address-based pin; not a surveyed entrance."
+          },
+          {
             "url": "https://www.lafayettefm.com/",
             "fields": ["name", "address", "category", "hours", "season"],
-            "note": "Cached official 2026 market information gives Sunday May 3–October 25, 9am–1pm, on Public Road between Cleveland and Geneseo. No coordinate evidence reviewed."
+            "note": "Cached organizer home page lists Sundays, May 3–October 25, 2026, 9am–1pm, on Public Road between Cleveland and Geneseo."
+          },
+          {
+            "url": "https://www.lafayettefm.com/sunday-market",
+            "fields": ["address"],
+            "note": "Organizer visitor page identifies the same street footprint and links to the market’s Google location."
+          },
+          {
+            "url": "https://share.google/TizcAdJsI8XsRdxQm",
+            "fields": ["name", "address"],
+            "note": "Followed the organizer’s exact map link to its named market panel: 100 N Public Rd, Lafayette, CO 80026. This is a public reference point for the street market, not a year-round storefront."
           }
         ]
       }
@@ -239,29 +316,45 @@
         "id": "official:boulder-co:louisville-farmers-market",
         "name": "Louisville Farmers Market",
         "kind": "market",
-        "description": "Farmers market in nearby Louisville. The 2026 season has ended. Exact market footprint and pin still need review.",
+        "description": "Seasonal farmers market on Front Street in nearby Louisville. Dog friendly; check the listed season before traveling.",
         "hours": "Sat 9am–1pm during the listed 2026 season",
         "website": "https://www.realfarmersmarketco.com/",
         "source": "official",
         "sourceLabel": "Real Farmers Market",
         "sourceUrl": "https://www.realfarmersmarketco.com/",
         "tags": ["farmers market", "Louisville", "dog friendly"],
-        "address": "Front Street, downtown Louisville, CO",
+        "address": "824 Front Street, Louisville, CO 80027",
         "season": {
           "startsOn": "2026-05-09",
           "endsOn": "2026-10-10",
           "timezone": "America/Denver"
-        }
+        },
+        "lat": 39.9783128,
+        "lng": -105.1305687,
+        "coordinateSourceUrl": "https://www.downtownlouisvilleco.com/shop/",
+        "coordinateNote": "Approximate market location published by the Louisville Downtown Business Association.",
+        "additionalSourceUrls": ["https://www.downtownlouisvilleco.com/shop/"],
+        "checkedAt": "2026-11-01"
       },
       "review": {
-        "status": "pending",
+        "status": "approved",
         "reviewer": "Codex source review",
         "reviewedAt": "2026-11-01",
         "evidence": [
           {
+            "url": "https://www.downtownlouisvilleco.com/shop/",
+            "fields": ["coordinates"],
+            "note": "Louisville Downtown Business Association’s named market POI at 824 Front Street; approximate point within the market footprint."
+          },
+          {
             "url": "https://www.realfarmersmarketco.com/",
             "fields": ["name", "address", "category", "hours", "season"],
-            "note": "Cached organizer home page gives downtown Front Street, Saturdays 9am–1pm, May 9–October 10, 2026, and dog-friendly policy. Exact public pin still needs review."
+            "note": "Cached organizer home page lists Front Street, Saturdays 9am–1pm, May 9–October 10, 2026, and dog-friendly policy."
+          },
+          {
+            "url": "https://www.downtownlouisvilleco.com/shop/",
+            "fields": ["name", "address", "coordinates"],
+            "note": "Cached business-association directory identifies Louisville Farmers Market at 824 Front Street. Its named MapPress POI supplies the coordinates; the overall map center was not used."
           }
         ]
       }
@@ -273,24 +366,40 @@
         "id": "official:boulder-co:little-horse-louisville",
         "name": "Little Horse Vintage — Louisville",
         "kind": "vintage",
-        "description": "Vintage shop candidate. The operator page has conflicting address/map information and legacy pandemic text; current location and operation require confirmation.",
+        "description": "Vintage goods and used books in downtown Louisville. Shopping hours are unconfirmed; check with the shop before traveling.",
         "hours": "",
         "website": "https://www.littlehorsevintage.com/",
         "source": "official",
         "sourceLabel": "Little Horse Vintage",
         "sourceUrl": "https://www.littlehorsevintage.com/",
         "tags": ["vintage", "Louisville"],
-        "address": "820 Main Street, Louisville, CO 80027"
+        "address": "820 Main Street, Louisville, CO 80027",
+        "lat": 39.978010401724,
+        "lng": -105.132066925955,
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=820+MAIN+STREET%2C+LOUISVILLE%2C+CO+80027&benchmark=Public_AR_Current&format=json",
+        "coordinateNote": "Address-based approximate pin, cross-checked with the local business association. Confirm the entrance before traveling.",
+        "additionalSourceUrls": ["https://www.downtownlouisvilleco.com/shop/"],
+        "checkedAt": "2026-11-01"
       },
       "review": {
-        "status": "pending",
+        "status": "approved",
         "reviewer": "Codex source review",
         "reviewedAt": "2026-11-01",
         "evidence": [
           {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=820+MAIN+STREET%2C+LOUISVILLE%2C+CO+80027&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "One Census match: 820 MAIN ST, LOUISVILLE, CO, 80027. Checked state, municipality, street name, house number and direction against the public address. Address-based pin; not a surveyed entrance."
+          },
+          {
             "url": "https://www.littlehorsevintage.com/",
             "fields": ["name", "address", "category"],
-            "note": "Operator page identifies Little Horse Vintage and its Louisville text lists 820 Main Street. The same block map incorrectly points to 2250 Pearl Street, Boulder; hours are hidden. Keep pending and omit the conflicting coordinates."
+            "note": "Cached operator page lists Little Horse Vintage Louisville at 820 Main Street. Its embedded Boulder map conflicts and is excluded. Hours are hidden, so none are published."
+          },
+          {
+            "url": "https://www.downtownlouisvilleco.com/shop/",
+            "fields": ["name", "address", "category", "coordinates"],
+            "note": "Current business-association shopping directory independently lists Little Horse Vintage and Books at 820 Main St, Louisville, CO 80027. Its named POI is 39.9782963,-105.13183, agreeing with the address-based proposal within about 38m."
           }
         ]
       }
@@ -302,23 +411,35 @@
         "id": "official:boulder-co:classic-facets",
         "name": "Classic Facets",
         "kind": "vintage",
-        "description": "Antique and vintage jewelry shop candidate. Address, hours, coordinates and current retail operation still need review.",
-        "hours": "",
+        "description": "Antique and vintage jewelry shop on west Pearl Street in Boulder.",
+        "hours": "Tue–Sat 11am–5:30pm; Sun–Mon closed",
         "website": "https://classicfacets.com/",
         "source": "official",
         "sourceLabel": "Classic Facets",
         "sourceUrl": "https://classicfacets.com/",
-        "tags": ["vintage", "jewelry"]
+        "tags": ["vintage", "jewelry"],
+        "address": "942 Pearl St, Boulder, CO 80302",
+        "lat": 40.01706,
+        "lng": -105.28324,
+        "coordinateSourceUrl": "https://www.google.com/maps/dir/?api=1&destination=40.01706%2C-105.28324",
+        "coordinateNote": "Approximate storefront location from the shop’s published directions.",
+        "phone": "303-938-8851",
+        "checkedAt": "2026-11-01"
       },
       "review": {
-        "status": "pending",
+        "status": "approved",
         "reviewer": "Codex source review",
         "reviewedAt": "2026-11-01",
         "evidence": [
           {
+            "url": "https://www.google.com/maps/dir/?api=1&destination=40.01706%2C-105.28324",
+            "fields": ["coordinates"],
+            "note": "Destination coordinates in the operator’s published directions link for 942 Pearl Street; approximate storefront pin."
+          },
+          {
             "url": "https://classicfacets.com/",
-            "fields": ["name", "category"],
-            "note": "Official home-page search result describes antique and vintage jewelry. Direct fetch was rate-limited (HTTP 429); no address or coordinate evidence reviewed."
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Operator home page reviewed through the web reader lists antique/vintage jewelry, 942 Pearl St, Boulder, CO 80302, and Tuesday–Saturday 11am–5:30pm. Published directions destination supplies the pin; CLI rate limit was not repeatedly retried."
           }
         ]
       }
@@ -327,22 +448,40 @@
       "country": "US",
       "state": "CO",
       "place": {
-        "id": "official:boulder-co:garage-sale-boulder",
-        "name": "Garage Sale Vintage — Boulder",
+        "id": "official:boulder-co:noble-treasures",
+        "name": "Noble Treasures Antiques",
         "kind": "vintage",
-        "description": "Unverified vintage-shop lead from the downtown visitor map. Confirm the operator, current Boulder location and pin before approval.",
-        "hours": "",
-        "website": "https://garagesalevintage.com/",
+        "address": "409 S Public Rd, Lafayette, CO 80026",
+        "description": "Antiques and collectibles from independent dealers in nearby Lafayette.",
+        "hours": "Mon–Sat 10am–5pm; Sun noon–5pm",
+        "website": "https://nobletreasuresantiques.com/",
         "source": "official",
-        "sourceLabel": "Garage Sale Vintage",
-        "sourceUrl": "https://garagesalevintage.com/",
-        "tags": ["vintage"]
+        "sourceUrl": "https://nobletreasuresantiques.com/",
+        "sourceLabel": "Noble Treasures Antiques",
+        "tags": ["Antiques", "Lafayette"],
+        "lat": 39.995135099468,
+        "lng": -105.090535881066,
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=409+S+PUBLIC+RD%2C+LAFAYETTE%2C+CO+80026&benchmark=Public_AR_Current&format=json",
+        "coordinateNote": "Approximate address-based pin checked against the public location. Confirm the entrance before traveling.",
+        "phone": "303-926-4060",
+        "checkedAt": "2026-11-01"
       },
       "review": {
-        "status": "pending",
+        "status": "approved",
         "reviewer": "Codex source review",
         "reviewedAt": "2026-11-01",
-        "evidence": []
+        "evidence": [
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=409+S+PUBLIC+RD%2C+LAFAYETTE%2C+CO+80026&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "One Census match: 409 S PUBLIC RD, LAFAYETTE, CO, 80026. Checked state, municipality, street name, house number and direction against the public address. Address-based pin; not a surveyed entrance."
+          },
+          {
+            "url": "https://nobletreasuresantiques.com/",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Operator home page reviewed through the web reader lists antiques/collectibles at 409 South Public Road, Lafayette, CO 80026, Monday–Saturday 10am–5pm and Sunday noon–5pm. CLI page exceeded the payload limit; no broad crawl was used."
+          }
+        ]
       }
     }
   ]

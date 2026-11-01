@@ -1,0 +1,8 @@
+{
+  "webSearchesPerPass": 8,
+  "sourcePagesPerPass": 24,
+  "requestsPerCommand": 20,
+  "requestsPerUTCDay": 60,
+  "sourceCacheDays": 7,
+  "geocodeCacheDays": 365
+}

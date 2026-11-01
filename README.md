@@ -4,7 +4,7 @@
 
 **Good things are closer.** A mobile-first map for thrift shoppers, farmers market customers and local sellers, with scanning and resale tools close at hand.
 
-Explore nearby places, keep favorites, plan a little trip and preview a seller pin. The default Denver map contains 15 real listings across thrift stores, farmers markets and vintage/antique shops, with official sources and review dates. Wider OpenStreetMap discovery is best effort. Seller pins are private device drafts, not public listings. The fleece, lamp and pet gear scanner examples are also fictional. Uploaded photos never receive fabricated identification or prices.
+Explore nearby places, keep favorites, plan a little trip and preview a seller pin. The default Denver map contains 15 real listings across thrift stores, farmers markets and vintage/antique shops, with official sources and review dates. Choose **Boulder, CO · directory ready** from the city selector for nine reviewed Boulder/Louisville/Lafayette listings, three per category. Wider OpenStreetMap discovery is best effort. Seller pins are private device drafts, not public listings. The fleece, lamp and pet gear scanner examples are also fictional. Uploaded photos never receive fabricated identification or prices.
 
 ![Thrifty map interface with place filters, nearby finds and trip planning](docs/map-desktop.png)
 
@@ -113,7 +113,7 @@ No connector stores tokens, runs OAuth, publishes, synchronizes orders, fetches 
 ## Validation
 
 ```sh
-npm run data:check      # Validate the real Denver directory
+npm run data:check      # Validate all published city directories
 npm test               # Domain, storage, API and provider contracts
 npm run build          # Type checking, client/server bundles, versioned offline shell
 npm run test:e2e       # Desktop Chrome + emulated Pixel 7, production server

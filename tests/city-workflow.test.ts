@@ -1,4 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
+import { researchLimits, researchLimitsSchema } from '../scripts/lib/research-limits';
 import { mkdtemp, rm, readFile, mkdir, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
@@ -100,21 +101,44 @@ describe('conservative research cache', () => {
       expect(next.body).toBe('Public source');
       expect(transport).toHaveBeenCalledTimes(2);
     }));
-  it('stops after six run requests and twelve daily requests across runs', async () =>
+  it('enforces configured run and daily limits without resetting the saved ledger', async () =>
     temporary(async (root) => {
       const transport = vi.fn().mockResolvedValue({ status: 200, body: 'page' });
-      const first = new ResearchCache(root, transport, () => now.getTime());
-      for (let i = 0; i < 6; i++) await first.get(`https://example.com/a${i}`);
-      await expect(first.get('https://example.com/seventh')).rejects.toBeInstanceOf(
-        ResearchBudgetError,
-      );
-      const second = new ResearchCache(root, transport, () => now.getTime());
-      for (let i = 0; i < 6; i++) await second.get(`https://example.com/b${i}`);
+      // Preserve usage from the earlier, smaller budget; raising limits must not erase it.
+      const ledger = path.join(root, 'budget-2026-11-01.json');
+      await writeFile(ledger, JSON.stringify({ requests: 7 }));
+      let consumed = 7;
+      let run = 0;
+      while (consumed < researchLimits.requestsPerUTCDay) {
+        const cache = new ResearchCache(root, transport, () => now.getTime());
+        const available = Math.min(
+          researchLimits.requestsPerCommand,
+          researchLimits.requestsPerUTCDay - consumed,
+        );
+        for (let i = 0; i < available; i++)
+          await cache.get(`https://example.com/run-${run}/page-${i}`);
+        consumed += available;
+        await expect(cache.get(`https://example.com/run-${run}/overflow`)).rejects.toBeInstanceOf(
+          ResearchBudgetError,
+        );
+        run++;
+      }
       await expect(
         new ResearchCache(root, transport, () => now.getTime()).get('https://example.com/extra'),
       ).rejects.toThrow('Daily limit');
-      expect(transport).toHaveBeenCalledTimes(12);
+      expect(transport).toHaveBeenCalledTimes(researchLimits.requestsPerUTCDay - 7);
+      expect(JSON.parse(await readFile(ledger, 'utf8')).requests).toBe(
+        researchLimits.requestsPerUTCDay,
+      );
     }));
+  it('rejects invalid research settings', () => {
+    expect(
+      researchLimitsSchema.safeParse({ ...researchLimits, requestsPerCommand: 0 }).success,
+    ).toBe(false);
+    expect(
+      researchLimitsSchema.safeParse({ ...researchLimits, requestsPerUTCDay: 1 }).success,
+    ).toBe(false);
+  });
   it('never retries failed sources during cooldown, preserves cache, and caps payloads', async () =>
     temporary(async (root) => {
       const transport = vi.fn().mockResolvedValue({ status: 403, body: 'blocked' });

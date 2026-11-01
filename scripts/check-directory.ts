@@ -32,7 +32,7 @@ async function main() {
   ];
   for (const url of urls) {
     try {
-      const result = await cache.get(url, 7);
+      const result = await cache.get(url);
       console.log(
         JSON.stringify({
           url,

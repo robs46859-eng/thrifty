@@ -6,23 +6,25 @@ Use this workflow to add one US city at a time with a small, reviewed directory.
 
 ## What saves usage
 
-| Resource                 | Default behavior                                                                                                       |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| City scope               | One city, 9 approved records to start; staging batch capped at 15 candidates                                           |
-| Source fetching          | Explicitly registered official URLs only; no citywide spider or link following                                         |
-| HTTP budget              | At most 6 requests per command and 12 per UTC day, shared across source checks and geocoding on the same machine/cache |
-| Source cache             | Reuse for 7 days; conditional ETag/Last-Modified requests after expiry                                                 |
-| Geocode cache            | Reuse the same normalized public address for 365 days                                                                  |
-| Failed pages             | One-hour cooldown; no automatic retry; redirects require source review                                                 |
-| Page payload             | At most 1 MB each; excerpts capped at 1,200 characters to reduce chat context                                          |
-| Validation / publication | Offline; no research requests or AI calls                                                                              |
-| Paid AI / scanner        | No model API calls and no `/api/identify` calls                                                                        |
+| Resource                 | Default behavior                                                                                                        |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| City scope               | One city, 9 approved records to start; staging batch capped at 15 candidates                                            |
+| Source fetching          | Explicitly registered official URLs only; no citywide spider or link following                                          |
+| HTTP budget              | At most 20 requests per command and 60 per UTC day, shared across source checks and geocoding on the same machine/cache |
+| Source cache             | Reuse for 7 days; conditional ETag/Last-Modified requests after expiry                                                  |
+| Geocode cache            | Reuse the same normalized public address for 365 days                                                                   |
+| Failed pages             | One-hour cooldown; no automatic retry; redirects require source review                                                  |
+| Page payload             | At most 1 MB each; excerpts capped at 1,200 characters to reduce chat context                                           |
+| Validation / publication | Offline; no research requests or AI calls                                                                               |
+| Paid AI / scanner        | No model API calls and no `/api/identify` calls                                                                         |
 
-The HTTP limits are enforced by the CLI, with a persistent daily ledger and a lock against simultaneous budget updates. They apply to this cache on this machine, not every device or an unrelated browser/search tool. ChatGPT/Codex reasoning and web search still use their normal allowances. The prompt limits that separate research to two searches and six page reads per pass; it is a work instruction, not a programmatic account-wide quota. Do not start parallel agents or research many cities at once to work around the limits.
+Limits are configured in [research/limits.json](../research/limits.json). Current defaults are **8 web searches, 24 source-page reads, 20 HTTP requests per command, and 60 HTTP requests per UTC day**. The CLI reports these values in `status`; keep this guide and the research prompt in sync when changing the settings. Increasing a limit preserves requests already recorded in the daily ledger.
+
+The HTTP limits are enforced by the CLI, with a persistent daily ledger and a lock against simultaneous budget updates. They apply to this cache on this machine, not every device or an unrelated browser/search tool. ChatGPT/Codex reasoning and web search still use their normal allowances. The prompt limits that separate research to eight searches and twenty-four page reads per pass; it is a work instruction, not a programmatic account-wide quota. Do not start parallel agents or research many cities at once to work around the limits.
 
 ## 1. Pick a city and create its plan
 
-[research/cities/boulder-co.json](../research/cities/boulder-co.json) and [research/cities/portland-or.json](../research/cities/portland-or.json) are empty starter plans, not public listings.
+[Boulder’s plan](../research/cities/boulder-co.json) now contains nine approved listings and its published catalogue is in `data/cities/boulder-co.json`. [Portland’s plan](../research/cities/portland-or.json) remains an empty starter, not public coverage.
 
 For another city, supply a planning center and the destination timezone explicitly:
 

@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { researchLimits } from './research-limits';
 import { readFile, writeFile, mkdir, rename, open, unlink, lstat, link } from 'node:fs/promises';
 import path from 'node:path';
 import { createHash, randomUUID } from 'node:crypto';
@@ -183,7 +184,7 @@ export class ResearchCache {
     readonly directory: string,
     private transport = publicGet,
     private now = Date.now,
-    readonly maxRequests = 6,
+    readonly maxRequests = researchLimits.requestsPerCommand,
   ) {}
   private async init() {
     await mkdir(this.directory, { recursive: true, mode: 0o700 });
@@ -192,7 +193,9 @@ export class ResearchCache {
   }
   private async reserve() {
     if (this.requests >= this.maxRequests)
-      throw new ResearchBudgetError('Run limit reached; reuse the cache or continue another run.');
+      throw new ResearchBudgetError(
+        `Run limit reached (${this.maxRequests} requests); reuse the cache or save a handoff.`,
+      );
     await this.init();
     const lock = path.join(this.directory, 'budget.lock');
     let handle;
@@ -214,9 +217,9 @@ export class ResearchCache {
         if ((e as NodeJS.ErrnoException).code !== 'ENOENT')
           throw new Error('Budget ledger is unreadable; no network request was made.');
       }
-      if (!Number.isInteger(count) || count < 0 || count >= 12)
+      if (!Number.isInteger(count) || count < 0 || count >= researchLimits.requestsPerUTCDay)
         throw new ResearchBudgetError(
-          'Daily limit reached (12 requests per UTC day). Continue after the next reset.',
+          `Daily limit reached (${researchLimits.requestsPerUTCDay} requests per UTC day). Continue after the next reset.`,
         );
       await writeFile(ledger, JSON.stringify({ requests: count + 1 }), { mode: 0o600 });
       this.requests++;
@@ -225,7 +228,7 @@ export class ResearchCache {
       await unlink(lock);
     }
   }
-  async get(raw: string, days = 7, refresh = false) {
+  async get(raw: string, days = researchLimits.sourceCacheDays, refresh = false) {
     const url = publicSourceUrl(raw);
     await this.init();
     const file = path.join(this.directory, `${hash(url)}.json`);

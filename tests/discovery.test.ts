@@ -17,6 +17,7 @@ import {
 import { initialState } from '../src/lib/seed';
 import {
   denverPlaces,
+  catalogues,
   categoryCounts,
   catalogueSchema,
   denverCatalogue,
@@ -149,6 +150,28 @@ describe('map discovery and trip safety', () => {
     expect(
       (await request(successful).get('/api/places?lat=39.75&lng=-104.99')).body.places,
     ).toHaveLength(4);
+  });
+});
+
+describe('published Boulder directory', () => {
+  it('serves all three reviewed categories from the registry without a paid or upstream lookup', async () => {
+    const upstream = vi.fn().mockRejectedValue(new Error('upstream must not be used'));
+    const app = express();
+    installDiscovery(app, new DiscoveryService(upstream));
+    const response = await request(app).get('/api/places?lat=40.015&lng=-105.2705');
+    expect(response.status).toBe(200);
+    expect(upstream).not.toHaveBeenCalled();
+    expect(response.body.cityIds).toEqual(['boulder-co']);
+    expect(response.body.categoryCounts).toMatchObject({ thrift: 3, market: 3, vintage: 3 });
+    expect(response.body.places).toHaveLength(9);
+    expect(
+      response.body.places.every((p: { id: string }) => p.id.startsWith('official:boulder-co:')),
+    ).toBe(true);
+    const boulder = catalogues.find((c) => c.cityProfile.id === 'boulder-co')!;
+    const market = boulder.places.find((p) => p.id.endsWith(':lafayette-farmers-market'))!;
+    expect(marketSeason(market, new Date('2026-11-01T18:00:00Z'))).toContain('ended');
+    expect(boulder.places.some((p) => /Garage Sale/.test(p.name))).toBe(false);
+    expect(boulder.places.find((p) => p.id.endsWith(':little-horse-louisville'))?.hours).toBe('');
   });
 });
 

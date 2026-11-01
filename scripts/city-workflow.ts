@@ -2,6 +2,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { format } from 'prettier';
+import { researchLimits } from './lib/research-limits';
 import { cityProfileSchema } from '../src/lib/regions';
 import {
   draftSchema,
@@ -79,7 +80,14 @@ async function main() {
     print({
       ...draftStatus(draft),
       networkRequests: 0,
-      limits: { perRun: 6, perUTCDay: 12, sourceCacheDays: 7, geocodeCacheDays: 365 },
+      limits: {
+        perRun: researchLimits.requestsPerCommand,
+        perUTCDay: researchLimits.requestsPerUTCDay,
+        webSearchesPerPass: researchLimits.webSearchesPerPass,
+        sourcePagesPerPass: researchLimits.sourcePagesPerPass,
+        sourceCacheDays: researchLimits.sourceCacheDays,
+        geocodeCacheDays: researchLimits.geocodeCacheDays,
+      },
     });
     return;
   }
@@ -110,7 +118,7 @@ async function main() {
     if (!sources.length) throw new Error('Register an official source in the draft first.');
     for (const source of sources) {
       try {
-        const result = await cache.get(source.url, 7, values.refresh);
+        const result = await cache.get(source.url, researchLimits.sourceCacheDays, values.refresh);
         print({
           source: source.id,
           cacheHit: result.cacheHit,
@@ -169,7 +177,7 @@ async function main() {
       benchmark: 'Public_AR_Current',
       format: 'json',
     }).toString();
-    const result = await cache.get(url.href, 365, values.refresh);
+    const result = await cache.get(url.href, researchLimits.geocodeCacheDays, values.refresh);
     const proposal = censusProposal(JSON.parse(result.body), address, draft.city.state);
     print({
       ...proposal,
