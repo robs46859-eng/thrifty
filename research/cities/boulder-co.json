@@ -12,6 +12,338 @@
     },
     "radiusKm": 20
   },
-  "sources": [],
-  "candidates": []
+  "sources": [
+    {
+      "id": "arc-locator",
+      "url": "https://arcthrift.com/ajax/get-store-list",
+      "label": "arc Thrift Stores locator",
+      "categories": ["thrift"],
+      "reviewedHash": "84a2e944b07256682bf5a25502bec7ae552ecce810853c80d988d17c011dc0f4"
+    },
+    {
+      "id": "pig-pearl",
+      "url": "https://boulderthriftstore.com/",
+      "label": "Pig + Pearl",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "greenwood",
+      "url": "https://www.greenwoodwildlife.org/gift-thrift-store/",
+      "label": "Greenwood Wildlife Rehabilitation Center",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "boulder-market",
+      "url": "https://bcfm.org/markets/boulder-farmers-market/",
+      "label": "Boulder County Farmers Markets",
+      "categories": ["market"]
+    },
+    {
+      "id": "lafayette-market",
+      "url": "https://www.lafayettefm.com/",
+      "label": "Lafayette Farmers Market",
+      "categories": ["market"],
+      "reviewedHash": "68df9eb87a44e989bb24bdc86706a1b5c427688240d643dc4bd64af55f453074"
+    },
+    {
+      "id": "real-markets",
+      "url": "https://www.realfarmersmarketco.com/",
+      "label": "Real Farmers Market",
+      "categories": ["market"],
+      "reviewedHash": "f8b5b1315db396d3d2512405836b1ff442bff7b70eb7b3528a54da407582baf8"
+    },
+    {
+      "id": "classic-facets",
+      "url": "https://classicfacets.com/",
+      "label": "Classic Facets",
+      "categories": ["vintage"]
+    },
+    {
+      "id": "little-horse",
+      "url": "https://www.littlehorsevintage.com/",
+      "label": "Little Horse Vintage",
+      "categories": ["vintage"]
+    },
+    {
+      "id": "garage-sale",
+      "url": "https://garagesalevintage.com/",
+      "label": "Garage Sale Vintage",
+      "categories": ["vintage"]
+    }
+  ],
+  "candidates": [
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:boulder-co:arc-louisville",
+        "name": "arc Thrift Stores — Louisville",
+        "kind": "thrift",
+        "description": "Retail thrift store in nearby Louisville. Shopping hours have not been confirmed.",
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceLabel": "arc Thrift Stores locator",
+        "sourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "tags": ["secondhand", "Louisville"],
+        "address": "1349 E South Boulder Rd, Louisville, CO, USA",
+        "lat": 39.9870876,
+        "lng": -105.12653899999998,
+        "coordinateSourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "coordinateNote": "Operator-published retail-store coordinates from the arc locator; entrance position is approximate.",
+        "checkedAt": "2026-11-01"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["name", "address", "category", "coordinates"],
+            "note": "Cached operator JSON identifies Louisville as storeDonation (retail plus donations), with this street address and published pin. Lafayette is donation-only and excluded."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:boulder-co:pig-pearl",
+        "name": "Pig + Pearl",
+        "kind": "thrift",
+        "description": "Secondhand retail shop in Boulder. Location pin still needs review.",
+        "hours": "Fri–Mon noon–5pm",
+        "website": "https://boulderthriftstore.com/",
+        "source": "official",
+        "sourceLabel": "Pig + Pearl",
+        "sourceUrl": "https://boulderthriftstore.com/",
+        "tags": ["secondhand", "Boulder"],
+        "address": "5320 Arapahoe Ave, Boulder, CO 80303"
+      },
+      "review": {
+        "status": "pending",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://boulderthriftstore.com/",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Official home-page text returned in the first web search states secondhand shopping at this address, Friday through Monday, noon–5pm. No coordinate evidence reviewed."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:boulder-co:greenwood-thrift",
+        "name": "Greenwood Wildlife Thrift Shop & Consignment Gallery",
+        "kind": "thrift",
+        "description": "Thrift shop and consignment gallery supporting wildlife rehabilitation. Location pin still needs review.",
+        "hours": "Tue–Sat 11am–5pm; Sun–Mon closed",
+        "website": "https://www.greenwoodwildlife.org/gift-thrift-store/",
+        "source": "official",
+        "sourceLabel": "Greenwood Wildlife Rehabilitation Center",
+        "sourceUrl": "https://www.greenwoodwildlife.org/gift-thrift-store/",
+        "tags": ["secondhand", "Boulder"],
+        "address": "3600 Arapahoe Ave, Boulder, CO 80303"
+      },
+      "review": {
+        "status": "pending",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://www.greenwoodwildlife.org/gift-thrift-store/",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Official operator page text returned in the first web search gives the shopping address and Tuesday–Saturday 11am–5pm schedule; donation hours are separate. No coordinate evidence reviewed."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:boulder-co:boulder-farmers-market",
+        "name": "Boulder Farmers Market",
+        "kind": "market",
+        "description": "Farmers market in downtown Boulder. Saturday season shown; the separate Wednesday season ended October 7, 2026. Service animals only. Pin still needs review.",
+        "hours": "Sat 8am–2pm during the listed 2026 season",
+        "website": "https://bcfm.org/markets/boulder-farmers-market/",
+        "source": "official",
+        "sourceLabel": "Boulder County Farmers Markets",
+        "sourceUrl": "https://bcfm.org/markets/boulder-farmers-market/",
+        "tags": ["farmers market", "Boulder", "service animals only"],
+        "address": "13th St & Canyon Blvd, Boulder, CO 80302",
+        "season": {
+          "startsOn": "2026-04-04",
+          "endsOn": "2026-11-21",
+          "timezone": "America/Denver"
+        }
+      },
+      "review": {
+        "status": "pending",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://bcfm.org/markets/boulder-farmers-market/",
+            "fields": ["name", "address", "category", "hours", "season"],
+            "note": "Official organizer text returned in the second web search gives the intersection and 2026 Saturday dates/hours. Direct cached fetch was blocked (HTTP 403); no coordinate evidence reviewed."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:boulder-co:lafayette-farmers-market",
+        "name": "Lafayette Farmers Market",
+        "kind": "market",
+        "description": "Grower and producer market in nearby Lafayette. The 2026 season has ended. Pin still needs review.",
+        "hours": "Sun 9am–1pm during the listed 2026 season",
+        "website": "https://www.lafayettefm.com/",
+        "source": "official",
+        "sourceLabel": "Lafayette Farmers Market",
+        "sourceUrl": "https://www.lafayettefm.com/",
+        "tags": ["farmers market", "Lafayette"],
+        "address": "Public Rd between Cleveland St and Geneseo St, Lafayette, CO",
+        "season": {
+          "startsOn": "2026-05-03",
+          "endsOn": "2026-10-25",
+          "timezone": "America/Denver"
+        }
+      },
+      "review": {
+        "status": "pending",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://www.lafayettefm.com/",
+            "fields": ["name", "address", "category", "hours", "season"],
+            "note": "Cached official 2026 market information gives Sunday May 3–October 25, 9am–1pm, on Public Road between Cleveland and Geneseo. No coordinate evidence reviewed."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:boulder-co:louisville-farmers-market",
+        "name": "Louisville Farmers Market",
+        "kind": "market",
+        "description": "Farmers market in nearby Louisville. The 2026 season has ended. Exact market footprint and pin still need review.",
+        "hours": "Sat 9am–1pm during the listed 2026 season",
+        "website": "https://www.realfarmersmarketco.com/",
+        "source": "official",
+        "sourceLabel": "Real Farmers Market",
+        "sourceUrl": "https://www.realfarmersmarketco.com/",
+        "tags": ["farmers market", "Louisville", "dog friendly"],
+        "address": "Front Street, downtown Louisville, CO",
+        "season": {
+          "startsOn": "2026-05-09",
+          "endsOn": "2026-10-10",
+          "timezone": "America/Denver"
+        }
+      },
+      "review": {
+        "status": "pending",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://www.realfarmersmarketco.com/",
+            "fields": ["name", "address", "category", "hours", "season"],
+            "note": "Cached organizer home page gives downtown Front Street, Saturdays 9am–1pm, May 9–October 10, 2026, and dog-friendly policy. Exact public pin still needs review."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:boulder-co:little-horse-louisville",
+        "name": "Little Horse Vintage — Louisville",
+        "kind": "vintage",
+        "description": "Vintage shop candidate. The operator page has conflicting address/map information and legacy pandemic text; current location and operation require confirmation.",
+        "hours": "",
+        "website": "https://www.littlehorsevintage.com/",
+        "source": "official",
+        "sourceLabel": "Little Horse Vintage",
+        "sourceUrl": "https://www.littlehorsevintage.com/",
+        "tags": ["vintage", "Louisville"],
+        "address": "820 Main Street, Louisville, CO 80027"
+      },
+      "review": {
+        "status": "pending",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://www.littlehorsevintage.com/",
+            "fields": ["name", "address", "category"],
+            "note": "Operator page identifies Little Horse Vintage and its Louisville text lists 820 Main Street. The same block map incorrectly points to 2250 Pearl Street, Boulder; hours are hidden. Keep pending and omit the conflicting coordinates."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:boulder-co:classic-facets",
+        "name": "Classic Facets",
+        "kind": "vintage",
+        "description": "Antique and vintage jewelry shop candidate. Address, hours, coordinates and current retail operation still need review.",
+        "hours": "",
+        "website": "https://classicfacets.com/",
+        "source": "official",
+        "sourceLabel": "Classic Facets",
+        "sourceUrl": "https://classicfacets.com/",
+        "tags": ["vintage", "jewelry"]
+      },
+      "review": {
+        "status": "pending",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://classicfacets.com/",
+            "fields": ["name", "category"],
+            "note": "Official home-page search result describes antique and vintage jewelry. Direct fetch was rate-limited (HTTP 429); no address or coordinate evidence reviewed."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:boulder-co:garage-sale-boulder",
+        "name": "Garage Sale Vintage — Boulder",
+        "kind": "vintage",
+        "description": "Unverified vintage-shop lead from the downtown visitor map. Confirm the operator, current Boulder location and pin before approval.",
+        "hours": "",
+        "website": "https://garagesalevintage.com/",
+        "source": "official",
+        "sourceLabel": "Garage Sale Vintage",
+        "sourceUrl": "https://garagesalevintage.com/",
+        "tags": ["vintage"]
+      },
+      "review": {
+        "status": "pending",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": []
+      }
+    }
+  ]
 }
