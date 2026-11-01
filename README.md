@@ -2,13 +2,30 @@
 
 [![Validate Thrifty](https://github.com/robs46859-eng/thrifty/actions/workflows/ci.yml/badge.svg)](https://github.com/robs46859-eng/thrifty/actions/workflows/ci.yml)
 
-**Good things are closer.** A mobile-first map for thrift shoppers, farmers market customers and local sellers, with scanning and resale tools close at hand.
+**Good things are closer.** A mobile-first map for thrift shoppers, farmers market customers and local sellers, with scanning, household shopping and resale tools close at hand.
+
+**Live app:** [worklifelm.com](https://worklifelm.com/) · **Hosting:** Hostinger Node.js / Express · **Release branch:** `main`
 
 Explore nearby places, keep favorites, plan a little trip and preview a seller pin. The default Denver map contains 17 real listings across thrift stores, farmers markets and vintage/antique shops, with official sources and review dates. Choose **Boulder**, **Englewood**, or **Littleton** marked **directory ready** in the city selector for nine reviewed listings each, three per category, including nearby venues identified by their actual addresses. Shared venues keep one map identity. Wider OpenStreetMap discovery is best effort. Seller pins are private device drafts, not public listings. The fleece, lamp and pet gear scanner examples are also fictional. Uploaded photos never receive fabricated identification or prices.
 
 ![Thrifty map interface with place filters, nearby finds and trip planning](docs/map-desktop.png)
 
-[Repeat for another US city](docs/CITY_WORKFLOW.md) · [Real data & sources](docs/DATA.md) · [Map guide](docs/MAP.md) · [Quick start](#quick-start) · [First find](#try-your-first-find) · [Features](#what-works) · [Sign-in setup](docs/AUTHENTICATION.md) · [AI setup](#optional-image-analysis) · [Marketplace status](#marketplace-limitations) · [Validation](#validation) · [Project structure](#project-structure)
+[Current cities](#current-cities) · [Community reports](#community-reports) · [Deployment](#deployment) · [Repeat for another US city](docs/CITY_WORKFLOW.md) · [Real data & sources](docs/DATA.md) · [Map guide](docs/MAP.md) · [Quick start](#quick-start) · [First find](#try-your-first-find) · [Features](#what-works) · [Sign-in setup](docs/AUTHENTICATION.md) · [AI setup](#optional-image-analysis) · [Marketplace status](#marketplace-limitations) · [Validation](#validation) · [Project structure](#project-structure)
+
+## Current cities
+
+These source-reviewed directories are bundled with the app and served by the API without a third-party places lookup. Choose a city marked **directory ready** in the city selector. Denver is the default.
+
+| City / regional coverage | Thrift stores | Farmers markets | Vintage / antiques | Listings | Source review date |
+| ------------------------ | ------------: | --------------: | -----------------: | -------: | ------------------ |
+| Denver metro, Colorado   |            10 |               4 |                  3 |       17 | November 1, 2026   |
+| Boulder area, Colorado   |             3 |               3 |                  3 |        9 | November 1, 2026   |
+| Englewood area, Colorado |             3 |               3 |                  3 |        9 | November 1, 2026   |
+| Littleton area, Colorado |             3 |               3 |                  3 |        9 | November 1, 2026   |
+
+There are **37 unique physical venues** across these four catalogues. Nearby city areas overlap: shared venues retain one ID and their actual municipality/address, so the row totals must not be added as unique businesses. Discovery selects the nearest published city profile and filters its records within 20 km of the requested center. Seasonal markets can remain listed with explicit season-ended or future-season labels. Published review dates are not open-now or live-stock guarantees; records become overdue after 30 days.
+
+All current reviewed coverage is in Colorado. Other US areas can use best-effort OpenStreetMap discovery, which can fail and does not imply a reviewed city launch. Portland is an unpublished research starter, not an available city directory. Farm shops and local sellers have map categories, but the reviewed city catalogues currently populate thrift, farmers market and vintage/antique categories. See [the directory sources and coverage notes](docs/DATA.md).
 
 ## Quick start
 
@@ -34,12 +51,12 @@ Open `http://127.0.0.1:4317`. Installation and camera capture require HTTPS or l
 
 ## Expand to another US city
 
-Use the [city expansion workflow](docs/CITY_WORKFLOW.md) to repeat the Denver process in Colorado or other US states. It includes a Portland starter plan and published Colorado examples, evidence-based publication, cached source/geocode requests, hard HTTP budgets and a [reusable research prompt](docs/CITY_RESEARCH_PROMPT.md). Scripts make no paid AI requests and do not consume scan credits. New cities enter discovery automatically after their data is reviewed and published through the CLI. No recurring crawl is enabled.
+Use the [city expansion workflow](docs/CITY_WORKFLOW.md) to repeat the Denver process in Colorado or other US states. It includes a Portland starter plan and published Colorado examples, evidence-based publication, cached source/geocode requests, hard HTTP budgets and a [reusable research prompt](docs/CITY_RESEARCH_PROMPT.md). Scripts make no paid AI requests and do not consume scan credits. New cities enter discovery automatically after their data is reviewed and published through the CLI. No recurring crawl is enabled. Current research limits are **8 web searches and 24 source-page reads per pass**, with CLI HTTP budgets of **20 requests per command and 60 per UTC day**. Source responses are cached for seven days and address geocodes for 365 days. See `research/limits.json` and the workflow guide for enforcement details.
 
 ## Explore your neighborhood
 
 1. Open **Explore** to pan and zoom the map. The first Denver view contains **17 real places in three categories**.
-2. Tap **Search this area** or the location button to search near a map center. The Denver launch directory works without an API key or external lookup. Other cities use best-effort public discovery.
+2. Tap **Search this area** or the location button to search near a map center. All four published city directories work without a places API key or external lookup. Outside reviewed coverage, public discovery is best effort.
 3. Filter by thrift stores, farmers/public markets, vintage, farm shops or local sellers; use the search box to narrow the current results.
 4. Open a pin or place card, save it with the heart, and add it to **My little trip**. Public-place trips open directions in Google Maps. Sample mode is explicit and cannot launch real directions.
 5. Open **Sell** to create a private shop/stall draft at your chosen map location. Other customers cannot see it yet.
@@ -61,12 +78,12 @@ Changing the browser origin or port creates a separate workspace. Export from th
 
 ## What works
 
-- **Real Denver directory:** 10 thrift stores, 4 farmers markets and 3 vintage/antique shops, with published addresses, source links, checked dates, approximate geocoded pins and season-ended/future-season labels. Review dates become overdue after 30 days; fetching the app never renews them.
+- **Four reviewed city directories:** Denver, Boulder, Englewood and Littleton, with published addresses, source links, checked dates, approximate geocoded pins and season-ended/future-season labels. The [city table](#current-cities) lists category counts. Review dates become overdue after 30 days; fetching the app never renews them.
 - **Interactive map:** pannable Leaflet map, color-coded selectable pins, category and text filters, public place search, explicit location permission, collapsible mobile place sheet, saved places, ordered trip stops and Google Maps directions for public destinations. See [map limitations](docs/MAP.md).
 - **Community updates:** share restock/discount days, closures/reopenings, holiday hours, category price ranges, layout notes, ratings, parking, nearby finds and accessibility. Signed-in members can confirm, dispute, flag and withdraw reports; admin moderation and automatic expiry keep updates bounded. Map badges and filters show active reports. See [community features and limits](docs/COMMUNITY.md).
 - **Seller map workspace:** create and delete private shop/stall pins with location, category, description and dates/hours; preserved in local backups. No public publishing is implied.
-
 - **Scanning:** rear-camera capture input, separate photo-library upload, session photo preview, manual identification and editable details. JPEG/PNG/WebP up to 4 MB. Configure a provider for opt-in image labels and OCR. HEIC must be converted to a supported image format.
+- **Purchase location tags:** select a reviewed map place or enter a store/market and address; carry the tag through scanning and photo upload, save it in household or merchant inventory, search it, edit/clear it and include it in private backups. No automatic GPS collection or public purchase history.
 - **Dual assessment:** merchant score for profit, margin, condition, shop focus and real recorded sales from the same category/source; household score for shopping goals, size, budget including repairs, color, theme, urgency and owned duplicates. No matching goal or comparable means no invented score or valuation.
 - **Household:** editable adult, child and pet profiles; goal creation/editing/deletion and completion; owner-linked inventory, search, profile filters and removal. Starter profiles and goals are explicitly examples. Goals preserve their own size/preferences rather than silently following profile changes.
 - **Merchant studio:** current/planned shop name, focus and source store; editable target profit, minimum margin, shipping, labor and fee assumptions; inventory, search, stock/sold state, recorded sales and actual expenses. Sample sales never improve your performance statistics or history-based scoring.
@@ -76,6 +93,29 @@ Changing the browser origin or port creates a separate workspace. Export from th
 - **Protected cloud scans:** Google sign-in and emailed one-time codes; server-enforced free allowance of 10 cloud scans per UTC day and 3 per rolling minute; verified `rob@virtuapet.com` is exempt from scan quotas. Private SQLite session/usage storage survives restarts and deployments. Sign-in requires its own configuration; the Vision API key alone does not enable it. See [sign-in setup](docs/AUTHENTICATION.md).
 - **Durability:** schema-validated versioned device storage, JSON backup/export/import, explicit reset, quota/corruption warnings, offline app shell, local bundled fonts/icons. Bad saved data is preserved until you explicitly import or reset. Backups with duplicate IDs or orphaned records are rejected.
 - **Integration contracts:** nine marketplace entries, typed adapter contracts, disconnected capability discovery and fail-closed publish/reprice endpoints. None is connected in this build.
+
+## Community reports
+
+Open a reviewed store or market → **Share an update** → sign in with Google or an emailed code. Public feeds are readable without an account. Reports are shared across users under a generated shopper alias; private inventory and purchase tags are never published automatically.
+
+| Report                       | What shoppers can share                                            |
+| ---------------------------- | ------------------------------------------------------------------ |
+| Restock days                 | Recurring weekdays or a specific date, plus a time window          |
+| Discount days                | Sale days/dates, time windows and discount details                 |
+| Unlisted closure / reopening | Temporary closure, permanent closure or reopening observations     |
+| Holiday hours                | A specific holiday date and hours, or Closed                       |
+| Category price ranges        | A category and minimum/maximum prices in USD                       |
+| Store layout                 | Text directions for an aisle, floor or section                     |
+| Store rating                 | 1–5 stars and notes about the shopping experience                  |
+| Parking                      | Areas, restrictions, costs and practical parking notes             |
+| Nearby find                  | An item, optional category/price and the area where it was spotted |
+| Accessibility                | Observed access information and relevant store areas               |
+
+Map pins and place cards show active report badges. **Recent finds** and **Community updates** filter places in the current map results. Visible online map summaries refresh once per minute; place feeds also offer manual refresh. Reports carry observation and expiry dates and leave public feeds automatically when expired. Finds normally last two days; scheduled reports use their applicable date. Community ratings average one active rating per member per store. These are Thrifty ratings, not imported Google ratings or verified purchases.
+
+Signed-in members can confirm or dispute another shopper's report, change/remove their vote, flag inaccurate/spam/private/abusive content, and withdraw their own reports. Three distinct member flags hide an update pending review. The verified admin can review flagged updates per place, hide, restore or remove them; moderation is audited. Free accounts can publish **10 reports per UTC day and 3 per minute**, with **60 feedback interactions per hour**. These are separate from cloud scan credits; the verified admin is exempt.
+
+Community reporting currently covers the **37 reviewed venues**. Unreviewed OpenStreetMap results, fictional samples and private seller pins are excluded. Layout guidance is text only; floorplan/photo uploads, push notifications, merchant ownership verification and live inventory synchronization are not available. Reports are shopper observations, not official store notices or guaranteed availability. No test reports or invented ratings are seeded into production. Read [the community guide](docs/COMMUNITY.md) for expiry, moderation, storage and API details.
 
 ## Purchase location tags
 
@@ -127,27 +167,44 @@ npm run test:runtime   # Hostinger-compatible compiled server startup
 npm run format:check
 ```
 
-Browser tests require Google Chrome (`npx playwright install chrome` if absent). Playwright starts an isolated loopback fixture server on port 4321, serves the production client build, captures email locally and never sends actual sign-in emails. Production startup is checked separately by the compiled-server regression test. CI installs Chrome, tests, builds, and runs the same browser suite. Tests cover review/save/draft/export/sale/persistence, real photo upload with manual fallback, comparable entry, household profiles/goals, offline reload/save, honest connection states and layout overflow. There is no physical phone camera, iOS installation, real Google consent, live SMTP delivery, provider billing or live marketplace acceptance verification from fixture tests alone.
+Browser tests require Google Chrome (`npx playwright install chrome` if absent). Playwright starts an isolated loopback fixture server on port 4321, serves the production client build, captures email locally and never sends actual sign-in emails. Production startup is checked separately by the compiled-server regression test. CI installs Chrome, tests, builds, and runs the same browser suite. The current suite includes **81 domain/API tests**, **40 desktop/phone browser workflows** and a compiled-server startup regression. Coverage includes all four city directories, purchase tags, review/save/draft/export/sale/persistence, photo upload with manual fallback, comparables, household profiles/goals, offline reload/save, account separation, cloud scan quotas, community sharing/voting/flags, admin moderation, expiry, ratings and layout overflow. There is no physical phone camera, iOS installation, real Google consent, live SMTP delivery, provider billing or live marketplace acceptance verification from fixture tests alone.
 
 ## Storage and hosting boundary
 
-Sign-in protects cloud scanning and separates browser-local account workspaces. There is **no shared household membership, cloud inventory database, cross-device inventory sync or automatic backup**. Server-side identities, sessions and scan counters are stored privately in SQLite; shared community reports, feedback and moderation records use that same private database. Inventory and photos are not stored there. Data belongs to the browser origin and may be lost when browser storage is cleared; export regularly. Photos are not durable. Hash navigation works on a static host, but optional AI needs this Node server or a compatible backend. The production service worker caches only the same-origin app shell/assets, never API responses or photos. Updates wait for the user to save their current find and reload.
+Sign-in protects cloud scanning and separates browser-local account workspaces. There is **no shared household membership, cloud inventory database, cross-device inventory sync or automatic backup**. Server-side identities, sessions and scan counters are stored privately in SQLite; shared community reports, feedback and moderation records use that same private database. Inventory and photos are not stored there. Device workspace data belongs to the browser origin and may be lost when browser storage is cleared; export regularly. Shared community reports are server data: workspace backups and reset do not export or remove them; authors withdraw their posts separately. Photos are not durable. Hash navigation and local tools work on a static host, but sign-in, shared community reports, server discovery and optional AI need this Node server or a compatible backend. The production service worker caches only the same-origin app shell/assets, never API responses or photos. Updates wait for the user to save their current find and reload.
 
-The supplied API is for a single-user local deployment. Configure and verify sign-in and mail delivery before enabling paid cloud analysis. Authentication and durable per-user quotas are enforced on cloud requests; payment collection and extra paid usage are not implemented. For a deliberate deployment behind HTTPS, set `HOST`, `PORT`, and exact `APP_ORIGIN` as needed; update the Vite proxy if changing the API port in development. Running the build does not deploy the app. See [Hostinger deployment](docs/HOSTINGER.md) for hosting settings and live verification.
+The Node server supports multiple verified accounts for sign-in, scan quotas and shared community reports; each account still has a separate device-local inventory workspace. Configure and verify sign-in and mail delivery before enabling paid cloud analysis. Authentication and durable per-user quotas are enforced on cloud requests; payment collection and extra paid usage are not implemented. For a deliberate deployment behind HTTPS, set `HOST`, `PORT`, and exact `APP_ORIGIN` as needed; update the Vite proxy if changing the API port in development. Running the build does not deploy the app. See [Hostinger deployment](docs/HOSTINGER.md) for hosting settings and live verification.
+
+## Deployment
+
+The app is hosted at **[worklifelm.com](https://worklifelm.com/)** on Hostinger. Git auto-deployment tracks `robs46859-eng/thrifty` branch **`main`**. Hostinger builds with `npm run build` and starts the compiled **`server.cjs`** entry point on Node.js 22. A push starts a build; wait for deployment completion before treating a revision as live.
+
+Check [health](https://worklifelm.com/api/health) and [integration status](https://worklifelm.com/api/status) after a release. Health returns a source fingerprint so the hosted artifact can be matched to the build log; a documentation-only commit can keep the same source fingerprint. `authenticationConfigured: true` means sign-in storage/configuration initialized, and `communityStorage: "shared-sqlite"` means the shared report store initialized. Neither proves a real customer's Google login, email delivery or paid Vision request. The separate `storage: "device-only"` field describes inventory, not shared reports. Marketplace status remains `disconnected`.
+
+At the November 1, 2026 live status check, identification was **manual**, authentication was configured, shared community storage was available and marketplaces were disconnected. A configured API key alone does not switch the identification provider or prove a successful paid request.
+
+Set credentials in Hostinger's **server environment variables**, never in this README, committed `.env` files or `VITE_` variables. Google sign-in uses `GOOGLE_AUTH_CLIENT_ID`; emailed codes use the `SMTP_*` settings; optional identification uses the Google/Azure Vision settings above. Keep the private SQLite database outside deployment folders so accounts, counters and community reports survive releases. Full setup and acceptance steps are in [Hostinger deployment](docs/HOSTINGER.md) and [authentication setup](docs/AUTHENTICATION.md).
+
+After an app update, save any current find before using **reload the app** when prompted. The service worker waits instead of replacing an in-progress scan.
 
 ## Project structure
 
-| Path                       | Purpose                                                               |
-| -------------------------- | --------------------------------------------------------------------- |
-| `src/components/`          | Scanner, household, merchant, pricing, listing and connection screens |
-| `src/lib/model.ts`         | Shared schemas and data types                                         |
-| `src/lib/scoring.ts`       | Household matching, resale scoring and comparable filtering           |
-| `src/lib/marketplaces.ts`  | Channel price planning and disconnected marketplace adapter contracts |
-| `src/lib/storage.ts`       | Device persistence, backup validation and exports                     |
-| `server/`                  | Optional image-analysis API and production app server                 |
-| `public/`                  | PWA manifest and app icons                                            |
-| `scripts/build-sw.mjs`     | Production offline-shell generation                                   |
-| `tests/`                   | Logic, storage, API and browser workflow tests                        |
-| `.github/workflows/ci.yml` | Automated validation on pushes and pull requests                      |
+| Path                       | Purpose                                                                   |
+| -------------------------- | ------------------------------------------------------------------------- |
+| `src/components/`          | Map, community, scanner, household, merchant, pricing and listing screens |
+| `src/lib/model.ts`         | Shared schemas and data types                                             |
+| `src/lib/scoring.ts`       | Household matching, resale scoring and comparable filtering               |
+| `src/lib/marketplaces.ts`  | Channel price planning and disconnected marketplace adapter contracts     |
+| `src/lib/storage.ts`       | Device persistence, backup validation and exports                         |
+| `src/lib/community.ts`     | Public report schemas, report types and expiry rules                      |
+| `src/lib/catalogue.ts`     | Shared reviewed venue catalogue and city selection                        |
+| `data/`                    | Published Denver and other city directories                               |
+| `research/`                | City plans, evidence, handoffs and usage budgets                          |
+| `server/community*.ts`     | Shared report API, SQLite persistence, feedback and moderation            |
+| `server/`                  | Sign-in, scan protection, discovery, image analysis and production server |
+| `public/`                  | PWA manifest and app icons                                                |
+| `scripts/build-sw.mjs`     | Production offline-shell generation                                       |
+| `tests/`                   | Logic, storage, API and browser workflow tests                            |
+| `.github/workflows/ci.yml` | Automated validation on pushes and pull requests                          |
 
 Read the [architecture and integration guide](docs/ARCHITECTURE.md) for scoring formulas and live-adapter requirements, and the [validation record](docs/VALIDATION.md) for the tested scope and remaining verification limits.
