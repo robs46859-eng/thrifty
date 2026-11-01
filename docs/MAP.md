@@ -4,7 +4,7 @@ Thrifty opens on Explore: an interactive Leaflet/OpenStreetMap map, with categor
 
 ## Explore
 
-The first view loads 17 real source-reviewed Denver-area listings: 8 thrift stores, 4 farmers markets, and 3 vintage/antique shops. Each listing links to its official source and carries a review date. See [the data guide](DATA.md) for the records, coordinate provenance and update process. The fictional sample map is available only by explicitly choosing it in map information or opening `/?demo=1`. Pan/zoom, choose a city or explicitly request location to search another area. Location is never requested automatically.
+The first view loads 17 real source-reviewed Denver-area listings: 10 thrift stores, 4 farmers markets, and 3 vintage/antique shops. Each listing links to its official source and carries a review date. See [the data guide](DATA.md) for the records, coordinate provenance and update process. The fictional sample map is available only by explicitly choosing it in map information or opening `/?demo=1`. Pan/zoom, choose a city or explicitly request location to search another area. Location is never requested automatically.
 
 Text search filters the current results by name, address, description and tags. Category filters update both list and markers. Distances are approximate straight-line miles from the granted location or last searched map center, not driving distances. Place details show the source, raw mapped hours where available, official website where available, save control, and trip control. Public markets are not necessarily farmers markets. Season-ended and future-season market labels use Denver calendar dates. No venue is labelled open now, crowded, verified, or currently selling an item without evidence.
 
@@ -28,7 +28,7 @@ Hearts save a snapshot in the current account's browser workspace. Trips support
 
 ## Sellers
 
-Sell provides a preview flow for a thrift shop, market stall, farm stand, maker or local seller. Move the map to the desired area, create a pin, enter shop/stall details and confirm the coordinates. The form defaults to the current map center. Pin data stays **private on this device**, can be saved to a trip/favorites, exported in the workspace backup and deleted. Public seller publishing, verified merchant ownership, moderation, vendor attendance, customer orders, checkout, live inventory, traffic and community reports are not implemented. A pin does not create a listing on any external marketplace.
+Sell provides a preview flow for a thrift shop, market stall, farm stand, maker or local seller. Move the map to the desired area, create a pin, enter shop/stall details and confirm the coordinates. The form defaults to the current map center. Pin data stays **private on this device**, can be saved to a trip/favorites, exported in the workspace backup and deleted. Public seller publishing, verified merchant ownership, vendor attendance, customer orders, checkout, live inventory and traffic are not implemented. Reviewed directory places have a separate shared community reporting and moderation feature described in [COMMUNITY.md](COMMUNITY.md). A pin does not create a listing on any external marketplace.
 
 This redesign does not modify Google/email login verification, scan quotas, AI consent or marketplace integration status. Verified `rob@virtuapet.com` remains exempt from scan quotas.
 
@@ -37,3 +37,7 @@ This redesign does not modify Google/email login verification, scan quotas, AI c
 Version 1 workspaces gain an optional `discovery` field with validated `saved`, `stops` and `sellers` arrays. Old backups receive empty arrays. Saved places/trips/drafts export with the workspace and follow the existing account-specific device keys. They do not sync between devices. Reset clears discovery data with the rest of the current workspace.
 
 Purchase locations can be selected from reviewed map places or entered manually when scanning. They remain with the item through photo upload, inventory persistence and backups. Household and merchant cards support editing/clearing the location and opening user-requested directions. No automatic GPS capture or public purchase history is enabled. Adjacent city catalogues reuse shared venue IDs and discovery selects the nearest city profile to prevent duplicate pins or mixed city totals.
+
+## Community layer
+
+Reviewed places offer ten kinds of shared shopper observations, confirmation/dispute controls, flags, author withdrawal and admin moderation. Pins and cards show active report badges; Recent finds and Community updates filter current results. Reports are dated, expire automatically and do not override official directory facts. Sign-in is required to contribute. See [the community guide](COMMUNITY.md) for storage, limits, moderation and supported places.

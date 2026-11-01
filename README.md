@@ -34,16 +34,17 @@ Open `http://127.0.0.1:4317`. Installation and camera capture require HTTPS or l
 
 ## Expand to another US city
 
-Use the [city expansion workflow](docs/CITY_WORKFLOW.md) to repeat the Denver process in Colorado or other US states. It includes empty Boulder/Portland plans, evidence-based publication, cached source/geocode requests, hard HTTP budgets and a [reusable research prompt](docs/CITY_RESEARCH_PROMPT.md). Scripts make no paid AI requests and do not consume scan credits. New cities enter discovery automatically after their data is reviewed and published through the CLI. No recurring crawl is enabled.
+Use the [city expansion workflow](docs/CITY_WORKFLOW.md) to repeat the Denver process in Colorado or other US states. It includes a Portland starter plan and published Colorado examples, evidence-based publication, cached source/geocode requests, hard HTTP budgets and a [reusable research prompt](docs/CITY_RESEARCH_PROMPT.md). Scripts make no paid AI requests and do not consume scan credits. New cities enter discovery automatically after their data is reviewed and published through the CLI. No recurring crawl is enabled.
 
 ## Explore your neighborhood
 
-1. Open **Explore** to pan and zoom the map. The first Denver view contains **15 real places in three categories**.
+1. Open **Explore** to pan and zoom the map. The first Denver view contains **17 real places in three categories**.
 2. Tap **Search this area** or the location button to search near a map center. The Denver launch directory works without an API key or external lookup. Other cities use best-effort public discovery.
 3. Filter by thrift stores, farmers/public markets, vintage, farm shops or local sellers; use the search box to narrow the current results.
 4. Open a pin or place card, save it with the heart, and add it to **My little trip**. Public-place trips open directions in Google Maps. Sample mode is explicit and cannot launch real directions.
 5. Open **Sell** to create a private shop/stall draft at your chosen map location. Other customers cannot see it yet.
-6. Open **Your tools** for household goals, merchant inventory, pricing, connections, backup and installation.
+6. Open a reviewed place → **Share an update** to contribute a public shopper observation. Sign in first; private purchases are never published automatically.
+7. Open **Your tools** for household goals, merchant inventory, pricing, connections, backup and installation.
 
 Read the [data guide](docs/DATA.md) for all three populated categories, source links, seasonal labels and the maintenance process, and the [map guide](docs/MAP.md) for seller boundaries, location privacy and trip behavior.
 
@@ -60,8 +61,9 @@ Changing the browser origin or port creates a separate workspace. Export from th
 
 ## What works
 
-- **Real Denver directory:** 8 thrift stores, 4 farmers markets and 3 vintage/antique shops, with published addresses, source links, checked dates, approximate geocoded pins and season-ended/future-season labels. Review dates become overdue after 30 days; fetching the app never renews them.
+- **Real Denver directory:** 10 thrift stores, 4 farmers markets and 3 vintage/antique shops, with published addresses, source links, checked dates, approximate geocoded pins and season-ended/future-season labels. Review dates become overdue after 30 days; fetching the app never renews them.
 - **Interactive map:** pannable Leaflet map, color-coded selectable pins, category and text filters, public place search, explicit location permission, collapsible mobile place sheet, saved places, ordered trip stops and Google Maps directions for public destinations. See [map limitations](docs/MAP.md).
+- **Community updates:** share restock/discount days, closures/reopenings, holiday hours, category price ranges, layout notes, ratings, parking, nearby finds and accessibility. Signed-in members can confirm, dispute, flag and withdraw reports; admin moderation and automatic expiry keep updates bounded. Map badges and filters show active reports. See [community features and limits](docs/COMMUNITY.md).
 - **Seller map workspace:** create and delete private shop/stall pins with location, category, description and dates/hours; preserved in local backups. No public publishing is implied.
 
 - **Scanning:** rear-camera capture input, separate photo-library upload, session photo preview, manual identification and editable details. JPEG/PNG/WebP up to 4 MB. Configure a provider for opt-in image labels and OCR. HEIC must be converted to a supported image format.
@@ -129,7 +131,7 @@ Browser tests require Google Chrome (`npx playwright install chrome` if absent).
 
 ## Storage and hosting boundary
 
-Sign-in protects cloud scanning and separates browser-local account workspaces. There is **no shared household membership, cloud inventory database, cross-device inventory sync or automatic backup**. Server-side identities, sessions and scan counters are stored privately in SQLite; inventory and photos are not stored there. Data belongs to the browser origin and may be lost when browser storage is cleared; export regularly. Photos are not durable. Hash navigation works on a static host, but optional AI needs this Node server or a compatible backend. The production service worker caches only the same-origin app shell/assets, never API responses or photos. Updates wait for the user to save their current find and reload.
+Sign-in protects cloud scanning and separates browser-local account workspaces. There is **no shared household membership, cloud inventory database, cross-device inventory sync or automatic backup**. Server-side identities, sessions and scan counters are stored privately in SQLite; shared community reports, feedback and moderation records use that same private database. Inventory and photos are not stored there. Data belongs to the browser origin and may be lost when browser storage is cleared; export regularly. Photos are not durable. Hash navigation works on a static host, but optional AI needs this Node server or a compatible backend. The production service worker caches only the same-origin app shell/assets, never API responses or photos. Updates wait for the user to save their current find and reload.
 
 The supplied API is for a single-user local deployment. Configure and verify sign-in and mail delivery before enabling paid cloud analysis. Authentication and durable per-user quotas are enforced on cloud requests; payment collection and extra paid usage are not implemented. For a deliberate deployment behind HTTPS, set `HOST`, `PORT`, and exact `APP_ORIGIN` as needed; update the Vite proxy if changing the API port in development. Running the build does not deploy the app. See [Hostinger deployment](docs/HOSTINGER.md) for hosting settings and live verification.
 

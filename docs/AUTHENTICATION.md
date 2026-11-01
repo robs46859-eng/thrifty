@@ -94,3 +94,7 @@ The admin address is fixed on the server and compared against the verified ident
 ## Validation boundary
 
 Tests exercise actual Google-library signature/audience/issuer/expiry checks with locally signed fixtures, email-code lifecycle with a captured local mail transport, HTTP sessions/CSRF, atomic limits, admin exemptions, restart persistence and browser workspace separation. The browser fixture server is loopback-only, refuses production mode and is excluded from the production entry graph. It provides no deployed test-login endpoint. Fixtures are not evidence of live Google consent, real SMTP delivery, or a credentialed Vision call; those require the configuration and acceptance steps above.
+
+## Shared community reports
+
+[Community updates](COMMUNITY.md) use the existing private auth SQLite database for reports, feedback and moderation audit records. Startup adds the tables without resetting identities or scan counters. No new provider credentials are required. Check `communityStorage` on `/api/health` or `/api/status`; `shared-sqlite` confirms initialization, while `unavailable` means the feature must remain locked. Inventory, purchase tags and seller drafts remain device-local. Public observations never update official directory facts or imply live inventory. Backups must include the shared private database; workspace JSON contains only device data.

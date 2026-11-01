@@ -2735,3 +2735,191 @@ dialog > p {
   margin: 0.35rem 0 0;
   padding: 0.25rem 0;
 }
+
+/* Community observations remain distinct from official place details. */
+.community-panel {
+  margin: 1.5rem 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+.community-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem;
+  justify-content: space-between;
+}
+.community-heading h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.15rem;
+  margin: 0.3rem 0;
+}
+.community-heading .eyebrow {
+  font-size: 0.6rem;
+}
+.community-panel .field {
+  margin: 0.8rem 0;
+}
+.community-panel .micro {
+  font-size: 0.74rem;
+  line-height: 1.55;
+}
+.community-rating {
+  display: flex;
+  gap: 0.35rem;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+}
+.community-feed {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0.8rem 0;
+}
+.community-report {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #f7f8f2;
+  padding: 0.85rem;
+  overflow-wrap: anywhere;
+}
+.community-report-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+}
+.community-report-top span {
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+.community-report .community-facts {
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+.community-report .community-details {
+  font-size: 0.84rem;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+.community-actions {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.community-actions button,
+.community-map-tools button {
+  border: 1px solid #dce2d3;
+  border-radius: 9px;
+  background: white;
+  padding: 0.45rem 0.6rem;
+  min-height: 36px;
+  font-size: 0.72rem;
+  display: inline-flex;
+  gap: 0.3rem;
+  align-items: center;
+}
+.community-actions button[aria-pressed='true'],
+.community-map-tools button[aria-pressed='true'] {
+  background: #254e3d;
+  color: white;
+}
+.community-actions button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.community-error {
+  color: #984532;
+  background: #fff1e9;
+  border-radius: 8px;
+  padding: 0.6rem;
+  font-size: 0.8rem;
+}
+.community-empty {
+  padding: 0.8rem;
+  background: #f1f4eb;
+  border-radius: 10px;
+  font-size: 0.82rem;
+}
+.community-inactive {
+  border-style: dashed;
+}
+.community-status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #924631;
+}
+.community-moderation {
+  padding-top: 1rem;
+  margin-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+.community-days,
+.community-confirm {
+  grid-column: 1 / -1;
+}
+.community-days {
+  border: 1px solid #dce2d3;
+  border-radius: 10px;
+  padding: 0.7rem;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.community-days legend {
+  font-size: 0.8rem;
+}
+.community-days label {
+  display: inline-flex;
+  gap: 0.25rem;
+  align-items: center;
+  font-size: 0.78rem;
+}
+.community-form > p,
+.community-form > button {
+  grid-column: 1 / -1;
+}
+.community-confirm {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+.community-map-tools {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin: 0.6rem 0;
+}
+.community-map-tools p {
+  width: 100%;
+  margin: 0.2rem 0;
+}
+.community-card-badge {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 0.67rem;
+  color: #694a92;
+  margin: 0.25rem 0;
+}
+.community-pin-badge {
+  position: absolute;
+  right: -4px;
+  top: -5px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 3px;
+  border: 2px solid white;
+  border-radius: 12px;
+  background: #795ca5;
+  color: white;
+  font: 700 10px/14px sans-serif;
+  text-align: center;
+}

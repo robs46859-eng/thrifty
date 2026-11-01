@@ -82,3 +82,7 @@ To update or add a listing:
 4. Run data validation, tests and build, then commit/push through the existing deployment flow. `scripts/build-server.mjs` includes data files in the source fingerprint and bundles the catalogue into the production server.
 
 There is no scheduled background refresh in this release. This is an expandable launch directory; nationwide coverage, licensed real-time feeds, commercial map tiles and seller-owned public listings require additional work.
+
+## Shared community reports
+
+[Community updates](COMMUNITY.md) use the existing private auth SQLite database for reports, feedback and moderation audit records. Startup adds the tables without resetting identities or scan counters. No new provider credentials are required. Check `communityStorage` on `/api/health` or `/api/status`; `shared-sqlite` confirms initialization, while `unavailable` means the feature must remain locked. Inventory, purchase tags and seller drafts remain device-local. Public observations never update official directory facts or imply live inventory. Backups must include the shared private database; workspace JSON contains only device data.

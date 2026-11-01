@@ -4,10 +4,10 @@ Validated locally on November 1, 2026, including the real Denver directory and p
 
 | Check                                         | Result                                                               |
 | --------------------------------------------- | -------------------------------------------------------------------- |
-| Domain, storage, authentication and API tests | 64 passed                                                            |
+| Domain, storage, authentication and API tests | 81 passed                                                            |
 | Production build / TypeScript                 | Passed; versioned offline shell generated                            |
-| Desktop Chrome browser workflows              | 14 passed                                                            |
-| Pixel 7 emulation in Chrome                   | 14 passed                                                            |
+| Desktop Chrome browser workflows              | 20 passed                                                            |
+| Pixel 7 emulation in Chrome                   | 20 passed                                                            |
 | Offline reload and local save                 | Passed in both browser configurations                                |
 | Responsive overflow checks                    | Passed on map, saved, sell and existing tools in both configurations |
 | Formatting and whitespace                     | Passed                                                               |
@@ -38,3 +38,9 @@ Denver’s store refresh adds arc Central Park and Pecos and rechecks the existi
 Local validation: 70 logic/API tests, 36 desktop/mobile browser tests, production build, compiled-server startup, all-city data checks and formatting. The final phone spacing adjustment is checked again against the purchase-location browser flows. CI and hosted/API verification are reported in the release delivery. Directory checks do not establish live inventory, merchant publishing, current vendor attendance or open-now status.
 
 Research used 20 additional CLI requests with the daily ledger preserved at 38/60. Operator relocation/closure notices and donation-only sites were excluded. Source plans and handoffs document the exact supported venues, calendar exceptions and remaining unknown hours. No paid AI, Places or Vision calls were used for directory research.
+
+## Community observations — November 1, 2026
+
+The community release adds eleven server/domain tests for all ten report kinds, strict input/date validation, sign-in/CSRF/body limits, public sharing without private identity leakage, per-member ratings, expiry and hidden-report exclusions, votes, distinct flags, ownership, admin moderation, atomic contribution quotas independent of scan credits, unavailable storage and database reopen persistence. Desktop and phone browser flows publish restock observations, confirm and flag from another member, moderate as admin, and publish category prices, finds and ratings with map filtering. All identities, messages and reports in these tests are isolated fixtures. No test reports are posted to production.
+
+Community release validation: 81 domain/API tests, 40 desktop/phone browser workflows, production TypeScript/build, compiled-server startup, all-city data validation, formatting and whitespace checks passed locally. Existing sign-in protection and 10/day, 3/minute cloud scan limits remain covered. Authenticated sharing and moderation are fixture-tested; live checks do not create public test content.

@@ -1,4 +1,5 @@
 import express from 'express';
+import { installCommunity } from './community';
 import { installDiscovery } from './discovery';
 import { AuthService, runtimeAuth } from './auth';
 import { AuthError } from './auth-store';
@@ -57,6 +58,22 @@ export function createApp(
       next(error);
     }
   });
+  app.use(
+    '/api/community',
+    (req, res, next) => {
+      try {
+        if (req.method === 'POST') {
+          const session = auth.requireUser(req);
+          auth.csrf(req, session.csrf);
+        }
+        next();
+      } catch (error) {
+        next(error);
+      }
+    },
+    express.json({ limit: '8kb' }),
+  );
+  const communityAvailable = installCommunity(app, auth);
   app.use(express.json({ limit: '6mb' }));
   app.get('/api/health', (_req, res) =>
     res.json({
@@ -65,6 +82,7 @@ export function createApp(
       version: process.env.THRIFTY_VERSION ?? 'development',
       sourceId: process.env.THRIFTY_SOURCE_ID ?? 'development',
       storage: 'device-only',
+      communityStorage: communityAvailable ? 'shared-sqlite' : 'unavailable',
       authenticationConfigured: auth.ready,
     }),
   );
@@ -73,6 +91,7 @@ export function createApp(
       identification: configuredProvider(config),
       marketplaces: 'disconnected',
       storage: 'device-only',
+      communityStorage: communityAvailable ? 'shared-sqlite' : 'unavailable',
       authenticationConfigured: auth.ready,
     }),
   );
@@ -156,7 +175,7 @@ export function createApp(
   app.use(
     (
       error: { status?: number; code?: string; message?: string; retryAfter?: number },
-      _req: express.Request,
+      req: express.Request,
       res: express.Response,
       _next: express.NextFunction,
     ) => {
@@ -167,15 +186,21 @@ export function createApp(
       }
       if (error.code?.startsWith('ERR_SQLITE') || error.code?.startsWith('SQLITE')) {
         res.status(503).json({
-          error: 'Sign-in and scanning are temporarily unavailable. Please try again later.',
-          code: 'AUTH_STORE_UNAVAILABLE',
+          error: req.path.startsWith('/api/community')
+            ? 'Community updates are temporarily unavailable.'
+            : 'Sign-in and scanning are temporarily unavailable. Please try again later.',
+          code: req.path.startsWith('/api/community')
+            ? 'COMMUNITY_UNAVAILABLE'
+            : 'AUTH_STORE_UNAVAILABLE',
         });
         return;
       }
       res.status(error.status === 413 ? 413 : 400).json({
         error:
           error.status === 413
-            ? 'Image is too large. Use a smaller photo.'
+            ? req.path.startsWith('/api/community')
+              ? 'Community updates must be under 8 KB.'
+              : 'Image is too large. Use a smaller photo.'
             : 'Request could not be processed.',
       });
     },

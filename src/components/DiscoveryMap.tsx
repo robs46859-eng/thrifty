@@ -3,6 +3,7 @@ import * as L from 'leaflet';
 import { Plus, Minus, LocateFixed, Layers } from 'lucide-react';
 import { DENVER, type Place, type Point } from '../lib/discovery';
 import 'leaflet/dist/leaflet.css';
+import type { CommunitySummary } from '../lib/community';
 export type MapCommand = { point: Point; zoom?: number; sequence: number; fit?: Point[] };
 const icons: Record<Place['kind'], string> = {
   thrift: '<path d="m16 3 5 4-3 5-2-1v10H8V11l-2 1-3-5 5-4a4 4 0 0 0 8 0Z"/>',
@@ -14,6 +15,7 @@ const icons: Record<Place['kind'], string> = {
 };
 export default function DiscoveryMap({
   places,
+  community,
   selected,
   onSelect,
   onMove,
@@ -24,6 +26,7 @@ export default function DiscoveryMap({
   locating,
 }: {
   places: Place[];
+  community?: Record<string, CommunitySummary>;
   selected: string | null;
   onSelect: (place: Place) => void;
   onMove: (point: Point) => void;
@@ -87,6 +90,33 @@ export default function DiscoveryMap({
       label.className = 'pin-label';
       label.textContent = place.name;
       node.append(bubble, label);
+      const summary = community?.[place.id];
+      if (summary?.count) {
+        const badge = document.createElement('span');
+        badge.className = 'community-pin-badge';
+        const signal = summary.signals.includes('closure')
+          ? 'closure'
+          : summary.signals.includes('find')
+            ? 'find'
+            : summary.signals.includes('discount')
+              ? 'discount'
+              : 'update';
+        badge.textContent =
+          signal === 'closure'
+            ? '!'
+            : signal === 'find'
+              ? '+'
+              : signal === 'discount'
+                ? '%'
+                : String(Math.min(summary.count, 99));
+        badge.title =
+          signal === 'closure'
+            ? 'Community closure or reopening report — unverified'
+            : signal === 'find'
+              ? 'Recent shopper find — availability unverified'
+              : 'Community shopper updates';
+        node.append(badge);
+      }
       const marker = L.marker([place.lat, place.lng], {
         icon: L.divIcon({
           html: node,
@@ -102,7 +132,7 @@ export default function DiscoveryMap({
       marker.on('click', () => callbacks.current.onSelect(place));
       marker.getElement()?.setAttribute('aria-label', `View ${place.name}`);
     });
-  }, [places, selected]);
+  }, [places, selected, community]);
   useEffect(() => {
     if (command && map.current) {
       const m = map.current;

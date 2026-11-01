@@ -337,7 +337,8 @@ function AccountDialog({ close }: { close: () => void }) {
           </div>
           <p className="micro">
             Inventory and goals remain on this device, in a workspace for this account. Sign-in does
-            not add cloud inventory backup. Export before switching browsers or devices.
+            not add cloud inventory backup. Export before switching browsers or devices. Community
+            updates you choose to publish are shared publicly under a shopper alias.
           </p>
           <button className="btn secondary full" onClick={() => void signOut()} disabled={busy}>
             <LogOut size={16} /> Sign out

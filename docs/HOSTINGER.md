@@ -46,3 +46,7 @@ Before activating paid cloud identification publicly, configure and verify Googl
 `sourceId` is a stable hash of the shipped application sources and build inputs, allowing local and hosted artifacts to be compared even without Git metadata on the server. Health is a process/artifact check; it is not evidence that external AI or marketplace services work.
 
 See [validation scope](VALIDATION.md) and [integration boundaries](ARCHITECTURE.md) for what remains outside this deployment.
+
+## Shared community reports
+
+[Community updates](COMMUNITY.md) use the existing private auth SQLite database for reports, feedback and moderation audit records. Startup adds the tables without resetting identities or scan counters. No new provider credentials are required. Check `communityStorage` on `/api/health` or `/api/status`; `shared-sqlite` confirms initialization, while `unavailable` means the feature must remain locked. Inventory, purchase tags and seller drafts remain device-local. Public observations never update official directory facts or imply live inventory. Backups must include the shared private database; workspace JSON contains only device data.

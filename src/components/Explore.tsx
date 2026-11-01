@@ -1,3 +1,5 @@
+import { CommunityBadge, CommunityPanel } from './Community';
+import { useCommunitySummaries } from '../lib/use-community';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   MapPin,
@@ -99,15 +101,37 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
     setState((previous) => ({ ...previous, discovery: { ...previous.discovery, ...change } }));
   const saved = selected && data.saved.some((p) => p.id === selected.id);
   const all = useMemo(() => [...places, ...data.sellers], [places, data.sellers]);
+  const [communityFilter, setCommunityFilter] = useState<'all' | 'find' | 'updates'>('all');
+  const community = useCommunitySummaries(all.map((place) => place.id));
+  useEffect(() => setCommunityFilter('all'), [places]);
   const results = useMemo(
     () =>
       (view === 'saved' ? data.saved : view === 'sell' ? data.sellers : all)
         .filter((p) => matchesPlace(p, query, kind))
+        .filter(
+          (p) =>
+            view !== 'map' ||
+            communityFilter === 'all' ||
+            (communityFilter === 'find'
+              ? community.summaries[p.id]?.signals.includes('find')
+              : (community.summaries[p.id]?.count ?? 0) > 0),
+        )
         .sort(
           (a, b) =>
             distanceMiles(user ?? searchedCenter, a) - distanceMiles(user ?? searchedCenter, b),
         ),
-    [all, data.saved, data.sellers, view, query, kind, user, searchedCenter],
+    [
+      all,
+      data.saved,
+      data.sellers,
+      view,
+      query,
+      kind,
+      user,
+      searchedCenter,
+      communityFilter,
+      community.summaries,
+    ],
   );
   const mapPlaces =
     view === 'map' ? results : [...new Map([...all, ...results].map((p) => [p.id, p])).values()];
@@ -232,6 +256,7 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
       <div className="map-stage">
         <DiscoveryMap
           places={mapPlaces}
+          community={community.summaries}
           selected={selected?.id ?? null}
           onSelect={focus}
           onMove={setCenter}
@@ -421,6 +446,9 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
                   <Trash2 size={14} /> Delete private pin
                 </button>
               )}
+              {isPublicPlace(selected) && (
+                <CommunityPanel key={selected.id} place={selected} onChange={community.refresh} />
+              )}
               <button
                 className="scan-at-place"
                 onClick={() => {
@@ -520,6 +548,36 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
                     </button>
                   )}
                 </form>
+                {view === 'map' && source !== 'sample' && (
+                  <div className="community-map-tools" aria-label="Community map filters">
+                    <button
+                      aria-pressed={communityFilter === 'all'}
+                      onClick={() => setCommunityFilter('all')}
+                    >
+                      All places
+                    </button>
+                    <button
+                      aria-pressed={communityFilter === 'find'}
+                      onClick={() => setCommunityFilter('find')}
+                    >
+                      Recent finds
+                    </button>
+                    <button
+                      aria-pressed={communityFilter === 'updates'}
+                      onClick={() => setCommunityFilter('updates')}
+                    >
+                      Community updates
+                    </button>
+                    {community.error && (
+                      <p className="micro">{community.error} Store listings are still available.</p>
+                    )}
+                    {communityFilter !== 'all' && (
+                      <p className="micro">
+                        Showing current shopper reports. No stock or open-now guarantee.
+                      </p>
+                    )}
+                  </div>
+                )}
                 {source === 'official' && view === 'map' && (
                   <div className="directory-callout">
                     <Check size={16} />
@@ -576,6 +634,7 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
                     <div>
                       <span className="card-kind">{kindLabels[place.kind]}</span>
                       <h3>{place.name}</h3>
+                      <CommunityBadge summary={community.summaries[place.id]} />
                       <p>
                         {place.tags.length
                           ? place.tags.slice(0, 2).join(' · ')
@@ -625,7 +684,9 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
                       ? 'Tap the heart on a place to keep it for later.'
                       : view === 'sell'
                         ? 'Create your first private seller pin above.'
-                        : 'Try another category, clear your search, or search a different area.'}
+                        : communityFilter !== 'all'
+                          ? 'No current community reports match. Choose All places to browse stores and share an observation.'
+                          : 'Try another category, clear your search, or search a different area.'}
                   </p>
                   {view === 'saved' && (
                     <button className="text-link" onClick={() => navigate('map')}>
@@ -802,8 +863,9 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
           )}
           <p>
             Sample places are fictional. Seller pins, saved places, and trips stay in this device’s
-            workspace. Seller publishing, live crowds, traffic, and verified open-now status are not
-            available.
+            workspace. Community reports are time-limited shopper observations and may be
+            inaccurate. Shared reporting requires sign-in. Seller publishing, live crowds, traffic,
+            and verified open-now status are not available.
           </p>
           <p>
             Distance is approximate and measured in a straight line. Map tiles need internet. Your
