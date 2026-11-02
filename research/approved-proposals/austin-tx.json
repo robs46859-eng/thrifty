@@ -1,0 +1,177 @@
+{
+  "version": 1,
+  "city": {
+    "id": "austin-tx",
+    "city": "Austin",
+    "state": "TX",
+    "country": "US",
+    "timezone": "America/Chicago",
+    "center": {
+      "lat": 30.2672,
+      "lng": -97.7431
+    },
+    "radiusKm": 20
+  },
+  "generatedAt": "2026-11-02T18:04:50.957Z",
+  "reviewStatus": "pending",
+  "warning": "Model extraction only. Verify every field against registered official sources, add coordinates separately, and use the normal approval workflow.",
+  "limits": {
+    "callsThisRun": 5,
+    "callsPerRun": 6,
+    "callsPerUTCDay": 12
+  },
+  "results": [
+    {
+      "sourceId": "goodwill-central-texas-retail-stores",
+      "sourceUrl": "https://www.goodwillcentraltexas.org/retail-stores/",
+      "sourceHash": "3ed4b93444ee100332147c3d7f1f53c587f8043b9449739e8217d9950f06a67a",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "Airport Store & Donation Center",
+            "kind": "thrift",
+            "address": "836 Airport Blvd, Austin, TX 78702",
+            "website": "",
+            "hours": "Mon-Sat 10am-8pm, Sun 10am-7pm",
+            "description": "Store + Donation Center",
+            "evidenceNote": "Airport Store & Donation Center located at 836 Airport Blvd, Austin, TX 78702 with store hours Mon-Sat 10am-8pm, Sun 10am-7pm.",
+            "confidence": "high"
+          },
+          {
+            "name": "Anderson Lane Store & Donation Center",
+            "kind": "thrift",
+            "address": "2900 W Anderson Ln #3, Austin, TX 78757",
+            "website": "",
+            "hours": "Mon-Sat 10am-8pm, Sun 10am-7pm",
+            "description": "Store + Donation Center",
+            "evidenceNote": "Anderson Lane Store & Donation Center located at 2900 W Anderson Ln #3, Austin, TX 78757 with store hours.",
+            "confidence": "high"
+          },
+          {
+            "name": "Balcones Store & Donation Center",
+            "kind": "thrift",
+            "address": "13096 US-183 Hwy #105, Austin, TX 78750",
+            "website": "",
+            "hours": "Mon-Sat 10am-8pm, Sun 10am-7pm",
+            "description": "Store + Donation Center",
+            "evidenceNote": "Balcones Store & Donation Center located at 13096 US-183 Hwy #105, Austin, TX 78750.",
+            "confidence": "high"
+          },
+          {
+            "name": "Brodie Lane Store & Donation Center",
+            "kind": "thrift",
+            "address": "9801 Brodie Ln, Austin, TX 78748",
+            "website": "",
+            "hours": "Mon-Sat 10am-8pm, Sun 10am-7pm",
+            "description": "Store + Donation Center",
+            "evidenceNote": "Brodie Lane Store & Donation Center located at 9801 Brodie Ln, Austin, TX 78748.",
+            "confidence": "high"
+          },
+          {
+            "name": "Chimney Corners Store & Donation Center",
+            "kind": "thrift",
+            "address": "3910 Far W Blvd, Austin, TX 78731",
+            "website": "",
+            "hours": "Mon-Sat 10am-8pm, Sun 10am-7pm",
+            "description": "Store + Donation Center",
+            "evidenceNote": "Chimney Corners Store & Donation Center located at 3910 Far W Blvd, Austin, TX 78731.",
+            "confidence": "high"
+          },
+          {
+            "name": "Clock Tower Store & Donation Center",
+            "kind": "thrift",
+            "address": "7817 Clock Tower Dr, Austin, TX 78753",
+            "website": "",
+            "hours": "Mon-Sat 10am-8pm, Sun 10am-7pm",
+            "description": "Store + Donation Center",
+            "evidenceNote": "Clock Tower Store & Donation Center located at 7817 Clock Tower Dr, Austin, TX 78753.",
+            "confidence": "high"
+          },
+          {
+            "name": "Goodwill Distribution Center – North Outlet",
+            "kind": "thrift",
+            "address": "2300 Scarbrough Dr Building 5, Austin, TX 78728",
+            "website": "",
+            "hours": "Mon-Sat 8am-8pm, Sun 9am-7pm",
+            "description": "Store + Donation Center",
+            "evidenceNote": "Goodwill Distribution Center – North Outlet located at 2300 Scarbrough Dr Building 5, Austin, TX 78728.",
+            "confidence": "high"
+          },
+          {
+            "name": "Goodwill Resource Center – South Outlet",
+            "kind": "thrift",
+            "address": "6505 Burleson Road, Austin, TX 78744",
+            "website": "",
+            "hours": "Mon-Sat 8am-8pm, Sun 9am-7pm",
+            "description": "Store + Donation Center",
+            "evidenceNote": "Goodwill Resource Center – South Outlet located at 6505 Burleson Road, Austin, TX 78744.",
+            "confidence": "high"
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "texas-farmers-market",
+      "sourceUrl": "https://texasfarmersmarket.org/",
+      "sourceHash": "11fbf629cadcf073f81798cd160add33429e98a6f944454cbe3d90843cec9c13",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "TFM AT BELL",
+            "kind": "market",
+            "address": "",
+            "website": "",
+            "hours": "Saturdays 9am-1pm",
+            "description": "Producer-only farmers market in the Greater Austin area.",
+            "evidenceNote": "Found under FIND US HERE: TFM AT BELL Saturdays 9am-1pm",
+            "confidence": "high"
+          },
+          {
+            "name": "TFM at MUELLER",
+            "kind": "market",
+            "address": "",
+            "website": "",
+            "hours": "Sundays 10am-2pm",
+            "description": "Producer-only farmers market in the Greater Austin area.",
+            "evidenceNote": "Found under FIND US HERE: TFM at MUELLER Sundays 10am-2pm",
+            "confidence": "high"
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "visit-austin-room-service-vintage",
+      "sourceUrl": "https://www.austintexas.org/listings/room-service-vintage/3295/",
+      "sourceHash": "514c278b99878f3a9d39ac68db376b6d801bbd12ab817b687688550d84c65b70",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": []
+      }
+    },
+    {
+      "sourceId": "visit-austin-big-berthas-paradise",
+      "sourceUrl": "https://www.austintexas.org/listings/big-berthas-paradise/9404/",
+      "sourceHash": "05540f761a941e86c1bab93539aaa8375837c3c9b8b47feabb02d8b796921b54",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": []
+      }
+    },
+    {
+      "sourceId": "visit-austin-monkies-vintage-thrift",
+      "sourceUrl": "https://www.austintexas.org/listings/monkies-vintage-%26-thrift/9863/",
+      "sourceHash": "420411214b49cd3725595ee30cf161c203c4cfac43676dfc8c27a227b1a04fc4",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": []
+      }
+    }
+  ]
+}

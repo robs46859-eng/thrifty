@@ -1,0 +1,208 @@
+{
+  "version": 1,
+  "city": {
+    "id": "kansas-city-mo",
+    "city": "Kansas City",
+    "state": "MO",
+    "country": "US",
+    "timezone": "America/Chicago",
+    "center": {
+      "lat": 39.0997,
+      "lng": -94.5786
+    },
+    "radiusKm": 20
+  },
+  "generatedAt": "2026-11-02T18:09:27.126Z",
+  "reviewStatus": "pending",
+  "warning": "Model extraction only. Verify every field against registered official sources, add coordinates separately, and use the normal approval workflow.",
+  "limits": {
+    "callsThisRun": 3,
+    "callsPerRun": 6,
+    "callsPerUTCDay": 12
+  },
+  "results": [
+    {
+      "sourceId": "mokan-goodwill-locations",
+      "sourceUrl": "https://www.mokangoodwill.org/locations",
+      "sourceHash": "11ed27de1fbcfb7e4c9838ce644bd1efc2c23a13daa0805c1010951ae811e589",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "Goodwill Midtown",
+            "kind": "thrift",
+            "address": "3630 Main Street Kansas City, MO 64111",
+            "hours": "Mon-Sat 9:00AM to 7:00PM Sun 10:00AM to 6:00PM",
+            "description": "Retail stores and donation drop off sites in Kansas & Missouri",
+            "evidenceNote": "Goodwill Midtown 3630 Main Street Kansas City, MO 64111",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Goodwill East 63rd Street, MO",
+            "kind": "thrift",
+            "address": "8648 E 63rd St Kansas City, MO 64133",
+            "hours": "Mon-Sat 9:00AM to 8:00PM Sun 10:00AM to 6:00PM",
+            "description": "Retail stores and donation drop off sites in Kansas & Missouri",
+            "evidenceNote": "Goodwill East 63rd Street, MO 8648 E 63rd St Kansas City, MO 64133",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Goodwill Outlet Store",
+            "kind": "thrift",
+            "address": "5000 Bannister Road Kansas City, MO 64132",
+            "hours": "Daily Outlet Store Hours: 10:00 AM – 1:00 PM and 3:00 PM – 6:00 PM Daily Donation Drop-Off Hours: 9:00 AM to 6:00 PM",
+            "description": "Retail stores and donation drop off sites in Kansas & Missouri",
+            "evidenceNote": "Goodwill Outlet Store 5000 Bannister Road Kansas City, MO 64132",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Goodwill on North Oak",
+            "kind": "thrift",
+            "address": "4824 N. Oak Trafficway Kansas City, MO 64118",
+            "hours": "Mon-Sat 9:00AM to 8:00PM Sun 10:00AM to 6:00PM",
+            "description": "Retail stores and donation drop off sites in Kansas & Missouri",
+            "evidenceNote": "Goodwill on North Oak 4824 N. Oak Trafficway Kansas City, MO 64118",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Goodwill Liberty",
+            "kind": "thrift",
+            "address": "9740 N. Cedar Avenue Kansas City, MO 64157",
+            "hours": "Mon-Sat 9:00AM to 8:00PM Sun 10:00AM to 6:00PM",
+            "description": "Retail stores and donation drop off sites in Kansas & Missouri",
+            "evidenceNote": "Goodwill Liberty 9740 N. Cedar Avenue Kansas City, MO 64157",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Goodwill Waldo",
+            "kind": "thrift",
+            "address": "8230 Wornall Rd Kansas City, MO 64114",
+            "hours": "Mon-Sat 9:00AM to 8:00PM Sun 10:00AM to 6:00PM",
+            "description": "Retail stores and donation drop off sites in Kansas & Missouri",
+            "evidenceNote": "Goodwill Waldo 8230 Wornall Rd Kansas City, MO 64114",
+            "confidence": "high",
+            "website": ""
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "kansas-city-city-market",
+      "sourceUrl": "https://thecitymarketkc.org/",
+      "sourceHash": "fd0591840e7f3fde390a2009d8d771afdac3f789bbd201c37c8c1d14efaa637d",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "City Market",
+            "kind": "market",
+            "address": "20 E. 5th Street Suite 201 Kansas City, MO 64106",
+            "hours": "",
+            "description": "Kansas City’s original marketplace connecting local businesses and regional growers to the community featuring shops, restaurants, produce stands, spices, import grocers, and the region's largest Farmers Market.",
+            "evidenceNote": "Mentioned as City Market located at 20 E. 5th Street Suite 201 Kansas City, MO 64106 in the source text.",
+            "confidence": "high",
+            "website": ""
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "visit-kc-vintage-guide",
+      "sourceUrl": "https://www.visitkc.com/articles/vintage-antique-shopping-kc/",
+      "sourceHash": "f2ee804785b5a095691d5ca006817f9162e1236e04debd383df325f8f922ebc0",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "Good Ju Ju",
+            "kind": "vintage",
+            "address": "",
+            "hours": "Open only the first Friday and Saturday of each month",
+            "description": "Recognized multiple times as KC's best antique and vintage store in West Bottoms.",
+            "evidenceNote": "Good Ju Ju has been recognized multiple times as KC's best antique and vintage store.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Bella Patina",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "Antique and vintage store located in West Bottoms.",
+            "evidenceNote": "Other West Bottoms favorites include: Bella Patina",
+            "confidence": "medium",
+            "website": ""
+          },
+          {
+            "name": "Nook and Cranny KC",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "Antique and vintage store located in West Bottoms.",
+            "evidenceNote": "Nook and Cranny KC",
+            "confidence": "medium",
+            "website": ""
+          },
+          {
+            "name": "Stuffology",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "Antique and vintage store located in West Bottoms.",
+            "evidenceNote": "Stuffology",
+            "confidence": "medium",
+            "website": ""
+          },
+          {
+            "name": "Noir Arts & Oddities",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "Antique and vintage store located in West Bottoms.",
+            "evidenceNote": "Noir Arts & Oddities",
+            "confidence": "medium",
+            "website": ""
+          },
+          {
+            "name": "Rex Vintage",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "Antique and vintage store located in West Bottoms.",
+            "evidenceNote": "Rex Vintage",
+            "confidence": "medium",
+            "website": ""
+          },
+          {
+            "name": "Serendipity",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "Antique and vintage store located in West Bottoms.",
+            "evidenceNote": "Serendipity",
+            "confidence": "medium",
+            "website": ""
+          },
+          {
+            "name": "River Market Antiques",
+            "kind": "vintage",
+            "address": "115 W 5th St.",
+            "hours": "",
+            "description": "Four-story, 30,000-square foot behemoth home to more than 175 dealers.",
+            "evidenceNote": "River Market Antiques 115 W 5th St. River Market",
+            "confidence": "high",
+            "website": ""
+          }
+        ]
+      }
+    }
+  ]
+}

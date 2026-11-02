@@ -1,0 +1,187 @@
+{
+  "version": 1,
+  "city": {
+    "id": "portland-or",
+    "city": "Portland",
+    "state": "OR",
+    "country": "US",
+    "timezone": "America/Los_Angeles",
+    "center": {
+      "lat": 45.523,
+      "lng": -122.676
+    },
+    "radiusKm": 20
+  },
+  "generatedAt": "2026-11-02T18:07:57.720Z",
+  "reviewStatus": "pending",
+  "warning": "Model extraction only. Verify every field against registered official sources, add coordinates separately, and use the normal approval workflow.",
+  "limits": {
+    "callsThisRun": 3,
+    "callsPerRun": 6,
+    "callsPerUTCDay": 12
+  },
+  "results": [
+    {
+      "sourceId": "goodwill-columbia-willamette-stores",
+      "sourceUrl": "https://meetgoodwill.org/stores/",
+      "sourceHash": "9168947841fb92c8fa3da0bb6ea6a777191133d772b9f917010c1dc0d4719d31",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": []
+      }
+    },
+    {
+      "sourceId": "portland-farmers-market",
+      "sourceUrl": "https://www.portlandfarmersmarket.org/",
+      "sourceHash": "b03bffec57441165b27b0d9240e8445e8b4e34c9136f20bf73e909b196b76b31",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "PSU Farmers Market",
+            "kind": "market",
+            "address": "SW Park & Montgomery, Portland, OR 97201",
+            "hours": "Saturdays, 9 am – 2 pm",
+            "description": "Our year-round flagship farmers market at Portland State University average 90 local farmers and food producers every Saturday.",
+            "evidenceNote": "Found in text under PSU Farmers Market with address and hours.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "King Farmers Market",
+            "kind": "market",
+            "address": "NE Wygant St &, NE 7th Ave, Portland, OR 97211",
+            "hours": "Sundays, 10 am – 2 pm",
+            "description": "King Farmers Market features about 30 farmers and food producers, offering fresh, local produce and food, plus a variety of breakfast and lunch options in a family-friendly setting.",
+            "evidenceNote": "Found in text under King Farmers Market with address and hours.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Lents International Farmers Market",
+            "kind": "market",
+            "address": "SE 92nd & Reedway",
+            "hours": "Sundays, 10 am – 3 pm",
+            "description": "Lents International Farmers Market",
+            "evidenceNote": "Found in text under Lents International Farmers Market.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Shemanski Park Farmers Market",
+            "kind": "market",
+            "address": "SW Park & Main",
+            "hours": "Wednesdays, 10 am – 2 pm",
+            "description": "Shemanski Park Farmers Market - CLOSED FOR 2026!",
+            "evidenceNote": "Found in text under Shemanski Park Farmers Market.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Kenton Farmers Market",
+            "kind": "market",
+            "address": "N Denver & McClellan",
+            "hours": "Wednesdays, 3 – 7 pm",
+            "description": "Kenton Farmers Market - CLOSED FOR 2026!",
+            "evidenceNote": "Found in text under Kenton Farmers Market.",
+            "confidence": "high",
+            "website": ""
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "travel-portland-vintage-guide",
+      "sourceUrl": "https://www.travelportland.com/attractions/vintage-thrift-shops/",
+      "sourceHash": "ccb6b9db020ec3fc4181eb058d493bb0356b27d62cc67df92f60ed81071d1293",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "Artifact Creative Recycle",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "This boutique offers a curated collection of unique furniture, vintage clothing, accessories, household goods, art and more.",
+            "evidenceNote": "Artifact Creative Recycle mentioned in Division/Clinton text.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Xtabay Vintage Clothing Boutique",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "Fancy frock shop offering meticulously curated collections of costume jewelry, traditionally tailored suits, and dresses.",
+            "evidenceNote": "Xtabay Vintage Clothing Boutique mentioned by owner Liz Gross.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Kissing Booth",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "Specializes in pre-1980s, high-end apparel including a great selection of vintage tees, sweatshirts and denim.",
+            "evidenceNote": "Kissing Booth mentioned in Vintage Shopping and Consignment Stores in Portland section.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Magpie",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "Secondhand store on Hawthorne carrying full-size vintage and children's pieces.",
+            "evidenceNote": "Magpie mentioned as another Hawthorne spot.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Hello Sunshine",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "Sister-owned shop consisting of ten different vendors selling anything from customized tea towels to glitzy accessories to mod dresses, artwork, ceramics, glassware and more.",
+            "evidenceNote": "Hello Sunshine mentioned in the Kerns neighborhood.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Gem Set Love",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "Carries unique vintage diamond rings, costume jewelry, and Bakelite bangles.",
+            "evidenceNote": "Gem Set Love mentioned for unique vintage diamond rings and jewelry.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "House of Vintage",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "A collective of over 60 independent dealers sharing 13,000 square feet to provide a massive collection of vintage clothing, furniture and art.",
+            "evidenceNote": "House of Vintage listed under More Vintage Stores.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Workshop Vintage",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "Boutique offering locally designed goods alongside vintage items including apparel, accessories, jewelry, furniture, collectibles, home decor and more.",
+            "evidenceNote": "Workshop Vintage listed under More Vintage Stores.",
+            "confidence": "high",
+            "website": ""
+          }
+        ]
+      }
+    }
+  ]
+}

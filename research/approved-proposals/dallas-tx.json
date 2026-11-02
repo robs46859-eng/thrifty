@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "city": {
+    "id": "dallas-tx",
+    "city": "Dallas",
+    "state": "TX",
+    "country": "US",
+    "timezone": "America/Chicago",
+    "center": {
+      "lat": 32.7767,
+      "lng": -96.797
+    },
+    "radiusKm": 20
+  },
+  "generatedAt": "2026-11-02T18:02:55.223Z",
+  "reviewStatus": "pending",
+  "warning": "Model extraction only. Verify every field against registered official sources, add coordinates separately, and use the normal approval workflow.",
+  "limits": {
+    "callsThisRun": 3,
+    "callsPerRun": 6,
+    "callsPerUTCDay": 12
+  },
+  "results": [
+    {
+      "sourceId": "goodwill-dallas-locations",
+      "sourceUrl": "https://www.goodwilldallas.org/locations/",
+      "sourceHash": "804d97446678e0ec3297de10aaf0b8414bd7c4a36f958e948b3766d6eeb08c52",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "Goodwill Dallas",
+            "kind": "thrift",
+            "address": "3020 N. Westmoreland Rd. Dallas, TX 75212",
+            "website": "",
+            "hours": "",
+            "description": "Goodwill Dallas operates a network of stores, donation centers, and programs designed to make giving and getting involved easy.",
+            "evidenceNote": "Found in source text listing 3020 N. Westmoreland Rd. Dallas, TX 75212.",
+            "confidence": "high"
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "good-local-markets-calendar",
+      "sourceUrl": "https://www.goodlocalmarkets.org/calendar",
+      "sourceHash": "dfc0139ab56ca0393695033c2e3f1b3c0730cc726bdde3a48979c30bd171ce84",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "White Rock Farmers Market",
+            "kind": "market",
+            "address": "1450 Old Gate Lane Dallas, TX 75218",
+            "website": "",
+            "hours": "Saturdays 8:00 AM - 12:00 PM",
+            "description": "Farmers Market in Dallas, TX",
+            "evidenceNote": "White Rock Farmers Market Saturdays: 1450 Old Gate Lane Dallas, TX 75218 8:00 AM - 12:00 PM",
+            "confidence": "high"
+          },
+          {
+            "name": "Fair Park Farmers Market",
+            "kind": "market",
+            "address": "3535 Grand Ave Dallas, TX 75210",
+            "website": "",
+            "hours": "Sundays 9:00 AM - 1:00 PM",
+            "description": "Farmers Market in Dallas, TX",
+            "evidenceNote": "Fair Park Farmers Market sundays: 3535 Grand Ave Dallas, TX 75210 9:00 AM - 1:00 PM",
+            "confidence": "high"
+          },
+          {
+            "name": "Tietze Park Farmers Market",
+            "kind": "market",
+            "address": "2700 Skillman St Dallas, TX 75206",
+            "website": "",
+            "hours": "Sundays 9:00 AM - 1:00 PM",
+            "description": "Farmers Market in Dallas, TX",
+            "evidenceNote": "Tietze Park Farmers Market Sundays: 2700 Skillman St Dallas, TX 75206 9:00 AM - 1:00 PM",
+            "confidence": "high"
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "visit-dallas-secondhand-guide",
+      "sourceUrl": "https://www.visitdallas.com/blog/thrift-antique-stores-dallas/",
+      "sourceHash": "b6cd922633192427ad8f0769c843b90d7a26cc1b416eb9b33d004c7fae23815d",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "Flea Style",
+            "kind": "vintage",
+            "address": "3009 Commerce St, Dallas, TX 75226",
+            "website": "",
+            "hours": "",
+            "description": "Inside this beautiful Deep Ellum store, you'll find unique vintage, handmade and one-of-a-kind wears from more than 80 local makers and collectors.",
+            "evidenceNote": "Flea Style 3009 Commerce St, Dallas, TX 75226",
+            "confidence": "high"
+          },
+          {
+            "name": "Dolly On Bishop",
+            "kind": "vintage",
+            "address": "315 N Bishop Ave, Dallas, TX 75208",
+            "website": "",
+            "hours": "",
+            "description": "Located in the Bishop Arts District , Dolly carries men's and women's vintage clothes, hats, jewelry, and cowboy boots.",
+            "evidenceNote": "Dolly On Bishop 315 N Bishop Ave, Dallas, TX 75208",
+            "confidence": "high"
+          },
+          {
+            "name": "Lula B's Antique Mall",
+            "kind": "vintage",
+            "address": "1010 N Riverfront Blvd, Dallas, TX 75207",
+            "website": "",
+            "hours": "",
+            "description": "A vintage shopping from retro clothing and accessories to furniture, art and collectibles.",
+            "evidenceNote": "Lula B's Antique Mall 1010 N Riverfront Blvd, Dallas, TX 75207",
+            "confidence": "high"
+          },
+          {
+            "name": "Owner 2 Owner",
+            "kind": "vintage",
+            "address": "1300 S Polk St suite #270, Dallas, TX 75224",
+            "website": "",
+            "hours": "",
+            "description": "This Oak Cliff vintage shop offers a curated selection of pop culture inspired clothing from the ’80s, ’90s, 2000s and today’s styles.",
+            "evidenceNote": "Owner 2 Owner 1300 S Polk St suite #270, Dallas, TX 75224",
+            "confidence": "high"
+          }
+        ]
+      }
+    }
+  ]
+}

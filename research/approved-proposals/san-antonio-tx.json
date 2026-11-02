@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "city": {
+    "id": "san-antonio-tx",
+    "city": "San Antonio",
+    "state": "TX",
+    "country": "US",
+    "timezone": "America/Chicago",
+    "center": {
+      "lat": 29.4241,
+      "lng": -98.4936
+    },
+    "radiusKm": 20
+  },
+  "generatedAt": "2026-11-02T18:07:19.208Z",
+  "reviewStatus": "pending",
+  "warning": "Model extraction only. Verify every field against registered official sources, add coordinates separately, and use the normal approval workflow.",
+  "limits": {
+    "callsThisRun": 5,
+    "callsPerRun": 6,
+    "callsPerUTCDay": 12
+  },
+  "results": [
+    {
+      "sourceId": "spare-parts-creative-reuse",
+      "sourceUrl": "https://www.spsatx.org/",
+      "sourceHash": "4fab63a0ea96bb603040957e04e470dde0f12ce5aa96da0afa8164da071f1de4",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "Spare Parts San Antonio Center for Creative Reuse",
+            "kind": "thrift",
+            "address": "",
+            "hours": "",
+            "description": "Center for creative reuse",
+            "evidenceNote": "SPARE PARTS SAN ANTONIO CENTER FOR CREATIVE REUSE | SPSATX.ORG",
+            "confidence": "high",
+            "website": "https://www.spsatx.org/"
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "boysville-thrift-store",
+      "sourceUrl": "https://boysvillethriftstore.com/",
+      "sourceHash": "8f296fd30275f34fa14e4d5d6cba7fc5a09e1bfbe9267752e50cd62f16e4f872",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "Boysville Thrift Store",
+            "kind": "thrift",
+            "address": "307 West Olmos Drive, San Antonio, TX, USA",
+            "hours": "Mon Closed, Tue 10:00 am – 05:00 pm, Wed 10:00 am – 05:00 pm, Thu 10:00 am – 05:00 pm, Fri 10:00 am – 05:00 pm, Sat 10:00 am – 05:00 pm, Sun Closed",
+            "description": "Boysville Auxiliary Thrift Store is a non-profit organization dedicated to supporting the children of Boysville, Inc.",
+            "evidenceNote": "Text contains store name, address in San Antonio, TX, and operating hours.",
+            "confidence": "high",
+            "website": "https://boysvillethriftstore.com/"
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "assistance-league-san-antonio-thrift-house",
+      "sourceUrl": "https://alchapters.org/san-antonio/shop-for-a-purpose/",
+      "sourceHash": "666126711e5169b85439831f6c0a93a26792e9b60d44f282090fe46551547245",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "Assistance League of San Antonio Thrift House",
+            "kind": "thrift",
+            "address": "2611 West Avenue San Antonio, TX 78201",
+            "hours": "Tuesday thru Friday – 10 a.m. – 2 p.m. Saturday 11 a.m. – 3 p.m.",
+            "description": "Thrift House and online sales raise nearly 50% of the support needed to fund community programs.",
+            "evidenceNote": "Mentioned in text under Assistance League of San Antonio Thrift House with address, hours, and description.",
+            "confidence": "high",
+            "website": ""
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "pearl-markets",
+      "sourceUrl": "https://atpearl.com/markets/",
+      "sourceHash": "ae7343eb53f1610e1279bd9b6b3024847fa8afbc3f2a1b51107d43105777c804",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "Pearl Farmers Markets",
+            "kind": "market",
+            "address": "",
+            "hours": "",
+            "description": "Join us at our Pearl Farmers Markets -- community centered, open-air grocery experiences, held rain or shine. Explore goods made, grown, and crafted in San Antonio.",
+            "evidenceNote": "Text mentions Pearl Farmers Markets in San Antonio.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Pullman Market",
+            "kind": "market",
+            "address": "",
+            "hours": "Sunday-Thursday 8AM-9PM Friday-Saturday 8AM-10PM",
+            "description": "Pullman Market is a sensory-rich market that fosters the connection between regional producers and our community.",
+            "evidenceNote": "Text mentions Pullman Market with operating hours Sunday-Thursday 8AM-9PM Friday-Saturday 8AM-10PM.",
+            "confidence": "high",
+            "website": ""
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "visit-san-antonio-shopping-guide",
+      "sourceUrl": "https://www.visitsanantonio.com/media/media-kit/an-international-shopping-destination/",
+      "sourceHash": "da570c77ebb42a4857db1e22fbdbb689af66016ced3300fffd726150b1cd32c6",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "The Shops at Broadway News",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "A collection of micro-retail businesses, many located inside renovated Airstream Travel Trailers, where local makers sell vintage clothing and other wares.",
+            "evidenceNote": "The Shops at Broadway News is home to a collection of micro-retail businesses... sell wares such as handcrafted leather goods, vibrant house plants, vintage clothing and freshly baked cookies.",
+            "confidence": "high",
+            "website": ""
+          }
+        ]
+      }
+    }
+  ]
+}

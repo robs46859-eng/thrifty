@@ -1,0 +1,167 @@
+{
+  "version": 1,
+  "city": {
+    "id": "albuquerque-nm",
+    "city": "Albuquerque",
+    "state": "NM",
+    "country": "US",
+    "timezone": "America/Denver",
+    "center": {
+      "lat": 35.0844,
+      "lng": -106.6504
+    },
+    "radiusKm": 20
+  },
+  "generatedAt": "2026-11-02T18:11:45.125Z",
+  "reviewStatus": "pending",
+  "warning": "Model extraction only. Verify every field against registered official sources, add coordinates separately, and use the normal approval workflow.",
+  "limits": {
+    "callsThisRun": 3,
+    "callsPerRun": 6,
+    "callsPerUTCDay": 12
+  },
+  "results": [
+    {
+      "sourceId": "goodwill-new-mexico-locations",
+      "sourceUrl": "https://www.goodwillnm.org/locations/",
+      "sourceHash": "c4ea27259bc8ce2e74fdccdd1e5382e9d941b8041bf9b19ff14203ff1ef32147",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "Goodwill Corporate Office",
+            "kind": "thrift",
+            "address": "1030 18th Street NW, Albuquerque, NM 87104",
+            "hours": "",
+            "description": "Corporate Office and retail store location.",
+            "evidenceNote": "Corporate Office 1030 18th Street NW, Albuquerque, NM 87104",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Goodwill GoodThreads",
+            "kind": "thrift",
+            "address": "3401 NM-528 (Alameda), Albuquerque, NM 87114",
+            "hours": "Mon - Sat: 9AM - 8PM Sun: 10AM - 6PM",
+            "description": "GoodThreads retail store and donation center.",
+            "evidenceNote": "GoodThreads 3401 NM-528 (Alameda), Albuquerque, NM 87114",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Goodwill Outlet",
+            "kind": "thrift",
+            "address": "3101 Menaul Blvd. NE, Albuquerque, NM 87107",
+            "hours": "Every day: 8AM - 4:30PM",
+            "description": "Retail store outlet.",
+            "evidenceNote": "Outlet 3101 Menaul Blvd. NE, Albuquerque, NM 87107",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Goodwill Online Order Pickup",
+            "kind": "thrift",
+            "address": "5000 San Mateo Blvd. NE, Albuquerque, NM 87109",
+            "hours": "Mon - Sat: 9AM - 5PM Sun: 9AM - 2PM",
+            "description": "Online Order Pickup retail store and donation center.",
+            "evidenceNote": "Online Order Pickup 5000 San Mateo Blvd. NE, Albuquerque, NM 87109",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Goodwill Bluewater @ 98th",
+            "kind": "thrift",
+            "address": "270 98th Street NW, Albuquerque, NM 87121",
+            "hours": "Mon - Sat: 9AM - 8PM Sun: 10AM - 6PM",
+            "description": "Retail store, free services, and donation center.",
+            "evidenceNote": "Bluewater @ 98th 270 98th Street NW, Albuquerque, NM 87121",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Goodwill Coors",
+            "kind": "thrift",
+            "address": "6636 Caminito Coors NW, Albuquerque, NM 87120",
+            "hours": "Mon - Sat: 9AM - 8PM Sun: 10AM - 6PM",
+            "description": "Retail store and donation center.",
+            "evidenceNote": "Coors 6636 Caminito Coors NW, Albuquerque, NM 87120",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Goodwill Juan Tabo at Copper",
+            "kind": "thrift",
+            "address": "700 Juan Tabo Boulevard. NE, Suite B, Albuquerque, NM 87123",
+            "hours": "Mon - Sat: 9AM - 8PM Sun: 10AM - 6PM",
+            "description": "Retail store, free services, and donation center.",
+            "evidenceNote": "Juan Tabo at Copper 700 Juan Tabo Boulevard. NE, Suite B, Albuquerque, NM 87123",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Goodwill Lomas",
+            "kind": "thrift",
+            "address": "6001 Lomas Boulevard NE, Suite R, Albuquerque, NM 87110",
+            "hours": "Mon - Sat: 9AM - 8PM Sun: 10AM - 6PM",
+            "description": "Retail store, free services, and donation center.",
+            "evidenceNote": "Lomas 6001 Lomas Boulevard NE, Suite R, Albuquerque, NM 87110",
+            "confidence": "high",
+            "website": ""
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "new-mexico-farmers-markets",
+      "sourceUrl": "https://farmersmarketsnm.org/find-a-market/",
+      "sourceHash": "cba809402d469873e898fe397a66f468feeb81db87c73df4c2c17469e55b66d0",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "Big Jim Farms",
+            "kind": "market",
+            "address": "3521 Rio Grande Blvd, Albuquerque, New Mexico 87107",
+            "hours": "2025: Everyday 8 AM - 6 PM April - November Downtown Farmers Market on Saturdays, April-August",
+            "description": "Big Jim Farms (Farm Stand)",
+            "evidenceNote": "Big Jim Farms entry in Albuquerque, NM",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Chispas Farm",
+            "kind": "market",
+            "address": "229 Saavedra Rd SW, Albuquerque, New Mexico 87105",
+            "hours": "2026: Saturday 8 AM - 12 PM Tuesday 4 - 8 PM June 9 - October 20",
+            "description": "Chispas Farm (Farm Stand)",
+            "evidenceNote": "Chispas Farm entry in Albuquerque, NM",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Downtown Growers' Market",
+            "kind": "market",
+            "address": "810 Copper Ave NW, Robinson Park - 8th and Central, Albuquerque, New Mexico 87102",
+            "hours": "2026: Saturdays 8 AM - Noon April 4 - November WINTER MARKET: January16, February 20, March 20, 2027 10AM - 2PM",
+            "description": "Downtown Growers' Market (Farmers' Market)",
+            "evidenceNote": "Downtown Growers' Market entry in Albuquerque, NM",
+            "confidence": "high",
+            "website": ""
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "visit-albuquerque-vintage-guide",
+      "sourceUrl": "https://www.visitalbuquerque.org/route-66-centennial/visit/things-to-do/shopping/old-new-timeless-cruise-route-66-for-a-lively-shopping-experience/",
+      "sourceHash": "0a7cc70b86669a2ac199efac621db5b151c4f2e000c55a76d0bee8d84fec5d0a",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": []
+      }
+    }
+  ]
+}

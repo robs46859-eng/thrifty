@@ -1,0 +1,188 @@
+{
+  "version": 1,
+  "city": {
+    "id": "seattle-wa",
+    "city": "Seattle",
+    "state": "WA",
+    "country": "US",
+    "timezone": "America/Los_Angeles",
+    "center": {
+      "lat": 47.6062,
+      "lng": -122.3321
+    },
+    "radiusKm": 20
+  },
+  "generatedAt": "2026-11-02T18:08:33.173Z",
+  "reviewStatus": "pending",
+  "warning": "Model extraction only. Verify every field against registered official sources, add coordinates separately, and use the normal approval workflow.",
+  "limits": {
+    "callsThisRun": 3,
+    "callsPerRun": 6,
+    "callsPerUTCDay": 12
+  },
+  "results": [
+    {
+      "sourceId": "evergreen-goodwill-locations",
+      "sourceUrl": "https://evergreengoodwill.org/locations/",
+      "sourceHash": "3a3eaa57b32e53ac87e1e7003e6b6d821920e3305d82d7855f9227397cf7679e",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "Ballard Goodwill Retail Store",
+            "kind": "thrift",
+            "address": "6400 8th Ave. NW Seattle, WA 98107",
+            "hours": "",
+            "description": "Ballard Goodwill Retail Store",
+            "evidenceNote": "Ballard Goodwill Retail Store 6400 8th Ave. NW Seattle, WA 98107",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Capitol Hill Goodwill Retail Store",
+            "kind": "thrift",
+            "address": "115 Belmont Ave. E Seattle, WA 98102",
+            "hours": "",
+            "description": "Capitol Hill Goodwill Retail Store",
+            "evidenceNote": "Capitol Hill Goodwill Retail Store 115 Belmont Ave. E Seattle, WA 98102",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Seattle Goodwill Retail Store",
+            "kind": "thrift",
+            "address": "1400 S Lane St. Seattle, WA 98144",
+            "hours": "",
+            "description": "Seattle Goodwill Retail Store",
+            "evidenceNote": "Seattle Goodwill Retail Store 1400 S Lane St. Seattle, WA 98144",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Seattle Goodwill Outlet",
+            "kind": "thrift",
+            "address": "1765 6th Ave. S Seattle, WA 98134",
+            "hours": "",
+            "description": "Seattle Goodwill Outlet Retail Store Outlet",
+            "evidenceNote": "Seattle Goodwill Outlet Retail Store Outlet 1765 6th Ave. S Seattle, WA 98134",
+            "confidence": "high",
+            "website": ""
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "seattle-neighborhood-farmers-markets",
+      "sourceUrl": "https://seattlefarmersmarkets.org/",
+      "sourceHash": "e834f14d7b178f7f45a59edc858233b2dfb66e4112a57a65ca0bed9d39045d59",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "University District Farmers Market",
+            "kind": "market",
+            "address": "",
+            "hours": "Saturdays 9am - 2pm",
+            "description": "Open All Year-Round Farmers Market",
+            "evidenceNote": "Text mentions 'Saturdays 9am - 2pm University District Farmers Market'",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "West Seattle Farmers Market",
+            "kind": "market",
+            "address": "",
+            "hours": "Sundays 10am - 2pm",
+            "description": "Open All Year-Round Farmers Market",
+            "evidenceNote": "Text mentions 'Sundays 10am - 2pm West Seattle Farmers Market'",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Capitol Hill Farmers Market",
+            "kind": "market",
+            "address": "",
+            "hours": "Sundays 11am - 3pm Tuesdays June-September 3pm - 7pm",
+            "description": "Open All Year-Round Farmers Market",
+            "evidenceNote": "Text mentions 'Sundays 11am - 3pm Tuesdays June-September 3pm - 7pm Capitol Hill Farmers Market'",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Columbia City Farmers Market",
+            "kind": "market",
+            "address": "",
+            "hours": "Wednesdays May 6 - Oct 28 3pm - 7pm",
+            "description": "Seasonal Farmers Market",
+            "evidenceNote": "Text mentions 'Wednesdays May 6 - Oct 28 3pm - 7pm Columbia City Farmers Market'",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Lake City Farmers Market",
+            "kind": "market",
+            "address": "",
+            "hours": "Thursdays June 4 - Sept 24 3pm - 7pm Saturdays Oct 3 - Dec 19 10am -2pm Harvest Market Nov 20",
+            "description": "Seasonal Farmers Market",
+            "evidenceNote": "Text mentions 'Thursdays June 4 - Sept 24 3pm - 7pm Saturdays Oct 3 - Dec 19 10am -2pm Lake City Farmers Market'",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Phinney Farmers Market",
+            "kind": "market",
+            "address": "",
+            "hours": "Fridays June 5 - Sept 25 3pm - 7pm Harvest Market Nov 20",
+            "description": "Seasonal Farmers Market",
+            "evidenceNote": "Text mentions 'Fridays June 5 - Sept 25 3pm - 7pm Harvest Market Nov 20 Phinney Farmers Market'",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Magnolia Farmers Market",
+            "kind": "market",
+            "address": "",
+            "hours": "Saturdays June 6 - Oct 10 10am - 2pm Harvest Market Nov 21 Holiday Market Dec 5",
+            "description": "Seasonal Farmers Market",
+            "evidenceNote": "Text mentions 'Saturdays June 6 - Oct 10 10am - 2pm Harvest Market Nov 21 Holiday Market Dec 5 Magnolia Farmers Market'",
+            "confidence": "high",
+            "website": ""
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "visit-seattle-retail-guide",
+      "sourceUrl": "https://visitseattle.org/things-to-do/shopping/neighborhood-boutiques-and-retailers/",
+      "sourceHash": "d9341fba73e7c5a422e6464ebf72f8cb5baa5b85d18169ac84627e5b5ffc4d8c",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "Fremont Vintage Mall",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "retro discoveries",
+            "evidenceNote": "Stroll Fremont Avenue for retro discoveries at the Fremont Vintage Mall",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Bon Voyage Vintage",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "vintage, handmade, and local goods",
+            "evidenceNote": "vintage, handmade, and local goods at Bon Voyage Vintage",
+            "confidence": "high",
+            "website": ""
+          }
+        ]
+      }
+    }
+  ]
+}

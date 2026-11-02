@@ -1,0 +1,177 @@
+{
+  "version": 1,
+  "city": {
+    "id": "phoenix-az",
+    "city": "Phoenix",
+    "state": "AZ",
+    "country": "US",
+    "timezone": "America/Phoenix",
+    "center": {
+      "lat": 33.4484,
+      "lng": -112.074
+    },
+    "radiusKm": 20
+  },
+  "generatedAt": "2026-11-02T18:10:52.608Z",
+  "reviewStatus": "pending",
+  "warning": "Model extraction only. Verify every field against registered official sources, add coordinates separately, and use the normal approval workflow.",
+  "limits": {
+    "callsThisRun": 3,
+    "callsPerRun": 6,
+    "callsPerUTCDay": 12
+  },
+  "results": [
+    {
+      "sourceId": "goodwill-arizona-locations",
+      "sourceUrl": "https://www.goodwillaz.org/locations/",
+      "sourceHash": "bdfa286900a56d20bc2229f809355c851a867683057c061c69caf52df89c1f5c",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": []
+      }
+    },
+    {
+      "sourceId": "visit-phoenix-farmers-markets",
+      "sourceUrl": "https://www.visitphoenix.com/things-to-do/shopping/farmers-markets/",
+      "sourceHash": "619b44f93ec4952a1e713046b4af04409354706a3cdf79297aba2a418ddf82dd",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "Downtown PHX Farmers Market",
+            "kind": "market",
+            "address": "720 N. 5th St., Phoenix",
+            "hours": "Saturdays: 7:30 a.m. – 11:30 a.m.",
+            "description": "The Downtown PHX Farmers Market brings farm-fresh goods right into the city’s urban heart every Saturday morning.",
+            "evidenceNote": "Mentioned in the text with address 720 N. 5th St., Phoenix and Saturday hours.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Uptown Farmers Market",
+            "kind": "market",
+            "address": "5757 N. Central Ave., Phoenix",
+            "hours": "Saturdays: 8 a.m. – 12 p.m. (May through October) 9 a.m. – 1 p.m. (November through April) Wednesdays: 9 a.m. – 1 p.m. (October through April) 8 a.m. – 12 p.m. (May and June)",
+            "description": "Spend your mornings with the uptown Phoenix community and vendors showcasing more than 200 products.",
+            "evidenceNote": "Mentioned in the text with address 5757 N. Central Ave., Phoenix and multiple seasonal hours.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Roadrunner Park Farmers Market",
+            "kind": "market",
+            "address": "3502 E. Cactus Road, Phoenix",
+            "hours": "Saturdays: 7 – 11 a.m. (June through September) 8 a.m. – 1 p.m. (October through May)",
+            "description": "Roadrunner Park Farmers Market brings local artisans farmers and other vendors together to showcase fresh local produce, baked goods, handcrafted items year-round.",
+            "evidenceNote": "Mentioned in the text with address 3502 E. Cactus Road, Phoenix and seasonal hours.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Ahwatukee Farmers Market",
+            "kind": "market",
+            "address": "4700 E. Warner Road, Phoenix",
+            "hours": "Sundays: 9 a.m. – 1 p.m. (October through May) 8 – 11 a.m. (June through September)",
+            "description": "Open since 2004, this market has a very loyal community following, offering fresh produce, baked goods and to-go snacks.",
+            "evidenceNote": "Mentioned in the text with address 4700 E. Warner Road, Phoenix and Sunday hours.",
+            "confidence": "high",
+            "website": ""
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "visit-phoenix-vintage-guide",
+      "sourceUrl": "https://www.visitphoenix.com/stories/post/the-best-vintage-clothing-stores-in-phoenix/",
+      "sourceHash": "ac04de77d2354d85d72aeceaf7fdc9e93a009101090ca12a0295fa31b1c36cdc",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "proposal": {
+        "candidates": [
+          {
+            "name": "Antique Sugar",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "Antique Sugar is a must-visit for vintage clothing enthusiasts visiting downtown Phoenix. This small but mighty vintage store is full of carefully curated and lovingly handled vintage gems that will add a classic charm to any look.",
+            "evidenceNote": "Mentioned under heading 'Antique Sugar' in the text.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Retro Ranch",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "Offbeat vintage store with an eclectic collection of furniture, housewares, apparel & accessories.",
+            "evidenceNote": "Mentioned under heading 'Retro Ranch' in the text.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Buffalo Exchange",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "Buffalo Exchange in Midtown Phoenix buys and sells an enormous variety of vintage clothing styles.",
+            "evidenceNote": "Mentioned under heading 'Buffalo Exchange' in the text.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Time Bomb Vintage Clothing",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "This boutique really focuses on classic luxury with a curated selection of vintage clothing and accessories spanning decades of style and glamor.",
+            "evidenceNote": "Mentioned under heading 'Time Bomb Vintage Clothing' in the text.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Wang’s Vintage",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "Specializing in vintage tees, this must-visit location is essential for those rare finds for aficionados of 80s and 90s streetwear and pop culture.",
+            "evidenceNote": "Mentioned under heading 'Wang’s Vintage' in the text.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Ewie Vintage Clothing",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "Timeless style meets bold reinvention at Ewie Vintage, curating pieces with soul like early-2000s minis and disco-era outerwear.",
+            "evidenceNote": "Mentioned under heading 'Ewie Vintage Clothing' in the text.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Newell Vintage",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "Newell Vintage is vintage with soul, featuring unique finds.",
+            "evidenceNote": "Mentioned under heading 'Newell Vintage' in the text.",
+            "confidence": "high",
+            "website": ""
+          },
+          {
+            "name": "Ivory House Vintage Shop",
+            "kind": "vintage",
+            "address": "",
+            "hours": "",
+            "description": "This spot specializes in unique vintage clothing from the 90's, 80's, and 70's.",
+            "evidenceNote": "Mentioned under heading 'Ivory House Vintage Shop' in the text.",
+            "confidence": "high",
+            "website": ""
+          }
+        ]
+      }
+    }
+  ]
+}
