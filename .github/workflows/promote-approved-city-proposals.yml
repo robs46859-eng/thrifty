@@ -2,6 +2,10 @@ name: Promote approved city proposals
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - research/approved-proposal-runs.json
 
 permissions:
   actions: read

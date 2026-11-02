@@ -1,5 +1,6 @@
 {
   "approvedAt": "2026-11-02",
+  "promotionRequestedAt": "2026-11-02T18:53:19Z",
   "approvedBy": "Repository owner",
   "note": "Approval promotes model output into the human-reviewed staging path. Coordinates and normal city publication validation are still required.",
   "cities": [
