@@ -9,6 +9,7 @@ test-results/
 *.tsbuildinfo
 server.cjs
 .thrifty-data/
+research/proposals/
 *.sqlite
 *.sqlite-shm
 *.sqlite-wal

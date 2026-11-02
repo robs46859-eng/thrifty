@@ -19,11 +19,13 @@
     "test:runtime": "node --test tests/runtime.test.cjs",
     "data:check": "node --import tsx scripts/check-directory.ts",
     "city": "node --import tsx scripts/city-workflow.ts",
+    "city:assist": "node --import tsx scripts/city-assist.ts",
     "city:registry": "node scripts/generate-catalogues.mjs"
   },
   "dependencies": {
     "@fontsource/dm-sans": "^5.3.0",
     "@fontsource/manrope": "^5.3.0",
+    "@google/genai": "^2.32.0",
     "express": "^5.1.0",
     "google-auth-library": "^11.3.2",
     "leaflet": "^1.9.4",

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "city": {
+    "id": "seattle-wa",
+    "city": "Seattle",
+    "state": "WA",
+    "country": "US",
+    "timezone": "America/Los_Angeles",
+    "center": { "lat": 47.6062, "lng": -122.3321 },
+    "radiusKm": 20
+  },
+  "sources": [],
+  "candidates": []
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "city": {
+    "id": "san-antonio-tx",
+    "city": "San Antonio",
+    "state": "TX",
+    "country": "US",
+    "timezone": "America/Chicago",
+    "center": { "lat": 29.4241, "lng": -98.4936 },
+    "radiusKm": 20
+  },
+  "sources": [],
+  "candidates": []
+}

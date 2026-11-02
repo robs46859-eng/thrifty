@@ -1,0 +1,70 @@
+name: Prepare city research proposals
+
+on:
+  workflow_dispatch:
+    inputs:
+      city:
+        description: City research plan
+        required: true
+        type: choice
+        options:
+          - dallas-tx
+          - austin-tx
+          - san-antonio-tx
+          - portland-or
+          - seattle-wa
+          - kansas-city-mo
+          - phoenix-az
+          - albuquerque-nm
+      source:
+        description: Optional registered source ID; leave blank for up to six sources
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: city-research-${{ inputs.city }}
+  cancel-in-progress: false
+
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Fetch registered official sources within the shared HTTP budget
+        env:
+          SOURCE_ID: ${{ inputs.source }}
+        run: |
+          args=(--file "research/cities/${{ inputs.city }}.json")
+          if [[ -n "$SOURCE_ID" ]]; then
+            args+=(--source "$SOURCE_ID")
+          fi
+          npm run city -- fetch "${args[@]}"
+      - name: Create pending proposals with Gemini
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SOURCE_ID: ${{ inputs.source }}
+        run: |
+          args=(
+            --file "research/cities/${{ inputs.city }}.json"
+            --provider gemini
+            --output "research/proposals/${{ inputs.city }}.json"
+          )
+          if [[ -n "$SOURCE_ID" ]]; then
+            args+=(--source "$SOURCE_ID")
+          fi
+          npm run city:assist -- "${args[@]}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: city-proposal-${{ inputs.city }}
+          path: research/proposals/${{ inputs.city }}.json
+          if-no-files-found: error
+          retention-days: 7

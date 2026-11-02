@@ -56,7 +56,9 @@ Open `http://127.0.0.1:4317`. Installation and camera capture require HTTPS or l
 
 ## Expand to another US city
 
-Use the [city expansion workflow](docs/CITY_WORKFLOW.md) to repeat the Denver process in Colorado or other US states. It includes a Portland starter plan and published Colorado examples, evidence-based publication, cached source/geocode requests, hard HTTP budgets and a [reusable research prompt](docs/CITY_RESEARCH_PROMPT.md). Scripts make no paid AI requests and do not consume scan credits. New cities enter discovery automatically after their data is reviewed and published through the CLI. No recurring crawl is enabled. Current research limits are **8 web searches and 24 source-page reads per pass**, with CLI HTTP budgets of **20 requests per command and 60 per UTC day**. Source responses are cached for seven days and address geocodes for 365 days. See `research/limits.json` and the workflow guide for enforcement details.
+Use the [city expansion workflow](docs/CITY_WORKFLOW.md) to repeat the Denver process in Colorado or other US states. It includes published Colorado examples, evidence-based publication, cached source/geocode requests, hard HTTP budgets and a [reusable research prompt](docs/CITY_RESEARCH_PROMPT.md). New cities enter discovery automatically only after their data is reviewed and published through the CLI. No recurring crawl is enabled. Current research limits are **8 web searches and 24 source-page reads per pass**, with CLI HTTP budgets of **20 requests per command and 60 per UTC day**. Source responses are cached for seven days and address geocodes for 365 days. See `research/limits.json` and the workflow guide for enforcement details.
+
+An optional [low-cost model assistant](docs/CITY_MODEL_ASSIST.md) can extract pending proposals from registered cached pages using Gemini 3.5 Flash-Lite or a local Ollama/Qwen 3 model. It is manual, capped, cannot search or publish, and does not consume scanner credits. Dallas, Austin, San Antonio, Portland, Seattle, Kansas City, Phoenix and Albuquerque are queued as unpublished city plans; New Mexico is represented by Albuquerque until another city is requested. These plans contain no listings yet and are not shown as directory-ready in the app.
 
 ## Explore your neighborhood
 
@@ -209,6 +211,7 @@ After an app update, save any current find before using **reload the app** when 
 | `server/`                  | Sign-in, scan protection, discovery, image analysis and production server |
 | `public/`                  | PWA manifest and app icons                                                |
 | `scripts/build-sw.mjs`     | Production offline-shell generation                                       |
+| `scripts/city-assist.ts`   | Bounded Gemini/Ollama extraction into pending city proposals              |
 | `tests/`                   | Logic, storage, API and browser workflow tests                            |
 | `.github/workflows/ci.yml` | Automated validation on pushes and pull requests                          |
 

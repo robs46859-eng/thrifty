@@ -16,11 +16,13 @@ Use this workflow to add one US city at a time with a small, reviewed directory.
 | Failed pages             | One-hour cooldown; no automatic retry; redirects require source review                                                  |
 | Page payload             | At most 1 MB each; excerpts capped at 1,200 characters to reduce chat context                                           |
 | Validation / publication | Offline; no research requests or AI calls                                                                               |
-| Paid AI / scanner        | No model API calls and no `/api/identify` calls                                                                         |
+| Paid AI / scanner        | Core workflow makes no model or `/api/identify` calls; optional assistance is separately capped and manually invoked    |
 
 Limits are configured in [research/limits.json](../research/limits.json). Current defaults are **8 web searches, 24 source-page reads, 20 HTTP requests per command, and 60 HTTP requests per UTC day**. The CLI reports these values in `status`; keep this guide and the research prompt in sync when changing the settings. Increasing a limit preserves requests already recorded in the daily ledger.
 
 The HTTP limits are enforced by the CLI, with a persistent daily ledger and a lock against simultaneous budget updates. They apply to this cache on this machine, not every device or an unrelated browser/search tool. ChatGPT/Codex reasoning and web search still use their normal allowances. The prompt limits that separate research to eight searches and twenty-four page reads per pass; it is a work instruction, not a programmatic account-wide quota. Do not start parallel agents or research many cities at once to work around the limits.
+
+Optional model extraction is documented in [CITY_MODEL_ASSIST.md](CITY_MODEL_ASSIST.md). It reads only cached registered sources, creates pending JSON proposals and has its own limits of six calls per command and twelve calls per UTC day. It cannot discover, approve or publish a venue.
 
 ## 1. Pick a city and create its plan
 

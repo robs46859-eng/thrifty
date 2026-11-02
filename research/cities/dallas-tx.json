@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "city": {
+    "id": "dallas-tx",
+    "city": "Dallas",
+    "state": "TX",
+    "country": "US",
+    "timezone": "America/Chicago",
+    "center": { "lat": 32.7767, "lng": -96.797 },
+    "radiusKm": 20
+  },
+  "sources": [],
+  "candidates": []
+}

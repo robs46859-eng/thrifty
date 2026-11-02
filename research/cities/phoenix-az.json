@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "city": {
+    "id": "phoenix-az",
+    "city": "Phoenix",
+    "state": "AZ",
+    "country": "US",
+    "timezone": "America/Phoenix",
+    "center": { "lat": 33.4484, "lng": -112.074 },
+    "radiusKm": 20
+  },
+  "sources": [],
+  "candidates": []
+}

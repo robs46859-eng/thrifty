@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "city": {
+    "id": "albuquerque-nm",
+    "city": "Albuquerque",
+    "state": "NM",
+    "country": "US",
+    "timezone": "America/Denver",
+    "center": { "lat": 35.0844, "lng": -106.6504 },
+    "radiusKm": 20
+  },
+  "sources": [],
+  "candidates": []
+}

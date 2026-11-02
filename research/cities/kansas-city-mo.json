@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "city": {
+    "id": "kansas-city-mo",
+    "city": "Kansas City",
+    "state": "MO",
+    "country": "US",
+    "timezone": "America/Chicago",
+    "center": { "lat": 39.0997, "lng": -94.5786 },
+    "radiusKm": 20
+  },
+  "sources": [],
+  "candidates": []
+}

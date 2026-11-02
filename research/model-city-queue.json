@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "newMexicoLaunchCity": "Albuquerque",
+  "note": "New Mexico is queued as Albuquerque because the workflow publishes city-sized coverage areas, not whole states.",
+  "cities": [
+    {
+      "id": "dallas-tx",
+      "file": "research/cities/dallas-tx.json",
+      "status": "source-registration-needed"
+    },
+    {
+      "id": "austin-tx",
+      "file": "research/cities/austin-tx.json",
+      "status": "source-registration-needed"
+    },
+    {
+      "id": "san-antonio-tx",
+      "file": "research/cities/san-antonio-tx.json",
+      "status": "source-registration-needed"
+    },
+    {
+      "id": "portland-or",
+      "file": "research/cities/portland-or.json",
+      "status": "source-registration-needed"
+    },
+    {
+      "id": "seattle-wa",
+      "file": "research/cities/seattle-wa.json",
+      "status": "source-registration-needed"
+    },
+    {
+      "id": "kansas-city-mo",
+      "file": "research/cities/kansas-city-mo.json",
+      "status": "source-registration-needed"
+    },
+    {
+      "id": "phoenix-az",
+      "file": "research/cities/phoenix-az.json",
+      "status": "source-registration-needed"
+    },
+    {
+      "id": "albuquerque-nm",
+      "file": "research/cities/albuquerque-nm.json",
+      "status": "source-registration-needed"
+    }
+  ]
+}
