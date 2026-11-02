@@ -1,0 +1,43 @@
+name: Promote approved city proposals
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+concurrency:
+  group: promote-approved-city-proposals
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Download the approved proposal artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p research/approved-proposals
+          jq -r '.cities[] | [.id, (.runId | tostring)] | @tsv' research/approved-proposal-runs.json |
+            while IFS=$'\t' read -r city run_id; do
+              download_dir="$(mktemp -d)"
+              gh run download "$run_id" --name "city-proposal-$city" --dir "$download_dir"
+              install -m 0644 "$download_dir/$city.json" "research/approved-proposals/$city.json"
+            done
+      - name: Commit the approved proposal snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/approved-proposals
+          if git diff --cached --quiet; then
+            echo "Approved proposal snapshot is already current."
+          else
+            git commit -m "Import approved city proposal artifacts"
+            git push origin HEAD:main
+          fi

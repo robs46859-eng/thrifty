@@ -1,0 +1,15 @@
+{
+  "approvedAt": "2026-11-02",
+  "approvedBy": "Repository owner",
+  "note": "Approval promotes model output into the human-reviewed staging path. Coordinates and normal city publication validation are still required.",
+  "cities": [
+    { "id": "dallas-tx", "runId": 41496770905 },
+    { "id": "austin-tx", "runId": 41497040425 },
+    { "id": "san-antonio-tx", "runId": 41497462220 },
+    { "id": "portland-or", "runId": 41497583432 },
+    { "id": "seattle-wa", "runId": 41497674014 },
+    { "id": "kansas-city-mo", "runId": 41497819765 },
+    { "id": "phoenix-az", "runId": 41498047091 },
+    { "id": "albuquerque-nm", "runId": 41498148603 }
+  ]
+}
