@@ -9,6 +9,25 @@
     "center": { "lat": 33.4484, "lng": -112.074 },
     "radiusKm": 20
   },
-  "sources": [],
+  "sources": [
+    {
+      "id": "goodwill-arizona-locations",
+      "url": "https://www.goodwillaz.org/locations/",
+      "label": "Goodwill of Central and Northern Arizona locations",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "visit-phoenix-farmers-markets",
+      "url": "https://www.visitphoenix.com/things-to-do/shopping/farmers-markets/",
+      "label": "Visit Phoenix farmers market guide",
+      "categories": ["market"]
+    },
+    {
+      "id": "visit-phoenix-vintage-guide",
+      "url": "https://www.visitphoenix.com/stories/post/the-best-vintage-clothing-stores-in-phoenix/",
+      "label": "Visit Phoenix vintage clothing guide",
+      "categories": ["vintage"]
+    }
+  ],
   "candidates": []
 }

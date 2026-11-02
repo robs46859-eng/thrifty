@@ -9,6 +9,25 @@
     "center": { "lat": 32.7767, "lng": -96.797 },
     "radiusKm": 20
   },
-  "sources": [],
+  "sources": [
+    {
+      "id": "goodwill-dallas-locations",
+      "url": "https://www.goodwilldallas.org/locations/",
+      "label": "Goodwill Dallas locations",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "good-local-markets-calendar",
+      "url": "https://www.goodlocalmarkets.org/calendar",
+      "label": "Good Local Markets 2026 calendar",
+      "categories": ["market"]
+    },
+    {
+      "id": "visit-dallas-secondhand-guide",
+      "url": "https://www.visitdallas.com/blog/thrift-antique-stores-dallas/",
+      "label": "Visit Dallas thrift and antique guide",
+      "categories": ["vintage"]
+    }
+  ],
   "candidates": []
 }

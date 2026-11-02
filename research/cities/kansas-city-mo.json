@@ -9,6 +9,25 @@
     "center": { "lat": 39.0997, "lng": -94.5786 },
     "radiusKm": 20
   },
-  "sources": [],
+  "sources": [
+    {
+      "id": "mokan-goodwill-locations",
+      "url": "https://www.mokangoodwill.org/locations",
+      "label": "Goodwill Western Missouri and Eastern Kansas locations",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "kansas-city-city-market",
+      "url": "https://thecitymarketkc.org/",
+      "label": "Kansas City City Market",
+      "categories": ["market"]
+    },
+    {
+      "id": "visit-kc-vintage-guide",
+      "url": "https://www.visitkc.com/articles/vintage-antique-shopping-kc/",
+      "label": "Visit KC vintage and antique guide",
+      "categories": ["vintage"]
+    }
+  ],
   "candidates": []
 }

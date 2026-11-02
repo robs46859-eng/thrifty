@@ -9,6 +9,37 @@
     "center": { "lat": 30.2672, "lng": -97.7431 },
     "radiusKm": 20
   },
-  "sources": [],
+  "sources": [
+    {
+      "id": "goodwill-central-texas-retail-stores",
+      "url": "https://www.goodwillcentraltexas.org/retail-stores/",
+      "label": "Goodwill Central Texas retail stores",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "texas-farmers-market",
+      "url": "https://texasfarmersmarket.org/",
+      "label": "Texas Farmers Market",
+      "categories": ["market"]
+    },
+    {
+      "id": "visit-austin-room-service-vintage",
+      "url": "https://www.austintexas.org/listings/room-service-vintage/3295/",
+      "label": "Visit Austin listing for Room Service Vintage",
+      "categories": ["vintage"]
+    },
+    {
+      "id": "visit-austin-big-berthas-paradise",
+      "url": "https://www.austintexas.org/listings/big-berthas-paradise/9404/",
+      "label": "Visit Austin listing for Big Bertha's Paradise",
+      "categories": ["vintage"]
+    },
+    {
+      "id": "visit-austin-monkies-vintage-thrift",
+      "url": "https://www.austintexas.org/listings/monkies-vintage-%26-thrift/9863/",
+      "label": "Visit Austin listing for Monkies Vintage and Thrift",
+      "categories": ["vintage"]
+    }
+  ],
   "candidates": []
 }

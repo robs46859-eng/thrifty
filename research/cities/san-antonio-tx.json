@@ -9,6 +9,37 @@
     "center": { "lat": 29.4241, "lng": -98.4936 },
     "radiusKm": 20
   },
-  "sources": [],
+  "sources": [
+    {
+      "id": "spare-parts-creative-reuse",
+      "url": "https://www.spsatx.org/",
+      "label": "Spare Parts Center for Creative Reuse",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "boysville-thrift-store",
+      "url": "https://boysvillethriftstore.com/",
+      "label": "Boysville Auxiliary Thrift Store",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "assistance-league-san-antonio-thrift-house",
+      "url": "https://alchapters.org/san-antonio/shop-for-a-purpose/",
+      "label": "Assistance League of San Antonio Thrift House",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "pearl-markets",
+      "url": "https://atpearl.com/markets/",
+      "label": "Pearl markets",
+      "categories": ["market"]
+    },
+    {
+      "id": "visit-san-antonio-shopping-guide",
+      "url": "https://www.visitsanantonio.com/media/media-kit/an-international-shopping-destination/",
+      "label": "Visit San Antonio shopping and antiques guide",
+      "categories": ["vintage"]
+    }
+  ],
   "candidates": []
 }

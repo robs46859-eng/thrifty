@@ -9,6 +9,25 @@
     "center": { "lat": 35.0844, "lng": -106.6504 },
     "radiusKm": 20
   },
-  "sources": [],
+  "sources": [
+    {
+      "id": "goodwill-new-mexico-locations",
+      "url": "https://www.goodwillnm.org/locations/",
+      "label": "Goodwill New Mexico locations",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "new-mexico-farmers-markets",
+      "url": "https://farmersmarketsnm.org/find-a-market/",
+      "label": "New Mexico Farmers' Marketing Association directory",
+      "categories": ["market"]
+    },
+    {
+      "id": "visit-albuquerque-vintage-guide",
+      "url": "https://www.visitalbuquerque.org/route-66-centennial/visit/things-to-do/shopping/old-new-timeless-cruise-route-66-for-a-lively-shopping-experience/",
+      "label": "Visit Albuquerque Route 66 vintage guide",
+      "categories": ["vintage"]
+    }
+  ],
   "candidates": []
 }

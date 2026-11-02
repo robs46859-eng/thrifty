@@ -12,6 +12,25 @@
     },
     "radiusKm": 20
   },
-  "sources": [],
+  "sources": [
+    {
+      "id": "goodwill-columbia-willamette-stores",
+      "url": "https://meetgoodwill.org/stores/",
+      "label": "Goodwill Industries of the Columbia Willamette stores",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "portland-farmers-market",
+      "url": "https://www.portlandfarmersmarket.org/",
+      "label": "Portland Farmers Market",
+      "categories": ["market"]
+    },
+    {
+      "id": "travel-portland-vintage-guide",
+      "url": "https://www.travelportland.com/attractions/vintage-thrift-shops/",
+      "label": "Travel Portland vintage guide",
+      "categories": ["vintage"]
+    }
+  ],
   "candidates": []
 }

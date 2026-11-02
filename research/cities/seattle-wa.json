@@ -9,6 +9,25 @@
     "center": { "lat": 47.6062, "lng": -122.3321 },
     "radiusKm": 20
   },
-  "sources": [],
+  "sources": [
+    {
+      "id": "evergreen-goodwill-locations",
+      "url": "https://evergreengoodwill.org/locations/",
+      "label": "Evergreen Goodwill locations",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "seattle-neighborhood-farmers-markets",
+      "url": "https://seattlefarmersmarkets.org/",
+      "label": "Seattle Neighborhood Farmers Markets",
+      "categories": ["market"]
+    },
+    {
+      "id": "visit-seattle-retail-guide",
+      "url": "https://visitseattle.org/things-to-do/shopping/neighborhood-boutiques-and-retailers/",
+      "label": "Visit Seattle neighborhood retail guide",
+      "categories": ["vintage"]
+    }
+  ],
   "candidates": []
 }
