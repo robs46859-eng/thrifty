@@ -6,6 +6,7 @@ import {
   generateWithGemini,
   ModelBudget,
   ModelBudgetError,
+  parseSourceProposal,
   researchPrompt,
   sourceProposalSchema,
   sourceText,
@@ -84,6 +85,30 @@ describe('model-assisted city research boundaries', () => {
         ],
       }),
     ).toThrow();
+  });
+
+  it('normalizes safe relative websites and clears malformed model URLs', () => {
+    const baseCandidate = {
+      name: 'Example Shop',
+      kind: 'thrift',
+      address: '',
+      hours: '',
+      description: '',
+      evidenceNote: 'Name is visible in the supplied source text.',
+      confidence: 'medium',
+    } as const;
+    expect(
+      parseSourceProposal(
+        { candidates: [{ ...baseCandidate, website: '/locations/example' }] },
+        request.source.url,
+      ).candidates[0].website,
+    ).toBe('https://example.com/locations/example');
+    expect(
+      parseSourceProposal(
+        { candidates: [{ ...baseCandidate, website: 'not a website' }] },
+        request.source.url,
+      ).candidates[0].website,
+    ).toBe('');
   });
 
   it('fails closed when Gemini credentials are absent', async () => {

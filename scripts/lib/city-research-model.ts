@@ -11,19 +11,23 @@ export const MODEL_CALLS_PER_DAY = 12;
 export const SOURCE_TEXT_LIMIT = 12_000;
 
 const categorySchema = z.enum(['thrift', 'market', 'vintage']);
+const candidateFields = {
+  name: z.string().min(1).max(160),
+  kind: categorySchema,
+  address: z.string().max(240).default(''),
+  hours: z.string().max(300).default(''),
+  description: z.string().max(400).default(''),
+  evidenceNote: z.string().min(1).max(500),
+  confidence: z.enum(['low', 'medium', 'high']),
+} as const;
+
 export const sourceProposalSchema = z
   .object({
     candidates: z
       .array(
         z.object({
-          name: z.string().min(1).max(160),
-          kind: categorySchema,
-          address: z.string().max(240).default(''),
+          ...candidateFields,
           website: z.union([z.literal(''), z.string().url().max(500)]).optional(),
-          hours: z.string().max(300).default(''),
-          description: z.string().max(400).default(''),
-          evidenceNote: z.string().min(1).max(500),
-          confidence: z.enum(['low', 'medium', 'high']),
         }),
       )
       .max(8),
@@ -43,6 +47,46 @@ export type ModelResult = {
   model: string;
   proposal: SourceProposal;
 };
+
+const rawSourceProposalSchema = z
+  .object({
+    candidates: z
+      .array(
+        z.object({
+          ...candidateFields,
+          website: z.string().max(500).optional(),
+        }),
+      )
+      .max(8),
+  })
+  .strict();
+
+function normalizeWebsite(value: string | undefined, sourceUrl: string) {
+  const candidate = value?.trim();
+  if (!candidate) return '';
+  try {
+    const absolute = new URL(candidate);
+    return ['http:', 'https:'].includes(absolute.protocol) ? absolute.href : '';
+  } catch {
+    if (!/^(?:\/|\.\/|\.\.\/)/.test(candidate)) return '';
+    try {
+      const relative = new URL(candidate, sourceUrl);
+      return ['http:', 'https:'].includes(relative.protocol) ? relative.href : '';
+    } catch {
+      return '';
+    }
+  }
+}
+
+export function parseSourceProposal(input: unknown, sourceUrl: string): SourceProposal {
+  const raw = rawSourceProposalSchema.parse(input);
+  return sourceProposalSchema.parse({
+    candidates: raw.candidates.map((candidate) => ({
+      ...candidate,
+      website: normalizeWebsite(candidate.website, sourceUrl),
+    })),
+  });
+}
 
 export const responseJsonSchema = {
   type: 'object',
@@ -93,6 +137,7 @@ export function researchPrompt(request: ModelRequest) {
     'Return an empty candidates array when the page contains no suitable retail venue.',
     'Exclude donation-only bins, events outside the requested city area, and categories not allowed for this source.',
     'Leave hours and address empty when absent. evidenceNote must briefly identify the exact supporting text.',
+    'website must be an absolute http(s) URL explicitly present in the source, or an empty string when absent.',
     'These are pending proposals for human review, never approved records.',
     '',
     `SOURCE URL: ${request.source.url}`,
@@ -167,7 +212,7 @@ export async function generateWithGemini(
   return {
     provider: 'gemini',
     model,
-    proposal: sourceProposalSchema.parse(JSON.parse(response.text)),
+    proposal: parseSourceProposal(JSON.parse(response.text), request.source.url),
   };
 }
 
@@ -192,7 +237,7 @@ export async function generateWithOllama(request: ModelRequest): Promise<ModelRe
   return {
     provider: 'ollama',
     model,
-    proposal: sourceProposalSchema.parse(JSON.parse(body.message.content)),
+    proposal: parseSourceProposal(JSON.parse(body.message.content), request.source.url),
   };
 }
 
