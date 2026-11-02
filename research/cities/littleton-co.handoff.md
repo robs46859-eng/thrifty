@@ -1,8 +1,8 @@
 # Littleton-area directory — November 1, 2026
 
-Review complete: **nine listings**, three per launch category, published in `data/cities/littleton-co.json`. [The plan](littleton-co.json) preserves evidence, dates and coordinate provenance. The 20 km coverage includes nearby Denver vintage shops, with their actual Denver addresses visible.
+Review complete: **eleven listings**, with at least three per launch category, published in `data/cities/littleton-co.json`. [The plan](littleton-co.json) preserves evidence, dates and coordinate provenance. The 20 km coverage includes nearby Denver venues, with their actual Denver addresses visible.
 
-- Thrift: arc Littleton, arc Bowles, arc Southpark/Littleton — all operator-locator retail records with published pins, not donation-only stations. Shopping hours remain unknown.
+- Thrift: arc Littleton, arc Bowles, arc Southpark/Littleton, plus nearby arc Bear Valley and Goodwill Archer. The arc records are operator-locator retail records with published pins, not donation-only stations. Unknown shopping hours remain blank.
 - Markets: Aspen Grove, Downtown Littleton and Southwest Plaza — distinct venues with organizer/host season evidence.
 - Vintage / antiques: Hodgepodge Market plus nearby Boss Vintage and Goldmine Vintage. The two shared Denver shops keep their original IDs and exact metadata.
 

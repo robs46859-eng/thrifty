@@ -8,8 +8,8 @@
     "country": "US",
     "timezone": "America/Denver",
     "center": {
-      "lat": 40.015,
-      "lng": -105.2705
+      "lat": 40.01,
+      "lng": -105.265
     },
     "radiusKm": 20
   },
@@ -210,6 +210,26 @@
       "phone": "303-926-4060",
       "sourceUrl": "https://nobletreasuresantiques.com/",
       "tags": ["Antiques", "Lafayette"]
+    },
+    {
+      "lat": 39.9128507,
+      "lng": -105.0684977,
+      "id": "official:boulder-co:arc-broomfield",
+      "name": "arc Thrift — Broomfield",
+      "kind": "thrift",
+      "address": "6500 West 120th Avenue, Broomfield, CO 80020",
+      "description": "Secondhand clothing and household goods at an arc retail store and donation location.",
+      "hours": "",
+      "website": "https://arcthrift.com/stores",
+      "source": "official",
+      "sourceLabel": "arc store locator data",
+      "checkedAt": "2026-11-02",
+      "timezone": "America/Denver",
+      "coordinateNote": "Pin published in arc’s store directory; this is a retail store, not a donation-only station.",
+      "coordinateSourceUrl": "https://arcthrift.com/ajax/get-store-list",
+      "phone": "303-439-7255",
+      "sourceUrl": "https://arcthrift.com/ajax/get-store-list",
+      "tags": ["Secondhand", "Clothing", "Household goods"]
     }
   ]
 }

@@ -160,12 +160,12 @@ describe('published Boulder directory', () => {
     const upstream = vi.fn().mockRejectedValue(new Error('upstream must not be used'));
     const app = express();
     installDiscovery(app, new DiscoveryService(upstream));
-    const response = await request(app).get('/api/places?lat=40.015&lng=-105.2705');
+    const response = await request(app).get('/api/places?lat=40.01&lng=-105.265');
     expect(response.status).toBe(200);
     expect(upstream).not.toHaveBeenCalled();
     expect(response.body.cityIds).toEqual(['boulder-co']);
-    expect(response.body.categoryCounts).toMatchObject({ thrift: 3, market: 3, vintage: 3 });
-    expect(response.body.places).toHaveLength(9);
+    expect(response.body.categoryCounts).toMatchObject({ thrift: 4, market: 3, vintage: 3 });
+    expect(response.body.places).toHaveLength(10);
     expect(
       response.body.places.every((p: { id: string }) => p.id.startsWith('official:boulder-co:')),
     ).toBe(true);
@@ -182,15 +182,20 @@ describe('adjacent city directories', () => {
     const upstream = vi.fn().mockRejectedValue(new Error('must stay local'));
     const app = express();
     installDiscovery(app, new DiscoveryService(upstream));
-    for (const [id, lat, lng] of [
-      ['englewood-co', 39.6478, -104.9878],
-      ['littleton-co', 39.6133, -105.0166],
+    for (const [id, lat, lng, total, thrift] of [
+      ['arvada-co', 39.8028, -105.0875, 11, 5],
+      ['aurora-co', 39.7294, -104.8319, 11, 5],
+      ['centennial-co', 39.5807, -104.8772, 11, 5],
+      ['englewood-co', 39.6478, -104.9878, 11, 5],
+      ['lakewood-co', 39.7047, -105.0814, 11, 5],
+      ['littleton-co', 39.6133, -105.0166, 11, 5],
+      ['westminster-co', 39.8367, -105.0372, 10, 4],
     ] as const) {
       const result = await request(app).get(`/api/places?lat=${lat}&lng=${lng}`);
       expect(result.status).toBe(200);
       expect(result.body.cityIds).toEqual([id]);
-      expect(result.body.places).toHaveLength(9);
-      expect(result.body.categoryCounts).toMatchObject({ thrift: 3, market: 3, vintage: 3 });
+      expect(result.body.places).toHaveLength(total);
+      expect(result.body.categoryCounts).toMatchObject({ thrift, market: 3, vintage: 3 });
     }
     expect(upstream).not.toHaveBeenCalled();
     expect(allPlaces.filter((p) => p.id === 'official:boss-vintage')).toHaveLength(1);
@@ -209,8 +214,8 @@ describe('real Denver directory', () => {
     const response = await request(app).get('/api/places?lat=39.75&lng=-104.99');
     expect(response.status).toBe(200);
     expect(upstream).not.toHaveBeenCalled();
-    expect(response.body.categoryCounts).toMatchObject({ thrift: 10, market: 4, vintage: 3 });
-    expect(response.body.places).toHaveLength(17);
+    expect(response.body.categoryCounts).toMatchObject({ thrift: 13, market: 4, vintage: 3 });
+    expect(response.body.places).toHaveLength(20);
     expect(response.body.places.every((p: { source: string }) => p.source === 'official')).toBe(
       true,
     );
@@ -218,7 +223,7 @@ describe('real Denver directory', () => {
     expect(response.body.source).toBe('Denver source directory');
   });
   it('requires evidence, unique IDs and consistent seasons in the maintained data', () => {
-    expect(categoryCounts(denverPlaces)).toMatchObject({ thrift: 10, market: 4, vintage: 3 });
+    expect(categoryCounts(denverPlaces)).toMatchObject({ thrift: 13, market: 4, vintage: 3 });
     expect(
       catalogueSchema.safeParse({ ...denverCatalogue, places: [...denverPlaces, denverPlaces[0]] })
         .success,

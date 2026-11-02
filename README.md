@@ -6,7 +6,7 @@
 
 **Live app:** [worklifelm.com](https://worklifelm.com/) · **Hosting:** Hostinger Node.js / Express · **Release branch:** `main`
 
-Explore nearby places, keep favorites, plan a little trip and preview a seller pin. The default Denver map contains 17 real listings across thrift stores, farmers markets and vintage/antique shops, with official sources and review dates. Choose **Boulder**, **Englewood**, or **Littleton** marked **directory ready** in the city selector for nine reviewed listings each, three per category, including nearby venues identified by their actual addresses. Shared venues keep one map identity. Wider OpenStreetMap discovery is best effort. Seller pins are private device drafts, not public listings. The fleece, lamp and pet gear scanner examples are also fictional. Uploaded photos never receive fabricated identification or prices.
+Explore nearby places, keep favorites, plan a little trip and preview a seller pin. The default Denver map contains 20 real listings across thrift stores, farmers markets and vintage/antique shops, with official sources and review dates. Eight additional Denver-metro areas are marked **directory ready** in the city selector with 10 or 11 reviewed listings each and at least three per category. Shared venues keep one map identity and their actual municipality/address. Wider OpenStreetMap discovery is best effort. Seller pins are private device drafts, not public listings. The fleece, lamp and pet gear scanner examples are also fictional. Uploaded photos never receive fabricated identification or prices.
 
 ![Thrifty map interface with place filters, nearby finds and trip planning](docs/map-desktop.png)
 
@@ -16,14 +16,19 @@ Explore nearby places, keep favorites, plan a little trip and preview a seller p
 
 These source-reviewed directories are bundled with the app and served by the API without a third-party places lookup. Choose a city marked **directory ready** in the city selector. Denver is the default.
 
-| City / regional coverage | Thrift stores | Farmers markets | Vintage / antiques | Listings | Source review date |
-| ------------------------ | ------------: | --------------: | -----------------: | -------: | ------------------ |
-| Denver metro, Colorado   |            10 |               4 |                  3 |       17 | November 1, 2026   |
-| Boulder area, Colorado   |             3 |               3 |                  3 |        9 | November 1, 2026   |
-| Englewood area, Colorado |             3 |               3 |                  3 |        9 | November 1, 2026   |
-| Littleton area, Colorado |             3 |               3 |                  3 |        9 | November 1, 2026   |
+| City / regional coverage   | Thrift stores | Farmers markets | Vintage / antiques | Listings | Source review date |
+| -------------------------- | ------------: | --------------: | -----------------: | -------: | ------------------ |
+| Denver metro, Colorado     |            13 |               4 |                  3 |       20 | November 1–2, 2026 |
+| Arvada area, Colorado      |             5 |               3 |                  3 |       11 | November 1–2, 2026 |
+| Aurora area, Colorado      |             5 |               3 |                  3 |       11 | November 1–2, 2026 |
+| Boulder area, Colorado     |             4 |               3 |                  3 |       10 | November 1–2, 2026 |
+| Centennial area, Colorado  |             5 |               3 |                  3 |       11 | November 1–2, 2026 |
+| Englewood area, Colorado   |             5 |               3 |                  3 |       11 | November 1–2, 2026 |
+| Lakewood area, Colorado    |             5 |               3 |                  3 |       11 | November 1–2, 2026 |
+| Littleton area, Colorado   |             5 |               3 |                  3 |       11 | November 1–2, 2026 |
+| Westminster area, Colorado |             4 |               3 |                  3 |       10 | November 1–2, 2026 |
 
-There are **37 unique physical venues** across these four catalogues. Nearby city areas overlap: shared venues retain one ID and their actual municipality/address, so the row totals must not be added as unique businesses. Discovery selects the nearest published city profile and filters its records within 20 km of the requested center. Seasonal markets can remain listed with explicit season-ended or future-season labels. Published review dates are not open-now or live-stock guarantees; records become overdue after 30 days.
+There are **46 unique physical venues** across these nine catalogues. Nearby city areas overlap: shared venues retain one ID and their actual municipality/address, so the row totals must not be added as unique businesses. Discovery selects the nearest published city profile and filters its records within 20 km of the requested center. Seasonal markets can remain listed with explicit season-ended or future-season labels. Published review dates are not open-now or live-stock guarantees; records become overdue after 30 days.
 
 All current reviewed coverage is in Colorado. Other US areas can use best-effort OpenStreetMap discovery, which can fail and does not imply a reviewed city launch. Portland is an unpublished research starter, not an available city directory. Farm shops and local sellers have map categories, but the reviewed city catalogues currently populate thrift, farmers market and vintage/antique categories. See [the directory sources and coverage notes](docs/DATA.md).
 
@@ -55,8 +60,8 @@ Use the [city expansion workflow](docs/CITY_WORKFLOW.md) to repeat the Denver pr
 
 ## Explore your neighborhood
 
-1. Open **Explore** to pan and zoom the map. The first Denver view contains **17 real places in three categories**.
-2. Tap **Search this area** or the location button to search near a map center. All four published city directories work without a places API key or external lookup. Outside reviewed coverage, public discovery is best effort.
+1. Open **Explore** to pan and zoom the map. The first Denver view contains **20 real places in three categories**.
+2. Tap **Search this area** or the location button to search near a map center. All nine published city directories work without a places API key or external lookup. Outside reviewed coverage, public discovery is best effort.
 3. Filter by thrift stores, farmers/public markets, vintage, farm shops or local sellers; use the search box to narrow the current results.
 4. Open a pin or place card, save it with the heart, and add it to **My little trip**. Public-place trips open directions in Google Maps. Sample mode is explicit and cannot launch real directions.
 5. Open **Sell** to create a private shop/stall draft at your chosen map location. Other customers cannot see it yet.
@@ -78,7 +83,7 @@ Changing the browser origin or port creates a separate workspace. Export from th
 
 ## What works
 
-- **Four reviewed city directories:** Denver, Boulder, Englewood and Littleton, with published addresses, source links, checked dates, approximate geocoded pins and season-ended/future-season labels. The [city table](#current-cities) lists category counts. Review dates become overdue after 30 days; fetching the app never renews them.
+- **Nine reviewed city directories:** Denver, Arvada, Aurora, Boulder, Centennial, Englewood, Lakewood, Littleton and Westminster, with published addresses, source links, checked dates, operator or approximate geocoded pins and season-ended/future-season labels. The [city table](#current-cities) lists category counts. Review dates become overdue after 30 days; fetching the app never renews them.
 - **Interactive map:** pannable Leaflet map, color-coded selectable pins, category and text filters, public place search, explicit location permission, collapsible mobile place sheet, saved places, ordered trip stops and Google Maps directions for public destinations. See [map limitations](docs/MAP.md).
 - **Community updates:** share restock/discount days, closures/reopenings, holiday hours, category price ranges, layout notes, ratings, parking, nearby finds and accessibility. Signed-in members can confirm, dispute, flag and withdraw reports; admin moderation and automatic expiry keep updates bounded. Map badges and filters show active reports. See [community features and limits](docs/COMMUNITY.md).
 - **Seller map workspace:** create and delete private shop/stall pins with location, category, description and dates/hours; preserved in local backups. No public publishing is implied.
@@ -115,7 +120,7 @@ Map pins and place cards show active report badges. **Recent finds** and **Commu
 
 Signed-in members can confirm or dispute another shopper's report, change/remove their vote, flag inaccurate/spam/private/abusive content, and withdraw their own reports. Three distinct member flags hide an update pending review. The verified admin can review flagged updates per place, hide, restore or remove them; moderation is audited. Free accounts can publish **10 reports per UTC day and 3 per minute**, with **60 feedback interactions per hour**. These are separate from cloud scan credits; the verified admin is exempt.
 
-Community reporting currently covers the **37 reviewed venues**. Unreviewed OpenStreetMap results, fictional samples and private seller pins are excluded. Layout guidance is text only; floorplan/photo uploads, push notifications, merchant ownership verification and live inventory synchronization are not available. Reports are shopper observations, not official store notices or guaranteed availability. No test reports or invented ratings are seeded into production. Read [the community guide](docs/COMMUNITY.md) for expiry, moderation, storage and API details.
+Community reporting currently covers the **46 reviewed venues**. Unreviewed OpenStreetMap results, fictional samples and private seller pins are excluded. Layout guidance is text only; floorplan/photo uploads, push notifications, merchant ownership verification and live inventory synchronization are not available. Reports are shopper observations, not official store notices or guaranteed availability. No test reports or invented ratings are seeded into production. Read [the community guide](docs/COMMUNITY.md) for expiry, moderation, storage and API details.
 
 ## Purchase location tags
 
@@ -167,7 +172,7 @@ npm run test:runtime   # Hostinger-compatible compiled server startup
 npm run format:check
 ```
 
-Browser tests require Google Chrome (`npx playwright install chrome` if absent). Playwright starts an isolated loopback fixture server on port 4321, serves the production client build, captures email locally and never sends actual sign-in emails. Production startup is checked separately by the compiled-server regression test. CI installs Chrome, tests, builds, and runs the same browser suite. The current suite includes **81 domain/API tests**, **40 desktop/phone browser workflows** and a compiled-server startup regression. Coverage includes all four city directories, purchase tags, review/save/draft/export/sale/persistence, photo upload with manual fallback, comparables, household profiles/goals, offline reload/save, account separation, cloud scan quotas, community sharing/voting/flags, admin moderation, expiry, ratings and layout overflow. There is no physical phone camera, iOS installation, real Google consent, live SMTP delivery, provider billing or live marketplace acceptance verification from fixture tests alone.
+Browser tests require Google Chrome (`npx playwright install chrome` if absent). Playwright starts an isolated loopback fixture server on port 4321, serves the production client build, captures email locally and never sends actual sign-in emails. Production startup is checked separately by the compiled-server regression test. CI installs Chrome, tests, builds, and runs the same browser suite. The current suite includes **81 domain/API tests**, **40 desktop/phone browser workflows** and a compiled-server startup regression. Coverage includes all nine city directories, purchase tags, review/save/draft/export/sale/persistence, photo upload with manual fallback, comparables, household profiles/goals, offline reload/save, account separation, cloud scan quotas, community sharing/voting/flags, admin moderation, expiry, ratings and layout overflow. There is no physical phone camera, iOS installation, real Google consent, live SMTP delivery, provider billing or live marketplace acceptance verification from fixture tests alone.
 
 ## Storage and hosting boundary
 

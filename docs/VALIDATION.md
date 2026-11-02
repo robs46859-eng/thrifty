@@ -1,6 +1,6 @@
 # Validation record
 
-Validated locally on November 1, 2026, including the real Denver directory and preserved sign-in/scanning limits.
+Validated locally on November 2, 2026, including the expanded Denver-metro directories and preserved sign-in/scanning limits.
 
 | Check                                         | Result                                                               |
 | --------------------------------------------- | -------------------------------------------------------------------- |
@@ -44,3 +44,11 @@ Research used 20 additional CLI requests with the daily ledger preserved at 38/6
 The community release adds eleven server/domain tests for all ten report kinds, strict input/date validation, sign-in/CSRF/body limits, public sharing without private identity leakage, per-member ratings, expiry and hidden-report exclusions, votes, distinct flags, ownership, admin moderation, atomic contribution quotas independent of scan credits, unavailable storage and database reopen persistence. Desktop and phone browser flows publish restock observations, confirm and flag from another member, moderate as admin, and publish category prices, finds and ratings with map filtering. All identities, messages and reports in these tests are isolated fixtures. No test reports are posted to production.
 
 Community release validation: 81 domain/API tests, 40 desktop/phone browser workflows, production TypeScript/build, compiled-server startup, all-city data validation, formatting and whitespace checks passed locally. Existing sign-in protection and 10/day, 3/minute cloud scan limits remain covered. Authenticated sharing and moderation are fixture-tested; live checks do not create public test content.
+
+## Nine-city Denver-metro expansion — November 2, 2026
+
+The directory now publishes nine city profiles: Denver, Arvada, Aurora, Boulder, Centennial, Englewood, Lakewood, Littleton and Westminster. There are 46 unique reviewed venues across the overlapping profiles. Denver contains 20 listings; the other profiles contain 10 or 11 each, with at least three thrift, three farmers market and three vintage/antique records in every profile. Shared venues retain one exact record and physical ID.
+
+Local validation passed 81 domain/API tests, all-city data/evidence validation, the production TypeScript/Vite/offline/server build, compiled-server startup, formatting checks, and 40 desktop/mobile Chrome workflows. Browser coverage selects all nine directory-ready cities and checks their record counts; it also caught and verified a fix that preserves four decimal places when requesting a selected city, preventing edge-of-coverage records from being dropped by coarse coordinate rounding.
+
+The bounded research pass used eight web searches, twenty-four source-page access attempts and twelve public Census geocoder requests that failed at DNS. Failure cooldowns and the daily ledger were preserved. Accepted new coordinates came from the cached arc operator locator. No paid AI, Google Places, Vision scan or marketplace request was made. Validation does not establish live stock, merchant publishing, current vendor attendance, open-now status or production deployment.

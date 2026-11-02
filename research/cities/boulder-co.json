@@ -7,8 +7,8 @@
     "country": "US",
     "timezone": "America/Denver",
     "center": {
-      "lat": 40.015,
-      "lng": -105.2705
+      "lat": 40.01,
+      "lng": -105.265
     },
     "radiusKm": 20
   },
@@ -480,6 +480,46 @@
             "url": "https://nobletreasuresantiques.com/",
             "fields": ["name", "address", "category", "hours"],
             "note": "Operator home page reviewed through the web reader lists antiques/collectibles at 409 South Public Road, Lafayette, CO 80026, Monday–Saturday 10am–5pm and Sunday noon–5pm. CLI page exceeded the payload limit; no broad crawl was used."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:boulder-co:arc-broomfield",
+        "name": "arc Thrift — Broomfield",
+        "kind": "thrift",
+        "address": "6500 West 120th Avenue, Broomfield, CO 80020",
+        "description": "Secondhand clothing and household goods at an arc retail store and donation location.",
+        "lat": 39.9128507,
+        "lng": -105.0684977,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "sourceLabel": "arc store locator data",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Pin published in arc’s store directory; this is a retail store, not a donation-only station.",
+        "coordinateSourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "tags": ["Secondhand", "Clothing", "Household goods"],
+        "phone": "303-439-7255"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["name", "address", "category"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["coordinates"],
+            "note": "Operator locator identifies this as a retail store and donation location and publishes the listed pin; donation-only stations were excluded."
           }
         ]
       }

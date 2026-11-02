@@ -1,8 +1,8 @@
 # Englewood-area directory — November 1, 2026
 
-Review complete: **nine listings**, three per launch category, published in `data/cities/englewood-co.json`. [The plan](englewood-co.json) contains source URLs and field-level evidence. The 20 km coverage includes nearby Denver venues; their real municipalities remain visible.
+Review complete: **eleven listings**, with at least three per launch category, published in `data/cities/englewood-co.json`. [The plan](englewood-co.json) contains source URLs and field-level evidence. The 20 km coverage includes nearby Denver venues; their real municipalities remain visible.
 
-- Thrift: Goodwill Englewood Outlet, Soul Dog Rescue Thrift Store, and nearby arc Broadway.
+- Thrift: Goodwill Englewood Outlet, Soul Dog Rescue Thrift Store, and nearby arc Broadway, arc Bear Valley and Goodwill Archer.
 - Markets: Englewood’s monthly Gluten Free Farmers Market, nearby University Hills Farmers Market and South Pearl Street Farmers Market.
 - Vintage / antiques: nearby Denver’s Boss Vintage, Goldmine Vintage and Antiques Etc.
 

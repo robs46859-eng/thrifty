@@ -1,0 +1,513 @@
+{
+  "version": 1,
+  "city": {
+    "id": "arvada-co",
+    "city": "Arvada",
+    "state": "CO",
+    "country": "US",
+    "timezone": "America/Denver",
+    "center": {
+      "lat": 39.8028,
+      "lng": -105.0875
+    },
+    "radiusKm": 20
+  },
+  "sources": [
+    {
+      "id": "arc-stores",
+      "url": "https://arcthrift.com/stores",
+      "label": "arc Thrift Stores",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "arc-locator",
+      "url": "https://arcthrift.com/ajax/get-store-list",
+      "label": "arc store locator data",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "thehighlandsfarmersmarket",
+      "url": "https://thehighlandsfarmersmarket.com/",
+      "label": "Highlands Farmers Market",
+      "categories": ["market"]
+    },
+    {
+      "id": "cityparkfarmersmarket",
+      "url": "https://www.cityparkfarmersmarket.com/",
+      "label": "City Park Farmers Market",
+      "categories": ["market"]
+    },
+    {
+      "id": "coloradofreshmarkets",
+      "url": "https://www.coloradofreshmarkets.com/visit",
+      "label": "Colorado Fresh Markets",
+      "categories": ["market"]
+    },
+    {
+      "id": "goldminevintage",
+      "url": "https://www.goldminevintage.com/home-blend",
+      "label": "Goldmine Vintage",
+      "categories": ["vintage"]
+    },
+    {
+      "id": "bossvintage",
+      "url": "https://www.bossvintage.com/contact",
+      "label": "Boss Vintage",
+      "categories": ["vintage"]
+    },
+    {
+      "id": "denverantiques",
+      "url": "https://www.denverantiques.com/contact",
+      "label": "Antiques Etc.",
+      "categories": ["vintage"]
+    }
+  ],
+  "candidates": [
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:arc-arvada-plaza",
+        "name": "arc Thrift — Arvada Plaza",
+        "kind": "thrift",
+        "address": "9661 West 58th Avenue, Arvada, CO 80002",
+        "description": "Secondhand clothing and household goods.",
+        "lat": 39.8021666,
+        "lng": -105.1057999,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/stores",
+        "sourceLabel": "arc Thrift Stores",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Pin published in arc’s store directory.",
+        "tags": ["Secondhand", "Household goods"],
+        "phone": "303-420-0358"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["name", "address", "category"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["coordinates"],
+            "note": "Operator locator publishes the venue pin; the exact already-published place record is reused."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:arc-jcrs",
+        "name": "arc Thrift — JCRS",
+        "kind": "thrift",
+        "address": "6791 W Colfax Ave, Lakewood, CO 80214",
+        "description": "Secondhand clothing and household goods.",
+        "lat": 39.7412339,
+        "lng": -105.0715075,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/stores",
+        "sourceLabel": "arc Thrift Stores",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Pin published in arc’s store directory.",
+        "tags": ["Secondhand", "Household goods"],
+        "phone": "303-232-6066"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["name", "address", "category"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["coordinates"],
+            "note": "Operator locator publishes the venue pin; the exact already-published place record is reused."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:denver-co:arc-pecos",
+        "name": "arc Thrift — Pecos",
+        "kind": "thrift",
+        "address": "1405 Cortez St, Denver, CO, USA",
+        "description": "Retail thrift store. Shopping hours have not been confirmed.",
+        "lat": 39.8317602,
+        "lng": -105.00395500000002,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "sourceLabel": "arc Thrift Stores locator",
+        "checkedAt": "2026-11-01",
+        "coordinateSourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "coordinateNote": "Approximate store location published by the operator.",
+        "tags": ["Secondhand", "Denver"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["name", "address", "category"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["coordinates"],
+            "note": "Operator locator identifies this as a retail store and donation location and publishes the listed pin; donation-only stations were excluded."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:boulder-co:arc-broomfield",
+        "name": "arc Thrift — Broomfield",
+        "kind": "thrift",
+        "address": "6500 West 120th Avenue, Broomfield, CO 80020",
+        "description": "Secondhand clothing and household goods at an arc retail store and donation location.",
+        "lat": 39.9128507,
+        "lng": -105.0684977,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "sourceLabel": "arc store locator data",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Pin published in arc’s store directory; this is a retail store, not a donation-only station.",
+        "coordinateSourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "tags": ["Secondhand", "Clothing", "Household goods"],
+        "phone": "303-439-7255"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["name", "address", "category"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["coordinates"],
+            "note": "Operator locator identifies this as a retail store and donation location and publishes the listed pin; donation-only stations were excluded."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:arvada-co:arc-westminster",
+        "name": "arc Thrift — Westminster",
+        "kind": "thrift",
+        "address": "8657 Sheridan Boulevard, Westminster, CO 80003",
+        "description": "Secondhand clothing and household goods at an arc retail store and donation location.",
+        "lat": 39.8541327,
+        "lng": -105.0553458,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/stores",
+        "sourceLabel": "arc Thrift Stores",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Pin published in arc’s store directory; this is a retail store, not a donation-only station.",
+        "coordinateSourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "tags": ["Secondhand", "Clothing", "Household goods"],
+        "phone": "303-957-9144"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["name", "address", "category"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["coordinates"],
+            "note": "Operator locator identifies this as a retail store and donation location and publishes the listed pin; donation-only stations were excluded."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:highlands-market",
+        "name": "Highlands Farmers Market",
+        "kind": "market",
+        "address": "W. 32nd Ave. between Julian & Newton, Denver, CO 80211",
+        "description": "Neighborhood farmers market in Highlands Square.",
+        "lat": 39.7624126,
+        "lng": -105.0347469,
+        "hours": "Sundays 9 am–1 pm; May 10–Oct 25, 2026",
+        "website": "https://thehighlandsfarmersmarket.com/",
+        "source": "official",
+        "sourceUrl": "https://thehighlandsfarmersmarket.com/",
+        "sourceLabel": "Highlands Farmers Market",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Approximate meeting point from the organizer’s map link.",
+        "tags": ["Produce", "Local makers"],
+        "season": {
+          "startsOn": "2026-05-10",
+          "endsOn": "2026-10-25",
+          "timezone": "America/Denver"
+        }
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://thehighlandsfarmersmarket.com/",
+            "fields": ["name", "address", "category", "hours", "season", "coordinates"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:city-park-market",
+        "name": "City Park Farmers Market",
+        "kind": "market",
+        "address": "City Park Esplanade, 2551 E. Colfax Ave., Denver, CO 80206",
+        "description": "Producer-focused farmers market at City Park Esplanade.",
+        "lat": 39.7402488,
+        "lng": -104.9568378,
+        "hours": "Saturdays 8 am–1 pm; May 2–Oct 31, 2026",
+        "website": "https://www.cityparkfarmersmarket.com/",
+        "source": "official",
+        "sourceUrl": "https://www.cityparkfarmersmarket.com/",
+        "sourceLabel": "City Park Farmers Market",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+        "tags": ["Produce", "Food", "SNAP / DUFB"],
+        "season": {
+          "startsOn": "2026-05-02",
+          "endsOn": "2026-10-31",
+          "timezone": "America/Denver"
+        },
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=2551+E+Colfax+Ave%2C+Denver%2C+CO+80206&benchmark=Public_AR_Current&format=json",
+        "additionalSourceUrls": ["https://www.cityparkfarmersmarket.com/generalinfo"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://www.cityparkfarmersmarket.com/",
+            "fields": ["name", "address", "category", "hours", "season"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=2551+E+Colfax+Ave%2C+Denver%2C+CO+80206&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Reused the exact reviewed coordinate provenance from the published venue; no new pin was inferred."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:cherry-creek-market",
+        "name": "Cherry Creek Fresh Market",
+        "kind": "market",
+        "address": "Cherry Creek Shopping Center east side, Steele St. next to Macy’s, Denver, CO",
+        "description": "Seasonal fresh-food market. The organizer’s visit page now lists its 2027 season.",
+        "lat": 39.716214,
+        "lng": -104.951293,
+        "hours": "Saturdays 9 am–2 pm; May 1–Oct 9, 2027",
+        "website": "https://www.coloradofreshmarkets.com/visit",
+        "source": "official",
+        "sourceUrl": "https://www.coloradofreshmarkets.com/visit",
+        "sourceLabel": "Colorado Fresh Markets",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Approximate venue-area pin beside Macy’s; use the organizer’s entrance instructions.",
+        "tags": ["Produce", "Local food"],
+        "season": {
+          "startsOn": "2027-05-01",
+          "endsOn": "2027-10-09",
+          "timezone": "America/Denver"
+        },
+        "coordinateSourceUrl": "https://www.macys.com/stores/co/denver/cherry-creek-shopping-center_344.html"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://www.coloradofreshmarkets.com/visit",
+            "fields": ["name", "address", "category", "hours", "season"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://www.macys.com/stores/co/denver/cherry-creek-shopping-center_344.html",
+            "fields": ["coordinates"],
+            "note": "Reused the exact reviewed coordinate provenance from the published venue; no new pin was inferred."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "lat": 39.7198141,
+        "lng": -104.9875585,
+        "id": "official:goldmine-vintage",
+        "name": "Goldmine Vintage",
+        "kind": "vintage",
+        "address": "227 N Broadway #102, Denver, CO 80203",
+        "description": "Vintage and secondhand finds; check the shop for current stock.",
+        "hours": "Daily 11am–7pm",
+        "website": "https://www.goldminevintage.com/home-blend",
+        "source": "official",
+        "sourceLabel": "Goldmine Vintage",
+        "checkedAt": "2026-11-01",
+        "timezone": "America/Denver",
+        "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=227+N+Broadway%2C+Denver%2C+CO+80203&benchmark=Public_AR_Current&format=json",
+        "phone": "303-447-0065",
+        "sourceUrl": "https://www.goldminevintage.com/home-blend",
+        "tags": ["Vintage clothing", "Records"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://www.goldminevintage.com/home-blend",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=227+N+Broadway%2C+Denver%2C+CO+80203&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Reused the exact reviewed coordinate provenance from the published venue; no new pin was inferred."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "lat": 39.716374,
+        "lng": -104.9874287,
+        "id": "official:boss-vintage",
+        "name": "Boss Vintage",
+        "kind": "vintage",
+        "address": "10 S. Broadway, Denver, CO 80209",
+        "description": "Vintage and secondhand finds; check the shop for current stock.",
+        "hours": "Mon–Sat 11am–6pm; Sun noon–6pm",
+        "website": "https://www.bossvintage.com/contact",
+        "source": "official",
+        "sourceLabel": "Boss Vintage",
+        "checkedAt": "2026-11-01",
+        "timezone": "America/Denver",
+        "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=10+S+Broadway%2C+Denver%2C+CO+80209&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.bossvintage.com/contact",
+        "tags": ["Vintage clothing", "Accessories"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://www.bossvintage.com/contact",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=10+S+Broadway%2C+Denver%2C+CO+80209&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Reused the exact reviewed coordinate provenance from the published venue; no new pin was inferred."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "lat": 39.7400818,
+        "lng": -104.9209896,
+        "id": "official:antiques-etc",
+        "name": "Antiques Etc.",
+        "kind": "vintage",
+        "address": "5736 E. Colfax Ave., Denver, CO 80220",
+        "description": "Vintage and secondhand finds; check the shop for current stock.",
+        "hours": "Mon–Sat 10am–6pm; Sun 11am–5pm",
+        "website": "https://www.denverantiques.com/contact",
+        "source": "official",
+        "sourceLabel": "Antiques Etc.",
+        "checkedAt": "2026-11-01",
+        "timezone": "America/Denver",
+        "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=5736+E+Colfax+Ave%2C+Denver%2C+CO+80220&benchmark=Public_AR_Current&format=json",
+        "phone": "303-329-8208",
+        "sourceUrl": "https://www.denverantiques.com/contact",
+        "tags": ["Antiques", "Collectibles"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://www.denverantiques.com/contact",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=5736+E+Colfax+Ave%2C+Denver%2C+CO+80220&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Reused the exact reviewed coordinate provenance from the published venue; no new pin was inferred."
+          }
+        ]
+      }
+    }
+  ]
+}

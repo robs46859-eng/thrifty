@@ -18,7 +18,7 @@ import { cityProfileSchema } from '../src/lib/regions';
 import { catalogueSchema } from '../src/lib/catalogue';
 import { marketSeason } from '../src/lib/discovery';
 import { generateRegistry } from '../scripts/generate-catalogues.mjs';
-const now = new Date('2026-11-01T18:00:00Z');
+const now = new Date('2026-11-02T18:00:00Z');
 const city = cityProfileSchema.parse({
   id: 'portland-or',
   city: 'Portland',
@@ -106,7 +106,7 @@ describe('conservative research cache', () => {
     temporary(async (root) => {
       const transport = vi.fn().mockResolvedValue({ status: 200, body: 'page' });
       // Preserve usage from the earlier, smaller budget; raising limits must not erase it.
-      const ledger = path.join(root, 'budget-2026-11-01.json');
+      const ledger = path.join(root, 'budget-2026-11-02.json');
       await writeFile(ledger, JSON.stringify({ requests: 7 }));
       let consumed = 7;
       let run = 0;
@@ -235,7 +235,7 @@ describe('city review and publication', () => {
     const draft = draftSchema.parse(
       JSON.parse(await readFile(path.resolve('research/cities/englewood-co.json'), 'utf8')),
     );
-    expect(publication(draft, now).places).toHaveLength(9);
+    expect(publication(draft, now).places).toHaveLength(11);
     const shared = draft.candidates.find((c) => c.place.id === 'official:boss-vintage')!;
     shared.place.address = 'Different address, Englewood, CO';
     expect(() => publication(draft, now)).toThrow('exactly match');

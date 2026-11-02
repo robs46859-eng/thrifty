@@ -1,14 +1,14 @@
 # Boulder-area directory — November 1, 2026
 
-Status: **review complete; nine listings published in the repository**. Coverage includes Boulder and nearby Louisville/Lafayette within the 20 km city radius. Deployment status and the live checks are reported with the release delivery; local publication alone does not deploy the site.
+Status: **review complete; ten listings published in the repository** after the November 2 metro expansion. Coverage includes Boulder and nearby Louisville/Lafayette/Broomfield within the 20 km city radius. Deployment status and the live checks are reported with the release delivery; local publication alone does not deploy the site.
 
-| Category           | Approved listings                                                                 | Count |
-| ------------------ | --------------------------------------------------------------------------------- | ----: |
-| Thrift             | arc Louisville; Pig + Pearl; Greenwood Wildlife Thrift Shop & Consignment Gallery |     3 |
-| Farmers markets    | Boulder Farmers Market; Lafayette Farmers Market; Louisville Farmers Market       |     3 |
-| Vintage / antiques | Classic Facets; Little Horse Vintage Louisville; Noble Treasures Antiques         |     3 |
+| Category           | Approved listings                                                                                 | Count |
+| ------------------ | ------------------------------------------------------------------------------------------------- | ----: |
+| Thrift             | arc Louisville; arc Broomfield; Pig + Pearl; Greenwood Wildlife Thrift Shop & Consignment Gallery |     4 |
+| Farmers markets    | Boulder Farmers Market; Lafayette Farmers Market; Louisville Farmers Market                       |     3 |
+| Vintage / antiques | Classic Facets; Little Horse Vintage Louisville; Noble Treasures Antiques                         |     3 |
 
-The evidence and stable IDs are in [the city plan](boulder-co.json). The published snapshot is [data/cities/boulder-co.json](../../data/cities/boulder-co.json); the generated registry includes Boulder automatically. In the app, choose **Boulder, CO · directory ready** from the city selector. The API lookup is `/api/places?lat=40.015&lng=-105.2705`.
+The evidence and stable IDs are in [the city plan](boulder-co.json). The published snapshot is [data/cities/boulder-co.json](../../data/cities/boulder-co.json); the generated registry includes Boulder automatically. In the app, choose **Boulder, CO · directory ready** from the city selector. The API lookup is `/api/places?lat=40.01&lng=-105.265`.
 
 ## Review decisions
 

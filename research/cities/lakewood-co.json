@@ -1,0 +1,513 @@
+{
+  "version": 1,
+  "city": {
+    "id": "lakewood-co",
+    "city": "Lakewood",
+    "state": "CO",
+    "country": "US",
+    "timezone": "America/Denver",
+    "center": {
+      "lat": 39.7047,
+      "lng": -105.0814
+    },
+    "radiusKm": 20
+  },
+  "sources": [
+    {
+      "id": "arc-stores",
+      "url": "https://arcthrift.com/stores",
+      "label": "arc Thrift Stores",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "arc-locator",
+      "url": "https://arcthrift.com/ajax/get-store-list",
+      "label": "arc store locator data",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "thehighlandsfarmersmarket",
+      "url": "https://thehighlandsfarmersmarket.com/",
+      "label": "Highlands Farmers Market",
+      "categories": ["market"]
+    },
+    {
+      "id": "southpearlstreet",
+      "url": "https://www.southpearlstreet.com/farmers-market/",
+      "label": "South Pearl Street",
+      "categories": ["market"]
+    },
+    {
+      "id": "denverceliacs",
+      "url": "https://denverceliacs.org/event/gluten-free-farmers-market-8/",
+      "label": "NCA Denver Celiacs",
+      "categories": ["market"]
+    },
+    {
+      "id": "bossvintage",
+      "url": "https://www.bossvintage.com/contact",
+      "label": "Boss Vintage",
+      "categories": ["vintage"]
+    },
+    {
+      "id": "goldminevintage",
+      "url": "https://www.goldminevintage.com/home-blend",
+      "label": "Goldmine Vintage",
+      "categories": ["vintage"]
+    },
+    {
+      "id": "hodgepodge",
+      "url": "https://hodgepodge.market/",
+      "label": "Hodgepodge Market",
+      "categories": ["vintage"]
+    }
+  ],
+  "candidates": [
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:denver-co:arc-green-mountain",
+        "name": "arc Thrift — Green Mountain",
+        "kind": "thrift",
+        "address": "12039 West Alameda Parkway, Lakewood, CO 80228",
+        "description": "Secondhand clothing and household goods at an arc retail store and donation location.",
+        "lat": 39.7099599,
+        "lng": -105.137408,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/stores",
+        "sourceLabel": "arc Thrift Stores",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Pin published in arc’s store directory; this is a retail store, not a donation-only station.",
+        "coordinateSourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "tags": ["Secondhand", "Clothing", "Household goods"],
+        "phone": "303-984-0851"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["name", "address", "category"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["coordinates"],
+            "note": "Operator locator identifies this as a retail store and donation location and publishes the listed pin; donation-only stations were excluded."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:denver-co:arc-jewell",
+        "name": "arc Thrift — Jewell",
+        "kind": "thrift",
+        "address": "7677 West Jewell Avenue, Lakewood, CO 80232",
+        "description": "Secondhand clothing and household goods at an arc retail store and donation location.",
+        "lat": 39.6839378,
+        "lng": -105.0829011,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/stores",
+        "sourceLabel": "arc Thrift Stores",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Pin published in arc’s store directory; this is a retail store, not a donation-only station.",
+        "coordinateSourceUrl": "https://arcthrift.com/ajax/get-store-list",
+        "tags": ["Secondhand", "Clothing", "Household goods"],
+        "phone": "720-531-6881"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["name", "address", "category"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["coordinates"],
+            "note": "Operator locator identifies this as a retail store and donation location and publishes the listed pin; donation-only stations were excluded."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:arc-jcrs",
+        "name": "arc Thrift — JCRS",
+        "kind": "thrift",
+        "address": "6791 W Colfax Ave, Lakewood, CO 80214",
+        "description": "Secondhand clothing and household goods.",
+        "lat": 39.7412339,
+        "lng": -105.0715075,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/stores",
+        "sourceLabel": "arc Thrift Stores",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Pin published in arc’s store directory.",
+        "tags": ["Secondhand", "Household goods"],
+        "phone": "303-232-6066"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["name", "address", "category"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["coordinates"],
+            "note": "Operator locator publishes the venue pin; the exact already-published place record is reused."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:arc-alameda-arc-thrift-stores-outlet",
+        "name": "arc Thrift — Alameda Outlet",
+        "kind": "thrift",
+        "address": "255 South Hooker Street, Denver, CO 80219",
+        "description": "Secondhand clothing and household goods.",
+        "lat": 39.7119306,
+        "lng": -105.0291675,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/stores",
+        "sourceLabel": "arc Thrift Stores",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Pin published in arc’s store directory.",
+        "tags": ["Secondhand", "Household goods"],
+        "phone": "303-936-4371"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["name", "address", "category"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["coordinates"],
+            "note": "Operator locator publishes the venue pin; the exact already-published place record is reused."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:arc-bear-valley",
+        "name": "arc Thrift — Bear Valley",
+        "kind": "thrift",
+        "address": "3125 S. Sheridan Blvd., Denver, CO 80227",
+        "description": "Secondhand clothing and household goods.",
+        "lat": 39.6550222,
+        "lng": -105.0541782,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/stores",
+        "sourceLabel": "arc Thrift Stores",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Pin published in arc’s store directory.",
+        "tags": ["Secondhand", "Household goods"],
+        "phone": "720-925-4483"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["name", "address", "category"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["coordinates"],
+            "note": "Operator locator publishes the venue pin; the exact already-published place record is reused."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:highlands-market",
+        "name": "Highlands Farmers Market",
+        "kind": "market",
+        "address": "W. 32nd Ave. between Julian & Newton, Denver, CO 80211",
+        "description": "Neighborhood farmers market in Highlands Square.",
+        "lat": 39.7624126,
+        "lng": -105.0347469,
+        "hours": "Sundays 9 am–1 pm; May 10–Oct 25, 2026",
+        "website": "https://thehighlandsfarmersmarket.com/",
+        "source": "official",
+        "sourceUrl": "https://thehighlandsfarmersmarket.com/",
+        "sourceLabel": "Highlands Farmers Market",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Approximate meeting point from the organizer’s map link.",
+        "tags": ["Produce", "Local makers"],
+        "season": {
+          "startsOn": "2026-05-10",
+          "endsOn": "2026-10-25",
+          "timezone": "America/Denver"
+        }
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://thehighlandsfarmersmarket.com/",
+            "fields": ["name", "address", "category", "hours", "season", "coordinates"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "lat": 39.6893392,
+        "lng": -104.9803476,
+        "id": "official:south-pearl-market",
+        "name": "South Pearl Street Farmers Market",
+        "kind": "market",
+        "address": "1400–1500 blocks of S. Pearl St., Denver, CO 80210",
+        "description": "Outdoor farmers market with Colorado growers, food producers and local makers.",
+        "hours": "Sundays 9 am–1 pm; May 3–Nov 8, 2026",
+        "website": "https://www.southpearlstreet.com/farmers-market/",
+        "source": "official",
+        "sourceLabel": "South Pearl Street",
+        "checkedAt": "2026-11-01",
+        "timezone": "America/Denver",
+        "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1500+S+Pearl+St%2C+Denver%2C+CO+80210&benchmark=Public_AR_Current&format=json",
+        "season": {
+          "startsOn": "2026-05-03",
+          "endsOn": "2026-11-08",
+          "timezone": "America/Denver"
+        },
+        "sourceUrl": "https://www.southpearlstreet.com/farmers-market/",
+        "tags": ["Produce", "Food", "Service animals only"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://www.southpearlstreet.com/farmers-market/",
+            "fields": ["name", "address", "category", "hours", "season"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1500+S+Pearl+St%2C+Denver%2C+CO+80210&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Reused the exact reviewed coordinate provenance from the published venue; no new pin was inferred."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "lat": 39.653348996279,
+        "lng": -104.991625229897,
+        "id": "official:englewood-co:gluten-free-market",
+        "name": "Gluten Free Farmers Market",
+        "kind": "market",
+        "address": "333 W Hampden Ave, Englewood, CO 80110",
+        "description": "Seasonal gluten-free farmers market in the north parking area next to Chase Tower.",
+        "hours": "Second Sat of each month, June–October 2026, 9am–1pm",
+        "website": "https://denverceliacs.org/event/gluten-free-farmers-market-8/",
+        "source": "official",
+        "sourceLabel": "NCA Denver Celiacs",
+        "checkedAt": "2026-11-01",
+        "timezone": "America/Denver",
+        "coordinateNote": "Approximate address-based pin checked against the operator’s public address. Confirm the entrance or market parking area before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=333+W+HAMPDEN+AVE%2C+ENGLEWOOD%2C+CO+80110&benchmark=Public_AR_Current&format=json",
+        "season": {
+          "startsOn": "2026-06-13",
+          "endsOn": "2026-10-10",
+          "timezone": "America/Denver"
+        },
+        "sourceUrl": "https://denverceliacs.org/event/gluten-free-farmers-market-8/",
+        "tags": ["market", "Englewood area"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://denverceliacs.org/event/gluten-free-farmers-market-8/",
+            "fields": ["name", "address", "category", "hours", "season"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=333+W+HAMPDEN+AVE%2C+ENGLEWOOD%2C+CO+80110&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Reused the exact reviewed coordinate provenance from the published venue; no new pin was inferred."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "lat": 39.716374,
+        "lng": -104.9874287,
+        "id": "official:boss-vintage",
+        "name": "Boss Vintage",
+        "kind": "vintage",
+        "address": "10 S. Broadway, Denver, CO 80209",
+        "description": "Vintage and secondhand finds; check the shop for current stock.",
+        "hours": "Mon–Sat 11am–6pm; Sun noon–6pm",
+        "website": "https://www.bossvintage.com/contact",
+        "source": "official",
+        "sourceLabel": "Boss Vintage",
+        "checkedAt": "2026-11-01",
+        "timezone": "America/Denver",
+        "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=10+S+Broadway%2C+Denver%2C+CO+80209&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.bossvintage.com/contact",
+        "tags": ["Vintage clothing", "Accessories"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://www.bossvintage.com/contact",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=10+S+Broadway%2C+Denver%2C+CO+80209&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Reused the exact reviewed coordinate provenance from the published venue; no new pin was inferred."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "lat": 39.7198141,
+        "lng": -104.9875585,
+        "id": "official:goldmine-vintage",
+        "name": "Goldmine Vintage",
+        "kind": "vintage",
+        "address": "227 N Broadway #102, Denver, CO 80203",
+        "description": "Vintage and secondhand finds; check the shop for current stock.",
+        "hours": "Daily 11am–7pm",
+        "website": "https://www.goldminevintage.com/home-blend",
+        "source": "official",
+        "sourceLabel": "Goldmine Vintage",
+        "checkedAt": "2026-11-01",
+        "timezone": "America/Denver",
+        "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=227+N+Broadway%2C+Denver%2C+CO+80203&benchmark=Public_AR_Current&format=json",
+        "phone": "303-447-0065",
+        "sourceUrl": "https://www.goldminevintage.com/home-blend",
+        "tags": ["Vintage clothing", "Records"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://www.goldminevintage.com/home-blend",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=227+N+Broadway%2C+Denver%2C+CO+80203&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Reused the exact reviewed coordinate provenance from the published venue; no new pin was inferred."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "lat": 39.587842355232,
+        "lng": -105.022809068133,
+        "id": "official:littleton-co:hodgepodge",
+        "name": "Hodgepodge Market",
+        "kind": "vintage",
+        "address": "7301 S Santa Fe Dr Suite 110, Littleton, CO 80120",
+        "description": "Antiques and other goods in the northeast corner of Aspen Grove.",
+        "hours": "Mon–Sat 10am–6pm; Sun 11am–5pm",
+        "website": "https://hodgepodge.market/",
+        "source": "official",
+        "sourceLabel": "Hodgepodge Market",
+        "checkedAt": "2026-11-01",
+        "timezone": "America/Denver",
+        "coordinateNote": "Approximate address-based pin checked against the operator’s public address. Confirm the entrance or market parking area before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=7301+S+SANTA+FE+DR+SUITE+110%2C+LITTLETON%2C+CO+80120&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://hodgepodge.market/",
+        "tags": ["vintage", "Littleton area"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://hodgepodge.market/",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=7301+S+SANTA+FE+DR+SUITE+110%2C+LITTLETON%2C+CO+80120&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Reused the exact reviewed coordinate provenance from the published venue; no new pin was inferred."
+          }
+        ]
+      }
+    }
+  ]
+}

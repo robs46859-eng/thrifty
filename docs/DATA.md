@@ -1,47 +1,61 @@
 # Reviewed city directories
 
-Denver remains the default city. Choose **Boulder**, **Englewood**, or **Littleton** marked **directory ready** from the map’s city selector. The four city catalogues are bundled with the app and served locally by the API.
+Denver remains the default city. Choose **Arvada**, **Aurora**, **Boulder**, **Centennial**, **Englewood**, **Lakewood**, **Littleton**, or **Westminster** marked **directory ready** from the map’s city selector. The nine city catalogues are bundled with the app and served locally by the API.
 
 ## Denver directory
 
-Thrifty's default map now contains **17 real Denver-area places in three populated categories**. Data is maintained in `data/denver-places.json` and reviewed against the public sources below on **November 1, 2026**. These are source-reviewed directory records, not live stock, prices, ratings, attendance or independently audited businesses.
+Thrifty's default map now contains **20 real Denver-area places in three populated categories**. Data is maintained in `data/denver-places.json` and reviewed against the public sources below on **November 1–2, 2026**. These are source-reviewed directory records, not live stock, prices, ratings, attendance or independently audited businesses.
 
 | Category           | Places | Primary sources                                                                                                                                                                                                                                           |
 | ------------------ | -----: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Thrift stores      |     10 | [arc Thrift locations](https://arcthrift.com/stores), [Goodwill of Colorado](https://goodwillcolorado.org/shop/locations/)                                                                                                                                |
+| Thrift stores      |     13 | [arc Thrift locations](https://arcthrift.com/stores), [Goodwill of Colorado](https://goodwillcolorado.org/shop/locations/)                                                                                                                                |
 | Farmers markets    |      4 | [South Pearl Street](https://www.southpearlstreet.com/farmers-market/), [City Park](https://www.cityparkfarmersmarket.com/), [Highlands](https://thehighlandsfarmersmarket.com/), [Cherry Creek Fresh Market](https://www.coloradofreshmarkets.com/visit) |
 | Vintage & antiques |      3 | [Boss Vintage](https://www.bossvintage.com/contact), [Goldmine Vintage](https://www.goldminevintage.com/home-blend), [Antiques Etc.](https://www.denverantiques.com/contact)                                                                              |
 
-The thrift category contains eight arc retail/outlet locations (Alameda, Arvada Plaza, Bear Valley, Broadway, Colfax, JCRS, Central Park and Pecos) and two Goodwill retail locations (Archer and Central Park). Donation-only stations are excluded.
+The thrift category contains eleven arc retail/outlet locations (Alameda, Arvada Plaza, Bear Valley, Broadway, Colfax, JCRS, Central Park, Pecos, Gateway, Green Mountain and Jewell) and two Goodwill retail locations (Archer and Central Park). Donation-only stations are excluded.
 
 ## Boulder-area directory
 
-`data/cities/boulder-co.json` contains **nine source-reviewed places**, checked November 1, 2026, across Boulder and nearby Louisville/Lafayette within the 20 km city coverage radius:
+`data/cities/boulder-co.json` contains **ten source-reviewed places**, checked November 1–2, 2026, across Boulder and nearby Louisville/Lafayette/Broomfield within the 20 km city coverage radius:
 
-| Category           | Listings                                                                          | Official sources                                                                                                                                                            |
-| ------------------ | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Thrift             | arc Louisville; Pig + Pearl; Greenwood Wildlife Thrift Shop & Consignment Gallery | [arc locator](https://arcthrift.com/ajax/get-store-list), [Pig + Pearl](https://boulderthriftstore.com/), [Greenwood](https://www.greenwoodwildlife.org/gift-thrift-store/) |
-| Farmers markets    | Boulder; Lafayette; Louisville                                                    | [BCFM](https://bcfm.org/markets/boulder-farmers-market/), [Lafayette](https://www.lafayettefm.com/), [Real Farmers Market](https://www.realfarmersmarketco.com/)            |
-| Vintage / antiques | Classic Facets; Little Horse Vintage Louisville; Noble Treasures Antiques         | [Classic Facets](https://classicfacets.com/), [Little Horse](https://www.littlehorsevintage.com/), [Noble Treasures](https://nobletreasuresantiques.com/)                   |
+| Category           | Listings                                                                                          | Official sources                                                                                                                                                            |
+| ------------------ | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Thrift             | arc Louisville; arc Broomfield; Pig + Pearl; Greenwood Wildlife Thrift Shop & Consignment Gallery | [arc locator](https://arcthrift.com/ajax/get-store-list), [Pig + Pearl](https://boulderthriftstore.com/), [Greenwood](https://www.greenwoodwildlife.org/gift-thrift-store/) |
+| Farmers markets    | Boulder; Lafayette; Louisville                                                                    | [BCFM](https://bcfm.org/markets/boulder-farmers-market/), [Lafayette](https://www.lafayettefm.com/), [Real Farmers Market](https://www.realfarmersmarketco.com/)            |
+| Vintage / antiques | Classic Facets; Little Horse Vintage Louisville; Noble Treasures Antiques                         | [Classic Facets](https://classicfacets.com/), [Little Horse](https://www.littlehorsevintage.com/), [Noble Treasures](https://nobletreasuresantiques.com/)                   |
 
 The [Louisville Downtown Business Association](https://www.downtownlouisvilleco.com/shop/) corroborates Little Horse’s address and publishes the Louisville market pin. Little Horse’s conflicting embedded Boulder map was rejected; its hours remain unknown. arc Louisville hours also remain unknown. Donation-only arc Lafayette and the unconfirmed old Garage Sale Vintage Boulder lead were excluded.
 
 Boulder’s Saturday market season runs April 4–November 21, 2026; its Wednesday season ended October 7. Lafayette’s May 3–October 25 season and Louisville’s May 9–October 10 season have ended. These are three distinct venues, not duplicated sessions. Organizer dates are shown in America/Denver; no 2027 season was inferred. Source review does not establish current vendor attendance or stock.
 
-`GET /api/places?lat=40.015&lng=-105.2705` returns these nine records with three in each launch category, without a paid place or AI request. The [Boulder research record](../research/cities/boulder-co.handoff.md) documents the review, excluded leads and usage.
+`GET /api/places?lat=40.01&lng=-105.265` returns these ten records with at least three in each launch category, without a paid place or AI request. The [Boulder research record](../research/cities/boulder-co.handoff.md) and [metro expansion record](../research/cities/denver-metro-expansion-2026-11-02.handoff.md) document the review, excluded leads and usage.
 
 ## Englewood and Littleton coverage
 
-Each newly published city catalogue contains **three thrift stores, three markets and three vintage/antique destinations**, source-reviewed November 1, 2026. Coverage uses the existing 20 km radius and includes nearby Denver venues, with their actual municipalities in the addresses.
+Each catalogue now contains **five thrift stores, three markets and three vintage/antique destinations**, source-reviewed November 1–2, 2026. Coverage uses the existing 20 km radius and includes nearby Denver venues, with their actual municipalities in the addresses.
 
-| City           | Thrift                                                            | Farmers markets                                                                                | Vintage / antiques                                                               |
-| -------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| Englewood area | Goodwill Englewood Outlet; Soul Dog Rescue; arc Broadway (Denver) | Gluten Free Farmers Market (Englewood); University Hills (Denver); South Pearl Street (Denver) | Boss Vintage; Goldmine Vintage; Antiques Etc. (nearby Denver)                    |
-| Littleton area | arc Littleton; arc Bowles; arc Southpark/Littleton                | Aspen Grove; Downtown Littleton; Southwest Plaza                                               | Hodgepodge Market (Littleton); Boss Vintage and Goldmine Vintage (nearby Denver) |
+| City           | Thrift                                                                                    | Farmers markets                                                                                | Vintage / antiques                                                               |
+| -------------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Englewood area | Goodwill Englewood Outlet; Soul Dog Rescue; arc Broadway and Bear Valley; Goodwill Archer | Gluten Free Farmers Market (Englewood); University Hills (Denver); South Pearl Street (Denver) | Boss Vintage; Goldmine Vintage; Antiques Etc. (nearby Denver)                    |
+| Littleton area | arc Littleton; arc Bowles; arc Southpark/Littleton; arc Bear Valley; Goodwill Archer      | Aspen Grove; Downtown Littleton; Southwest Plaza                                               | Hodgepodge Market (Littleton); Boss Vintage and Goldmine Vintage (nearby Denver) |
 
-There are **37 unique physical venues** across the four catalogues. Shared venues retain their existing IDs and exact metadata. Discovery selects the nearest published city center and returns that catalogue’s nearby records, so adjacent city coverage does not inflate totals. Editing a shared venue inconsistently is rejected by publication and registry validation.
+Across all nine catalogues there are **46 unique physical venues**. Shared venues retain their existing IDs and exact metadata. Discovery selects the nearest published city center and returns that catalogue’s nearby records, so adjacent city coverage does not inflate totals. Editing a shared venue inconsistently is rejected by publication and registry validation.
 
 The [Englewood research record](../research/cities/englewood-co.handoff.md), [Littleton research record](../research/cities/littleton-co.handoff.md), and [Denver store refresh](../research/cities/denver-co.stores.md) record official sources, coordinate evidence, excluded stale leads and usage. No live stock, vendor attendance or open-now status is inferred. Soul Dog shopping hours are unconfirmed; donation hours were excluded. Goodwill’s outlet excludes children under 16. Englewood’s gluten-free market is monthly, not weekly. Downtown Littleton’s primary organizer specifies Saturdays and an August 15 exception; a conflicting district exception was not copied. Market seasons have ended as listed, and 2027 dates were not invented.
+
+## Additional Denver-metro profiles
+
+Five more directory-ready profiles were added November 2, 2026. Each uses the same 20 km coverage rule, preserves one stable ID for shared physical venues and includes at least three thrift, three farmers market and three vintage/antique records.
+
+| City area   | Thrift | Markets | Vintage / antiques | Total |
+| ----------- | -----: | ------: | -----------------: | ----: |
+| Arvada      |      5 |       3 |                  3 |    11 |
+| Aurora      |      5 |       3 |                  3 |    11 |
+| Centennial  |      5 |       3 |                  3 |    11 |
+| Lakewood    |      5 |       3 |                  3 |    11 |
+| Westminster |      4 |       3 |                  3 |    10 |
+
+The new profiles add operator-published arc retail locations at Iliff, Parker Landing, Westminster, Centennial and Dry Creek, while reusing exact reviewed Denver/Boulder/Englewood/Littleton records where their real addresses fall inside the destination profile. Green Mountain, Jewell and Gateway also expand the default Denver catalogue. Donation-only arc locations were excluded. Across all nine profiles there are **46 unique venues**; overlapping row totals are not unique-business counts. See the [metro expansion research record](../research/cities/denver-metro-expansion-2026-11-02.handoff.md).
 
 ## Coordinates and provenance
 

@@ -203,6 +203,45 @@
       },
       "sourceUrl": "https://www.southpearlstreet.com/farmers-market/",
       "tags": ["Produce", "Food", "Service animals only"]
+    },
+    {
+      "lat": 39.71573,
+      "lng": -104.9875845,
+      "id": "official:goodwill-archer",
+      "name": "Goodwill — Archer",
+      "kind": "thrift",
+      "address": "21 S. Broadway, Denver, CO 80209",
+      "description": "Secondhand shopping at a Goodwill retail location.",
+      "hours": "Daily 9am–10pm",
+      "website": "https://goodwillcolorado.org/shop/locations/",
+      "source": "official",
+      "sourceLabel": "Goodwill of Colorado",
+      "checkedAt": "2026-11-01",
+      "timezone": "America/Denver",
+      "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+      "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=21+S+Broadway%2C+Denver%2C+CO+80209&benchmark=Public_AR_Current&format=json",
+      "phone": "303-722-1440",
+      "sourceUrl": "https://goodwillcolorado.org/shop/locations/",
+      "tags": ["Clothing", "Home goods"]
+    },
+    {
+      "lat": 39.6550222,
+      "lng": -105.0541782,
+      "id": "official:arc-bear-valley",
+      "name": "arc Thrift — Bear Valley",
+      "kind": "thrift",
+      "address": "3125 S. Sheridan Blvd., Denver, CO 80227",
+      "description": "Secondhand clothing and household goods.",
+      "hours": "",
+      "website": "https://arcthrift.com/stores",
+      "source": "official",
+      "sourceLabel": "arc Thrift Stores",
+      "checkedAt": "2026-11-01",
+      "timezone": "America/Denver",
+      "coordinateNote": "Pin published in arc’s store directory.",
+      "phone": "720-925-4483",
+      "sourceUrl": "https://arcthrift.com/stores",
+      "tags": ["Secondhand", "Household goods"]
     }
   ]
 }

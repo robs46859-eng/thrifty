@@ -149,7 +149,7 @@ export function Explore({ view }: { view: Extract<Page, 'map' | 'saved' | 'sell'
     setSelected(null);
     try {
       const response = await fetch(
-        `/api/places?lat=${point.lat.toFixed(2)}&lng=${point.lng.toFixed(2)}`,
+        `/api/places?lat=${point.lat.toFixed(4)}&lng=${point.lng.toFixed(4)}`,
         { signal: abort.signal },
       );
       if (!response.ok)

@@ -59,6 +59,18 @@
       "label": "Hodgepodge Market",
       "categories": ["vintage"],
       "reviewedHash": "37421882223cd744da69c2d19980f4eb61cadf2ec5d6d9f8bfbc9363770e7186"
+    },
+    {
+      "id": "goodwill",
+      "url": "https://goodwillcolorado.org/shop/locations/",
+      "label": "Goodwill of Colorado",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "arc-stores",
+      "url": "https://arcthrift.com/stores",
+      "label": "arc Thrift Stores",
+      "categories": ["thrift"]
     }
   ],
   "candidates": [
@@ -425,6 +437,85 @@
             "url": "https://hodgepodge.market/",
             "fields": ["name", "address", "category", "hours"],
             "note": "Cached operator home page identifies antiques among its goods at Aspen Grove’s northeast corner, 7301 S Santa Fe Drive Suite 110; Monday–Saturday 10am–6pm, Sunday 11am–5pm."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:goodwill-archer",
+        "name": "Goodwill — Archer",
+        "kind": "thrift",
+        "address": "21 S. Broadway, Denver, CO 80209",
+        "description": "Secondhand shopping at a Goodwill retail location.",
+        "lat": 39.71573,
+        "lng": -104.9875845,
+        "hours": "Daily 9am–10pm",
+        "website": "https://goodwillcolorado.org/shop/locations/",
+        "source": "official",
+        "sourceUrl": "https://goodwillcolorado.org/shop/locations/",
+        "sourceLabel": "Goodwill of Colorado",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Address-based approximate pin; confirm the entrance.",
+        "tags": ["Clothing", "Home goods"],
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=21+S+Broadway%2C+Denver%2C+CO+80209&benchmark=Public_AR_Current&format=json",
+        "phone": "303-722-1440"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://goodwillcolorado.org/shop/locations/",
+            "fields": ["name", "address", "category", "hours"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=21+S+Broadway%2C+Denver%2C+CO+80209&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Reused the exact reviewed coordinate provenance from the published venue; no new pin was inferred."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "CO",
+      "place": {
+        "id": "official:arc-bear-valley",
+        "name": "arc Thrift — Bear Valley",
+        "kind": "thrift",
+        "address": "3125 S. Sheridan Blvd., Denver, CO 80227",
+        "description": "Secondhand clothing and household goods.",
+        "lat": 39.6550222,
+        "lng": -105.0541782,
+        "hours": "",
+        "website": "https://arcthrift.com/stores",
+        "source": "official",
+        "sourceUrl": "https://arcthrift.com/stores",
+        "sourceLabel": "arc Thrift Stores",
+        "checkedAt": "2026-11-01",
+        "coordinateNote": "Pin published in arc’s store directory.",
+        "tags": ["Secondhand", "Household goods"],
+        "phone": "720-925-4483"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex source review",
+        "reviewedAt": "2026-11-01",
+        "evidence": [
+          {
+            "url": "https://arcthrift.com/stores",
+            "fields": ["name", "address", "category"],
+            "note": "Official source rechecked for this metro expansion. The exact published venue record is reused where applicable; no current inventory, live-open status, rating or price claim is inferred."
+          },
+          {
+            "url": "https://arcthrift.com/ajax/get-store-list",
+            "fields": ["coordinates"],
+            "note": "Operator locator publishes the venue pin; the exact already-published place record is reused."
           }
         ]
       }

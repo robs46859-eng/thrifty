@@ -155,7 +155,7 @@ test('home loads real Denver categories, source details and directions without u
   await page.getByRole('button', { name: 'Vintage', exact: true }).click();
   await expect(page.locator('.place-card')).toHaveCount(3);
   await page.getByRole('button', { name: 'Thrift stores', exact: true }).click();
-  await expect(page.locator('.place-card')).toHaveCount(10);
+  await expect(page.locator('.place-card')).toHaveCount(13);
   const response = await page.request.get('/api/places?lat=39.75&lng=-104.99');
   expect(response.status()).toBe(200);
   const directory = await response.json();
@@ -170,12 +170,16 @@ test('Boulder city selection loads three reviewed categories, dates and real dir
   await page.goto('/');
   await page.getByRole('button', { name: 'Denver metro, Colorado', exact: true }).click();
   await page.getByRole('button', { name: 'Boulder, CO · directory ready', exact: true }).click();
-  await expect(page.locator('.place-card')).toHaveCount(9);
+  await expect(page.locator('.place-card')).toHaveCount(10);
   if (info.project.name.includes('mobile'))
     await page.getByRole('button', { name: 'Expand place list', exact: true }).click();
-  for (const label of ['Thrift stores', 'Vintage', 'Farmers markets']) {
+  for (const [label, count] of [
+    ['Thrift stores', 4],
+    ['Vintage', 3],
+    ['Farmers markets', 3],
+  ] as const) {
     await page.getByRole('button', { name: label, exact: true }).click();
-    await expect(page.locator('.place-card')).toHaveCount(3);
+    await expect(page.locator('.place-card')).toHaveCount(count);
   }
   await page.locator('.place-card-main').filter({ hasText: 'Lafayette Farmers Market' }).click();
   await expect(page.getByText('2026 season ended', { exact: true })).toBeVisible();
@@ -191,23 +195,32 @@ test('Boulder city selection loads three reviewed categories, dates and real dir
   await page.screenshot({ path: `test-results/boulder-${info.project.name}.png` });
 });
 
-test('Englewood and Littleton city selectors use their reviewed local catalogues', async ({
-  page,
-}) => {
+test('all Denver-metro city selectors use their reviewed local catalogues', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('button', { name: 'Denver metro, Colorado', exact: true }).click();
   await page.getByRole('button', { name: 'Englewood, CO · directory ready', exact: true }).click();
-  await expect(page.locator('.place-card')).toHaveCount(9);
+  await expect(page.locator('.place-card')).toHaveCount(11);
   await expect(
     page.getByRole('button', { name: 'View Soul Dog Rescue Thrift Store', exact: true }),
   ).toBeVisible();
   await page.getByRole('button', { name: 'Englewood, CO', exact: true }).click();
   await page.getByRole('button', { name: 'Littleton, CO · directory ready', exact: true }).click();
-  await expect(page.locator('.place-card')).toHaveCount(9);
+  await expect(page.locator('.place-card')).toHaveCount(11);
   await expect(
     page.getByRole('button', { name: 'View Hodgepodge Market', exact: true }),
   ).toBeVisible();
   await expect(
     page.getByRole('button', { name: 'View Soul Dog Rescue Thrift Store', exact: true }),
   ).toHaveCount(0);
+  for (const [city, total] of [
+    ['Arvada', 11],
+    ['Aurora', 11],
+    ['Centennial', 11],
+    ['Lakewood', 11],
+    ['Westminster', 10],
+  ] as const) {
+    await page.getByRole('button', { name: /, CO$/, exact: false }).first().click();
+    await page.getByRole('button', { name: `${city}, CO · directory ready`, exact: true }).click();
+    await expect(page.locator('.place-card')).toHaveCount(total);
+  }
 });
