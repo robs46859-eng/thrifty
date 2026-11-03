@@ -141,3 +141,35 @@ test('category prices, ratings and nearby finds surface on the map with public-r
   await expect(page.locator('.place-card')).toContainText('Recent community find');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
+test('shoppers draw, move and publish a store floor plan for other visitors', async ({
+  page,
+}, info) => {
+  const mobile = info.project.name.includes('mobile');
+  const store = mobile ? 'Boss Vintage' : 'Goldmine Vintage';
+  await page.goto('/');
+  await login(page, `layout-${info.project.name}@example.com`);
+  await openPlace(page, store, mobile);
+  await page.getByRole('button', { name: 'Draw floor plan', exact: true }).click();
+  const dialog = page.getByRole('dialog', { name: 'Sketch the store floor plan' });
+  await dialog.getByLabel('Section or landmark').selectOption('Entrance');
+  await dialog.getByRole('button', { name: 'A7 empty', exact: true }).click();
+  await dialog.getByLabel('Section or landmark').selectOption('custom');
+  await dialog.getByLabel('Custom section name').fill('Sewing supplies');
+  await dialog.getByRole('button', { name: 'A1 empty', exact: true }).click();
+  await dialog.getByRole('button', { name: 'A1 Sewing supplies', exact: true }).click();
+  await dialog.getByRole('button', { name: 'B1 empty', exact: true }).click();
+  await dialog.getByRole('checkbox', { name: /I observed this/ }).check();
+  await dialog.getByRole('button', { name: 'Publish floor plan' }).click();
+  await expect(dialog).toHaveCount(0);
+  await logout(page);
+  await page.reload();
+  await openPlace(page, store, mobile);
+  await page.getByRole('button', { name: 'View floor plan', exact: true }).click();
+  const plan = page.locator('.floor-plan-callout');
+  await expect(plan.getByRole('button', { name: 'B1 Sewing supplies', exact: true })).toBeVisible();
+  await expect(plan.getByRole('button', { name: 'A7 Entrance', exact: true })).toBeVisible();
+  await expect(plan.getByRole('button', { name: 'A1 Sewing supplies', exact: true })).toHaveCount(
+    0,
+  );
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});

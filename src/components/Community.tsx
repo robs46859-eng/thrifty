@@ -18,6 +18,8 @@ import {
   type ReportInput,
   type ReportKind,
 } from '../lib/community';
+import { StoreLayout } from './StoreLayout';
+import type { LayoutTiles } from '../lib/store-layout';
 import { Field, Modal } from './ui';
 export function CommunityBadge({ summary }: { summary?: CommunitySummary }) {
   if (!summary?.count) return null;
@@ -42,6 +44,8 @@ export function CommunityPanel({ place, onChange }: { place: Place; onChange: ()
   const [loading, setLoading] = useState(true),
     [error, setError] = useState(''),
     [notice, setNotice] = useState('');
+  const [layoutDraft, setLayoutDraft] = useState<LayoutTiles | undefined>();
+  const [showPlan, setShowPlan] = useState(false);
   const [sharing, setSharing] = useState(false),
     [kind, setKind] = useState<ReportKind | 'all'>('all'),
     [busy, setBusy] = useState(false);
@@ -127,6 +131,7 @@ export function CommunityPanel({ place, onChange }: { place: Place; onChange: ()
         </p>
       </section>
     );
+  const latestPlan = data.reports.find((r) => r.layout && !r.hidden && !r.expired);
   const reports = data.reports.filter((r) => kind === 'all' || r.kind === kind);
   return (
     <section className="community-panel" aria-label={`Community updates for ${place.name}`}>
@@ -151,6 +156,41 @@ export function CommunityPanel({ place, onChange }: { place: Place; onChange: ()
         Shopper observations, not official store notices. Check the date and confirm before
         traveling. Finds may sell before you arrive.
       </p>
+      <div className="floor-plan-callout">
+        <span className="eyebrow">INSIDE THIS STORE</span>
+        <h3>Store floor plan</h3>
+        <p>
+          {latestPlan
+            ? 'Shopper layout observed ' + latestPlan.observedOn
+            : 'Help shoppers find aisles, displays, and entrances by sketching this store.'}
+        </p>
+        {latestPlan?.layout && (
+          <>
+            <button
+              className="btn secondary"
+              aria-expanded={showPlan}
+              onClick={() => setShowPlan(!showPlan)}
+            >
+              {showPlan ? 'Hide floor plan' : 'View floor plan'}
+            </button>
+            {showPlan && <StoreLayout tiles={latestPlan.layout} />}
+          </>
+        )}
+        <button
+          className="btn secondary"
+          disabled={loading}
+          onClick={() => {
+            if (!auth.info.authenticated) {
+              auth.openSignIn();
+              return;
+            }
+            setLayoutDraft(latestPlan?.layout ?? []);
+            setSharing(true);
+          }}
+        >
+          {latestPlan ? 'Update floor plan' : 'Draw floor plan'}
+        </button>
+      </div>
       {data.summary.ratingCount ? (
         <p className="community-rating">
           <Star size={17} />
@@ -208,6 +248,12 @@ export function CommunityPanel({ place, onChange }: { place: Place; onChange: ()
             )}
             <p className="community-facts">{reportFacts(r)}</p>
             <p className="community-details">{r.details}</p>
+            {r.layout && (
+              <details>
+                <summary>View this floor plan</summary>
+                <StoreLayout tiles={r.layout} />
+              </details>
+            )}
             <p className="micro">
               <Clock3 size={12} /> Observed {r.observedOn} · Expires{' '}
               {new Date(r.expiresAt).toLocaleDateString(undefined, {
@@ -286,6 +332,7 @@ export function CommunityPanel({ place, onChange }: { place: Place; onChange: ()
                     {reportLabels[r.kind]} · {r.flags} flags
                   </strong>
                   <p>{r.details}</p>
+                  {r.layout && <StoreLayout tiles={r.layout} />}
                   <div className="community-actions">
                     {(['hide', 'restore', 'remove'] as const).map((a) => (
                       <button
@@ -314,9 +361,15 @@ export function CommunityPanel({ place, onChange }: { place: Place; onChange: ()
       {sharing && (
         <ReportForm
           place={place}
-          close={() => setSharing(false)}
+          initialLayout={layoutDraft}
+          close={() => {
+            setLayoutDraft(undefined);
+            setSharing(false);
+          }}
           submit={async (input) => {
             await action('/api/community/reports', input);
+            if (input.layout) setShowPlan(true);
+            setLayoutDraft(undefined);
             setSharing(false);
           }}
           busy={busy}
@@ -352,19 +405,22 @@ export function CommunityPanel({ place, onChange }: { place: Place; onChange: ()
 }
 function ReportForm({
   place,
+  initialLayout,
   close,
   submit,
   busy,
 }: {
   place: Place;
+  initialLayout?: LayoutTiles;
   close: () => void;
   submit: (input: ReportInput) => Promise<void>;
   busy: boolean;
 }) {
   const [input, setInput] = useState<ReportInput>({
     placeId: place.id,
-    kind: 'restock',
-    details: '',
+    kind: initialLayout ? 'layout' : 'restock',
+    details: initialLayout ? 'Shopper floor plan for ' + place.name + '.' : '',
+    layout: initialLayout,
     observedOn: localDate(new Date(), place.timezone ?? 'America/Denver'),
     weekdays: [],
   });
@@ -375,7 +431,10 @@ function ReportForm({
     setConfirmed(false);
   };
   return (
-    <Modal title="Share a community update" close={close}>
+    <Modal
+      title={initialLayout ? 'Sketch the store floor plan' : 'Share a community update'}
+      close={close}
+    >
       <form
         className="form-grid community-form"
         onSubmit={(e) => {
@@ -396,28 +455,30 @@ function ReportForm({
           Public update for <strong>{place.name}</strong>. Keep personal information, license plates
           and private addresses out of your report.
         </p>
-        <Field label="Update type" wide>
-          <select
-            value={input.kind}
-            onChange={(e) => {
-              setInput({
-                placeId: place.id,
-                kind: e.target.value as ReportKind,
-                details: '',
-                observedOn: input.observedOn,
-                weekdays: [],
-              });
-              setConfirmed(false);
-              setError('');
-            }}
-          >
-            {reportKinds.map((k) => (
-              <option key={k} value={k}>
-                {reportLabels[k]}
-              </option>
-            ))}
-          </select>
-        </Field>
+        {!initialLayout && (
+          <Field label="Update type" wide>
+            <select
+              value={input.kind}
+              onChange={(e) => {
+                setInput({
+                  placeId: place.id,
+                  kind: e.target.value as ReportKind,
+                  details: '',
+                  observedOn: input.observedOn,
+                  weekdays: [],
+                });
+                setConfirmed(false);
+                setError('');
+              }}
+            >
+              {reportKinds.map((k) => (
+                <option key={k} value={k}>
+                  {reportLabels[k]}
+                </option>
+              ))}
+            </select>
+          </Field>
+        )}
         <Field label="Observed or checked on">
           <input
             type="date"
@@ -572,6 +633,12 @@ function ReportForm({
             </Field>
           </>
         )}
+        {input.kind === 'layout' && (
+          <StoreLayout
+            tiles={input.layout ?? []}
+            onChange={(tiles) => set('layout', tiles.length || initialLayout ? tiles : undefined)}
+          />
+        )}
         {['find', 'layout', 'parking', 'accessibility'].includes(input.kind) && (
           <Field label="Area or aisle (optional)" wide>
             <input
@@ -605,8 +672,12 @@ function ReportForm({
             {error}
           </p>
         )}
-        <button className="btn primary full" type="submit" disabled={busy || !confirmed}>
-          {busy ? 'Sharing…' : 'Publish community update'}
+        <button
+          className="btn primary full"
+          type="submit"
+          disabled={busy || !confirmed || (!!initialLayout && !input.layout?.length)}
+        >
+          {busy ? 'Sharing…' : initialLayout ? 'Publish floor plan' : 'Publish community update'}
         </button>
       </form>
     </Modal>

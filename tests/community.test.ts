@@ -104,6 +104,27 @@ describe('shared community reports', () => {
       ).body.reports[0].isMine,
     ).toBe(true);
   });
+  it('round trips floor tiles and rejects ambiguous, oversized, or misplaced plans', async () => {
+    const f = fixture(),
+      a = f.member('layout@example.com');
+    const layout = [
+      { cell: 0, label: 'Sewing supplies' },
+      { cell: 41, label: 'Exit' },
+    ];
+    const payload = { ...input, kind: 'layout', layout };
+    expect((await a.post('/api/community/reports').send(payload)).status).toBe(200);
+    const read = await request(f.app).get('/api/community/reports').query({ placeId });
+    expect(read.body.reports[0].layout).toEqual(layout);
+    for (const invalid of [
+      { ...payload, kind: 'parking' },
+      { ...payload, layout: [] },
+      { ...payload, layout: [layout[0], layout[0]] },
+      { ...payload, layout: [{ cell: 42, label: 'Exit' }] },
+      { ...payload, layout: [{ cell: 0, label: ' '.repeat(5) }] },
+      { ...payload, layout: [{ cell: 0, label: 'x'.repeat(41) }] },
+    ])
+      expect((await a.post('/api/community/reports').send(invalid)).status).toBe(400);
+  });
   it('supports all requested report categories and validates category-specific fields', () => {
     const base = { ...input };
     for (const report of [

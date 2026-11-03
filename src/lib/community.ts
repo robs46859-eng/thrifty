@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { layoutSchema } from './store-layout';
 export const reportKinds = [
   'restock',
   'discount',
@@ -61,11 +62,13 @@ export const reportInputSchema = z
     rating: z.number().int().min(1).max(5).optional(),
     closureStatus: z.enum(['temporarily_closed', 'permanently_closed', 'reopened']).optional(),
     itemName: z.string().trim().min(1).max(120).optional(),
+    layout: layoutSchema.optional(),
     area: z.string().trim().max(100).optional(),
   })
   .strict()
   .superRefine((r, ctx) => {
     const issue = (message: string) => ctx.addIssue({ code: 'custom', message });
+    if (r.layout && r.kind !== 'layout') issue('Floor plans belong in store layout reports.');
     if (r.appliesOn && !['restock', 'discount', 'closure', 'holiday_hours'].includes(r.kind))
       issue('Specific dates belong in schedule or closure updates.');
     if (r.priceMin !== undefined || r.priceMax !== undefined) {
@@ -110,6 +113,7 @@ export const reportSchema = z.object({
   closureStatus: z.string().optional(),
   itemName: z.string().optional(),
   area: z.string().optional(),
+  layout: layoutSchema.optional(),
   createdAt: z.iso.datetime(),
   expiresAt: z.iso.datetime(),
   authorLabel: z.string(),
