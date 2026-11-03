@@ -6,8 +6,11 @@
     "state": "TX",
     "country": "US",
     "timezone": "America/Chicago",
-    "center": { "lat": 30.2672, "lng": -97.7431 },
-    "radiusKm": 20
+    "center": {
+      "lat": 30.2672,
+      "lng": -97.7431
+    },
+    "radiusKm": 30
   },
   "sources": [
     {
@@ -39,7 +42,365 @@
       "url": "https://www.austintexas.org/listings/monkies-vintage-%26-thrift/9863/",
       "label": "Visit Austin listing for Monkies Vintage and Thrift",
       "categories": ["vintage"]
+    },
+    {
+      "id": "sfc-farmers-markets",
+      "url": "https://sustainablefoodcenter.org/farmers-markets-support/sfc-farmers-markets/",
+      "label": "Sustainable Food Center farmers markets",
+      "categories": ["market"]
     }
   ],
-  "candidates": []
+  "candidates": [
+    {
+      "country": "US",
+      "state": "TX",
+      "place": {
+        "lat": 30.257869423187,
+        "lng": -97.693341987301,
+        "id": "official:austin-tx:goodwill-airport",
+        "name": "Goodwill — Airport",
+        "kind": "thrift",
+        "address": "836 Airport Blvd, Austin, TX 78702",
+        "description": "Goodwill retail store and donation center on Airport Boulevard.",
+        "hours": "",
+        "website": "https://www.goodwillcentraltexas.org/retail-stores/",
+        "source": "official",
+        "sourceLabel": "Goodwill Central Texas retail stores",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=836+Airport+Blvd%2C+Austin%2C+TX+78702&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.goodwillcentraltexas.org/retail-stores/",
+        "tags": ["secondhand", "donation center"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.goodwillcentraltexas.org/retail-stores/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=836+Airport+Blvd%2C+Austin%2C+TX+78702&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "TX",
+      "place": {
+        "lat": 30.359517281586,
+        "lng": -97.737593396641,
+        "id": "official:austin-tx:goodwill-anderson",
+        "name": "Goodwill — Anderson Lane",
+        "kind": "thrift",
+        "address": "2900 W Anderson Ln, Austin, TX 78757",
+        "description": "Goodwill retail store and donation center on Anderson Lane.",
+        "hours": "",
+        "website": "https://www.goodwillcentraltexas.org/retail-stores/",
+        "source": "official",
+        "sourceLabel": "Goodwill Central Texas retail stores",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=2900+W+Anderson+Ln%2C+Austin%2C+TX+78757&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.goodwillcentraltexas.org/retail-stores/",
+        "tags": ["secondhand", "donation center"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.goodwillcentraltexas.org/retail-stores/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=2900+W+Anderson+Ln%2C+Austin%2C+TX+78757&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "TX",
+      "place": {
+        "lat": 30.357445866558,
+        "lng": -97.761574120856,
+        "id": "official:austin-tx:goodwill-chimney-corners",
+        "name": "Goodwill — Chimney Corners",
+        "kind": "thrift",
+        "address": "3910 Far West Blvd, Austin, TX 78731",
+        "description": "Goodwill retail store and donation center on Far West Boulevard.",
+        "hours": "",
+        "website": "https://www.goodwillcentraltexas.org/retail-stores/",
+        "source": "official",
+        "sourceLabel": "Goodwill Central Texas retail stores",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3910+Far+West+Blvd%2C+Austin%2C+TX+78731&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.goodwillcentraltexas.org/retail-stores/",
+        "tags": ["secondhand", "donation center"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.goodwillcentraltexas.org/retail-stores/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3910+Far+West+Blvd%2C+Austin%2C+TX+78731&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "TX",
+      "place": {
+        "lat": 30.30018,
+        "lng": -97.70265,
+        "id": "official:austin-tx:tfm-mueller",
+        "name": "Texas Farmers Market at Mueller",
+        "kind": "market",
+        "address": "2006 Philomena St, Austin, TX 78723",
+        "description": "Year-round producer-only farmers market at the Branch Park Pavilion.",
+        "hours": "",
+        "website": "https://texasfarmersmarket.org/",
+        "source": "official",
+        "sourceLabel": "Texas Farmers Market",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate public map pin cross-checked against the listed address; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://maps.roadtrippers.com/us/austin-tx/places/texas-farmers-market-at-mueller-austin",
+        "sourceUrl": "https://texasfarmersmarket.org/",
+        "tags": ["farmers market", "producer-only"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://texasfarmersmarket.org/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://maps.roadtrippers.com/us/austin-tx/places/texas-farmers-market-at-mueller-austin",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "TX",
+      "place": {
+        "lat": 30.509054775682,
+        "lng": -97.823088749302,
+        "id": "official:austin-tx:tfm-bell",
+        "name": "Texas Farmers Market at Bell",
+        "kind": "market",
+        "address": "200 S Bell Blvd, Cedar Park, TX 78613",
+        "description": "Year-round producer-only farmers market at the Bell District in Cedar Park.",
+        "hours": "",
+        "website": "https://texasfarmersmarket.org/",
+        "source": "official",
+        "sourceLabel": "Texas Farmers Market",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=200+S+Bell+Blvd%2C+Cedar+Park%2C+TX+78613&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://texasfarmersmarket.org/",
+        "tags": ["farmers market", "producer-only", "Cedar Park"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://texasfarmersmarket.org/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=200+S+Bell+Blvd%2C+Cedar+Park%2C+TX+78613&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "TX",
+      "place": {
+        "lat": 30.2674352781,
+        "lng": -97.746940539285,
+        "id": "official:austin-tx:sfc-downtown",
+        "name": "SFC Farmers' Market Downtown",
+        "kind": "market",
+        "address": "422 Guadalupe St, Austin, TX 78701",
+        "description": "Downtown farmers market at Republic Square; confirm the current schedule before traveling.",
+        "hours": "",
+        "website": "https://sustainablefoodcenter.org/farmers-markets-support/sfc-farmers-markets/",
+        "source": "official",
+        "sourceLabel": "Sustainable Food Center farmers markets",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=422+Guadalupe+St%2C+Austin%2C+TX+78701&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://sustainablefoodcenter.org/farmers-markets-support/sfc-farmers-markets/",
+        "tags": ["farmers market", "Republic Square"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://sustainablefoodcenter.org/farmers-markets-support/sfc-farmers-markets/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=422+Guadalupe+St%2C+Austin%2C+TX+78701&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "TX",
+      "place": {
+        "lat": 30.317631525438,
+        "lng": -97.722040424076,
+        "id": "official:austin-tx:room-service-vintage",
+        "name": "Room Service Vintage",
+        "kind": "vintage",
+        "address": "107 E North Loop Blvd, Austin, TX 78751",
+        "description": "Vintage furniture, lighting, clothing, jewelry and collectibles in North Loop.",
+        "hours": "",
+        "website": "https://www.austintexas.org/listings/room-service-vintage/3295/",
+        "source": "official",
+        "sourceLabel": "Visit Austin listing for Room Service Vintage",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=107+E+North+Loop+Blvd%2C+Austin%2C+TX+78751&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.austintexas.org/listings/room-service-vintage/3295/",
+        "tags": ["vintage", "furniture", "clothing"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.austintexas.org/listings/room-service-vintage/3295/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=107+E+North+Loop+Blvd%2C+Austin%2C+TX+78751&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "TX",
+      "place": {
+        "lat": 30.317748781265,
+        "lng": -97.721994773773,
+        "id": "official:austin-tx:big-berthas-paradise",
+        "name": "Big Bertha's Paradise",
+        "kind": "vintage",
+        "address": "112 E North Loop Blvd, Austin, TX 78751",
+        "description": "Curated vintage clothing boutique in North Loop.",
+        "hours": "",
+        "website": "https://www.austintexas.org/listings/big-berthas-paradise/9404/",
+        "source": "official",
+        "sourceLabel": "Visit Austin listing for Big Bertha's Paradise",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=112+E+North+Loop+Blvd%2C+Austin%2C+TX+78751&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.austintexas.org/listings/big-berthas-paradise/9404/",
+        "tags": ["vintage clothing", "North Loop"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.austintexas.org/listings/big-berthas-paradise/9404/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=112+E+North+Loop+Blvd%2C+Austin%2C+TX+78751&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "TX",
+      "place": {
+        "lat": 30.281799136088,
+        "lng": -97.741987699736,
+        "id": "official:austin-tx:monkies-vintage",
+        "name": "Monkies Vintage & Thrift",
+        "kind": "vintage",
+        "address": "1904 Guadalupe St, Austin, TX 78705",
+        "description": "Vintage apparel shop serving the university area.",
+        "hours": "",
+        "website": "https://www.austintexas.org/listings/monkies-vintage-%26-thrift/9863/",
+        "source": "official",
+        "sourceLabel": "Visit Austin listing for Monkies Vintage and Thrift",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1904+Guadalupe+St%2C+Austin%2C+TX+78705&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.austintexas.org/listings/monkies-vintage-%26-thrift/9863/",
+        "tags": ["vintage clothing", "university area"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.austintexas.org/listings/monkies-vintage-%26-thrift/9863/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1904+Guadalupe+St%2C+Austin%2C+TX+78705&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    }
+  ]
 }

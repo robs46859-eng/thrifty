@@ -26,7 +26,24 @@ Optional model extraction is documented in [CITY_MODEL_ASSIST.md](CITY_MODEL_ASS
 
 ## 1. Pick a city and create its plan
 
-[Boulder’s plan](../research/cities/boulder-co.json) now contains nine approved listings and its published catalogue is in `data/cities/boulder-co.json`. [Portland’s plan](../research/cities/portland-or.json) remains an empty starter, not public coverage.
+[Boulder’s plan](../research/cities/boulder-co.json) and [Portland’s plan](../research/cities/portland-or.json) are published examples. Eight additional US city directories were published November 2, 2026; see the README coverage table.
+
+## Batch promotion and resumable research
+
+The GitHub research action accepts any existing US city plan ID. It validates that ID before using it in paths, serializes research runs, and restores/saves the source cache and budget ledger across runs, including failures. GitHub cache eviction can reset that runner-local history; this is a usage-saving mechanism, not an account billing limit. The model still produces proposals for review. Plans with more than six sources require a specific source ID per run.
+
+`npm run city:readiness` reports category counts, pending records, missing fields and publication blockers offline. The research action includes this report in its run summary.
+
+For an approved batch, copy the structure in `research/publication-batch.json`. Record the real review date, reviewed source URLs and public addresses; exclude corporate offices, donation-only locations and pickup-only entries. Obtain operator coordinates for intersection markets. Then run:
+
+```sh
+npm run city:promote-approved -- --batch=research/publication-batch.json
+npm run city:promote-approved -- --batch=research/publication-batch.json --apply
+```
+
+The first command performs a dry run. Both use one cached Census batch request for all street addresses and retain the shared daily budget. Ties and missing matches stop staging. State and house-number mismatches are rejected. Public pins may be supplied with coordinate provenance after review. All resulting city catalogues pass normal publication validation before any plan is written. Existing candidates with unrelated IDs are preserved. `--apply` stages the reviewed records; use the existing `city publish` command to generate catalogues. Re-running an identical batch reuses its coordinate response for 365 days and consumes no model calls. Review dates expire after 30 days and never renew automatically.
+
+The November 2 batch contains 72 venues across Dallas, Austin, San Antonio, Portland, Seattle, Kansas City, Phoenix and Albuquerque. Austin includes nearby Cedar Park and has an explicit 30 km profile; other profiles use 20 km. New Mexico coverage currently means Albuquerque, not the entire state. Unknown hours and season dates are left unasserted; visitors should confirm the linked schedule.
 
 For another city, supply a planning center and the destination timezone explicitly:
 

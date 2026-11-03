@@ -6,7 +6,10 @@
     "state": "NM",
     "country": "US",
     "timezone": "America/Denver",
-    "center": { "lat": 35.0844, "lng": -106.6504 },
+    "center": {
+      "lat": 35.0844,
+      "lng": -106.6504
+    },
     "radiusKm": 20
   },
   "sources": [
@@ -27,7 +30,365 @@
       "url": "https://www.visitalbuquerque.org/route-66-centennial/visit/things-to-do/shopping/old-new-timeless-cruise-route-66-for-a-lively-shopping-experience/",
       "label": "Visit Albuquerque Route 66 vintage guide",
       "categories": ["vintage"]
+    },
+    {
+      "id": "source-f1a8a3b3da31",
+      "url": "https://www.visitalbuquerque.org/abq365/blog/post/vintage-shopping-on-route-66/",
+      "label": "visitalbuquerque.org",
+      "categories": ["vintage"]
     }
   ],
-  "candidates": []
+  "candidates": [
+    {
+      "country": "US",
+      "state": "NM",
+      "place": {
+        "lat": 35.10926805663,
+        "lng": -106.610186584248,
+        "id": "official:albuquerque-nm:goodwill-outlet",
+        "name": "Goodwill Outlet",
+        "kind": "thrift",
+        "address": "3101 Menaul Blvd NE, Albuquerque, NM",
+        "description": "Goodwill Outlet in Albuquerque. Check the linked source for current visiting dates and hours.",
+        "hours": "",
+        "website": "https://www.goodwillnm.org/locations/",
+        "source": "official",
+        "sourceLabel": "goodwillnm.org",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3101+Menaul+Blvd+NE%2C+Albuquerque%2C+NM&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.goodwillnm.org/locations/",
+        "tags": ["thrift", "Albuquerque"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.goodwillnm.org/locations/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3101+Menaul+Blvd+NE%2C+Albuquerque%2C+NM&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "NM",
+      "place": {
+        "lat": 35.172695756065,
+        "lng": -106.673447529087,
+        "id": "official:albuquerque-nm:goodwill-coors",
+        "name": "Goodwill Coors",
+        "kind": "thrift",
+        "address": "6636 Caminito Coors NW, Albuquerque, NM",
+        "description": "Goodwill Coors in Albuquerque. Check the linked source for current visiting dates and hours.",
+        "hours": "",
+        "website": "https://www.goodwillnm.org/locations/",
+        "source": "official",
+        "sourceLabel": "goodwillnm.org",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=6636+Caminito+Coors+NW%2C+Albuquerque%2C+NM&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.goodwillnm.org/locations/",
+        "tags": ["thrift", "Albuquerque"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.goodwillnm.org/locations/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=6636+Caminito+Coors+NW%2C+Albuquerque%2C+NM&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "NM",
+      "place": {
+        "lat": 35.087403534691,
+        "lng": -106.579559719226,
+        "id": "official:albuquerque-nm:goodwill-lomas",
+        "name": "Goodwill Lomas",
+        "kind": "thrift",
+        "address": "6001 Lomas Blvd NE, Albuquerque, NM",
+        "description": "Goodwill Lomas in Albuquerque. Check the linked source for current visiting dates and hours.",
+        "hours": "",
+        "website": "https://www.goodwillnm.org/locations/",
+        "source": "official",
+        "sourceLabel": "goodwillnm.org",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=6001+Lomas+Blvd+NE%2C+Albuquerque%2C+NM&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.goodwillnm.org/locations/",
+        "tags": ["thrift", "Albuquerque"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.goodwillnm.org/locations/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=6001+Lomas+Blvd+NE%2C+Albuquerque%2C+NM&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "NM",
+      "place": {
+        "lat": 35.131095872277,
+        "lng": -106.672191269047,
+        "id": "official:albuquerque-nm:big-jim-farms",
+        "name": "Big Jim Farms",
+        "kind": "market",
+        "address": "3521 Rio Grande Blvd NW, Albuquerque, NM",
+        "description": "Big Jim Farms in Albuquerque. Check the linked source for current visiting dates and hours.",
+        "hours": "",
+        "website": "https://farmersmarketsnm.org/find-a-market/",
+        "source": "official",
+        "sourceLabel": "farmersmarketsnm.org",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3521+Rio+Grande+Blvd+NW%2C+Albuquerque%2C+NM&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://farmersmarketsnm.org/find-a-market/",
+        "tags": ["market", "Albuquerque"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://farmersmarketsnm.org/find-a-market/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3521+Rio+Grande+Blvd+NW%2C+Albuquerque%2C+NM&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "NM",
+      "place": {
+        "lat": 35.065907736098,
+        "lng": -106.670149364454,
+        "id": "official:albuquerque-nm:chispas-farm",
+        "name": "Chispas Farm",
+        "kind": "market",
+        "address": "229 Saavedra Rd SW, Albuquerque, NM",
+        "description": "Chispas Farm in Albuquerque. Check the linked source for current visiting dates and hours.",
+        "hours": "",
+        "website": "https://farmersmarketsnm.org/find-a-market/",
+        "source": "official",
+        "sourceLabel": "farmersmarketsnm.org",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=229+Saavedra+Rd+SW%2C+Albuquerque%2C+NM&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://farmersmarketsnm.org/find-a-market/",
+        "tags": ["market", "Albuquerque"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://farmersmarketsnm.org/find-a-market/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=229+Saavedra+Rd+SW%2C+Albuquerque%2C+NM&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "NM",
+      "place": {
+        "lat": 35.086125185892,
+        "lng": -106.656375378216,
+        "id": "official:albuquerque-nm:downtown-growers-market",
+        "name": "Downtown Growers' Market",
+        "kind": "market",
+        "address": "810 Copper Ave NW, Albuquerque, NM",
+        "description": "Downtown Growers' Market in Albuquerque. Check the linked source for current visiting dates and hours.",
+        "hours": "",
+        "website": "https://farmersmarketsnm.org/find-a-market/",
+        "source": "official",
+        "sourceLabel": "farmersmarketsnm.org",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=810+Copper+Ave+NW%2C+Albuquerque%2C+NM&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://farmersmarketsnm.org/find-a-market/",
+        "tags": ["market", "Albuquerque"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://farmersmarketsnm.org/find-a-market/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=810+Copper+Ave+NW%2C+Albuquerque%2C+NM&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "NM",
+      "place": {
+        "lat": 35.079998627767,
+        "lng": -106.605683190158,
+        "id": "official:albuquerque-nm:vintage-vault",
+        "name": "Vintage Vault",
+        "kind": "vintage",
+        "address": "3503 Central Ave NE, Albuquerque, NM 87106",
+        "description": "Vintage Vault in Albuquerque. Check the linked source for current visiting dates and hours.",
+        "hours": "",
+        "website": "https://www.visitalbuquerque.org/abq365/blog/post/vintage-shopping-on-route-66/",
+        "source": "official",
+        "sourceLabel": "visitalbuquerque.org",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3503+Central+Ave+NE%2C+Albuquerque%2C+NM+87106&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.visitalbuquerque.org/abq365/blog/post/vintage-shopping-on-route-66/",
+        "tags": ["vintage", "Albuquerque"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.visitalbuquerque.org/abq365/blog/post/vintage-shopping-on-route-66/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3503+Central+Ave+NE%2C+Albuquerque%2C+NM+87106&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "NM",
+      "place": {
+        "lat": 35.079273240801,
+        "lng": -106.599695877406,
+        "id": "official:albuquerque-nm:avengers-vintage",
+        "name": "Avengers Vintage",
+        "kind": "vintage",
+        "address": "4011 Central Ave NE, Albuquerque, NM 87108",
+        "description": "Avengers Vintage in Albuquerque. Check the linked source for current visiting dates and hours.",
+        "hours": "",
+        "website": "https://www.visitalbuquerque.org/abq365/blog/post/vintage-shopping-on-route-66/",
+        "source": "official",
+        "sourceLabel": "visitalbuquerque.org",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=4011+Central+Ave+NE%2C+Albuquerque%2C+NM+87108&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.visitalbuquerque.org/abq365/blog/post/vintage-shopping-on-route-66/",
+        "tags": ["vintage", "Albuquerque"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.visitalbuquerque.org/abq365/blog/post/vintage-shopping-on-route-66/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=4011+Central+Ave+NE%2C+Albuquerque%2C+NM+87108&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "NM",
+      "place": {
+        "lat": 35.079280490498,
+        "lng": -106.599772276176,
+        "id": "official:albuquerque-nm:octopus-banana",
+        "name": "Octopus Banana",
+        "kind": "vintage",
+        "address": "4003 Central Ave NE, Albuquerque, NM 87108",
+        "description": "Octopus Banana in Albuquerque. Check the linked source for current visiting dates and hours.",
+        "hours": "",
+        "website": "https://www.visitalbuquerque.org/abq365/blog/post/vintage-shopping-on-route-66/",
+        "source": "official",
+        "sourceLabel": "visitalbuquerque.org",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=4003+Central+Ave+NE%2C+Albuquerque%2C+NM+87108&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.visitalbuquerque.org/abq365/blog/post/vintage-shopping-on-route-66/",
+        "tags": ["vintage", "Albuquerque"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.visitalbuquerque.org/abq365/blog/post/vintage-shopping-on-route-66/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=4003+Central+Ave+NE%2C+Albuquerque%2C+NM+87108&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    }
+  ]
 }

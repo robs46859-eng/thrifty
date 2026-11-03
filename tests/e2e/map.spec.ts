@@ -224,3 +224,23 @@ test('all Denver-metro city selectors use their reviewed local catalogues', asyn
     await expect(page.locator('.place-card')).toHaveCount(total);
   }
 });
+
+test('all eight expansion cities expose nine reviewed listings', async ({ page }) => {
+  await page.goto('/');
+  let previous = 'Denver metro, Colorado';
+  for (const city of [
+    'Dallas, TX',
+    'Austin, TX',
+    'San Antonio, TX',
+    'Portland, OR',
+    'Seattle, WA',
+    'Kansas City, MO',
+    'Phoenix, AZ',
+    'Albuquerque, NM',
+  ]) {
+    await page.getByRole('button', { name: previous, exact: true }).click();
+    await page.getByRole('button', { name: `${city} · directory ready`, exact: true }).click();
+    await expect(page.locator('.place-card')).toHaveCount(9);
+    previous = city;
+  }
+});

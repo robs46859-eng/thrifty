@@ -6,7 +6,10 @@
     "state": "TX",
     "country": "US",
     "timezone": "America/Chicago",
-    "center": { "lat": 32.7767, "lng": -96.797 },
+    "center": {
+      "lat": 32.7767,
+      "lng": -96.797
+    },
     "radiusKm": 20
   },
   "sources": [
@@ -27,7 +30,371 @@
       "url": "https://www.visitdallas.com/blog/thrift-antique-stores-dallas/",
       "label": "Visit Dallas thrift and antique guide",
       "categories": ["vintage"]
+    },
+    {
+      "id": "st-vincent-de-paul-dallas",
+      "url": "https://www.svdpdallas.org/services/thrift-store",
+      "label": "St. Vincent de Paul North Texas",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "salvation-army-dallas-harry-hines",
+      "url": "https://www.salvationarmyusa.org/tx/dallas/harry-hines-blvd-3/",
+      "label": "Salvation Army Dallas",
+      "categories": ["thrift"]
     }
   ],
-  "candidates": []
+  "candidates": [
+    {
+      "country": "US",
+      "state": "TX",
+      "place": {
+        "lat": 32.780891582527,
+        "lng": -96.87374797503,
+        "id": "official:dallas-tx:goodwill-westmoreland",
+        "name": "Goodwill Dallas — Westmoreland",
+        "kind": "thrift",
+        "address": "3020 N Westmoreland Rd, Dallas, TX 75212",
+        "description": "Goodwill retail and donation location in west Dallas.",
+        "hours": "",
+        "website": "https://www.goodwilldallas.org/locations/",
+        "source": "official",
+        "sourceLabel": "Goodwill Dallas locations",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3020+N+Westmoreland+Rd%2C+Dallas%2C+TX+75212&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.goodwilldallas.org/locations/",
+        "tags": ["secondhand", "donation center"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.goodwilldallas.org/locations/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3020+N+Westmoreland+Rd%2C+Dallas%2C+TX+75212&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "TX",
+      "place": {
+        "lat": 32.855369422409,
+        "lng": -96.870541022273,
+        "id": "official:dallas-tx:st-vincent-de-paul",
+        "name": "St. Vincent de Paul Thrift Store",
+        "kind": "thrift",
+        "address": "3052 W Northwest Hwy, Dallas, TX 75220",
+        "description": "Nonprofit thrift store selling donated clothing and household goods.",
+        "hours": "",
+        "website": "https://www.svdpdallas.org/services/thrift-store",
+        "source": "official",
+        "sourceLabel": "St. Vincent de Paul North Texas",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3052+W+Northwest+Hwy%2C+Dallas%2C+TX+75220&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.svdpdallas.org/services/thrift-store",
+        "tags": ["secondhand", "nonprofit"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.svdpdallas.org/services/thrift-store",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3052+W+Northwest+Hwy%2C+Dallas%2C+TX+75220&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "TX",
+      "place": {
+        "lat": 32.814695476748,
+        "lng": -96.840786520499,
+        "id": "official:dallas-tx:salvation-army-harry-hines",
+        "name": "Salvation Army Thrift Store — Harry Hines",
+        "kind": "thrift",
+        "address": "5554 Harry Hines Blvd, Dallas, TX 75235",
+        "description": "Salvation Army thrift store and donation center on Harry Hines Boulevard.",
+        "hours": "",
+        "website": "https://www.salvationarmyusa.org/tx/dallas/harry-hines-blvd-3/",
+        "source": "official",
+        "sourceLabel": "Salvation Army Dallas",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=5554+Harry+Hines+Blvd%2C+Dallas%2C+TX+75235&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.salvationarmyusa.org/tx/dallas/harry-hines-blvd-3/",
+        "tags": ["secondhand", "donation center"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.salvationarmyusa.org/tx/dallas/harry-hines-blvd-3/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=5554+Harry+Hines+Blvd%2C+Dallas%2C+TX+75235&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "TX",
+      "place": {
+        "lat": 32.824884104343,
+        "lng": -96.704199616972,
+        "id": "official:dallas-tx:white-rock-farmers-market",
+        "name": "White Rock Farmers Market",
+        "kind": "market",
+        "address": "1450 Old Gate Ln, Dallas, TX 75218",
+        "description": "Neighborhood farmers market listed by Good Local Markets; confirm the current event calendar before traveling.",
+        "hours": "",
+        "website": "https://www.goodlocalmarkets.org/calendar",
+        "source": "official",
+        "sourceLabel": "Good Local Markets calendar",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1450+Old+Gate+Ln%2C+Dallas%2C+TX+75218&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.goodlocalmarkets.org/calendar",
+        "tags": ["farmers market", "local vendors"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.goodlocalmarkets.org/calendar",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1450+Old+Gate+Ln%2C+Dallas%2C+TX+75218&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "TX",
+      "place": {
+        "lat": 32.77939910508,
+        "lng": -96.763053832098,
+        "id": "official:dallas-tx:fair-park-farmers-market",
+        "name": "Fair Park Farmers Market",
+        "kind": "market",
+        "address": "3535 Grand Ave, Dallas, TX 75210",
+        "description": "Farmers market at Fair Park; confirm the current event calendar before traveling.",
+        "hours": "",
+        "website": "https://www.goodlocalmarkets.org/calendar",
+        "source": "official",
+        "sourceLabel": "Good Local Markets calendar",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3535+Grand+Ave%2C+Dallas%2C+TX+75210&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.goodlocalmarkets.org/calendar",
+        "tags": ["farmers market", "local vendors"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.goodlocalmarkets.org/calendar",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3535+Grand+Ave%2C+Dallas%2C+TX+75210&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "TX",
+      "place": {
+        "lat": 32.822056095068,
+        "lng": -96.761478312497,
+        "id": "official:dallas-tx:tietze-park-farmers-market",
+        "name": "Tietze Park Farmers Market",
+        "kind": "market",
+        "address": "2700 Skillman St, Dallas, TX 75206",
+        "description": "Farmers market at Tietze Park; confirm the current event calendar before traveling.",
+        "hours": "",
+        "website": "https://www.goodlocalmarkets.org/calendar",
+        "source": "official",
+        "sourceLabel": "Good Local Markets calendar",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=2700+Skillman+St%2C+Dallas%2C+TX+75206&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.goodlocalmarkets.org/calendar",
+        "tags": ["farmers market", "local vendors"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.goodlocalmarkets.org/calendar",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=2700+Skillman+St%2C+Dallas%2C+TX+75206&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "TX",
+      "place": {
+        "lat": 32.783851745532,
+        "lng": -96.78019899123,
+        "id": "official:dallas-tx:flea-style",
+        "name": "Flea Style",
+        "kind": "vintage",
+        "address": "3009 Commerce St, Dallas, TX 75226",
+        "description": "Vintage, handmade and locally curated goods in Deep Ellum.",
+        "hours": "",
+        "website": "https://www.visitdallas.com/blog/thrift-antique-stores-dallas/",
+        "source": "official",
+        "sourceLabel": "Visit Dallas secondhand guide",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3009+Commerce+St%2C+Dallas%2C+TX+75226&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.visitdallas.com/blog/thrift-antique-stores-dallas/",
+        "tags": ["vintage", "local makers"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.visitdallas.com/blog/thrift-antique-stores-dallas/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3009+Commerce+St%2C+Dallas%2C+TX+75226&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "TX",
+      "place": {
+        "lat": 32.747374444825,
+        "lng": -96.828373302445,
+        "id": "official:dallas-tx:dolly-on-bishop",
+        "name": "Dolly On Bishop",
+        "kind": "vintage",
+        "address": "315 N Bishop Ave, Dallas, TX 75208",
+        "description": "Vintage clothing shop in the Bishop Arts District.",
+        "hours": "",
+        "website": "https://www.visitdallas.com/blog/thrift-antique-stores-dallas/",
+        "source": "official",
+        "sourceLabel": "Visit Dallas secondhand guide",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=315+N+Bishop+Ave%2C+Dallas%2C+TX+75208&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.visitdallas.com/blog/thrift-antique-stores-dallas/",
+        "tags": ["vintage clothing", "Bishop Arts"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.visitdallas.com/blog/thrift-antique-stores-dallas/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=315+N+Bishop+Ave%2C+Dallas%2C+TX+75208&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "TX",
+      "place": {
+        "lat": 32.7867,
+        "lng": -96.8173,
+        "id": "official:dallas-tx:lula-bs",
+        "name": "Lula B's Antique Mall",
+        "kind": "vintage",
+        "address": "1010 N Riverfront Blvd, Dallas, TX 75207",
+        "description": "Antique mall with vintage furnishings, collectibles and decor.",
+        "hours": "",
+        "website": "https://www.visitdallas.com/blog/thrift-antique-stores-dallas/",
+        "source": "official",
+        "sourceLabel": "Visit Dallas secondhand guide",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate public map pin cross-checked against the listed address; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://www.antiquestoresnearby.com/stores/lula-bs-design-district",
+        "sourceUrl": "https://www.visitdallas.com/blog/thrift-antique-stores-dallas/",
+        "tags": ["antiques", "collectibles"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.visitdallas.com/blog/thrift-antique-stores-dallas/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://www.antiquestoresnearby.com/stores/lula-bs-design-district",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    }
+  ]
 }

@@ -20,6 +20,8 @@
     "data:check": "node --import tsx scripts/check-directory.ts",
     "city": "node --import tsx scripts/city-workflow.ts",
     "city:assist": "node --import tsx scripts/city-assist.ts",
+    "city:promote-approved": "node --import tsx scripts/promote-approved-publication.ts",
+    "city:readiness": "node --import tsx scripts/city-readiness.ts",
     "city:registry": "node scripts/generate-catalogues.mjs"
   },
   "dependencies": {

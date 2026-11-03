@@ -1,5 +1,9 @@
 # Reviewed city directories
 
+## November 2 expansion
+
+There are now **17 published profiles and 118 unique venues**. Dallas, Austin, San Antonio, Portland, Seattle, Kansas City (MO), Phoenix and Albuquerque each add nine venues (three thrift, three farmers/public markets and three vintage/antique shops). See [the batch release and limitations](CITY_BATCH_RELEASE.md). The Colorado-only counts below describe the original nine-profile subset. API discovery respects each profile's radius: Austin is 30 km to include Cedar Park; the others are 20 km. Source-reviewed listings are not live inventory or open-now guarantees.
+
 Denver remains the default city. Choose **Arvada**, **Aurora**, **Boulder**, **Centennial**, **Englewood**, **Lakewood**, **Littleton**, or **Westminster** marked **directory ready** from the map’s city selector. The nine city catalogues are bundled with the app and served locally by the API.
 
 ## Denver directory

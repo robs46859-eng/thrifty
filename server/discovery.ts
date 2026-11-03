@@ -84,7 +84,11 @@ export class DiscoveryService {
     const preferred = catalogueForPoint(point);
     const pool = this.catalogue === allPlaces && preferred ? preferred.places : this.catalogue;
     const local = pool
-      .filter((p) => distanceMiles(point, p) <= DIRECTORY_RADIUS_MILES)
+      .filter(
+        (p) =>
+          distanceMiles(point, p) <=
+          (preferred ? preferred.cityProfile.radiusKm / 1.609344 : DIRECTORY_RADIUS_MILES),
+      )
       .sort((a, b) => distanceMiles(point, a) - distanceMiles(point, b))
       .slice(0, 200);
     if (local.length) {
@@ -104,7 +108,7 @@ export class DiscoveryService {
         cityIds: regions.map((c) => c.cityProfile.id),
         reviewedAt: [...local].map((p) => p.checkedAt!).sort()[0],
         categoryCounts: categoryCounts(local),
-        coverage: `${region}: source-reviewed places within 20 km. Check dates and official sources before visiting.`,
+        coverage: `${region}: source-reviewed places within ${preferred?.cityProfile.radiusKm ?? 20} km. Check dates and official sources before visiting.`,
       };
     }
     // Quantized center, bounded 8 km search, one upstream request at a time, 15 min cache.

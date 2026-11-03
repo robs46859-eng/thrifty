@@ -6,16 +6,7 @@ on:
       city:
         description: City research plan
         required: true
-        type: choice
-        options:
-          - dallas-tx
-          - austin-tx
-          - san-antonio-tx
-          - portland-or
-          - seattle-wa
-          - kansas-city-mo
-          - phoenix-az
-          - albuquerque-nm
+        type: string
       source:
         description: Optional registered source ID; leave blank for up to six sources
         required: false
@@ -25,13 +16,15 @@ permissions:
   contents: read
 
 concurrency:
-  group: city-research-${{ inputs.city }}
+  group: city-research-shared-budget
   cancel-in-progress: false
 
 jobs:
   propose:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      CITY_ID: ${{ inputs.city }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -39,11 +32,20 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
+      - name: Validate requested city plan
+        run: |
+          [[ "$CITY_ID" =~ ^[a-z0-9]+(-[a-z0-9]+)*-[a-z]{2}$ ]] || exit 1
+          test -f "research/cities/$CITY_ID.json"
+      - uses: actions/cache/restore@v4
+        with:
+          path: .thrifty-data/city-research-cache
+          key: city-research-cache-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: city-research-cache-
       - name: Fetch registered official sources within the shared HTTP budget
         env:
           SOURCE_ID: ${{ inputs.source }}
         run: |
-          args=(--file "research/cities/${{ inputs.city }}.json")
+          args=(--file "research/cities/$CITY_ID.json")
           if [[ -n "$SOURCE_ID" ]]; then
             args+=(--source "$SOURCE_ID")
           fi
@@ -54,9 +56,9 @@ jobs:
           SOURCE_ID: ${{ inputs.source }}
         run: |
           args=(
-            --file "research/cities/${{ inputs.city }}.json"
+            --file "research/cities/$CITY_ID.json"
             --provider gemini
-            --output "research/proposals/${{ inputs.city }}.json"
+            --output "research/proposals/$CITY_ID.json"
           )
           if [[ -n "$SOURCE_ID" ]]; then
             args+=(--source "$SOURCE_ID")
@@ -68,3 +70,11 @@ jobs:
           path: research/proposals/${{ inputs.city }}.json
           if-no-files-found: error
           retention-days: 7
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: .thrifty-data/city-research-cache
+          key: city-research-cache-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Report remaining publication work
+        if: always()
+        run: npm run city:readiness >> "$GITHUB_STEP_SUMMARY"

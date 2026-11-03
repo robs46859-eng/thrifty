@@ -30,7 +30,383 @@
       "url": "https://www.travelportland.com/attractions/vintage-thrift-shops/",
       "label": "Travel Portland vintage guide",
       "categories": ["vintage"]
+    },
+    {
+      "id": "portland-resourceful-pdx",
+      "url": "https://www.portland.gov/bps/sustainability/resourcefulpdx/where-go",
+      "label": "City of Portland Resourceful PDX directory",
+      "categories": ["thrift", "vintage"]
+    },
+    {
+      "id": "portland-market-psu",
+      "url": "https://www.portlandfarmersmarket.org/vietnamese/psu/",
+      "label": "Portland Farmers Market — PSU",
+      "categories": ["market"]
+    },
+    {
+      "id": "portland-market-king",
+      "url": "https://www.portlandfarmersmarket.org/japanese/king/",
+      "label": "Portland Farmers Market — King",
+      "categories": ["market"]
+    },
+    {
+      "id": "portland-market-lents",
+      "url": "https://www.portlandfarmersmarket.org/our-markets/lents-international/",
+      "label": "Portland Farmers Market — Lents International",
+      "categories": ["market"]
     }
   ],
-  "candidates": []
+  "candidates": [
+    {
+      "country": "US",
+      "state": "OR",
+      "place": {
+        "lat": 45.519068050907,
+        "lng": -122.57794186986,
+        "id": "official:portland-or:arc-thrift",
+        "name": "Arc Thrift Store",
+        "kind": "thrift",
+        "address": "8304 SE Stark St, Portland, OR 97216",
+        "description": "Community thrift store selling clothing and household goods.",
+        "hours": "",
+        "website": "https://www.portland.gov/bps/sustainability/resourcefulpdx/where-go",
+        "source": "official",
+        "sourceLabel": "City of Portland Resourceful PDX directory",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=8304+SE+Stark+St%2C+Portland%2C+OR+97216&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.portland.gov/bps/sustainability/resourcefulpdx/where-go",
+        "tags": ["secondhand", "community"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.portland.gov/bps/sustainability/resourcefulpdx/where-go",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=8304+SE+Stark+St%2C+Portland%2C+OR+97216&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "OR",
+      "place": {
+        "lat": 45.551659999263,
+        "lng": -122.661641688544,
+        "id": "official:portland-or:community-warehouse-estate-store",
+        "name": "Community Warehouse Estate Store",
+        "kind": "thrift",
+        "address": "3969 NE Martin Luther King Jr Blvd, Portland, OR 97212",
+        "description": "Nonprofit estate store selling donated furniture, antiques and household goods.",
+        "hours": "",
+        "website": "https://www.portland.gov/bps/sustainability/resourcefulpdx/where-go",
+        "source": "official",
+        "sourceLabel": "City of Portland Resourceful PDX directory",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3969+NE+Martin+Luther+King+Jr+Blvd%2C+Portland%2C+OR+97212&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.portland.gov/bps/sustainability/resourcefulpdx/where-go",
+        "tags": ["secondhand", "furniture", "nonprofit"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.portland.gov/bps/sustainability/resourcefulpdx/where-go",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3969+NE+Martin+Luther+King+Jr+Blvd%2C+Portland%2C+OR+97212&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "OR",
+      "place": {
+        "lat": 45.533414545836,
+        "lng": -122.549343634967,
+        "id": "official:portland-or:pacs-thrift-store",
+        "name": "PACS Thrift Store",
+        "kind": "thrift",
+        "address": "11020 NE Halsey St, Portland, OR 97220",
+        "description": "Community thrift store offering clothing, furniture and household items.",
+        "hours": "",
+        "website": "https://www.portland.gov/bps/sustainability/resourcefulpdx/where-go",
+        "source": "official",
+        "sourceLabel": "City of Portland Resourceful PDX directory",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=11020+NE+Halsey+St%2C+Portland%2C+OR+97220&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.portland.gov/bps/sustainability/resourcefulpdx/where-go",
+        "tags": ["secondhand", "community"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.portland.gov/bps/sustainability/resourcefulpdx/where-go",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=11020+NE+Halsey+St%2C+Portland%2C+OR+97220&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "OR",
+      "place": {
+        "lat": 45.512366190618,
+        "lng": -122.685195110494,
+        "id": "official:portland-or:psu-farmers-market",
+        "name": "PSU Farmers Market",
+        "kind": "market",
+        "address": "1803 SW Park Ave, Portland, OR 97201",
+        "description": "Year-round Saturday farmers market in the South Park Blocks at Portland State University.",
+        "hours": "",
+        "website": "https://www.portlandfarmersmarket.org/vietnamese/psu/",
+        "source": "official",
+        "sourceLabel": "Portland Farmers Market — PSU",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1803+SW+Park+Ave%2C+Portland%2C+OR+97201&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.portlandfarmersmarket.org/vietnamese/psu/",
+        "tags": ["farmers market", "year-round"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.portlandfarmersmarket.org/vietnamese/psu/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1803+SW+Park+Ave%2C+Portland%2C+OR+97201&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "OR",
+      "place": {
+        "lat": 45.557482046939,
+        "lng": -122.658627531708,
+        "id": "official:portland-or:king-farmers-market",
+        "name": "King Farmers Market",
+        "kind": "market",
+        "address": "4815 NE 7th Ave, Portland, OR 97211",
+        "description": "Seasonal neighborhood farmers market beside King Elementary School.",
+        "hours": "",
+        "website": "https://www.portlandfarmersmarket.org/japanese/king/",
+        "source": "official",
+        "sourceLabel": "Portland Farmers Market — King",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=4815+NE+7th+Ave%2C+Portland%2C+OR+97211&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.portlandfarmersmarket.org/japanese/king/",
+        "tags": ["farmers market", "seasonal"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.portlandfarmersmarket.org/japanese/king/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=4815+NE+7th+Ave%2C+Portland%2C+OR+97211&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "OR",
+      "place": {
+        "lat": 45.481176476361,
+        "lng": -122.568501021264,
+        "id": "official:portland-or:lents-international-farmers-market",
+        "name": "Lents International Farmers Market",
+        "kind": "market",
+        "address": "5718 SE 92nd Ave, Portland, OR 97266",
+        "description": "Seasonal market with local and culturally relevant produce in the Lents neighborhood.",
+        "hours": "",
+        "website": "https://www.portlandfarmersmarket.org/our-markets/lents-international/",
+        "source": "official",
+        "sourceLabel": "Portland Farmers Market — Lents International",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=5718+SE+92nd+Ave%2C+Portland%2C+OR+97266&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.portlandfarmersmarket.org/our-markets/lents-international/",
+        "tags": ["farmers market", "seasonal", "Lents"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.portlandfarmersmarket.org/our-markets/lents-international/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=5718+SE+92nd+Ave%2C+Portland%2C+OR+97266&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "OR",
+      "place": {
+        "lat": 45.559129131833,
+        "lng": -122.644553747525,
+        "id": "official:portland-or:modo",
+        "name": "Modo",
+        "kind": "vintage",
+        "address": "2025 NE Alberta St, Portland, OR 97211",
+        "description": "Consignment and resale shop for clothing, shoes and accessories.",
+        "hours": "",
+        "website": "https://www.portland.gov/bps/sustainability/resourcefulpdx/where-go",
+        "source": "official",
+        "sourceLabel": "City of Portland Resourceful PDX directory",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=2025+NE+Alberta+St%2C+Portland%2C+OR+97211&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.portland.gov/bps/sustainability/resourcefulpdx/where-go",
+        "tags": ["vintage", "consignment"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.portland.gov/bps/sustainability/resourcefulpdx/where-go",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=2025+NE+Alberta+St%2C+Portland%2C+OR+97211&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "OR",
+      "place": {
+        "lat": 45.55914406821,
+        "lng": -122.648440201954,
+        "id": "official:portland-or:mother-of-earth-vintage",
+        "name": "Mother of Earth Vintage",
+        "kind": "vintage",
+        "address": "1627 NE Alberta St, Portland, OR 97211",
+        "description": "Vintage clothing store on Alberta Street.",
+        "hours": "",
+        "website": "https://www.portland.gov/bps/sustainability/resourcefulpdx/where-go",
+        "source": "official",
+        "sourceLabel": "City of Portland Resourceful PDX directory",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1627+NE+Alberta+St%2C+Portland%2C+OR+97211&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.portland.gov/bps/sustainability/resourcefulpdx/where-go",
+        "tags": ["vintage clothing", "Alberta Arts"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.portland.gov/bps/sustainability/resourcefulpdx/where-go",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1627+NE+Alberta+St%2C+Portland%2C+OR+97211&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "OR",
+      "place": {
+        "lat": 45.548350861057,
+        "lng": -122.617606266414,
+        "id": "official:portland-or:pacific-holiday",
+        "name": "Pacific Holiday",
+        "kind": "vintage",
+        "address": "4443 NE Fremont St, Portland, OR 97213",
+        "description": "Consignment and resale shop for clothing, shoes and accessories.",
+        "hours": "",
+        "website": "https://www.portland.gov/bps/sustainability/resourcefulpdx/where-go",
+        "source": "official",
+        "sourceLabel": "City of Portland Resourceful PDX directory",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=4443+NE+Fremont+St%2C+Portland%2C+OR+97213&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.portland.gov/bps/sustainability/resourcefulpdx/where-go",
+        "tags": ["vintage", "consignment"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.portland.gov/bps/sustainability/resourcefulpdx/where-go",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=4443+NE+Fremont+St%2C+Portland%2C+OR+97213&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    }
+  ]
 }

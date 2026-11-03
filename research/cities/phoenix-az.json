@@ -6,7 +6,10 @@
     "state": "AZ",
     "country": "US",
     "timezone": "America/Phoenix",
-    "center": { "lat": 33.4484, "lng": -112.074 },
+    "center": {
+      "lat": 33.4484,
+      "lng": -112.074
+    },
     "radiusKm": 20
   },
   "sources": [
@@ -27,7 +30,395 @@
       "url": "https://www.visitphoenix.com/stories/post/the-best-vintage-clothing-stores-in-phoenix/",
       "label": "Visit Phoenix vintage clothing guide",
       "categories": ["vintage"]
+    },
+    {
+      "id": "source-c22533056f62",
+      "url": "https://www.goodwillaz.org/location/32nd-st-thomas-rd/",
+      "label": "goodwillaz.org",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "source-b7dcbc6510db",
+      "url": "https://www.goodwillaz.org/location/75th-ave-thomas-rd/",
+      "label": "goodwillaz.org",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "source-ec791e5531bf",
+      "url": "https://www.goodwillaz.org/location/16th-st-indian-school-road/",
+      "label": "goodwillaz.org",
+      "categories": ["thrift"]
+    },
+    {
+      "id": "source-3b51c2d457e4",
+      "url": "https://retroranch.net/",
+      "label": "retroranch.net",
+      "categories": ["vintage"]
+    },
+    {
+      "id": "source-dfdae9debaba",
+      "url": "https://buffaloexchange.com/location/midtown-phoenix/",
+      "label": "buffaloexchange.com",
+      "categories": ["vintage"]
+    },
+    {
+      "id": "source-b0de29d7b1f3",
+      "url": "https://www.visitphoenix.com/lgbtq/melrose-district/",
+      "label": "visitphoenix.com",
+      "categories": ["vintage"]
     }
   ],
-  "candidates": []
+  "candidates": [
+    {
+      "country": "US",
+      "state": "AZ",
+      "place": {
+        "lat": 33.480535293593,
+        "lng": -112.0143857575,
+        "id": "official:phoenix-az:goodwill-32nd-and-thomas",
+        "name": "Goodwill — 32nd and Thomas",
+        "kind": "thrift",
+        "address": "3130 E Thomas Rd, Phoenix, AZ",
+        "description": "Goodwill — 32nd and Thomas in Phoenix. Check the linked source for current visiting dates and hours.",
+        "hours": "",
+        "website": "https://www.goodwillaz.org/location/32nd-st-thomas-rd/",
+        "source": "official",
+        "sourceLabel": "goodwillaz.org",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3130+E+Thomas+Rd%2C+Phoenix%2C+AZ&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.goodwillaz.org/location/32nd-st-thomas-rd/",
+        "tags": ["thrift", "Phoenix"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.goodwillaz.org/location/32nd-st-thomas-rd/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3130+E+Thomas+Rd%2C+Phoenix%2C+AZ&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "AZ",
+      "place": {
+        "lat": 33.480761178552,
+        "lng": -112.220552995687,
+        "id": "official:phoenix-az:goodwill-75th-and-thomas",
+        "name": "Goodwill — 75th and Thomas",
+        "kind": "thrift",
+        "address": "2929 N 75th Ave, Phoenix, AZ",
+        "description": "Goodwill — 75th and Thomas in Phoenix. Check the linked source for current visiting dates and hours.",
+        "hours": "",
+        "website": "https://www.goodwillaz.org/location/75th-ave-thomas-rd/",
+        "source": "official",
+        "sourceLabel": "goodwillaz.org",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=2929+N+75th+Ave%2C+Phoenix%2C+AZ&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.goodwillaz.org/location/75th-ave-thomas-rd/",
+        "tags": ["thrift", "Phoenix"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.goodwillaz.org/location/75th-ave-thomas-rd/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=2929+N+75th+Ave%2C+Phoenix%2C+AZ&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "AZ",
+      "place": {
+        "lat": 33.493653962696,
+        "lng": -112.047556625255,
+        "id": "official:phoenix-az:goodwill-16th-and-indian-school",
+        "name": "Goodwill — 16th and Indian School",
+        "kind": "thrift",
+        "address": "4005 N 16th St, Phoenix, AZ",
+        "description": "Goodwill — 16th and Indian School in Phoenix. Check the linked source for current visiting dates and hours.",
+        "hours": "",
+        "website": "https://www.goodwillaz.org/location/16th-st-indian-school-road/",
+        "source": "official",
+        "sourceLabel": "goodwillaz.org",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=4005+N+16th+St%2C+Phoenix%2C+AZ&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.goodwillaz.org/location/16th-st-indian-school-road/",
+        "tags": ["thrift", "Phoenix"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.goodwillaz.org/location/16th-st-indian-school-road/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=4005+N+16th+St%2C+Phoenix%2C+AZ&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "AZ",
+      "place": {
+        "lat": 33.455778012278,
+        "lng": -112.067542697812,
+        "id": "official:phoenix-az:downtown-phx-farmers-market",
+        "name": "Downtown PHX Farmers Market",
+        "kind": "market",
+        "address": "720 N 5th St, Phoenix, AZ",
+        "description": "Downtown PHX Farmers Market in Phoenix. Check the linked source for current visiting dates and hours.",
+        "hours": "",
+        "website": "https://www.visitphoenix.com/things-to-do/shopping/farmers-markets/",
+        "source": "official",
+        "sourceLabel": "visitphoenix.com",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=720+N+5th+St%2C+Phoenix%2C+AZ&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.visitphoenix.com/things-to-do/shopping/farmers-markets/",
+        "tags": ["market", "Phoenix"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.visitphoenix.com/things-to-do/shopping/farmers-markets/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=720+N+5th+St%2C+Phoenix%2C+AZ&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "AZ",
+      "place": {
+        "lat": 33.520886316856,
+        "lng": -112.073621797805,
+        "id": "official:phoenix-az:uptown-farmers-market",
+        "name": "Uptown Farmers Market",
+        "kind": "market",
+        "address": "5757 N Central Ave, Phoenix, AZ",
+        "description": "Uptown Farmers Market in Phoenix. Check the linked source for current visiting dates and hours.",
+        "hours": "",
+        "website": "https://www.visitphoenix.com/things-to-do/shopping/farmers-markets/",
+        "source": "official",
+        "sourceLabel": "visitphoenix.com",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=5757+N+Central+Ave%2C+Phoenix%2C+AZ&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.visitphoenix.com/things-to-do/shopping/farmers-markets/",
+        "tags": ["market", "Phoenix"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.visitphoenix.com/things-to-do/shopping/farmers-markets/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=5757+N+Central+Ave%2C+Phoenix%2C+AZ&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "AZ",
+      "place": {
+        "lat": 33.597105162041,
+        "lng": -112.006893312506,
+        "id": "official:phoenix-az:roadrunner-park-farmers-market",
+        "name": "Roadrunner Park Farmers Market",
+        "kind": "market",
+        "address": "3502 E Cactus Rd, Phoenix, AZ",
+        "description": "Roadrunner Park Farmers Market in Phoenix. Check the linked source for current visiting dates and hours.",
+        "hours": "",
+        "website": "https://www.visitphoenix.com/things-to-do/shopping/farmers-markets/",
+        "source": "official",
+        "sourceLabel": "visitphoenix.com",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3502+E+Cactus+Rd%2C+Phoenix%2C+AZ&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.visitphoenix.com/things-to-do/shopping/farmers-markets/",
+        "tags": ["market", "Phoenix"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.visitphoenix.com/things-to-do/shopping/farmers-markets/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3502+E+Cactus+Rd%2C+Phoenix%2C+AZ&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "AZ",
+      "place": {
+        "lat": 33.498536035821,
+        "lng": -112.083122064572,
+        "id": "official:phoenix-az:retro-ranch",
+        "name": "Retro Ranch",
+        "kind": "vintage",
+        "address": "4303 N 7th Ave, Phoenix, AZ",
+        "description": "Retro Ranch in Phoenix. Check the linked source for current visiting dates and hours.",
+        "hours": "",
+        "website": "https://retroranch.net/",
+        "source": "official",
+        "sourceLabel": "retroranch.net",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=4303+N+7th+Ave%2C+Phoenix%2C+AZ&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://retroranch.net/",
+        "tags": ["vintage", "Phoenix"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://retroranch.net/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=4303+N+7th+Ave%2C+Phoenix%2C+AZ&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "AZ",
+      "place": {
+        "lat": 33.486710912396,
+        "lng": -112.065127222083,
+        "id": "official:phoenix-az:buffalo-exchange-midtown",
+        "name": "Buffalo Exchange — Midtown",
+        "kind": "vintage",
+        "address": "3450 N 7th St, Phoenix, AZ",
+        "description": "Buffalo Exchange — Midtown in Phoenix. Check the linked source for current visiting dates and hours.",
+        "hours": "",
+        "website": "https://buffaloexchange.com/location/midtown-phoenix/",
+        "source": "official",
+        "sourceLabel": "buffaloexchange.com",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3450+N+7th+St%2C+Phoenix%2C+AZ&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://buffaloexchange.com/location/midtown-phoenix/",
+        "tags": ["vintage", "Phoenix"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://buffaloexchange.com/location/midtown-phoenix/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=3450+N+7th+St%2C+Phoenix%2C+AZ&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    },
+    {
+      "country": "US",
+      "state": "AZ",
+      "place": {
+        "lat": 33.505127709894,
+        "lng": -112.082526258567,
+        "id": "official:phoenix-az:sweet-salvage",
+        "name": "Sweet Salvage",
+        "kind": "vintage",
+        "address": "4648 N 7th Ave, Phoenix, AZ",
+        "description": "Sweet Salvage in Phoenix. Check the linked source for current visiting dates and hours.",
+        "hours": "",
+        "website": "https://www.visitphoenix.com/lgbtq/melrose-district/",
+        "source": "official",
+        "sourceLabel": "visitphoenix.com",
+        "checkedAt": "2026-11-02",
+        "coordinateNote": "Approximate address-based pin from the U.S. Census geocoder; confirm the entrance before traveling.",
+        "coordinateSourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=4648+N+7th+Ave%2C+Phoenix%2C+AZ&benchmark=Public_AR_Current&format=json",
+        "sourceUrl": "https://www.visitphoenix.com/lgbtq/melrose-district/",
+        "tags": ["vintage", "Phoenix"]
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex factual review of approved proposal",
+        "reviewedAt": "2026-11-02",
+        "evidence": [
+          {
+            "url": "https://www.visitphoenix.com/lgbtq/melrose-district/",
+            "fields": ["name", "address", "category"],
+            "note": "Public source reviewed 2026-11-02 for identity, location and listing category."
+          },
+          {
+            "url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=4648+N+7th+Ave%2C+Phoenix%2C+AZ&benchmark=Public_AR_Current&format=json",
+            "fields": ["coordinates"],
+            "note": "Batch-geocoded street address; address-based pin is approximate."
+          }
+        ]
+      }
+    }
+  ]
 }

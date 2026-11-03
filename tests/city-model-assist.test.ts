@@ -145,7 +145,9 @@ describe('model-assisted city research boundaries', () => {
     for (const entry of queue.cities) {
       const draft = draftSchema.parse(JSON.parse(await readFile(entry.file, 'utf8')));
       expect(draft.city.id).toBe(entry.id);
-      expect(draft.candidates).toEqual([]);
+      expect(
+        draft.candidates.filter((candidate) => candidate.review.status === 'approved').length,
+      ).toBeGreaterThanOrEqual(9);
     }
   });
 });
